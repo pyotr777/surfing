@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Теги — Сёрф Япония</title>
+  <meta name="language" content="ru">
+  <meta name="description" content="Все теги сайта и страницы, которые их несут.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <article class="article article--wide">
+    <h1>Все теги</h1>
+    <p>
+      Теги общие для обоих языков: английская и русская версии страницы несут одни
+      и те же метки. По языку фильтруется только список ниже.
+    </p>
+
+<script type="text/python">
+html, soup = include("../_include/tag-index.html")
+print(html)
+</script>
+  </article>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

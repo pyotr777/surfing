@@ -1,0 +1,32 @@
+<script type="text/python">
+# Area cards for the spots overview.  They deliberately use an area profile
+# rather than a beginner/intermediate/advanced label: each area holds breaks
+# that work differently on different days.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+b = S.base_url(page_file)
+
+print('<div class="cards cards--areas">')
+for area_id, area in S.AREAS.items():
+    meta = S.AREAS_META[area_id]
+    url = b + f'spots/{area_id}/'
+    print('  <article class="card">')
+    print(f'    <a class="card-media" href="{url}" tabindex="-1" aria-hidden="true">')
+    print(f'      <img src="{b}img/spots-2b/{area["image"]}.png" alt="" '
+          'width="1672" height="941" loading="lazy">')
+    print('    </a>')
+    print('    <div class="card-body">')
+    print(f'      <p class="card-meta"><span class="region">{area["region"][lang]}</span></p>')
+    print(f'      <h3><a href="{url}">{meta[lang]}</a></h3>')
+    print(f'      <p class="card-summary">{area["summary"][lang]}</p>')
+    print(f'      <a class="read-more" href="{url}">{ui["read_more"]} &rarr;</a>')
+    print('    </div>')
+    print('  </article>')
+print('</div>')
+</script>

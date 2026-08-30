@@ -1,0 +1,212 @@
+<script type="text/python">
+# A cutaway block of coast, showing what happens to a swell as the bottom
+# comes up under it.
+#
+# The picture is a solution, not a sketch. For every step towards the beach
+# the template solves the dispersion relation for the local wavenumber,
+# shoals the wave height through the group velocity, and accumulates the
+# phase. The waves therefore crowd together and grow on their own, and the
+# breaking point falls where the depth-limited criterion says it should.
+#
+# Parameters (optional):
+#   period   swell period in seconds (default 12)
+#   height   deep-water wave height in metres (default 1.7)
+#   labels   False to draw the block without annotation (card artwork)
+import math
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+T = params.get("period", 8.0)
+H0 = params.get("height", 1.5)
+labels = params.get("labels", True)
+
+G = 9.81
+W, H = 760, 350
+
+X0, X1 = 34, 600          # screen x of the offshore and shoreline edges
+SEA_Y = 196               # still-water line at the front face
+DEPTH_PX = 82             # screen height of the deepest water shown
+ZDX, ZDY = 126, -84       # one step "into the page"
+N = 260                   # samples from deep water to the beach
+D_MAX = 24.0              # metres of water at the offshore edge
+SPAN_M = 480.0            # metres of coast covered by the block
+
+
+def depth(t):
+    """Water depth in metres, t running 0 (offshore) to 1 (beach)."""
+    return max(0.25, D_MAX * (1 - t) ** 1.55)
+
+
+def wavenumber(d):
+    """Solve omega^2 = g k tanh(k d) for k by fixed-point iteration."""
+    omega = 2 * math.pi / T
+    k = omega * omega / G                      # deep-water first guess
+    for _ in range(40):
+        k = omega * omega / (G * math.tanh(k * d))
+    return k
+
+
+# ---- the physics, once ------------------------------------------------------
+cg0 = G * T / (4 * math.pi)                    # deep-water group velocity
+prof = []                                      # (t, x_screen, depth, k, H, eta_amp)
+phase = 0.0
+prev_x_m = 0.0
+broke_at = None
+
+for i in range(N + 1):
+    t = i / N
+    x_m = t * SPAN_M
+    d = depth(t)
+    k = wavenumber(d)
+    kd = k * d
+    c = (2 * math.pi / T) / k
+    cg = 0.5 * c * (1 + 2 * kd / math.sinh(min(20, 2 * kd)))
+    ks = math.sqrt(cg0 / cg)
+    Hh = H0 * ks
+    if broke_at is None and Hh > 0.78 * d:
+        broke_at = t
+    if broke_at is not None:
+        Hh = 0.78 * d                          # inside the surf zone
+    phase += k * (x_m - prev_x_m)
+    prev_x_m = x_m
+    prof.append({"t": t, "x": X0 + t * (X1 - X0), "d": d, "k": k, "H": Hh,
+                 "phase": phase, "L": 2 * math.pi / k})
+
+VSCALE = 7.0                                   # px per metre of wave height
+
+
+def surface(p, z):
+    """Screen point of the water surface at sample p, z steps into the page."""
+    # A Stokes second-order profile: crests sharpen and troughs flatten as
+    # the wave steepens, which is what actually happens on a shoaling bank.
+    a = p["H"] / 2
+    ph = p["phase"] + z * 2.1
+    steep = min(0.42, p["k"] * p["H"] / 2)
+    eta = a * (math.cos(ph) + steep * math.cos(2 * ph) / 2)
+    return (p["x"] + z * ZDX, SEA_Y - eta * VSCALE + z * ZDY)
+
+
+def bed(p, z):
+    """Screen point of the sea bed."""
+    return (p["x"] + z * ZDX, SEA_Y + p["d"] / D_MAX * DEPTH_PX + z * ZDY)
+
+
+def poly(points):
+    return " ".join(f"{x:.1f},{y:.1f}" for x, y in points)
+
+
+out = []
+
+# ---- the sand ---------------------------------------------------------------
+back_bed = [bed(p, 1) for p in prof]
+front_bed = [bed(p, 0) for p in prof]
+BOTTOM = max(y for _, y in front_bed) + 42     # how thick a slab to show
+
+out.append(f'  <polygon class="sand-top" points="{poly(back_bed + list(reversed(front_bed)))}"/>')
+out.append('  <polygon class="sand-face" points="'
+           + poly(front_bed + [(front_bed[-1][0], BOTTOM), (front_bed[0][0], BOTTOM)]) + '"/>')
+out.append('  <polygon class="sand-side" points="'
+           + poly([back_bed[-1], front_bed[-1], (front_bed[-1][0], BOTTOM),
+                   (back_bed[-1][0], BOTTOM + ZDY)]) + '"/>')
+
+# ---- the water --------------------------------------------------------------
+back_surf = [surface(p, 1) for p in prof]
+front_surf = [surface(p, 0) for p in prof]
+out.append(f'  <polygon class="water-top" points="{poly(back_surf + list(reversed(front_surf)))}"/>')
+out.append('  <polygon class="water-face" points="'
+           + poly(front_surf + list(reversed(front_bed))) + '"/>')
+
+# ---- crest lines running into the page --------------------------------------
+# One line per crest, which is how the crowding becomes visible: the spacing
+# between them is the local wavelength and nothing sets it by hand.
+crest_ts = []
+for i in range(1, len(prof) - 1):
+    if math.cos(prof[i]["phase"]) > math.cos(prof[i - 1]["phase"]) and \
+       math.cos(prof[i]["phase"]) > math.cos(prof[i + 1]["phase"]):
+        crest_ts.append(i)
+
+for i in crest_ts:
+    p = prof[i]
+    line = [surface(p, z / 12) for z in range(13)]
+    cls = "crest-line crest-line--big" if p["H"] > H0 * 1.25 else "crest-line"
+    out.append(f'  <polyline class="{cls}" points="{poly(line)}" fill="none"/>')
+
+# ---- ribs: the same profile drawn at several depths into the page, which is
+# what makes the surface read as a corrugated sheet rather than a flat plane.
+for j in range(1, 7):
+    z = j / 6
+    rib = [surface(p, z) for p in prof[::3]]
+    out.append(f'  <polyline class="rib" points="{poly(rib)}" fill="none"/>')
+
+# ---- whitewater where it breaks --------------------------------------------
+if broke_at is not None:
+    surf_zone = [p for p in prof if p["t"] >= broke_at]
+    foam_top = [surface(p, 0) for p in surf_zone]
+    foam_bot = [(x, y + 7) for x, y in foam_top]
+    out.append(f'  <polygon class="foam" points="{poly(foam_top + list(reversed(foam_bot)))}"/>')
+    breaking = [i for i in crest_ts if prof[i]["t"] >= broke_at][:2]
+    for i in breaking:
+        for z in range(0, 13, 2):
+            x, y = surface(prof[i], z / 12)
+            out.append(f'  <circle class="spray" cx="{x:.1f}" cy="{y - 4:.1f}" r="3.4"/>')
+
+# ---- wind, and the labels ---------------------------------------------------
+if labels:
+    words = {
+        "en": ("WIND", "wavelength", "waves crowd together", "height grows",
+               "the bottom comes up", "it breaks"),
+        "ru": ("ВЕТЕР", "длина волны", "волны сближаются", "высота растёт",
+               "дно поднимается", "здесь ломается"),
+    }[lang]
+
+    out.append('  <g class="windmark">')
+    out.append('    <path class="wind-arrow" d="M 24 46 L 96 46 L 96 36 L 126 54'
+               ' L 96 72 L 96 62 L 24 62 Z"/>')
+    out.append(f'    <text class="wind-label" x="30" y="34">{words[0]}</text>')
+    out.append('  </g>')
+
+    # wavelength bracket over the first two crests, and over the last two
+    def bracket(i0, i1, text, dy):
+        a = surface(prof[i0], 1)
+        b_ = surface(prof[i1], 1)
+        y = min(a[1], b_[1]) + dy
+        out.append(f'  <path class="bracket" d="M {a[0]:.1f},{y + 6:.1f} L {a[0]:.1f},{y:.1f}'
+                   f' L {b_[0]:.1f},{y:.1f} L {b_[0]:.1f},{y + 6:.1f}"/>')
+        out.append(f'  <text class="diag-note" x="{(a[0] + b_[0]) / 2:.1f}"'
+                   f' y="{y - 6:.1f}" text-anchor="middle">{text}</text>')
+
+    if len(crest_ts) >= 4:
+        bracket(crest_ts[0], crest_ts[1], words[1], -26)
+        bracket(crest_ts[-3], crest_ts[-2], words[2], -26)
+
+    tall = max(prof, key=lambda p: p["H"])
+    tx, ty = surface(tall, 0)
+    out.append(f'  <text class="diag-note" x="{min(tx + 14, W - 120):.1f}"'
+               f' y="{ty - 16:.1f}">{words[3]}</text>')
+    out.append(f'  <text class="diag-note" x="{X0 + 24}" y="{SEA_Y + DEPTH_PX - 6}">'
+               f'{words[4]}</text>')
+    if broke_at is not None:
+        bx, by = surface(prof[min(len(prof) - 1, int(broke_at * N) + 6)], 0)
+        out.append(f'  <text class="diag-note diag-note--light" x="{bx:.1f}"'
+                   f' y="{by + 26:.1f}" text-anchor="middle">{words[5]}</text>')
+
+print(f'<figure class="blockdiagram">')
+print(f'  <svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img"'
+      f' aria-label="{"Shoaling" if lang == "en" else "Обмеление"}">')
+print("\n".join(out))
+print('  </svg>')
+if labels:
+    caption = ("Solved during the build: the dispersion relation gives the wavelength "
+               "at every depth, the group velocity gives the height, and the wave "
+               "breaks where the height passes 0.78 of the depth."
+               if lang == "en" else
+               "Решается во время сборки: дисперсионное соотношение даёт длину волны "
+               "на каждой глубине, групповая скорость — высоту, а ломается волна там, "
+               "где высота переваливает за 0,78 глубины.")
+    print(f'  <figcaption>{caption}</figcaption>')
+print('</figure>')
+</script>

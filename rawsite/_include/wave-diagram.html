@@ -1,0 +1,136 @@
+<script type="text/python">
+# Two diagrams for the article on what shapes a wave. Both are computed from
+# the physics rather than drawn by hand.
+#
+# Parameters:
+#   kind  "refraction" or "period"
+import math
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+kind = params["kind"]
+G = 9.81
+
+TEXT = {
+    "refraction": {
+        "en": ("Swell arriving at 45° in deep water, over a bottom that shallows "
+               "evenly towards the beach. Each crest is traced by stepping across "
+               "the diagram and turning it by Snell's law at the local depth."),
+        "ru": ("Свелл приходит под 45° на глубокой воде, дно равномерно мелеет к "
+               "пляжу. Каждый гребень строится шагами поперёк схемы, поворачиваясь "
+               "по закону Снеллиуса на местной глубине."),
+    },
+    "period": {
+        "en": ("Deep-water wavelength is L = gT²/2π, and a wave feels the bottom "
+               "from about L/2 down. Same height, different period: the long one "
+               "carries far more water and reaches much deeper."),
+        "ru": ("Длина волны на глубокой воде L = gT²/2π, а дно волна начинает "
+               "чувствовать примерно с L/2. Одинаковая высота, разный период: "
+               "длинная несёт куда больше воды и достаёт заметно глубже."),
+    },
+}
+
+
+def refraction():
+    W, H = 640, 360
+    shore_y = 300
+    d0 = 60.0                      # metres of water at the top of the frame
+    theta0 = math.radians(45)
+
+    def depth(y):
+        return max(1.5, d0 * (1 - min(y, shore_y) / shore_y))
+
+    def angle(y):
+        # Snell's law with shallow-water celerity c = sqrt(g*d):
+        # sin(theta) / c stays constant along a ray.
+        s = math.sin(theta0) * math.sqrt(depth(y) / d0)
+        return math.asin(min(1.0, s))
+
+    out = []
+    # water, shaded from deep to shallow
+    for i in range(6):
+        y = shore_y * i / 6
+        h = shore_y / 6 + 1
+        shade = ["#0b2740", "#124465", "#186188", "#2a86ab", "#57a9c6", "#8dc9da"][i]
+        out.append(f'  <rect x="0" y="{y:.1f}" width="{W}" height="{h:.1f}" fill="{shade}"/>')
+    out.append(f'  <rect x="0" y="{shore_y}" width="{W}" height="{H - shore_y}" fill="#dee7c4"/>')
+
+    # Crests. A crest is perpendicular to the direction of travel, so where the
+    # ray makes an angle theta with the shore normal the crest has slope
+    # -tan(theta) on the page. Integrating that across the frame bends each
+    # crest towards the beach exactly as much as the depth demands.
+    step = 6
+    for start in range(30, 1100, 42):
+        pts = []
+        y = float(start)
+        for x in range(0, W + step, step):
+            if 0 <= y <= shore_y:
+                pts.append(f"{x},{y:.1f}")
+            y -= step * math.tan(angle(y))
+        if len(pts) > 2:
+            out.append(f'  <polyline class="crest" points="{" ".join(pts)}"/>')
+
+    # a ray, to show the direction of travel turning with the crests
+    ray = []
+    y = 0.0
+    x = 150.0
+    while y < shore_y - 2:
+        ray.append(f"{x:.1f},{y:.1f}")
+        a = angle(y)
+        x += 5 * math.sin(a)
+        y += 5 * math.cos(a)
+    out.append(f'  <polyline class="ray" points="{" ".join(ray)}"/>')
+
+    words = {"en": ("deep water", "shallow", "beach"),
+             "ru": ("глубоко", "мелко", "пляж")}[lang]
+    out.append(f'  <text class="diag-label" x="12" y="24">{words[0]}</text>')
+    out.append(f'  <text class="diag-label" x="12" y="{shore_y - 12}">{words[1]}</text>')
+    out.append(f'  <text class="diag-note" x="12" y="{H - 14}">{words[2]}</text>')
+    return W, H, "\n".join(out)
+
+
+def period():
+    W, H = 640, 300
+    out = []
+    cases = [
+        (6, 60, "#5aa6c9"),        # short period, wind sea
+        (14, 190, "#0e9aa7"),      # long period, ground swell
+    ]
+    for T, y0, colour in cases:
+        L = G * T * T / (2 * math.pi)          # deep-water wavelength, metres
+        feel = L / 2                            # depth at which it feels the bottom
+        px_per_m = 520 / 320                    # fit the longer wave in the frame
+        wl = L * px_per_m
+        amp = 16
+        pts = []
+        for i in range(0, 521, 4):
+            x = 60 + i
+            pts.append(f"{x},{y0 - amp * math.sin(2 * math.pi * i / wl):.1f}")
+        out.append(f'  <polyline class="wave-line" points="{" ".join(pts)}"'
+                   f' stroke="{colour}"/>')
+        sec = "s" if lang == "en" else "с"
+        note = ("feels the bottom from {d:.0f} m down" if lang == "en"
+                else "чувствует дно начиная с {d:.0f} м")
+        out.append(f'  <text class="diag-label" x="60" y="{y0 - 34}">'
+                   f'T = {T} {sec} · L = {L:.0f} m</text>')
+        out.append(f'  <line class="feel" x1="60" y1="{y0 + 44}" x2="580" y2="{y0 + 44}"'
+                   f' stroke="{colour}"/>')
+        out.append(f'  <text class="diag-note" x="60" y="{y0 + 60}">'
+                   f'{note.format(d=feel)}</text>')
+    return W, H, "\n".join(out)
+
+
+W, H, body = refraction() if kind == "refraction" else period()
+
+print(f'<figure class="diagram diagram--{kind}">')
+print(f'  <svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img"'
+      f' aria-label="{TEXT[kind][lang]}">')
+print(body)
+print('  </svg>')
+print(f'  <figcaption>{TEXT[kind][lang]}</figcaption>')
+print('</figure>')
+</script>

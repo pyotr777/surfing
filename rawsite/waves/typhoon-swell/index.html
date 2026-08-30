@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/python">
+html, soup = include("../../_include/head.html")
+print(html)
+</script>
+  <title>Reading a swell window — Surf Japan</title>
+  <meta name="section" content="guide">
+  <meta name="language" content="en">
+  <meta name="description" content="Why the Pacific side of Japan gets long typhoon swell and the Sea of Japan side gets short winter chop — and how to read the compass rose on every spot page.">
+  <meta name="keywords" content="typhoon-swell, winter-swell">
+  <meta name="date" content="2026-06-18">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+<script type="text/python">
+html, soup = include("../../_include/breadcrumbs.html", title="Reading a swell window")
+print(html)
+</script>
+
+  <article class="article">
+    <h1>Reading a swell window</h1>
+    <p class="standfirst">Two coasts, two completely different kinds of wave, and one diagram that explains both.</p>
+
+    <p>
+      A wave starts as wind pushing on water. How big it gets depends on three
+      things: how hard the wind blows, how long it blows for, and how much open
+      water it blows across — the fetch. Of the three, fetch is the one that
+      decides what kind of wave you end up surfing.
+    </p>
+    <p>
+      With a short fetch you get wind sea: steep, close-together, disorganised.
+      With a long fetch the waves have room to sort themselves out. Faster, longer
+      waves outrun slower ones, and by the time the swell arrives at a coast a
+      thousand kilometres away it has separated into clean sets with a long gap
+      between them. Same wind, different wave, purely because of distance.
+    </p>
+    <h2>Two coasts</h2>
+    <p>
+      This is the whole difference between Japan's two coastlines. The Pacific
+      side faces open ocean and a trench that drops to thousands of metres, so a
+      typhoon spinning north from the Philippines can generate swell two thousand
+      kilometres away and send it here fully organised. That is why the season on
+      the Pacific side is August to October, and why the water is 24–27&nbsp;°C
+      when the best waves arrive.
+    </p>
+    <p>
+      The Sea of Japan is a closed, shallow basin a few hundred kilometres across.
+      Nothing has room to organise. What it gets instead is the winter monsoon:
+      cold Siberian air blowing hard across the whole basin, every day, from
+      December to March. The waves are short-period and steep, and the water is
+      8–11&nbsp;°C. It works, but it is a different sport.
+    </p>
+    <h2>The compass rose</h2>
+    <p>
+      Every spot page on this site carries a rose like the ones below. The shaded
+      wedge is the spot's swell window — the range of directions that can actually
+      reach it, given the shape of the coast and whatever headlands and islands
+      sit offshore. The arrow is the wind direction that blows offshore, holding
+      the face of the wave up instead of crumbling it.
+    </p>
+    <div class="rose-pair">
+<script type="text/python">
+for spot in ("tsurigasaki", "ikarashi"):
+    html, soup = include("../../_include/swell-rose.html", spot=spot, size=200)
+    print(html)
+</script>
+    </div>
+    <p>
+      Tsurigasaki, on the left, opens to the northeast through southeast: it is
+      pointed straight at where Pacific typhoon swell comes from, and a westerly
+      off the land grooms it. Ikarashi, on the right, opens west through north —
+      into the Sea of Japan, where the winter monsoon lives. Neither window is
+      better. They just belong to different months.
+    </p>
+    <p>
+      Both wedges are drawn during the build. They are not images: the page reads
+      two columns out of <code>csv/spots.csv</code>, converts the compass points
+      to degrees and prints the SVG arc. Correct a swell window in the CSV and
+      every rose on the site is redrawn on the next build.
+    </p>
+  </article>
+
+<script type="text/python">
+html, soup = include("../../_include/pagetags.html")
+print(html)
+</script>
+</main>
+
+<script type="text/python">
+html, soup = include("../../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

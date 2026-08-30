@@ -1,0 +1,39 @@
+<script type="text/python">
+# Previous / next links between spots, following the map from north to south.
+# The order comes from the latitude column of the CSV, so it never has to be
+# maintained by hand.
+#
+# Parameters:
+#   spot  id of the current spot
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+b = S.base_url(page_file)
+
+spots = S.load_spots()          # already sorted north to south
+ids = [r["id"] for r in spots]
+i = ids.index(params["spot"])
+
+north = spots[i - 1] if i > 0 else None
+south = spots[i + 1] if i < len(spots) - 1 else None
+arrow_up = "↑ " + ("further north" if lang == "en" else "севернее")
+arrow_dn = "↓ " + ("further south" if lang == "en" else "южнее")
+
+
+def link(row, note):
+    href = b + f'spots/{row["id"]}/' + S.localize("index.html", lang)
+    return (f'<a href="{href}"><span class="dir">{note}</span>'
+            f'<span class="name">{S.SPOTS_META[row["id"]][lang]}</span></a>')
+
+
+print('<nav class="spot-nav">')
+print(f'  <div class="prev">{link(north, arrow_up) if north else ""}</div>')
+print(f'  <div class="up"><a href="{S.section_url("spots", page_file)}">{ui["back_home"]}</a></div>')
+print(f'  <div class="next">{link(south, arrow_dn) if south else ""}</div>')
+print('</nav>')
+</script>

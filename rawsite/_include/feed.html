@@ -1,0 +1,78 @@
+<script type="text/python">
+# A list of cards built by reading the other pages of the site.
+#
+# Parameters:
+#   section  "spots" or "guide"  (which subdirectory to scan)
+#
+# Nothing is duplicated: the title, the summary and the tags of every card
+# are pulled out of the target page itself with BeautifulSoup, so editing a
+# spot page updates the front page automatically.
+import glob
+import os
+import sys
+from datetime import date
+
+from bs4 import BeautifulSoup
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+section = params["section"]
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+b = S.base_url(page_file)
+
+pattern = os.path.join(S.ROOT, section, "*", "index*.html")
+entries = []
+
+for path in sorted(glob.glob(pattern)):
+    with open(path, encoding="utf-8") as f:
+        soup = BeautifulSoup(f.read(), "html.parser")
+
+    def meta(name, default=""):
+        tag = soup.find("meta", attrs={"name": name})
+        return tag.get("content", default).strip() if tag else default
+
+    if meta("section") != section or meta("language") != lang:
+        continue
+
+    h1 = soup.find("h1")
+    summary = meta("description")
+    if not summary:
+        first = soup.find("main").find("p") if soup.find("main") else soup.find("p")
+        summary = first.get_text().strip() if first else ""
+
+    slug = os.path.basename(os.path.dirname(path))
+    entries.append({
+        "url": b + f"{section}/{slug}/" + os.path.basename(path),
+        "title": h1.decode_contents().strip() if h1 else slug,
+        "summary": summary,
+        "tags": [t.strip() for t in meta("keywords").split(",") if t.strip()],
+        "slug": slug,
+        "date": meta("date"),
+    })
+
+# Each section has its own natural order, and all three come from data rather
+# than from a hand-kept list: spots follow the map from north to south, boards
+# follow the order column of csv/boards.csv, articles read newest first.
+if section == "spots":
+    lat = {r["id"]: r["lat"] for r in S.load_spots()}
+    entries.sort(key=lambda e: -lat.get(e["slug"], 0))
+elif section == "gear":
+    order = {r["id"]: r["order"] for r in S.load_boards()}
+    entries.sort(key=lambda e: (order.get(e["slug"], 99), e["date"]))
+else:
+    entries.sort(key=lambda e: e["date"], reverse=True)
+
+if not entries:
+    print(f'<p class="empty">{ui["no_pages"]}</p>')
+else:
+    print(f'<div class="cards cards--{section}">')
+    for e in entries:
+        # One include() call per card: the template is re-rendered with a
+        # fresh namespace each time, and the parameters become plain
+        # variables inside it.
+        html, _ = include("card.html", entry=e, section=section, lang=lang, base=b)
+        print(html)
+    print('</div>')
+</script>

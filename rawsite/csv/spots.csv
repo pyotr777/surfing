@@ -1,0 +1,7 @@
+id,lat,lon,region,break_type,level,peak_season,swell_window,best_wind,size_ft_typical,water_aug_c,water_feb_c
+shioya,43.20,140.93,hokkaido,rivermouth,advanced,winter,NW-N,SE,3-8,22,8
+ikarashi,37.86,138.94,niigata,beach,intermediate,winter,W-NE,SE,2-6,26,11
+tsurigasaki,35.37,140.42,chiba,beach,intermediate,summer-autumn,NE-SE,W,4-8,26,14
+kugenuma,35.31,139.47,shonan,beach,beginner,summer-autumn,SE-SW,N,1-4,27,15
+habushiura,34.37,139.28,izu-islands,beach,advanced,spring,E-S,W,3-10,27,16
+kisakihama,31.80,131.46,miyazaki,beach,intermediate,year-round,NE-S,W,2-6,28,18

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Сравнение спотов — Сёрф Япония</title>
+  <meta name="language" content="ru">
+  <meta name="description" content="Все шесть спотов рядом: тип волны, сложность, сезон, свелл-окно, ветер и температура воды.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <article class="article article--wide">
+    <h1>Сравнение спотов</h1>
+    <p>
+      Всё, что ниже, берётся из одного файла csv/spots.csv — того же, который
+      расставляет булавки на карте и заполняет панель на странице каждого спота.
+      Сортировка происходит в браузере, а сама таблица — обычный HTML, написанный
+      во время сборки.
+    </p>
+
+<script type="text/python">
+html, soup = include("../_include/compare-table.html")
+print(html)
+</script>
+  </article>
+  <script src="../js/sort.js" defer></script>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

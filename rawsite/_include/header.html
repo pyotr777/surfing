@@ -1,0 +1,45 @@
+<script type="text/python">
+# Site header: brand, navigation and the language switch.
+#
+# Nothing is passed in. The template works out on its own which language
+# the current page is written in and where the site root is, using the two
+# names parser.py puts into every insert's namespace:
+#   __file__   this template
+#   page_file  the top-level page being rendered
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+other_lang = "en" if lang == "ru" else "ru"
+ui = S.UI[lang]
+site = S.SITE[lang]
+b = S.base_url(page_file)
+here = os.path.abspath(page_file)
+pagedir = os.path.dirname(here)
+
+print('<a class="skip" href="#main">' + ("Skip to content" if lang == "en" else "К содержанию") + '</a>')
+print('<header class="site-header">')
+print('  <div class="brand">')
+print(f'    <a class="site-name" href="{b}{S.localize("index.html", lang)}">{site["name"]}</a>')
+print(f'    <p class="tagline">{site["tagline"]}</p>')
+print('  </div>')
+
+print('  <nav class="nav" aria-label="' + ("Main" if lang == "en" else "Основная") + '">')
+for href, label in S.nav_items(page_file):
+    path, _, fragment = href.partition("#")
+    target = os.path.normpath(os.path.join(pagedir, path))
+    # A link to an anchor on the front page is never "the current page".
+    current = ' aria-current="page"' if (target == here and not fragment) else ""
+    print(f'    <a href="{href}"{current}>{label}</a>')
+print('  </nav>')
+
+# The language switch is the only link on the page that changes language.
+# The other-language twin always sits in the same directory, so a bare
+# file name is enough -- no path arithmetic needed.
+print(f'  <a class="langswitch" href="{S.other_lang_name(page_file)}"'
+      f' hreflang="{other_lang}" title="{ui["switch_title"]}">{ui["switch"]}</a>')
+print('</header>')
+</script>

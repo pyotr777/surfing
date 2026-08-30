@@ -1,0 +1,69 @@
+<script type="text/python">
+# A compass rose drawn from two CSV fields: the swell window and the best
+# wind direction. The wedge and the arrow are trigonometry done during the
+# build -- no JavaScript, no image file, no hand-drawn SVG to keep in sync
+# with the data.
+#
+# Parameters:
+#   spot   id from csv/spots.csv
+#   size   diameter in px (default 220)
+import math
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+row = S.spot_by_id(params["spot"])
+size = params.get("size", 220)
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+
+c = size / 2
+r = size * 0.36
+
+
+def point(deg, radius):
+    """Compass bearing (0 = north, clockwise) to SVG coordinates."""
+    a = math.radians(deg)
+    return c + radius * math.sin(a), c - radius * math.cos(a)
+
+
+start, end = S.swell_arc(row["swell_window"])
+sweep = (end - start) % 360 or 360
+x1, y1 = point(start, r)
+x2, y2 = point(end, r)
+large = 1 if sweep > 180 else 0
+
+# "W" or "W-NW": average the two bearings, minding the wrap at north.
+parts = [S.bearing(p) for p in row["best_wind"].split("-")]
+if len(parts) == 2 and abs(parts[0] - parts[1]) > 180:
+    parts[1] += 360
+wind = (sum(parts) / len(parts)) % 360
+wx, wy = point(wind, r * 1.02)
+tx, ty = point(wind, r * 0.34)
+
+print(f'<figure class="rose">')
+print(f'  <svg viewBox="0 0 {size} {size}" xmlns="http://www.w3.org/2000/svg" role="img"'
+      f' aria-label="{ui["table_swell"]} {row["swell_window"]}, {ui["table_wind"]} {row["best_wind"]}">')
+print(f'    <circle cx="{c}" cy="{c}" r="{r}" class="rose-dial"/>')
+print(f'    <path class="rose-window" d="M {c:.1f},{c:.1f} L {x1:.1f},{y1:.1f}'
+      f' A {r:.1f},{r:.1f} 0 {large} 1 {x2:.1f},{y2:.1f} Z"/>')
+
+for label, deg in (("N", 0), ("E", 90), ("S", 180), ("W", 270)):
+    lx, ly = point(deg, r * 1.24)
+    print(f'    <text class="rose-tick" x="{lx:.1f}" y="{ly + 4:.1f}"'
+          f' text-anchor="middle">{label}</text>')
+
+print(f'    <line class="rose-wind" x1="{wx:.1f}" y1="{wy:.1f}"'
+      f' x2="{tx:.1f}" y2="{ty:.1f}" marker-end="url(#rose-arrow)"/>')
+print('    <defs><marker id="rose-arrow" viewBox="0 0 10 10" refX="8" refY="5"'
+      ' markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
+      '<path d="M 0 0 L 10 5 L 0 10 z" class="rose-head"/></marker></defs>')
+print('  </svg>')
+print('  <figcaption>')
+print(f'    <span class="rose-key rose-key--window">{ui["table_swell"]}: {row["swell_window"]}</span>')
+print(f'    <span class="rose-key rose-key--wind">{ui["table_wind"]}: {row["best_wind"]}</span>')
+print('  </figcaption>')
+print('</figure>')
+</script>

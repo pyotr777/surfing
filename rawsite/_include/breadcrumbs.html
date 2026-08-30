@@ -1,0 +1,28 @@
+<script type="text/python">
+# Breadcrumbs worked out from where the page sits on disk.
+#
+# Parameters:
+#   title  the label for the current page
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+b = S.base_url(page_file)
+
+# rawsite/spots/kugenuma/index_ru.html -> ["spots", "kugenuma"]
+rel = os.path.relpath(os.path.dirname(os.path.abspath(page_file)), S.ROOT)
+parts = [] if rel == "." else rel.split(os.sep)
+
+print('<nav class="crumbs" aria-label="breadcrumb"><ol>')
+print(f'  <li><a href="{b}{S.localize("index.html", lang)}">{ui["nav_home"]}</a></li>')
+if parts:
+    section = parts[0]
+    label = S.SECTION_META.get(section, {}).get(lang, {}).get("title", section)
+    print(f'  <li><a href="{S.section_url(section, page_file)}">{label}</a></li>')
+print(f'  <li aria-current="page">{params["title"]}</li>')
+print('</ol></nav>')
+</script>

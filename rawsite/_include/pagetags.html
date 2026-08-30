@@ -1,0 +1,37 @@
+<script type="text/python">
+# Tag links for the page that included this template.
+#
+# The template reads the calling page's own source through `page_file` and
+# takes the tags out of its <meta name="keywords">, so a page declares its
+# tags exactly once, in the head, and they show up both here and in the feed.
+import os
+import sys
+
+from bs4 import BeautifulSoup
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+b = S.base_url(page_file)
+ui = S.UI[lang]
+
+with open(page_file, encoding="utf-8") as f:
+    soup = BeautifulSoup(f.read(), "html.parser")
+
+meta = soup.find("meta", attrs={"name": "keywords"})
+tags = [t.strip() for t in meta.get("content", "").split(",") if t.strip()] if meta else []
+
+unknown = [t for t in tags if t not in S.TAGS]
+if unknown:
+    raise ValueError(f"{os.path.basename(page_file)}: unknown tags {unknown}")
+
+if tags:
+    print(f'<nav class="taglist taglist--page" aria-label="{ui["tags_heading"]}">')
+    print(f'  <span class="taglist-label">{ui["tagged"]}:</span>')
+    print('  <ul>')
+    for tag in tags:
+        print(f'    <li><a href="{b}{S.localize("tags/index.html", lang)}#{tag}">{tag}</a></li>')
+    print('  </ul>')
+    print('</nav>')
+</script>

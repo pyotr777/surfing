@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Spots — Surf Japan</title>
+  <meta name="language" content="en">
+  <meta name="description" content="Surf areas in Chiba and Shonan: coast character, swell, wind and the best-known breaks.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <section class="hero hero--section">
+    <h1>Spots</h1>
+    <p class="lede">
+      Surf areas in Chiba and Shonan, from Asahi’s open beaches to Kugenuma’s
+      city shore. Choose an area to see its coast character and the breaks within it.
+    </p>
+  </section>
+
+  <section class="map-section">
+    <h2>Areas along the coast</h2>
+<script type="text/python">
+html, soup = include("../_include/map.html")
+print(html)
+</script>
+  </section>
+
+  <section class="section-feed">
+<script type="text/python">
+html, soup = include("../_include/area-feed.html")
+print(html)
+</script>
+  </section>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

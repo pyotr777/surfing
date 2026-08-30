@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Споты — Сёрф Япония</title>
+  <meta name="language" content="ru">
+  <meta name="description" content="Сёрф-районы Тибы и Сёнана: характер побережья, свелл, ветер и самые известные споты.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <section class="hero hero--section">
+    <h1>Споты</h1>
+    <p class="lede">
+      Районы Тибы и Сёнана — от открытых пляжей Асахи до городского берега
+      Кугэнумы. Выберите область, чтобы увидеть её характер и споты внутри.
+    </p>
+  </section>
+
+  <section class="map-section">
+    <h2>Районы на побережье</h2>
+<script type="text/python">
+html, soup = include("../_include/map.html")
+print(html)
+</script>
+  </section>
+
+  <section class="section-feed">
+<script type="text/python">
+html, soup = include("../_include/area-feed.html")
+print(html)
+</script>
+  </section>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

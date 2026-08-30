@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/python">
+html, soup = include("../../_include/head.html")
+print(html)
+</script>
+  <title>What to wear, by month and latitude — Surf Japan</title>
+  <meta name="section" content="guide">
+  <meta name="language" content="en">
+  <meta name="description" content="Japan spans eleven degrees of latitude in this guide alone. In February that is a ten-degree difference in water temperature — and the difference between a spring suit and a hood.">
+  <meta name="keywords" content="cold-water, warm-water">
+  <meta name="date" content="2026-07-02">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+<script type="text/python">
+html, soup = include("../../_include/breadcrumbs.html", title="What to wear")
+print(html)
+</script>
+
+  <article class="article">
+    <h1>What to wear, by month and latitude</h1>
+    <p class="standfirst">One table, six regions, twelve months. The gradient is the interesting part.</p>
+
+    <p>
+      Japan is long. The six spots on this site span from 43&nbsp;°N in Hokkaido
+      to 32&nbsp;°N in Miyazaki — roughly the distance from Milan to Tunis. In
+      August that barely matters: the whole archipelago sits between 22 and
+      28&nbsp;°C and almost everyone is in a spring suit or less.
+    </p>
+    <p>
+      February is where it shows. Miyazaki is still 18&nbsp;°C, which is
+      comfortable in 3&nbsp;mm. Shioya, on the Sea of Japan coast of Hokkaido, is
+      8&nbsp;°C, which means 5&nbsp;mm with a hood, boots and gloves, and a
+      session that ends when your hands stop working rather than when the waves
+      do.
+    </p>
+<script type="text/python">
+html, soup = include("../../_include/wetsuit-table.html")
+print(html)
+</script>
+    <h2>Reading the grid</h2>
+    <p>
+      Two patterns are worth noticing. The first is the obvious one: the table
+      gets darker as you move up the rows, because the rows are ordered north to
+      south, exactly like the pins on the map. The second is that the seasons are
+      not symmetrical. Water lags air by about two months, so September is warmer
+      than June everywhere, and the coldest column is February rather than
+      December.
+    </p>
+    <p>
+      That lag is convenient. On the Pacific side it means typhoon season, the
+      best swell of the year, lands on the warmest water of the year. On the Sea
+      of Japan side it means the opposite: the swell arrives exactly when the
+      water is at its worst.
+    </p>
+    <p>
+      The grid is generated from <code>csv/wetsuit.csv</code> during the build,
+      including the colour of every cell — the shade is chosen from the number in
+      the cell, so the pattern cannot drift out of step with the data.
+    </p>
+  </article>
+
+<script type="text/python">
+html, soup = include("../../_include/pagetags.html")
+print(html)
+</script>
+</main>
+
+<script type="text/python">
+html, soup = include("../../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

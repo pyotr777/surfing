@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Waves — Surf Japan</title>
+  <meta name="language" content="en">
+  <meta name="description" content="Where a wave comes from, what the coast does to it on the way in, and how to read the forecast that describes it.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <section class="hero hero--section">
+    <h1>Waves</h1>
+    <p class="lede">
+      A swell is made a thousand kilometres away and then completely rearranged in
+      the last three hundred metres. Both halves of that are worth understanding.
+    </p>
+  </section>
+
+<script type="text/python">
+html, soup = include("../_include/shoaling.html")
+print(html)
+</script>
+    <p class="hint">
+      The block below is solved rather than drawn: the dispersion relation sets
+      the wavelength at each depth, the group velocity sets the height, and the
+      wave breaks where the height reaches 0.78 of the depth.
+    </p>
+
+  <section class="section-feed">
+<script type="text/python">
+html, soup = include("../_include/feed.html", section="waves")
+print(html)
+</script>
+  </section>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Gear — Surf Japan</title>
+  <meta name="language" content="en">
+  <meta name="description" content="Five board shapes drawn to scale from their measurements, and how much neoprene the water temperature asks for.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <section class="hero hero--section">
+    <h1>Gear</h1>
+    <p class="lede">
+      Five shapes, from a five-six fish to a nine-two log, shown at one scale so
+      the differences are the actual differences.
+    </p>
+  </section>
+
+<script type="text/python">
+html, soup = include("../_include/board-scale.html")
+print(html)
+</script>
+    <p class="hint">
+      The boards are shown at one real-world scale. Their shapes, lengths and
+      volumes make the difference between a broad-nosed log and a needle-point gun
+      easy to see at a glance.
+    </p>
+
+  <section class="section-feed">
+<script type="text/python">
+html, soup = include("../_include/feed.html", section="gear")
+print(html)
+</script>
+  </section>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

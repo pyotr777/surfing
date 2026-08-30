@@ -1,0 +1,6 @@
+id,order,length_in,width_in,nose_tip_in,nose_6_in,nose_12_in,tail_12_in,tail_end_in,wide_point,thickness_in,volume_l,fins,tail,wave_min_ft,wave_max_ft,level
+fish,1,66,20.5,2.0,10.5,13.75,16.75,15.5,0.47,2.5,32,twin,swallow,1,5,intermediate
+shortboard,2,72,18.75,1.0,8.0,11.25,14.5,11.0,0.52,2.4,28,thruster,squash,3,10,advanced
+funboard,3,86,21.5,2.4,11.5,15.5,14.75,9.5,0.50,2.9,46,2+1,round,1,6,beginner
+gun,4,102,19.5,0.8,7.5,11.5,11.0,2.5,0.46,3.0,45,thruster,pin,8,20,advanced
+longboard,5,110,22.75,5.0,14.5,18.0,15.0,13.0,0.50,3.0,65,single,square,1,5,beginner

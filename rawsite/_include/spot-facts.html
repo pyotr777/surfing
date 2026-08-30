@@ -1,0 +1,36 @@
+<script type="text/python">
+# The facts panel on a spot page, built from one row of csv/spots.csv.
+# The page supplies only the spot id; every label is translated here.
+#
+# Parameters:
+#   spot  id matching the id column of csv/spots.csv
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+row = S.spot_by_id(params["spot"])
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+
+rows = [
+    (ui["table_region"], S.REGIONS[row["region"]][lang]),
+    (ui["table_break"], S.BREAKS[row["break_type"]][lang]),
+    (ui["table_level"], S.LEVELS[row["level"]][lang]),
+    (ui["table_season"], S.SEASONS[row["peak_season"]][lang]),
+    (ui["table_swell"], row["swell_window"]),
+    (ui["table_wind"], row["best_wind"]),
+    (ui["table_size"], row["size_ft_typical"] + " ft"),
+    (ui["table_aug"], f'{row["water_aug_c"]} °C'),
+    (ui["table_feb"], f'{row["water_feb_c"]} °C'),
+]
+
+print('<aside class="facts">')
+print(f'  <h2>{ui["facts_heading"]}</h2>')
+print('  <dl>')
+for label, value in rows:
+    print(f'    <div><dt>{label}</dt><dd>{value}</dd></div>')
+print('  </dl>')
+print('</aside>')
+</script>

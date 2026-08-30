@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Tags — Surf Japan</title>
+  <meta name="language" content="en">
+  <meta name="description" content="Every tag used on the site, and the pages that carry it.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <article class="article article--wide">
+    <h1>All tags</h1>
+    <p>
+      Tags are shared between both languages, so the English and the Russian
+      version of a page carry exactly the same labels. Only the list below is
+      filtered by language.
+    </p>
+
+<script type="text/python">
+html, soup = include("../_include/tag-index.html")
+print(html)
+</script>
+  </article>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

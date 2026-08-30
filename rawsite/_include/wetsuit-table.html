@@ -1,0 +1,40 @@
+<script type="text/python">
+# Wetsuit thickness by region and month, drawn as a heat grid.
+# The colour of every cell is computed from the value during the build.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+table = S.load_wetsuit()
+
+# Warm thin suits to cold thick ones.
+SHADES = {2: "#cfe8dd", 3: "#8fc9c0", 4: "#3f8ca8", 5: "#1b4f7a"}
+
+# Regions run north to south, matching the order of the spots on the map.
+order = ["hokkaido", "niigata", "chiba", "shonan", "izu-islands", "miyazaki"]
+
+print('<div class="table-wrap">')
+print('<table class="wetsuit">')
+print('  <thead><tr>')
+print(f'    <th scope="col">{ui["wetsuit_region"]}</th>')
+for name in ui["months"]:
+    print(f'    <th scope="col">{name}</th>')
+print('  </tr></thead>')
+print('  <tbody>')
+for region in order:
+    print('    <tr>')
+    print(f'      <th scope="row">{S.REGIONS[region][lang]}</th>')
+    for month in range(1, 13):
+        mm = table[region][month]
+        dark = " is-dark" if mm >= 4 else ""
+        print(f'      <td class="cell{dark}" style="--cell:{SHADES[mm]}">{mm}</td>')
+    print('    </tr>')
+print('  </tbody>')
+print('</table>')
+print('</div>')
+print(f'<p class="hint">{ui["wetsuit_note"]}</p>')
+</script>

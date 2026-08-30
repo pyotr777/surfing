@@ -1,0 +1,36 @@
+<script type="text/python">
+# Table of contents for the front page.
+#
+# The sections and their order come from sitedata.SECTIONS; the page counts
+# come from counting files on disk. Nothing here is written by hand, so a new
+# page in any section shows up in the count without anyone remembering to
+# update it.
+import glob
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+suffix = "index_ru.html" if lang == "ru" else "index.html"
+
+print('<nav class="toc" aria-label="' + ui["toc_heading"] + '">')
+print('  <ol>')
+for i, section in enumerate(S.SECTIONS, start=1):
+    meta = S.SECTION_META[section][lang]
+    count = len(glob.glob(os.path.join(S.ROOT, section, "*", suffix)))
+    print(f'    <li class="toc-item">')
+    print(f'      <a href="{S.section_url(section, page_file)}">')
+    print(f'        <span class="toc-num">{i:02d}</span>')
+    print(f'        <span class="toc-text">')
+    print(f'          <span class="toc-title">{meta["title"]}</span>')
+    print(f'          <span class="toc-blurb">{meta["blurb"]}</span>')
+    print(f'        </span>')
+    print(f'        <span class="toc-count">{count}&nbsp;{ui["toc_count"]}</span>')
+    print(f'      </a>')
+    print(f'    </li>')
+print('  </ol>')
+print('</nav>')
+</script>

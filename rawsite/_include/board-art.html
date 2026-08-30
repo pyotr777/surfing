@@ -1,0 +1,122 @@
+<script type="text/python">
+# One painted board: outline, deck pattern, volume shading, rail and shadow.
+#
+# The outline and every stripe on it are generated from the same sampled
+# profile (sitedata.board_profile), so the decoration is bounded by the rail
+# by construction rather than clipped against it -- a band on the log narrows
+# towards the nose because the board does.
+#
+# Parameters:
+#   board  id from csv/boards.csv
+#   cx     horizontal centre of the board, in SVG units
+#   top    y of the nose
+#   ppi    SVG units per inch of board
+#   dim    True to fade the board back (used for the ones you are not on)
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+row = S.board_by_id(params["board"])
+meta = S.BOARDS_META[row["id"]]
+cx, top, ppi = params["cx"], params["top"], params["ppi"]
+dim = params.get("dim", False)
+
+L = row["length_in"] * ppi
+half = row["width_in"] * ppi / 2
+prof = S.board_profile(row, cx, top, ppi, decor=True)
+path = S.board_outline(row, cx, top, ppi)
+deck_bottom = prof[-1][0]
+
+print(f'<g class="boardart{" boardart--dim" if dim else ""}">')
+
+# ---- shadow ----------------------------------------------------------------
+print(f'  <path class="board-shadow" d="{path}"'
+      f' transform="translate({half * 0.18:.1f},{L * 0.010:.1f})"/>')
+
+# ---- base ------------------------------------------------------------------
+print(f'  <path d="{path}" fill="{meta["base"]}"/>')
+
+# ---- deck pattern ----------------------------------------------------------
+deck = meta["deck"]
+
+if deck == "bands":
+    # The classic log: cross-wise stripes that narrow with the outline.
+    bands = meta["bands"]
+    y0, y1 = top + L * 0.07, deck_bottom - L * 0.02
+    step = (y1 - y0) / len(bands)
+    for i, colour in enumerate(bands):
+        d = S.board_band(prof, cx, y0 + i * step, y0 + (i + 1) * step)
+        if d:
+            print(f'  <path d="{d}" fill="{colour}"/>')
+
+elif deck == "wood":
+    # Timber grain running the length of the blank.
+    step = max(2.2, half / 6)
+    x = cx - half
+    i = 0
+    while x < cx + half:
+        w = 1.9 if i % 3 else 3.2
+        d = S.board_stripe(prof, cx, x, x + w)
+        if d:
+            print(f'  <path d="{d}" fill="{meta["grain"]}" fill-opacity=".42"/>')
+        x += step
+        i += 1
+
+elif deck == "panel":
+    # Two bands across the lower deck, plus a centre flash.
+    lower = S.board_band(prof, cx, top + L * 0.52, deck_bottom)
+    if lower:
+        print(f'  <path d="{lower}" fill="{meta["accent"]}"/>')
+    flash = S.board_band(prof, cx, top + L * 0.44, top + L * 0.52)
+    if flash:
+        print(f'  <path d="{flash}" fill="{meta["accent2"]}"/>')
+    centre = S.board_stripe(prof, cx, cx - half * 0.22, cx + half * 0.22)
+    if centre:
+        print(f'  <path d="{centre}" fill="{meta["base"]}" fill-opacity=".85"/>')
+
+elif deck == "rails":
+    # Lengthwise stripes: narrow board, racing look.
+    for offset, colour, w in ((-0.46, meta["accent"], 0.14),
+                              (-0.17, meta["accent2"], 0.10),
+                              (0.22, meta["accent"], 0.10),
+                              (0.48, meta["accent2"], 0.14)):
+        d = S.board_stripe(prof, cx, cx + half * offset, cx + half * (offset + w))
+        if d:
+            print(f'  <path d="{d}" fill="{colour}"/>')
+
+else:                                       # solid: one wide centre stripe
+    d = S.board_stripe(prof, cx, cx - half * 0.16, cx + half * 0.16)
+    if d:
+        print(f'  <path d="{d}" fill="{meta["accent"]}" fill-opacity=".8"/>')
+
+# ---- volume ----------------------------------------------------------------
+# A deck is domed. Rather than a gradient, the shading is a handful of
+# lengthwise strips at different opacities -- the same board_stripe() call as
+# the decoration, so the shading also stops at the rail.
+SHADE = [(-1.00, -0.72, "#08222c", .20), (-0.72, -0.46, "#08222c", .09),
+         (-0.26,  0.02, "#ffffff", .26), (0.02,  0.26, "#ffffff", .11),
+         (0.60,  0.82, "#08222c", .09), (0.82,  1.00, "#08222c", .20)]
+for a, b_, colour, op in SHADE:
+    d = S.board_stripe(prof, cx, cx + half * a, cx + half * b_)
+    if d:
+        print(f'  <path d="{d}" fill="{colour}" fill-opacity="{op}"/>')
+
+# darker towards the tail, brighter at the nose
+tailband = S.board_band(prof, cx, top + L * 0.72, deck_bottom)
+if tailband:
+    print(f'  <path d="{tailband}" fill="#08222c" fill-opacity=".10"/>')
+nosecap = S.board_band(prof, cx, top, top + L * 0.16)
+if nosecap:
+    print(f'  <path d="{nosecap}" fill="#ffffff" fill-opacity=".13"/>')
+
+# ---- rail and stringer -----------------------------------------------------
+print(f'  <path d="{path}" fill="none" stroke="{meta["rail"]}"'
+      f' stroke-width="{max(1.8, half * 0.17):.1f}" stroke-linejoin="round"/>')
+print(f'  <path class="board-edge" d="{path}" fill="none" stroke-width="1"/>')
+print(f'  <line x1="{cx:.1f}" y1="{top + L * 0.03:.1f}" x2="{cx:.1f}"'
+      f' y2="{top + L * 0.97:.1f}" stroke="{meta["stringer"]}"'
+      f' stroke-width="{max(1.0, half * 0.055):.1f}" stroke-opacity=".8"/>')
+print('</g>')
+</script>

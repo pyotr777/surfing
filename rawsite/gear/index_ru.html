@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Снаряжение — Сёрф Япония</title>
+  <meta name="language" content="ru">
+  <meta name="description" content="Пять форм досок, построенных по обмерам в одном масштабе, и сколько неопрена требует температура воды.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <section class="hero hero--section">
+    <h1>Снаряжение</h1>
+    <p class="lede">
+      Пять форм — от фиша 5′6″ до лога 9′2″ — показаны в одном масштабе, так что различия
+      между ними настоящие.
+    </p>
+  </section>
+
+<script type="text/python">
+html, soup = include("../_include/board-scale.html")
+print(html)
+</script>
+    <p class="hint">
+      Доски показаны в едином реальном масштабе. Их форма, длина и объём сразу
+      дают увидеть разницу между логом с широким круглым носом и ганом-иглой.
+    </p>
+
+  <section class="section-feed">
+<script type="text/python">
+html, soup = include("../_include/feed.html", section="gear")
+print(html)
+</script>
+  </section>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<script type="text/python">
+# The full comparison table. Same csv/spots.csv that feeds the map and the
+# facts panels, rendered as one sortable table.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+b = S.base_url(page_file)
+
+columns = [
+    ("spot", ui["table_spot"], "text"),
+    ("region", ui["table_region"], "text"),
+    ("break", ui["table_break"], "text"),
+    ("level", ui["table_level"], "text"),
+    ("season", ui["table_season"], "text"),
+    ("swell", ui["table_swell"], "text"),
+    ("wind", ui["table_wind"], "text"),
+    ("size", ui["table_size"], "text"),
+    ("aug", ui["table_aug"], "number"),
+    ("feb", ui["table_feb"], "number"),
+]
+
+print(f'<p class="hint">{ui["table_sort_hint"]}</p>')
+print('<div class="table-wrap">')
+print('<table class="compare" id="compare">')
+print('  <thead><tr>')
+for key, label, kind in columns:
+    print(f'    <th scope="col" data-sort="{kind}"><button type="button">{label}</button></th>')
+print('  </tr></thead>')
+print('  <tbody>')
+
+for row in S.load_spots():
+    meta = S.SPOTS_META[row["id"]]
+    level = S.LEVELS[row["level"]]
+    href = b + f'spots/{row["id"]}/' + S.localize("index.html", lang)
+    print('    <tr>')
+    print(f'      <th scope="row"><a href="{href}">{meta[lang]}</a></th>')
+    print(f'      <td>{S.REGIONS[row["region"]][lang]}</td>')
+    print(f'      <td>{S.BREAKS[row["break_type"]][lang]}</td>')
+    print(f'      <td><span class="badge" style="--badge:{level["color"]}">{level[lang]}</span></td>')
+    print(f'      <td>{S.SEASONS[row["peak_season"]][lang]}</td>')
+    print(f'      <td class="mono">{row["swell_window"]}</td>')
+    print(f'      <td class="mono">{row["best_wind"]}</td>')
+    print(f'      <td class="mono">{row["size_ft_typical"]} ft</td>')
+    print(f'      <td class="num">{row["water_aug_c"]}</td>')
+    print(f'      <td class="num">{row["water_feb_c"]}</td>')
+    print('    </tr>')
+
+print('  </tbody>')
+print('</table>')
+print('</div>')
+</script>

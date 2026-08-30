@@ -1,0 +1,33 @@
+<script type="text/python">
+# Supplied 2B board artwork, displayed at one real-world scale.
+# Full-size PNGs are used here; compact artwork is reserved for cards.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+highlight = params.get("highlight")
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+b = S.base_url(page_file)
+
+print('<figure class="boardscale kapa-weave">')
+print('  <div class="boardscale-grid">')
+for row in S.load_boards():
+    board = row["id"]
+    name = S.BOARDS_META[board][lang]
+    href = b + f'gear/{board}/' + S.localize("index.html", lang)
+    here = board == highlight
+    classes = "boardslot" + (" boardslot--current" if here else "")
+    tag = "div" if here else "a"
+    target = "" if here else f' href="{href}"'
+    print(f'    <{tag} class="{classes}"{target} style="--board-length:{row["length_in"]:.0f}">')
+    print(f'      <span class="board-label">{name}</span>')
+    print(f'      <img class="board" src="{b}img/boards-2b/{board}.png" alt="{name} {S.feet_inches(row["length_in"])}" loading="lazy">')
+    print(f'      <span class="board-size">{S.feet_inches(row["length_in"])}</span>')
+    print(f'    </{tag}>')
+print('  </div>')
+print('  <figcaption>' + ui["board_scale_caption"] + '</figcaption>')
+print('</figure>')
+</script>

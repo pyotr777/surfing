@@ -1,0 +1,55 @@
+<script type="text/python">
+# Every tag on the site, with the pages that carry it.
+#
+# Tag names are the same in both languages on purpose -- they are keys, not
+# prose -- so this template only has to filter the pages by language. The
+# canonical list lives in sitedata.TAGS; pagetags.html refuses to render a
+# tag that is not in it, which keeps typos out of the index.
+import glob
+import os
+import sys
+
+from bs4 import BeautifulSoup
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+b = S.base_url(page_file)
+
+pages = []
+for section in S.SECTIONS:
+    for path in sorted(glob.glob(os.path.join(S.ROOT, section, "*", "index*.html"))):
+        with open(path, encoding="utf-8") as f:
+            soup = BeautifulSoup(f.read(), "html.parser")
+
+        def meta(name, default=""):
+            tag = soup.find("meta", attrs={"name": name})
+            return tag.get("content", default).strip() if tag else default
+
+        if meta("language") != lang:
+            continue
+        h1 = soup.find("h1")
+        slug = os.path.basename(os.path.dirname(path))
+        pages.append({
+            "url": b + f"{section}/{slug}/" + os.path.basename(path),
+            "title": h1.decode_contents().strip() if h1 else slug,
+            "tags": [t.strip() for t in meta("keywords").split(",") if t.strip()],
+        })
+
+print('<div class="tagindex">')
+for tag in S.TAGS:
+    matches = [p for p in pages if tag in p["tags"]]
+    if not matches:
+        continue
+    print(f'  <section class="tagblock" id="{tag}">')
+    print(f'    <h2><span class="tagname">{tag}</span>'
+          f' <span class="tagcount">{len(matches)}</span></h2>')
+    print('    <ul>')
+    for p in matches:
+        print(f'      <li><a href="{p["url"]}">{p["title"]}</a></li>')
+    print('    </ul>')
+    print('  </section>')
+print('</div>')
+</script>

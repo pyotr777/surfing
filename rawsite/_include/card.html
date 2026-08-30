@@ -1,0 +1,57 @@
+<script type="text/python">
+# One card in a feed. Called once per entry from feed.html.
+#
+# Parameters: entry (dict), section, lang, base
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+ui = S.UI[lang]
+e = entry
+
+badge = ""
+if section == "spots":
+    row = S.spot_by_id(e["slug"])
+    level = S.LEVELS[row["level"]]
+    region = S.REGIONS[row["region"]][lang]
+    badge = (f'<span class="badge" style="--badge:{level["color"]}">'
+             f'{level[lang]}</span><span class="region">{region}</span>')
+elif section == "gear" and e["slug"] in S.BOARDS_META:
+    row = S.board_by_id(e["slug"])
+    level = S.LEVELS[row["level"]]
+    badge = (f'<span class="badge" style="--badge:{level["color"]}">'
+             f'{level[lang]}</span>'
+             f'<span class="region">{S.feet_inches(row["length_in"])} · '
+             f'{row["volume_l"]:.0f} L</span>')
+
+print('<article class="card">')
+print(f'  <a class="card-media" href="{e["url"]}" tabindex="-1" aria-hidden="true">')
+if section == "gear" and e["slug"] in S.BOARDS_META:
+    row = S.board_by_id(e["slug"])
+    name = S.BOARDS_META[row["id"]][lang]
+    print(f'    <img class="card-board" src="{base}img/boards-2b/cards/{row["id"]}.png" '
+          f'alt="{name}" width="240" height="360" loading="lazy">')
+elif section == "spots":
+    print(f'    <img src="{base}img/spots-2b/{e["slug"]}.png" alt="" '
+          'width="1672" height="941" loading="lazy">')
+else:
+    print(f'    <img src="{base}img/{e["slug"]}.svg" alt="" width="480" height="270" loading="lazy">')
+print('  </a>')
+print('  <div class="card-body">')
+if badge:
+    print(f'    <p class="card-meta">{badge}</p>')
+elif e["date"]:
+    print(f'    <p class="card-meta"><time datetime="{e["date"]}">{e["date"]}</time></p>')
+print(f'    <h3><a href="{e["url"]}">{e["title"]}</a></h3>')
+print(f'    <p class="card-summary">{e["summary"]}</p>')
+if e["tags"]:
+    print('    <ul class="taglist">')
+    for tag in e["tags"]:
+        print(f'      <li><a href="{base}{S.localize("tags/index.html", lang)}#{tag}">{tag}</a></li>')
+    print('    </ul>')
+print(f'    <a class="read-more" href="{e["url"]}">{ui["read_more"]} &rarr;</a>')
+print('  </div>')
+print('</article>')
+</script>

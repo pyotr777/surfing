@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/python">
+html, soup = include("_include/head.html")
+print(html)
+</script>
+  <title>How this site is built — Surf Japan</title>
+  <meta name="language" content="en">
+  <meta name="description" content="A short tour of parser.py: HTML files with Python inserts, include() with parameters, and everything else computed at build time.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <article class="article">
+    <h1>How this site is built</h1>
+    <p class="standfirst">There is no framework here. Every page is an HTML file with a few Python inserts, and one script turns the folder into a website.</p>
+
+    <h2>The insert</h2>
+    <p>
+      parser.py walks a source folder, copies everything that is not HTML straight
+      through, and renders every .html file it finds. Rendering means one thing:
+      any &lt;script type="text/python"&gt; block is executed, and whatever the
+      block prints replaces it. Everything outside the inserts is left untouched,
+      byte for byte — so the file you write is still recognisably the file that
+      ships.
+    </p>
+    <h2>Includes with parameters</h2>
+    <p>
+      An insert can call include(), which renders another file and hands back both
+      its HTML and a BeautifulSoup tree of it. Parameters become ordinary
+      variables inside the included file, which is how one template can serve
+      several purposes. The map on the front page and the small map on a spot page
+      are the same file, called with different arguments; so are the five board
+      silhouettes and the one highlighted on a board page.
+    </p>
+    <h2>Data, once</h2>
+    <p>
+      The six spots live in csv/spots.csv and nowhere else. That one file places
+      the pins on the map, orders the cards on the front page from north to south,
+      fills the facts panel on every spot page, draws the compass roses, and
+      builds the comparison table. csv/boards.csv does the same job for the gear
+      section. Add a row and all of it updates.
+    </p>
+    <h2>Pictures that are really data</h2>
+    <p>
+      Three of the drawings on this site have no image file behind them. The board
+      silhouettes are two mirrored Bézier curves computed from a length, a width
+      and three shape ratios. The compass roses are an SVG arc between two
+      bearings. The refraction diagram traces each wave crest across the frame,
+      turning it by Snell's law at the local depth. None of them can fall out of
+      step with the data, because there is nothing but the data.
+    </p>
+    <h2>Pages reading pages</h2>
+    <p>
+      The card lists are not maintained by hand. They glob the section folders,
+      open each page, and pull the title, the summary and the tags out of the
+      page's own markup with BeautifulSoup. A page declares its tags once, in its
+      head, and they appear in the feed, on the page itself and in the tag index.
+      The table of contents counts the same files to get its numbers.
+    </p>
+    <h2>Two languages, one convention</h2>
+    <p>
+      A page in Russian is the same file name with _ru before the extension. That
+      single rule is the entire bilingual mechanism: it tells each template which
+      language to print in, it lets the language link find the current page's twin
+      without any configuration, and it keeps the navigation from ever switching
+      language by accident.
+    </p>
+    <h2>What stays out of the output</h2>
+    <p>
+      Anything in a folder called _include is used during the build and never
+      copied to the finished site. That is where the templates live, and also
+      sitedata.py — the shared vocabulary, the map projection and the CSV loaders.
+      It is called sitedata rather than site because Python already has a module
+      called site.
+    </p>
+
+    <p>
+      The whole engine is about 120 lines. What makes it useful is not the feature
+      list but the absence of one: an insert is just Python, so anything Python
+      can do at build time — read a CSV, parse a sibling page, solve Snell's law,
+      print an SVG arc — a page can do too.
+    </p>
+  </article>
+
+</main>
+
+<script type="text/python">
+html, soup = include("_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

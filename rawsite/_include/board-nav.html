@@ -1,0 +1,41 @@
+<script type="text/python">
+# Previous / next between boards, shortest to longest.
+# The order is the order column of csv/boards.csv, so it is never maintained
+# by hand -- the same arrangement as the prev/next links between spots, which
+# follow latitude.
+#
+# Parameters:
+#   board  id of the current board
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+b = S.base_url(page_file)
+
+boards = S.load_boards()
+ids = [r["id"] for r in boards]
+i = ids.index(params["board"])
+
+prev = boards[i - 1] if i > 0 else None
+nxt = boards[i + 1] if i < len(boards) - 1 else None
+label_prev = "← " + ("shorter" if lang == "en" else "короче")
+label_next = ("longer" if lang == "en" else "длиннее") + " →"
+back = "All gear" if lang == "en" else "Ко всему снаряжению"
+
+
+def link(row, note):
+    href = b + f'gear/{row["id"]}/' + S.localize("index.html", lang)
+    return (f'<a href="{href}"><span class="dir">{note}</span>'
+            f'<span class="name">{S.BOARDS_META[row["id"]][lang]}</span></a>')
+
+
+print('<nav class="spot-nav">')
+print(f'  <div class="prev">{link(prev, label_prev) if prev else ""}</div>')
+print(f'  <div class="up"><a href="{S.section_url("gear", page_file)}">{back}</a></div>')
+print(f'  <div class="next">{link(nxt, label_next) if nxt else ""}</div>')
+print('</nav>')
+</script>

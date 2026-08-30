@@ -1,0 +1,22 @@
+<script type="text/python">
+import os
+import sys
+from datetime import date
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+b = S.base_url(page_file)
+
+print('<footer class="site-footer">')
+print('  <p class="credits">')
+if lang == "en":
+    print('    Spot facts compiled from public surf guides.')
+else:
+    print('    Данные по спотам собраны из открытых сёрф-гайдов.')
+print('  </p>')
+print(f'  <p class="buildstamp">{ui["built_with"]} · {date.today().isoformat()}</p>')
+print('</footer>')
+</script>

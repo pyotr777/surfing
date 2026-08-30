@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Волны — Сёрф Япония</title>
+  <meta name="language" content="ru">
+  <meta name="description" content="Откуда берётся волна, что делает с ней берег по дороге и как читать прогноз, который её описывает.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <section class="hero hero--section">
+    <h1>Волны</h1>
+    <p class="lede">
+      Свелл рождается за тысячу километров, а полностью перестраивается на
+      последних трёхстах метрах. Разобраться стоит и в том, и в другом.
+    </p>
+  </section>
+
+<script type="text/python">
+html, soup = include("../_include/shoaling.html")
+print(html)
+</script>
+    <p class="hint">
+      Блок ниже не нарисован, а решён: дисперсионное соотношение задаёт длину
+      волны на каждой глубине, групповая скорость — высоту, а ломается волна там,
+      где высота достигает 0,78 глубины.
+    </p>
+
+  <section class="section-feed">
+<script type="text/python">
+html, soup = include("../_include/feed.html", section="waves")
+print(html)
+</script>
+  </section>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>
