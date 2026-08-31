@@ -1,0 +1,44 @@
+<script type="text/python">
+# An interactive Leaflet map backed by the standard OpenStreetMap tile layer.
+# Area-specific coordinates live in sitedata.py, so the markup stays reusable
+# as the spot catalogue grows.
+import json
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+area_id = params["area"]
+lang = S.lang_of(page_file)
+data = S.AREA_MAPS[area_id]
+map_id = f'area-map-{area_id}'
+
+points = [
+    {"id": spot["id"], "coordinates": spot["coordinates"], "label": spot[lang]}
+    for spot in data["spots"]
+]
+config = {"center": data["center"], "zoom": data["zoom"], "points": points}
+heading = "Споты на карте" if lang == "ru" else "Spots on the map"
+fallback = "Включите JavaScript, чтобы посмотреть интерактивную карту." if lang == "ru" else "Enable JavaScript to view the interactive map."
+
+print('<section class="area-map-section">')
+print(f'  <h2>{heading}</h2>')
+print(f'  <div id="{map_id}" class="area-map" aria-label="{heading}">')
+print(f'    <noscript><p>{fallback}</p></noscript>')
+print('  </div>')
+print('</section>')
+print('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><' + '/script>')
+print('<script>')
+print('(() => {')
+print(f'  const config = {json.dumps(config, ensure_ascii=False)};')
+print(f'  const map = L.map("{map_id}", {{scrollWheelZoom: false}}).setView(config.center, config.zoom);')
+print("  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {")
+print("    maxZoom: 19,")
+print("    attribution: '&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors'")
+print('  }).addTo(map);')
+print("  const icon = L.divIcon({className: 'area-map-marker', html: '<span></span>', iconSize: [18, 18], iconAnchor: [9, 9]});")
+print("  config.points.forEach((point) => L.marker(point.coordinates, {icon}).addTo(map).bindTooltip(point.label, {permanent: true, direction: 'top', offset: [0, -10]}));")
+print('})();')
+print('<' + '/script>')
+</script>

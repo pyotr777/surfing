@@ -21,10 +21,11 @@ if section == "spots":
 elif section == "gear" and e["slug"] in S.BOARDS_META:
     row = S.board_by_id(e["slug"])
     level = S.LEVELS[row["level"]]
+    board_range = S.BOARD_RANGES[row["id"]]
     badge = (f'<span class="badge" style="--badge:{level["color"]}">'
              f'{level[lang]}</span>'
-             f'<span class="region">{S.feet_inches(row["length_in"])} · '
-             f'{row["volume_l"]:.0f} L</span>')
+             f'<span class="region">{S.feet_inches_range(*board_range["length_in"])} · '
+             f'{board_range["volume_l"][0]:.0f}–{board_range["volume_l"][1]:.0f} L</span>')
 
 print('<article class="card">')
 print(f'  <a class="card-media" href="{e["url"]}" tabindex="-1" aria-hidden="true">')

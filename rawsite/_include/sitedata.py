@@ -342,6 +342,17 @@ BOARDS_META = {
     },
 }
 
+# The drawings use one representative board per shape; these are the broader
+# everyday ranges shown on the overview and card grid.  A rider's weight,
+# skill and local waves still decide the right board within the range.
+BOARD_RANGES = {
+    "fish": {"length_in": (62, 76), "volume_l": (28, 45)},
+    "shortboard": {"length_in": (68, 78), "volume_l": (24, 36)},
+    "funboard": {"length_in": (78, 96), "volume_l": (40, 65)},
+    "gun": {"length_in": (84, 120), "volume_l": (40, 70)},
+    "longboard": {"length_in": (96, 120), "volume_l": (60, 100)},
+}
+
 TAILS = {
     "squash": {
         "en": "squash",
@@ -555,6 +566,24 @@ AREA_FACTS = {
         "en": [("Coast", "Kanagawa · Shonan"), ("Breaks", "Shallow sandy beach and river-mouth bars"), ("Swell", "E–SW, especially south"), ("Clean wind", "N–NE"), ("Crowds", "One of Japan’s busiest line-ups")],
         "ru": [("Побережье", "Канагава · Сёнан"), ("Брейки", "Пологий песчаный пляж и банки у устья"), ("Свелл", "В–ЮЗ, особенно южный"), ("Чистый ветер", "С–СВ"), ("Люди", "Один из самых оживлённых лайн-апов Японии")],
         "spots": {"en": ["Kugenuma"], "ru": ["Кугэнума"]},
+    },
+}
+
+# Real-map geometry is separate from the illustrated overview map.  These
+# coordinates are used only on the corresponding area page, where a visitor
+# can pan and zoom around the actual coastline.
+AREA_MAPS = {
+    "asahi": {
+        "center": (35.6991, 140.7173),
+        "zoom": 15,
+        "spots": [
+            {
+                "id": "mansionsita",
+                "coordinates": (35.69908, 140.71730),
+                "en": "Mansionsita (マンション下)",
+                "ru": "Мэнсионсита (マンション下)",
+            },
+        ],
     },
 }
 
@@ -840,6 +869,11 @@ def feet_inches(total_inches):
     """72.0 -> "6'0\"" """
     feet, inches = divmod(int(round(total_inches)), 12)
     return f"{feet}&prime;{inches}&Prime;"
+
+
+def feet_inches_range(start_inches, end_inches):
+    """Format a board-length range in the same notation as one length."""
+    return f"{feet_inches(start_inches)}–{feet_inches(end_inches)}"
 
 
 def load_wetsuit():

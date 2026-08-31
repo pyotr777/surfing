@@ -17,6 +17,7 @@ print('  <div class="boardscale-grid">')
 for row in S.load_boards():
     board = row["id"]
     name = S.BOARDS_META[board][lang]
+    board_range = S.BOARD_RANGES[board]
     href = b + f'gear/{board}/' + S.localize("index.html", lang)
     here = board == highlight
     classes = "boardslot" + (" boardslot--current" if here else "")
@@ -24,10 +25,13 @@ for row in S.load_boards():
     target = "" if here else f' href="{href}"'
     print(f'    <{tag} class="{classes}"{target} style="--board-length:{row["length_in"]:.0f}">')
     print(f'      <span class="board-label">{name}</span>')
-    print(f'      <img class="board" src="{b}img/boards-2b/{board}.png" alt="{name} {S.feet_inches(row["length_in"])}" loading="lazy">')
-    print(f'      <span class="board-size">{S.feet_inches(row["length_in"])}</span>')
+    print('      <span class="board-stage">')
+    print('        <span class="board-visual">')
+    print(f'          <img class="board" src="{b}img/boards-2b/{board}.png" alt="{name}" loading="lazy">')
+    print('        </span>')
+    print('      </span>')
+    print(f'      <span class="board-size">{S.feet_inches_range(*board_range["length_in"])}</span>')
     print(f'    </{tag}>')
 print('  </div>')
-print('  <figcaption>' + ui["board_scale_caption"] + '</figcaption>')
 print('</figure>')
 </script>
