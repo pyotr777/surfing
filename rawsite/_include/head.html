@@ -4,16 +4,19 @@
 # itself -- feed.html and pagetags.html read them straight out of the source.
 import os
 import sys
+import hashlib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
 
 lang = S.lang_of(page_file)
 b = S.base_url(page_file)
+with open(os.path.join(S.ROOT, "css", "style.css"), "rb") as f:
+    css_version = hashlib.sha256(f.read()).hexdigest()[:12]
 
 print('<meta charset="utf-8">')
 print('<meta name="viewport" content="width=device-width, initial-scale=1">')
-print(f'<link rel="stylesheet" href="{b}css/style.css">')
+print(f'<link rel="stylesheet" href="{b}css/style.css?v={css_version}">')
 for other_lang in S.LANGS:
     if other_lang != lang:
         print(f'<link rel="alternate" hreflang="{other_lang}" href="{S.local_name(page_file, other_lang)}">')
