@@ -15,7 +15,7 @@ b = S.base_url(page_file)
 print('<div class="cards cards--areas">')
 for area_id, area in S.AREAS.items():
     meta = S.AREAS_META[area_id]
-    url = b + f'spots/{area_id}/index.html'
+    url = b + f'spots/{area_id}/' + S.localize("index.html", lang)
     print('  <article class="card">')
     print(f'    <a class="card-media" href="{url}" tabindex="-1" aria-hidden="true">')
     print(f'      <img src="{b}img/spots-2b/{area["image"]}.png" alt="" '

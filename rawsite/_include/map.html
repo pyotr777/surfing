@@ -42,7 +42,7 @@ else:
 if not mini:
     for area_id, (x, y) in S.MAP["area_labels"].items():
         meta = S.AREAS_META[area_id]
-        url = b + f'spots/{area_id}/'
+        url = b + f'spots/{area_id}/' + S.localize("index.html", lang)
         print(f'    <a class="spot-marker" href="{url}" aria-label="{meta[lang]}">')
         print(f'      <text class="pin-label" x="{x:.1f}" y="{y:.1f}" text-anchor="middle">'
               f'{meta[lang]}</text>')
