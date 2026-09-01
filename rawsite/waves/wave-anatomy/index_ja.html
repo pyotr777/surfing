@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script type="text/python">
+html, soup = include("../../_include/head.html")
+print(html)
+</script>
+  <title>What makes a wave — Surf Japan</title>
+  <meta name="section" content="waves">
+  <meta name="language" content="ja">
+  <meta name="description" content="Height, period, angle to the coast, the shape of the bottom and the wind — five variables that decide whether a swell forecast turns into a surfable morning.">
+  <meta name="keywords" content="wave-theory, wind, bathymetry">
+  <meta name="date" content="2026-07-20">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+<script type="text/python">
+html, soup = include("../../_include/breadcrumbs.html", title="What makes a wave")
+print(html)
+</script>
+
+  <article class="article">
+    <h1>What makes a wave</h1>
+    <p class="standfirst">A forecast gives you numbers. These are the five that matter, and what each one does on the way to the beach.</p>
+
+    <p>
+      A surf forecast is a small table of numbers, and most of the disappointment
+      in surfing comes from reading only the first one. Height is the number
+      everyone looks at. It is also the least informative of the five.
+    </p>
+    <h2>1. Height and period</h2>
+    <p>
+      Height says how much water is stacked up. Period — the seconds between two
+      crests — says how that water is arranged, and it turns out to matter more.
+      In deep water the wavelength follows directly from the period: L = gT²/2π. A
+      six-second wind chop is about sixty metres from crest to crest; a fourteen-
+      second groundswell is over three hundred.
+    </p>
+<script type="text/python">
+html, soup = include("../../_include/wave-diagram.html", kind="period")
+print(html)
+</script>
+    <p>
+      That length is not a cosmetic difference. A wave stirs the water beneath it
+      down to roughly half its wavelength, so the long swell is moving a column of
+      water thirty metres deep while the short one barely reaches fifteen. When
+      they arrive at the same sandbar, the long one has far more energy to convert
+      into a breaking wave, and it does so more abruptly. Two swells reported at
+      the same height can be different sports.
+    </p>
+    <h2>2. The angle to the coast</h2>
+    <p>
+      A swell almost never arrives square to the beach, and what happens next is
+      refraction. As the wave moves into shallower water it slows down; the part
+      of the crest that reaches shallow water first slows first, and the crest
+      pivots. Over an even bottom the wave keeps turning until it is nearly
+      parallel with the shore.
+    </p>
+<script type="text/python">
+html, soup = include("../../_include/wave-diagram.html", kind="refraction")
+print(html)
+</script>
+    <p>
+      Longer-period swell refracts more, which is why a fourteen-second swell can
+      wrap around a headland into a bay that a short-period one never enters. It
+      is also why the swell window on each spot page is a wedge rather than a
+      single arrow: the coast collects a range of directions and bends them into
+      something usable.
+    </p>
+    <div class="rose-pair">
+<script type="text/python">
+for spot in ("kugenuma", "kisakihama"):
+    html, soup = include("../../_include/swell-rose.html", spot=spot, size=200)
+    print(html)
+</script>
+    </div>
+    <p>
+      Kugenuma, on the left, sits inside Sagami Bay and faces south — a narrow
+      window, mostly filled by swell that has already wrapped in. Kisakihama, on
+      the right, is exposed on an open Pacific shoulder and takes anything from
+      northeast to south. The difference between those two wedges is the
+      difference between waiting for a specific direction and surfing most
+      weekends.
+    </p>
+    <h2>3. The bottom</h2>
+    <p>
+      The bottom decides the shape of the break. A wave breaks when the water
+      beneath it becomes too shallow to carry it — roughly when the depth falls to
+      about 1.3 times the wave height — and how fast that shallowing happens is
+      what makes a wave spilling or plunging.
+    </p>
+<script type="text/python">
+html, soup = include("../../_include/shoaling.html")
+print(html)
+</script>
+    <p>
+      A gently sloping sandy bottom bleeds the energy out gradually and the wave
+      crumbles from the top: the mellow, forgiving break at Kugenuma. A bottom
+      that shallows abruptly gives the wave no time, the crest is thrown forward,
+      and the result is the barrel at Habushiura. A rivermouth like Shioya is a
+      third case: the bar is built by sediment and rebuilt after every flood, so
+      the same spot can be either of the first two depending on the year.
+    </p>
+    <p>
+      On a much larger scale this is also why Japan's two coasts differ so
+      completely. The Pacific side sits beside a trench thousands of metres deep,
+      so ocean swell arrives with its energy intact. The Sea of Japan is a shallow
+      closed basin where nothing has room to organise.
+    </p>
+    <h2>4. The wind</h2>
+    <p>
+      Wind is the only one of the five that changes hour to hour, which makes it
+      the one worth checking last and trusting least.
+    </p>
+    <p>
+      Offshore wind — blowing from the land out to sea — pushes against the face
+      of the wave as it stands up, holds it open a fraction longer and grooms the
+      surface smooth. Onshore wind does the reverse: it makes the wave break
+      early, all along its length at once, and leaves a chop that turns the whole
+      lineup into moving lumps. The same swell, on the same sandbar, on the same
+      tide, is a good day or a wasted drive depending on a wind that may not have
+      existed when you left home.
+    </p>
+    <p>
+      This is why the best sessions cluster around dawn. Land cools overnight, air
+      drains off it towards the sea, and for a couple of hours the wind is
+      offshore almost everywhere before the daytime sea breeze sets in and ruins
+      it.
+    </p>
+    <h2>Five numbers, in order</h2>
+    <p>
+      Read the period first — it tells you what kind of swell is coming. Then the
+      direction, against the spot's window. Then the height, which now means
+      something. Then the tide, because the bottom only works at certain depths.
+      Then the wind, on the morning itself, because nothing you decided the night
+      before survives an onshore.
+    </p>
+  </article>
+
+<script type="text/python">
+html, soup = include("../../_include/pagetags.html")
+print(html)
+</script>
+</main>
+
+<script type="text/python">
+html, soup = include("../../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

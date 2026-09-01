@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>ギア — Surf Japan</title>
+  <meta name="language" content="ja">
+  <meta name="description" content="寸法から同じ縮尺で描いた5種類のボードと、水温に合わせたウェットスーツ。">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <section class="hero hero--section">
+    <h1>ギア</h1>
+    <p class="lede">
+      短いフィッシュから長いガン、ロングボードまで。形、浮力、長さが、パドル、加速、ターンの性格を決めます。
+    </p>
+  </section>
+
+<script type="text/python">
+html, soup = include("../_include/board-scale.html")
+print(html)
+</script>
+    <p class="hint">
+      万能なボードはありません。幅広で浮力のあるフィッシュは小波で走りやすく、長いガンはスピードのため、ロングボードは早いテイクオフのためにあります。名前の横の範囲は目安であり、絶対的な規則ではありません。
+    </p>
+
+  <section class="section-feed">
+<script type="text/python">
+html, soup = include("../_include/feed.html", section="gear")
+print(html)
+</script>
+  </section>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

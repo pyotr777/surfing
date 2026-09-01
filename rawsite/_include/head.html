@@ -9,12 +9,13 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
 
 lang = S.lang_of(page_file)
-other_lang = "en" if lang == "ru" else "ru"
 b = S.base_url(page_file)
 
 print('<meta charset="utf-8">')
 print('<meta name="viewport" content="width=device-width, initial-scale=1">')
 print(f'<link rel="stylesheet" href="{b}css/style.css">')
-print(f'<link rel="alternate" hreflang="{other_lang}" href="{S.other_lang_name(page_file)}">')
+for other_lang in S.LANGS:
+    if other_lang != lang:
+        print(f'<link rel="alternate" hreflang="{other_lang}" href="{S.local_name(page_file, other_lang)}">')
 print(f'<link rel="icon" href="{b}img/favicon.svg" type="image/svg+xml">')
 </script>

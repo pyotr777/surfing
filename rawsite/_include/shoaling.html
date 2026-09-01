@@ -161,6 +161,8 @@ if labels:
                "the bottom comes up", "it breaks"),
         "ru": ("ВЕТЕР", "длина волны", "волны сближаются", "высота растёт",
                "дно поднимается", "здесь ломается"),
+        "ja": ("風", "波長", "波の間隔が狭まる", "波高が増す",
+               "海底が浅くなる", "ここで砕ける"),
     }[lang]
 
     out.append('  <g class="windmark">')
@@ -194,19 +196,18 @@ if labels:
         out.append(f'  <text class="diag-note diag-note--light" x="{bx:.1f}"'
                    f' y="{by + 26:.1f}" text-anchor="middle">{words[5]}</text>')
 
+copy = {
+    "en": ("Shoaling", "Solved during the build: the dispersion relation gives the wavelength at every depth, the group velocity gives the height, and the wave breaks where the height passes 0.78 of the depth."),
+    "ru": ("Обмеление", "Решается во время сборки: дисперсионное соотношение даёт длину волны на каждой глубине, групповая скорость — высоту, а ломается волна там, где высота переваливает за 0,78 глубины."),
+    "ja": ("浅水変形", "ビルド時に計算しています。分散関係が各水深での波長を、群速度が波高を定め、波高が水深の0.78倍を超える場所で波は砕けます。"),
+}[lang]
+
 print(f'<figure class="blockdiagram">')
 print(f'  <svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img"'
-      f' aria-label="{"Shoaling" if lang == "en" else "Обмеление"}">')
+      f' aria-label="{copy[0]}">')
 print("\n".join(out))
 print('  </svg>')
 if labels:
-    caption = ("Solved during the build: the dispersion relation gives the wavelength "
-               "at every depth, the group velocity gives the height, and the wave "
-               "breaks where the height passes 0.78 of the depth."
-               if lang == "en" else
-               "Решается во время сборки: дисперсионное соотношение даёт длину волны "
-               "на каждой глубине, групповая скорость — высоту, а ломается волна там, "
-               "где высота переваливает за 0,78 глубины.")
-    print(f'  <figcaption>{caption}</figcaption>')
+    print(f'  <figcaption>{copy[1]}</figcaption>')
 print('</figure>')
 </script>

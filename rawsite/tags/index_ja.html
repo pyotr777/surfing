@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>タグ — Surf Japan</title>
+  <meta name="language" content="ja">
+  <meta name="description" content="サイトで使われているすべてのタグと、そのタグを持つページの一覧。">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <article class="article article--wide">
+    <h1>すべてのタグ</h1>
+    <p>
+      タグはすべての言語で共通です。英語、ロシア語、日本語のページには同じラベルが付き、下の一覧だけが表示言語ごとに絞り込まれます。
+    </p>
+
+<script type="text/python">
+html, soup = include("../_include/tag-index.html")
+print(html)
+</script>
+  </article>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

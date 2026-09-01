@@ -23,6 +23,7 @@ TEXT = {
         "ru": ("Свелл приходит под 45° на глубокой воде, дно равномерно мелеет к "
                "пляжу. Каждый гребень строится шагами поперёк схемы, поворачиваясь "
                "по закону Снеллиуса на местной глубине."),
+        "ja": ("深い海で45°から入るうねりが、岸へ向かって均一に浅くなる海底を通ります。各波の峰は、図を横切るステップごとに、その地点の水深でスネルの法則に従って向きを変えながら描かれます。"),
     },
     "period": {
         "en": ("Deep-water wavelength is L = gT²/2π, and a wave feels the bottom "
@@ -31,6 +32,7 @@ TEXT = {
         "ru": ("Длина волны на глубокой воде L = gT²/2π, а дно волна начинает "
                "чувствовать примерно с L/2. Одинаковая высота, разный период: "
                "длинная несёт куда больше воды и достаёт заметно глубже."),
+        "ja": ("深海での波長は L = gT²/2π で、波はおよそ L/2 の深さから海底の影響を感じ始めます。同じ波高でも周期が違えば、長い周期の波の方がはるかに多くの水を動かし、より深い場所まで届きます。"),
     },
 }
 
@@ -86,7 +88,8 @@ def refraction():
     out.append(f'  <polyline class="ray" points="{" ".join(ray)}"/>')
 
     words = {"en": ("deep water", "shallow", "beach"),
-             "ru": ("глубоко", "мелко", "пляж")}[lang]
+             "ru": ("глубоко", "мелко", "пляж"),
+             "ja": ("深い海", "浅い海", "海岸")}[lang]
     out.append(f'  <text class="diag-label" x="12" y="24">{words[0]}</text>')
     out.append(f'  <text class="diag-label" x="12" y="{shore_y - 12}">{words[1]}</text>')
     out.append(f'  <text class="diag-note" x="12" y="{H - 14}">{words[2]}</text>')
@@ -112,9 +115,11 @@ def period():
             pts.append(f"{x},{y0 - amp * math.sin(2 * math.pi * i / wl):.1f}")
         out.append(f'  <polyline class="wave-line" points="{" ".join(pts)}"'
                    f' stroke="{colour}"/>')
-        sec = "s" if lang == "en" else "с"
-        note = ("feels the bottom from {d:.0f} m down" if lang == "en"
-                else "чувствует дно начиная с {d:.0f} м")
+        sec, note = {
+            "en": ("s", "feels the bottom from {d:.0f} m down"),
+            "ru": ("с", "чувствует дно начиная с {d:.0f} м"),
+            "ja": ("秒", "水深およそ {d:.0f} m から海底を感じ始める"),
+        }[lang]
         out.append(f'  <text class="diag-label" x="60" y="{y0 - 34}">'
                    f'T = {T} {sec} · L = {L:.0f} m</text>')
         out.append(f'  <line class="feel" x1="60" y1="{y0 + 44}" x2="580" y2="{y0 + 44}"'

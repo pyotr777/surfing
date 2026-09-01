@@ -22,7 +22,8 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)  # rawsite/
 
-LANGS = ("en", "ru")
+LANGS = ("en", "ru", "ja")
+LANGUAGE_NAMES = {"en": "English", "ru": "Русский", "ja": "日本語"}
 
 # --------------------------------------------------------------------------
 # Site identity
@@ -34,8 +35,12 @@ SITE = {
         "tagline": "Surf spots, board types, physics of the waves",
     },
     "ru": {
-        "name": "Сёрф Япония",
+        "name": "Surf Japan",
         "tagline": "Cпоты для серфинга, типы досок, физика волн",
+    },
+    "ja": {
+        "name": "Surf Japan",
+        "tagline": "サーフスポット、ボード、波のしくみ",
     },
 }
 
@@ -54,6 +59,9 @@ UI = {
         "nav_data": "Compare spots",
         "nav_tags": "Tags",
         "nav_how": "How this site is built",
+        "languages": "Languages",
+        "skip": "Skip to content",
+        "nav_label": "Main navigation",
         "switch": "Русский",
         "switch_title": "This page in Russian",
         "read_more": "Read more",
@@ -107,6 +115,9 @@ UI = {
         "nav_data": "Сравнение спотов",
         "nav_tags": "Теги",
         "nav_how": "Как собран этот сайт",
+        "languages": "Языки",
+        "skip": "К содержанию",
+        "nav_label": "Основная навигация",
         "switch": "English",
         "switch_title": "Эта же страница по-английски",
         "read_more": "Читать",
@@ -151,6 +162,55 @@ UI = {
         "wetsuit_note": "Толщина в миллиметрах. 2 мм — хватит короткого гидрокостюма; "
                         "5 мм — подразумевает шлем, боты и перчатки.",
     },
+    "ja": {
+        "nav_home": "ホーム",
+        "nav_spots": "スポット",
+        "nav_gear": "ギア",
+        "nav_waves": "波",
+        "nav_data": "スポット比較",
+        "nav_tags": "タグ",
+        "nav_how": "このサイトの仕組み",
+        "languages": "言語",
+        "skip": "本文へ移動",
+        "nav_label": "メインナビゲーション",
+        "read_more": "詳しく見る",
+        "toc_heading": "このサイトの内容",
+        "toc_count": "ページ",
+        "board_length": "長さ",
+        "board_width": "幅",
+        "board_thickness": "厚さ",
+        "board_volume": "容量",
+        "board_fins": "フィン",
+        "board_tail": "テール",
+        "board_waves": "対応する波のサイズ",
+        "board_scale_heading": "5種類を同じ縮尺で",
+        "board_scale_caption": "アウトラインは、csv/boards.csv の長さ、幅、形状比からビルド時に描かれます。下のバーは6フィートです。",
+        "map_heading": "波を探す場所",
+        "map_caption": "Surf Japan のために描いた関東・東海沿岸のイラストマップ。",
+        "map_legend": "レベル",
+        "map_pending": "青いピンは新しい地点です。ガイドページは準備中です。",
+        "table_spot": "スポット",
+        "table_region": "エリア",
+        "table_break": "ブレイク",
+        "table_level": "レベル",
+        "table_season": "ベストシーズン",
+        "table_swell": "対応するうねり",
+        "table_wind": "最適風向",
+        "table_size": "一般的なサイズ",
+        "table_aug": "水温・8月",
+        "table_feb": "水温・2月",
+        "table_sort_hint": "列の見出しをクリックすると並べ替えられます。",
+        "facts_heading": "ポイント概要",
+        "tags_heading": "すべてのタグ",
+        "tags_intro": "タグは全言語で共通です。同じタグを持つ英語、ロシア語、日本語のページは一つの一覧にまとまります。",
+        "tagged": "タグ",
+        "back_home": "すべてのスポットへ戻る",
+        "no_pages": "ページはまだありません。",
+        "built_with": "<a href='https://github.com/pyotr777/panehe/'>Panehe</a> で作成",
+        "months": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        "wetsuit_region": "エリア",
+        "wetsuit_note": "厚さはミリメートル。2 mm はスプリングスーツで十分な目安、5 mm はフード、ブーツ、グローブも必要になる水温です。",
+    },
 }
 
 # --------------------------------------------------------------------------
@@ -161,42 +221,51 @@ UI = {
 REGIONS = {
     "hokkaido": {
         "en": "Hokkaido",
-        "ru": "Хоккайдо"
+        "ru": "Хоккайдо",
+        "ja": "北海道"
     },
     "niigata": {
         "en": "Niigata",
-        "ru": "Ниигата"
+        "ru": "Ниигата",
+        "ja": "新潟"
     },
     "chiba": {
         "en": "Chiba",
-        "ru": "Тиба"
+        "ru": "Тиба",
+        "ja": "千葉"
     },
     "shonan": {
         "en": "Shonan",
-        "ru": "Сёнан"
+        "ru": "Сёнан",
+        "ja": "湘南"
     },
     "izu-islands": {
         "en": "Izu Islands",
-        "ru": "Острова Идзу"
+        "ru": "Острова Идзу",
+        "ja": "伊豆諸島"
     },
     "miyazaki": {
         "en": "Miyazaki",
-        "ru": "Миядзаки"
+        "ru": "Миядзаки",
+        "ja": "宮崎"
     },
 }
 
 BREAKS = {
     "beach": {
         "en": "beach break",
-        "ru": "бич-брейк"
+        "ru": "бич-брейк",
+        "ja": "ビーチブレイク"
     },
     "rivermouth": {
         "en": "rivermouth",
-        "ru": "устье реки"
+        "ru": "устье реки",
+        "ja": "河口"
     },
     "reef": {
         "en": "reef",
-        "ru": "риф"
+        "ru": "риф",
+        "ja": "リーフ"
     },
 }
 
@@ -204,16 +273,19 @@ LEVELS = {
     "beginner": {
         "en": "beginner",
         "ru": "новичок",
+        "ja": "初級",
         "color": "#4bb3a0"
     },
     "intermediate": {
         "en": "intermediate",
         "ru": "средний",
+        "ja": "中級",
         "color": "#e0a23a"
     },
     "advanced": {
         "en": "advanced",
         "ru": "продвинутый",
+        "ja": "上級",
         "color": "#d9563f"
     },
 }
@@ -221,19 +293,23 @@ LEVELS = {
 SEASONS = {
     "winter": {
         "en": "winter",
-        "ru": "зима"
+        "ru": "зима",
+        "ja": "冬"
     },
     "spring": {
         "en": "spring",
-        "ru": "весна"
+        "ru": "весна",
+        "ja": "春"
     },
     "summer-autumn": {
         "en": "summer–autumn",
-        "ru": "лето — осень"
+        "ru": "лето — осень",
+        "ja": "夏〜秋"
     },
     "year-round": {
         "en": "year-round",
-        "ru": "круглый год"
+        "ru": "круглый год",
+        "ja": "通年"
     },
 }
 
@@ -256,6 +332,10 @@ SECTION_META = {
             "blurb": "Шесть спотов с севера на юг и условия, "
                      "при которых каждый работает."
         },
+        "ja": {
+            "title": "スポット",
+            "blurb": "北から南へたどる6つのスポットと、それぞれが良くなる条件。"
+        },
     },
     "gear": {
         "en": {
@@ -268,6 +348,10 @@ SECTION_META = {
             "blurb": "Пять форм досок в одном масштабе и "
                      "сколько резины требует температура воды."
         },
+        "ja": {
+            "title": "ギア",
+            "blurb": "縮尺を揃えて描いた5種類のボードと、水温に合うウェットスーツ。"
+        },
     },
     "waves": {
         "en": {
@@ -279,6 +363,10 @@ SECTION_META = {
             "title": "Волны",
             "blurb": "Откуда берётся волна и что делает с ней "
                      "берег по дороге."
+        },
+        "ja": {
+            "title": "波",
+            "blurb": "波が生まれる場所と、岸に近づく途中で海岸が波にすること。"
         },
     },
 }
@@ -296,6 +384,7 @@ BOARDS_META = {
     "fish": {
         "en": "Fish",
         "ru": "Фиш",
+        "ja": "フィッシュ",
         "deck": "wood",
         "base": "#d8b184",
         "grain": "#b98a58",
@@ -305,6 +394,7 @@ BOARDS_META = {
     "shortboard": {
         "en": "Shortboard",
         "ru": "Шортборд",
+        "ja": "ショートボード",
         "deck": "panel",
         "base": "#f3f6f7",
         "accent": "#d9563f",
@@ -315,6 +405,7 @@ BOARDS_META = {
     "funboard": {
         "en": "Funboard",
         "ru": "Фанборд",
+        "ja": "ファンボード",
         "deck": "solid",
         "base": "#eef4f5",
         "accent": "#0e9aa7",
@@ -324,6 +415,7 @@ BOARDS_META = {
     "gun": {
         "en": "Gun",
         "ru": "Ган",
+        "ja": "ガン",
         "deck": "rails",
         "base": "#f3f6f7",
         "accent": "#7cc242",
@@ -334,6 +426,7 @@ BOARDS_META = {
     "longboard": {
         "en": "Longboard",
         "ru": "Лонгборд",
+        "ja": "ロングボード",
         "deck": "bands",
         "base": "#f3f6f7",
         "bands": ["#7cc242", "#2fb3a8", "#d9563f", "#f0a92e", "#2fb3a8", "#7cc242"],
@@ -356,23 +449,28 @@ BOARD_RANGES = {
 TAILS = {
     "squash": {
         "en": "squash",
-        "ru": "сквош"
+        "ru": "сквош",
+        "ja": "スカッシュ"
     },
     "swallow": {
         "en": "swallow",
-        "ru": "ласточкин"
+        "ru": "ласточкин",
+        "ja": "スワロー"
     },
     "round": {
         "en": "round",
-        "ru": "круглый"
+        "ru": "круглый",
+        "ja": "ラウンド"
     },
     "square": {
         "en": "square",
-        "ru": "квадратный"
+        "ru": "квадратный",
+        "ja": "スクエア"
     },
     "pin": {
         "en": "pin",
-        "ru": "пин"
+        "ru": "пин",
+        "ja": "ピン"
     },
 }
 
@@ -382,6 +480,7 @@ SPOTS_META = {
     "shioya": {
         "en": "Shioya",
         "ru": "Сиоя",
+        "ja": "塩屋",
         "dx": 14,
         "dy": -6,
         "anchor": "start"
@@ -389,6 +488,7 @@ SPOTS_META = {
     "ikarashi": {
         "en": "Ikarashi",
         "ru": "Икараси",
+        "ja": "飯岡",
         "dx": -14,
         "dy": -6,
         "anchor": "end"
@@ -396,6 +496,7 @@ SPOTS_META = {
     "tsurigasaki": {
         "en": "Tsurigasaki",
         "ru": "Цуригасаки",
+        "ja": "釣ヶ崎",
         "dx": 20,
         "dy": -10,
         "anchor": "start"
@@ -403,6 +504,7 @@ SPOTS_META = {
     "iioka-mansionshita": {
         "en": "Iioka Mansionshita",
         "ru": "Ииока: Мансёнсита",
+        "ja": "飯岡・マンション下",
         "dx": -18,
         "dy": -12,
         "anchor": "end"
@@ -410,6 +512,7 @@ SPOTS_META = {
     "kanpomae": {
         "en": "Kanpomae",
         "ru": "Канпомаэ",
+        "ja": "かんぽ前",
         "dx": -18,
         "dy": 20,
         "anchor": "end"
@@ -417,6 +520,7 @@ SPOTS_META = {
     "sakuta": {
         "en": "Sakuta",
         "ru": "Сакута",
+        "ja": "作田",
         "dx": 18,
         "dy": -12,
         "anchor": "start"
@@ -424,6 +528,7 @@ SPOTS_META = {
     "ichinomiya": {
         "en": "Ichinomiya",
         "ru": "Итиномия",
+        "ja": "一宮",
         "dx": -18,
         "dy": -18,
         "anchor": "end"
@@ -431,6 +536,7 @@ SPOTS_META = {
     "onjuku": {
         "en": "Onjuku",
         "ru": "Ондзюку",
+        "ja": "御宿",
         "dx": 18,
         "dy": 18,
         "anchor": "start"
@@ -438,6 +544,7 @@ SPOTS_META = {
     "kugenuma": {
         "en": "Kugenuma",
         "ru": "Кугэнума",
+        "ja": "鵠沼",
         "dx": -20,
         "dy": 6,
         "anchor": "end"
@@ -445,6 +552,7 @@ SPOTS_META = {
     "habushiura": {
         "en": "Habushiura",
         "ru": "Хабусиура",
+        "ja": "羽伏浦",
         "dx": 14,
         "dy": 14,
         "anchor": "start"
@@ -452,6 +560,7 @@ SPOTS_META = {
     "kisakihama": {
         "en": "Kisakihama",
         "ru": "Кисакихама",
+        "ja": "木崎浜",
         "dx": 14,
         "dy": 4,
         "anchor": "start"
@@ -463,22 +572,22 @@ SPOTS_META = {
 # explored on a separate map without overlapping every individual surf spot.
 AREAS_META = {
     "asahi": {
-        "en": "Asahi", "ru": "Асахи"
+        "en": "Asahi", "ru": "Асахи", "ja": "旭"
     },
     "sosa": {
-        "en": "Sosa", "ru": "Соса"
+        "en": "Sosa", "ru": "Соса", "ja": "匝瑳"
     },
     "sakuta": {
-        "en": "Sakuta", "ru": "Сакута"
+        "en": "Sakuta", "ru": "Сакута", "ja": "作田"
     },
     "ichinomiya": {
-        "en": "Ichinomiya", "ru": "Итиномия"
+        "en": "Ichinomiya", "ru": "Итиномия", "ja": "一宮"
     },
     "katsuura": {
-        "en": "Katsuura", "ru": "Кацуура"
+        "en": "Katsuura", "ru": "Кацуура", "ja": "勝浦"
     },
     "fujisawa": {
-        "en": "Fujisawa", "ru": "Фудзисава"
+        "en": "Fujisawa", "ru": "Фудзисава", "ja": "藤沢"
     },
 }
 
@@ -488,50 +597,56 @@ AREAS_META = {
 AREAS = {
     "asahi": {
         "image": "ikarashi",
-        "region": {"en": "Chiba · Chiba North", "ru": "Тиба · Тиба Кита"},
+        "region": {"en": "Chiba · Chiba North", "ru": "Тиба · Тиба Кита", "ja": "千葉・千葉北"},
         "summary": {
             "en": "Iioka’s south-west-facing bend: sandy beach breaks shaped by tetrapods, south swell and more room than crowds.",
             "ru": "Юго-западный изгиб побережья у Ииоки: песчаные брейки у тетраподов, южный свелл и больше пространства, чем людей.",
+            "ja": "飯岡の南西向きの海岸線。テトラポッド際の砂のブレイク、南寄りのうねり、そして混雑よりも余裕がある場所です。",
         },
     },
     "sosa": {
         "image": "shioya",
-        "region": {"en": "Chiba · Chiba North", "ru": "Тиба · Тиба Кита"},
+        "region": {"en": "Chiba · Chiba North", "ru": "Тиба · Тиба Кита", "ja": "千葉・千葉北"},
         "summary": {
             "en": "An open east-Chiba coast that catches east-to-south swell; a broad, sandy alternative when the famous peaks are busy.",
             "ru": "Открытое побережье восточной Тибы, принимающее свелл с востока до юга; широкий песчаный выбор, когда известные пики заняты.",
+            "ja": "東〜南うねりを受ける千葉東部の開けた海岸。有名なピークが混む日に選べる、広い砂のブレイクです。",
         },
     },
     "sakuta": {
         "image": "tsurigasaki",
-        "region": {"en": "Chiba · Chiba North", "ru": "Тиба · Тиба Кита"},
+        "region": {"en": "Chiba · Chiba North", "ru": "Тиба · Тиба Кита", "ja": "千葉・千葉北"},
         "summary": {
             "en": "A wide, shallow sandy beach with several peaks, soft waves and enough coastline to spread out along the Kujukuri arc.",
             "ru": "Широкий пологий песчаный пляж с несколькими пиками, мягкой волной и простором всей дуги Кудзюкури.",
+            "ja": "九十九里の弧に広がる、遠浅で幅のある砂浜。穏やかな波と複数のピークがあり、のびのびと入れます。",
         },
     },
     "ichinomiya": {
         "image": "habushiura",
-        "region": {"en": "Chiba · Chiba North", "ru": "Тиба · Тиба Кита"},
+        "region": {"en": "Chiba · Chiba North", "ru": "Тиба · Тиба Кита", "ja": "千葉・千葉北"},
         "summary": {
             "en": "Chiba’s surf centre: mobile sandbanks, east swell, a deep surf culture and consistently busy line-ups from Ichinomiya to Shidashita.",
             "ru": "Сёрф-центр Тибы: подвижные песчаные банки, восточный свелл, глубокая сёрф-культура и неизменно оживлённые лайн-апы от Итиномии до Сидаситы.",
+            "ja": "千葉のサーフィンの中心地。変化するサンドバー、東うねり、深いサーフカルチャーがあり、一宮から志田下までラインナップはいつも活気があります。",
         },
     },
     "katsuura": {
         "image": "kisakihama",
-        "region": {"en": "Chiba · Chiba South", "ru": "Тиба · Тиба Минами"},
+        "region": {"en": "Chiba · Chiba South", "ru": "Тиба · Тиба Минами", "ja": "千葉・千葉南"},
         "summary": {
             "en": "South-facing Onjuku brings a gentler rhythm: open white sand, south-east to south swell and room beyond the harbour peak.",
             "ru": "Обращённый на юг Ондзюку — более спокойный ритм: белый песок, юго-восточный и южный свелл, свободное место за пределами пика у гавани.",
+            "ja": "南に開く御宿は少しゆったりした雰囲気。白い砂浜に南東〜南うねりが入り、港のピークを離れると余裕があります。",
         },
     },
     "fujisawa": {
         "image": "kugenuma",
-        "region": {"en": "Kanagawa · Shonan", "ru": "Канагава · Сёнан"},
+        "region": {"en": "Kanagawa · Shonan", "ru": "Канагава · Сёнан", "ja": "神奈川・湘南"},
         "summary": {
             "en": "Kugenuma is Shonan’s social beach break: forgiving sandbanks, south swell, surf schools and one of Japan’s liveliest line-ups.",
             "ru": "Кугэнума — социальный бич-брейк Сёнана: дружелюбные песчаные банки, южный свелл, школы и один из самых оживлённых лайн-апов Японии.",
+            "ja": "鵠沼は湘南らしい社交的なビーチブレイク。乗りやすいサンドバー、南うねり、スクールがそろい、日本でも特ににぎやかなラインナップの一つです。",
         },
     },
 }
@@ -540,32 +655,38 @@ AREA_FACTS = {
     "asahi": {
         "en": [("Coast", "Chiba North · Iioka"), ("Breaks", "Sandy beach breaks and tetrapod peaks"), ("Swell", "E–SSW, best with south in the mix"), ("Clean wind", "NNE"), ("Crowds", "Usually room to spread out")],
         "ru": [("Побережье", "Тиба Кита · Ииока"), ("Брейки", "Песчаные пляжи и пики у тетраподов"), ("Свелл", "В–ЮЮЗ, лучше с южной составляющей"), ("Чистый ветер", "ССВ"), ("Люди", "Обычно есть пространство")],
-        "spots": {"en": ["Mansionsita"], "ru": ["Мэнсионсита"]},
+        "ja": [("海岸", "千葉北・飯岡"), ("ブレイク", "砂のビーチブレイクとテトラポッド際のピーク"), ("うねり", "東〜南南西、南寄りが混じると良い"), ("オフショア", "北北東"), ("混雑", "広がれば比較的余裕がある")],
+        "spots": {"en": ["Mansionsita"], "ru": ["Мэнсионсита"], "ja": ["マンション下"]},
     },
     "sosa": {
         "en": [("Coast", "Chiba North · Sosa"), ("Breaks", "Open sandy beach breaks"), ("Swell", "E–S"), ("Clean wind", "N–NW"), ("Crowds", "Visitors, but a less concentrated line-up")],
         "ru": [("Побережье", "Тиба Кита · Соса"), ("Брейки", "Открытые песчаные бич-брейки"), ("Свелл", "В–Ю"), ("Чистый ветер", "С–СЗ"), ("Люди", "Приезжих много, но лайн-ап менее концентрирован")],
-        "spots": {"en": ["Kanpomae"], "ru": ["Канпомаэ"]},
+        "ja": [("海岸", "千葉北・匝瑳"), ("ブレイク", "開けた砂のビーチブレイク"), ("うねり", "東〜南"), ("オフショア", "北〜北西"), ("混雑", "人は来るがラインナップは集中しにくい")],
+        "spots": {"en": ["Kanpomae"], "ru": ["Канпомаэ"], "ja": ["かんぽ前"]},
     },
     "sakuta": {
         "en": [("Coast", "Chiba North · Kujukuri"), ("Breaks", "Wide, shallow sandy beach"), ("Swell", "NE–SSE"), ("Clean wind", "NW"), ("Crowds", "Popular, with several peaks to choose from")],
         "ru": [("Побережье", "Тиба Кита · Кудзюкури"), ("Брейки", "Широкий пологий песчаный пляж"), ("Свелл", "СВ–ЮЮВ"), ("Чистый ветер", "СЗ"), ("Люди", "Популярно, но можно выбрать пик")],
-        "spots": {"en": ["Sakuta"], "ru": ["Сакута"]},
+        "ja": [("海岸", "千葉北・九十九里"), ("ブレイク", "幅広く遠浅な砂浜"), ("うねり", "北東〜南南東"), ("オフショア", "北西"), ("混雑", "人気はあるがピークを選べる")],
+        "spots": {"en": ["Sakuta"], "ru": ["Сакута"], "ja": ["作田"]},
     },
     "ichinomiya": {
         "en": [("Coast", "Chiba North · Ichinomiya"), ("Breaks", "Mobile sandbanks beside jetties"), ("Swell", "NE–SE, especially east"), ("Clean wind", "W"), ("Crowds", "One of Chiba’s busiest surf hubs")],
         "ru": [("Побережье", "Тиба Кита · Итиномия"), ("Брейки", "Подвижные песчаные банки у молов"), ("Свелл", "СВ–ЮВ, особенно восточный"), ("Чистый ветер", "З"), ("Люди", "Один из самых оживлённых сёрф-центров Тибы")],
-        "spots": {"en": ["Ichinomiya", "Tsurigasaki / Shidashita"], "ru": ["Итиномия", "Цуригасаки / Сидасита"]},
+        "ja": [("海岸", "千葉北・一宮"), ("ブレイク", "堤防脇にできる変化の速いサンドバー"), ("うねり", "北東〜南東、特に東"), ("オフショア", "西"), ("混雑", "千葉でも有数のサーフハブ")],
+        "spots": {"en": ["Ichinomiya", "Tsurigasaki / Shidashita"], "ru": ["Итиномия", "Цуригасаки / Сидасита"], "ja": ["一宮", "釣ヶ崎 / 志田下"]},
     },
     "katsuura": {
         "en": [("Coast", "Chiba South · Onjuku"), ("Breaks", "Open sandy beach, harbour and river-mouth peaks"), ("Swell", "ESE–SSW, especially SE–S"), ("Clean wind", "N"), ("Crowds", "Calmer beyond the harbour peak")],
         "ru": [("Побережье", "Тиба Минами · Ондзюку"), ("Брейки", "Открытый песчаный пляж, пики у гавани и устья"), ("Свелл", "ВЮВ–ЮЮЗ, особенно ЮВ–Ю"), ("Чистый ветер", "С"), ("Люди", "За пределами пика у гавани спокойнее")],
-        "spots": {"en": ["Onjuku"], "ru": ["Ондзюку"]},
+        "ja": [("海岸", "千葉南・御宿"), ("ブレイク", "開けた砂浜、港と河口のピーク"), ("うねり", "東南東〜南南西、特に南東〜南"), ("オフショア", "北"), ("混雑", "港のピークを離れると落ち着く")],
+        "spots": {"en": ["Onjuku"], "ru": ["Ондзюку"], "ja": ["御宿"]},
     },
     "fujisawa": {
         "en": [("Coast", "Kanagawa · Shonan"), ("Breaks", "Shallow sandy beach and river-mouth bars"), ("Swell", "E–SW, especially south"), ("Clean wind", "N–NE"), ("Crowds", "One of Japan’s busiest line-ups")],
         "ru": [("Побережье", "Канагава · Сёнан"), ("Брейки", "Пологий песчаный пляж и банки у устья"), ("Свелл", "В–ЮЗ, особенно южный"), ("Чистый ветер", "С–СВ"), ("Люди", "Один из самых оживлённых лайн-апов Японии")],
-        "spots": {"en": ["Kugenuma"], "ru": ["Кугэнума"]},
+        "ja": [("海岸", "神奈川・湘南"), ("ブレイク", "遠浅の砂浜と河口のサンドバー"), ("うねり", "東〜南西、特に南"), ("オフショア", "北〜北東"), ("混雑", "日本でも特に混むラインナップの一つ")],
+        "spots": {"en": ["Kugenuma"], "ru": ["Кугэнума"], "ja": ["鵠沼"]},
     },
 }
 
@@ -582,6 +703,7 @@ AREA_MAPS = {
                 "coordinates": (35.69908, 140.71730),
                 "en": "Mansionsita (マンション下)",
                 "ru": "Мэнсионсита (マンション下)",
+                "ja": "マンション下",
             },
         ],
     },
@@ -889,25 +1011,33 @@ def load_wetsuit():
 # --------------------------------------------------------------------------
 # Language and path helpers
 #
-# The whole bilingual scheme rests on one naming convention:
-#     page.html   <->  page_ru.html
+# The whole multilingual scheme rests on one naming convention:
+#     page.html   <->  page_ru.html  <->  page_ja.html
 # Nothing else in the site records which language a page is in.
 # --------------------------------------------------------------------------
 
 RU_SUFFIX = "_ru.html"
+JA_SUFFIX = "_ja.html"
 
 
 def lang_of(page_file):
-    """'ru' for foo_ru.html, otherwise 'en'."""
-    return "ru" if os.path.basename(page_file).endswith(RU_SUFFIX) else "en"
-
-
-def other_lang_name(page_file):
-    """File name of the same page in the other language."""
+    """Language encoded in a page filename; English has no suffix."""
     name = os.path.basename(page_file)
     if name.endswith(RU_SUFFIX):
-        return name[:-len(RU_SUFFIX)] + ".html"
-    return name[:-len(".html")] + RU_SUFFIX
+        return "ru"
+    if name.endswith(JA_SUFFIX):
+        return "ja"
+    return "en"
+
+
+def local_name(page_file, lang):
+    """File name of the same page in a requested language."""
+    name = os.path.basename(page_file)
+    for suffix in (RU_SUFFIX, JA_SUFFIX):
+        if name.endswith(suffix):
+            name = name[:-len(suffix)] + ".html"
+            break
+    return localize(name, lang)
 
 
 def base_url(page_file):
@@ -924,6 +1054,8 @@ def localize(name, lang):
     """Apply the naming convention to a root-relative link."""
     if lang == "ru":
         return name[:-len(".html")] + RU_SUFFIX
+    if lang == "ja":
+        return name[:-len(".html")] + JA_SUFFIX
     return name
 
 

@@ -14,7 +14,7 @@ import sitedata as S
 
 lang = S.lang_of(page_file)
 ui = S.UI[lang]
-suffix = "index_ru.html" if lang == "ru" else "index.html"
+suffix = S.localize("index.html", lang)
 
 print('<nav class="toc" aria-label="' + ui["toc_heading"] + '">')
 print('  <ol>')

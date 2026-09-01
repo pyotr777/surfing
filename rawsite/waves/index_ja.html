@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>波 — Surf Japan</title>
+  <meta name="language" content="ja">
+  <meta name="description" content="波がどこで生まれ、岸へ届くまでにどう変わるか、そして予報の読み方を紹介します。">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <section class="hero hero--section">
+    <h1>波</h1>
+    <p class="lede">
+      うねりは千キロメートル離れた海で生まれ、岸まで残り300メートルでまったく別の形に組み替えられます。その両方を知る価値があります。
+    </p>
+  </section>
+
+<script type="text/python">
+html, soup = include("../_include/shoaling.html")
+print(html)
+</script>
+    <p class="hint">
+      下の断面図は描いたものではなく、計算したものです。分散関係が各水深での波長を、群速度が波高を定め、波高が水深の0.78倍に達する場所で波はブレイクします。
+    </p>
+
+  <section class="section-feed">
+<script type="text/python">
+html, soup = include("../_include/feed.html", section="waves")
+print(html)
+</script>
+  </section>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>スポット比較 — Surf Japan</title>
+  <meta name="language" content="ja">
+  <meta name="description" content="6つのスポットを一覧で比較。ブレイク、難易度、季節、うねり、風、水温をまとめています。">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <article class="article article--wide">
+    <h1>スポット比較</h1>
+    <p>
+      下の情報はすべて一つのファイル、csv/spots.csv から来ています。同じデータが地図上のピンや各スポットの概要欄にも使われます。並べ替えはブラウザで行い、表そのものはビルド時に通常のHTMLとして出力されます。
+    </p>
+
+<script type="text/python">
+html, soup = include("../_include/compare-table.html")
+print(html)
+</script>
+  </article>
+  <script src="../js/sort.js" defer></script>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

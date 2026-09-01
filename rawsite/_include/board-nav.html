@@ -22,9 +22,12 @@ i = ids.index(params["board"])
 
 prev = boards[i - 1] if i > 0 else None
 nxt = boards[i + 1] if i < len(boards) - 1 else None
-label_prev = "← " + ("shorter" if lang == "en" else "короче")
-label_next = ("longer" if lang == "en" else "длиннее") + " →"
-back = "All gear" if lang == "en" else "Ко всему снаряжению"
+labels = {
+    "en": ("← shorter", "longer →", "All gear"),
+    "ru": ("← короче", "длиннее →", "Ко всему снаряжению"),
+    "ja": ("← 短いボード", "長いボード →", "ギア一覧へ"),
+}[lang]
+label_prev, label_next, back = labels
 
 
 def link(row, note):

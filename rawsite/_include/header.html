@@ -13,21 +13,20 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
 
 lang = S.lang_of(page_file)
-other_lang = "en" if lang == "ru" else "ru"
 ui = S.UI[lang]
 site = S.SITE[lang]
 b = S.base_url(page_file)
 here = os.path.abspath(page_file)
 pagedir = os.path.dirname(here)
 
-print('<a class="skip" href="#main">' + ("Skip to content" if lang == "en" else "К содержанию") + '</a>')
+print('<a class="skip" href="#main">' + ui["skip"] + '</a>')
 print('<header class="site-header">')
 print('  <div class="brand">')
 print(f'    <a class="site-name" href="{b}{S.localize("index.html", lang)}">{site["name"]}</a>')
 print(f'    <p class="tagline">{site["tagline"]}</p>')
 print('  </div>')
 
-print('  <nav class="nav" aria-label="' + ("Main" if lang == "en" else "Основная") + '">')
+print('  <nav class="nav" aria-label="' + ui["nav_label"] + '">')
 for href, label in S.nav_items(page_file):
     path, _, fragment = href.partition("#")
     target = os.path.normpath(os.path.join(pagedir, path))
@@ -36,10 +35,12 @@ for href, label in S.nav_items(page_file):
     print(f'    <a href="{href}"{current}>{label}</a>')
 print('  </nav>')
 
-# The language switch is the only link on the page that changes language.
-# The other-language twin always sits in the same directory, so a bare
-# file name is enough -- no path arithmetic needed.
-print(f'  <a class="langswitch" href="{S.other_lang_name(page_file)}"'
-      f' hreflang="{other_lang}" title="{ui["switch_title"]}">{ui["switch"]}</a>')
+# All language twins sit in the same directory, so a bare file name is enough.
+print('  <nav class="languages" aria-label="' + ui["languages"] + '">')
+for target_lang in S.LANGS:
+    current = ' aria-current="true"' if target_lang == lang else ''
+    print(f'    <a href="{S.local_name(page_file, target_lang)}" hreflang="{target_lang}"{current}>'
+          f'{S.LANGUAGE_NAMES[target_lang]}</a>')
+print('  </nav>')
 print('</header>')
 </script>

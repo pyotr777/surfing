@@ -14,19 +14,18 @@ print(f'<h1>{S.AREAS_META[area_id][lang]}</h1>')
 print(f'<p class="standfirst">{area["summary"][lang]}</p>')
 print('<div class="spot-layout">')
 print('  <div class="spot-body">')
-if lang == "ru":
-    print('<h2>Характер побережья</h2>')
-    print('<p>Это описание объединяет общие черты района. Песчаные банки, ветер и направление свелла меняются от места к месту и по сезонам, поэтому перед выходом в воду всё равно стоит проверить прогноз и условия на берегу.</p>')
-    print('<h2>Споты района</h2>')
-    print('<p>' + ' · '.join(facts["spots"][lang]) + '</p>')
-else:
-    print('<h2>Coast character</h2>')
-    print('<p>This is a profile of the area rather than a promise for every break. Sandbanks, wind and swell vary along the shore and through the seasons, so check the forecast and the beach before paddling out.</p>')
-    print('<h2>Spots in this area</h2>')
-    print('<p>' + ' · '.join(facts["spots"][lang]) + '</p>')
+copy = {
+    "en": ("Coast character", "This is a profile of the area rather than a promise for every break. Sandbanks, wind and swell vary along the shore and through the seasons, so check the forecast and the beach before paddling out.", "Spots in this area", "At a glance"),
+    "ru": ("Характер побережья", "Это описание объединяет общие черты района. Песчаные банки, ветер и направление свелла меняются от места к месту и по сезонам, поэтому перед выходом в воду всё равно стоит проверить прогноз и условия на берегу.", "Споты района", "Кратко"),
+    "ja": ("海岸の特徴", "これはエリア全体の性格を示す案内で、すべてのブレイクを保証するものではありません。サンドバー、風、うねりは場所や季節で変わるため、入水前には予報と現地の状況を確認してください。", "このエリアのスポット", "ポイント概要"),
+}[lang]
+print('<h2>' + copy[0] + '</h2>')
+print('<p>' + copy[1] + '</p>')
+print('<h2>' + copy[2] + '</h2>')
+print('<p>' + ' · '.join(facts["spots"][lang]) + '</p>')
 print('  </div>')
 print('  <aside class="facts">')
-print('    <h2>' + ('Кратко' if lang == 'ru' else 'At a glance') + '</h2>')
+print('    <h2>' + copy[3] + '</h2>')
 print('    <dl>')
 for label, value in facts[lang]:
     print(f'      <div><dt>{label}</dt><dd>{value}</dd></div>')

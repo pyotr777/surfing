@@ -21,8 +21,11 @@ i = ids.index(params["spot"])
 
 north = spots[i - 1] if i > 0 else None
 south = spots[i + 1] if i < len(spots) - 1 else None
-arrow_up = "↑ " + ("further north" if lang == "en" else "севернее")
-arrow_dn = "↓ " + ("further south" if lang == "en" else "южнее")
+arrow_up, arrow_dn = {
+    "en": ("↑ further north", "↓ further south"),
+    "ru": ("↑ севернее", "↓ южнее"),
+    "ja": ("↑ より北へ", "↓ より南へ"),
+}[lang]
 
 
 def link(row, note):

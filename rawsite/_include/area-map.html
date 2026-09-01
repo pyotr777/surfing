@@ -19,8 +19,12 @@ points = [
     for spot in data["spots"]
 ]
 config = {"center": data["center"], "zoom": data["zoom"], "points": points}
-heading = "Споты на карте" if lang == "ru" else "Spots on the map"
-fallback = "Включите JavaScript, чтобы посмотреть интерактивную карту." if lang == "ru" else "Enable JavaScript to view the interactive map."
+map_text = {
+    "en": ("Spots on the map", "Enable JavaScript to view the interactive map."),
+    "ru": ("Споты на карте", "Включите JavaScript, чтобы посмотреть интерактивную карту."),
+    "ja": ("地図上のスポット", "インタラクティブマップを見るにはJavaScriptを有効にしてください。"),
+}
+heading, fallback = map_text[lang]
 
 print('<section class="area-map-section">')
 print(f'  <h2>{heading}</h2>')

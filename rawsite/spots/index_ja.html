@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>スポット — Surf Japan</title>
+  <meta name="language" content="ja">
+  <meta name="description" content="千葉と湘南のサーフエリア。海岸の特徴、うねり、風、代表的なブレイクを紹介します。">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+
+  <section class="hero hero--section">
+    <h1>スポット</h1>
+    <p class="lede">
+      旭の開けた浜から鵠沼の街に近い海岸まで、千葉と湘南のサーフエリアをたどります。エリアを選ぶと、海岸の特徴とそこにあるブレイクが見られます。
+    </p>
+  </section>
+
+  <section class="map-section">
+    <h2>海岸沿いのエリア</h2>
+<script type="text/python">
+html, soup = include("../_include/map.html")
+print(html)
+</script>
+  </section>
+
+  <section class="section-feed">
+<script type="text/python">
+html, soup = include("../_include/area-feed.html")
+print(html)
+</script>
+  </section>
+
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>
