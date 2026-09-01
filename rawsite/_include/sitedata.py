@@ -324,17 +324,17 @@ SECTION_META = {
     "spots": {
         "en": {
             "title": "Spots",
-            "blurb": "Six breaks, north to south, with the "
-                     "conditions that make each one work."
+            "blurb": "Regions and surf spots, with the conditions that "
+                     "make each one work."
         },
         "ru": {
             "title": "Споты",
-            "blurb": "Шесть спотов с севера на юг и условия, "
-                     "при которых каждый работает."
+            "blurb": "Области и споты, а также условия, при которых "
+                     "каждый из них работает."
         },
         "ja": {
             "title": "スポット",
-            "blurb": "北から南へたどる6つのスポットと、それぞれが良くなる条件。"
+            "blurb": "エリアとスポット、それぞれが良くなる条件を紹介します。"
         },
     },
     "gear": {
