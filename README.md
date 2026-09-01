@@ -49,7 +49,7 @@ Python dependency.
 ```
 rawsite/
   index.html  index_ru.html           front page: contents and the map
-  how-it-works.html  ..._ru.html      what the engine does
+  about.html  ..._ru.html             about the project and Panehe
   data/      tags/                    comparison table, tag index
   spots/index.html  ..._ru.html       section page, then six breaks below it
   spots/<id>/index.html  ..._ru.html

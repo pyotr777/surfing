@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script type="text/python">
+html, soup = include("_include/head.html")
+print(html)
+</script>
+  <link rel="stylesheet" href="css/about.css">
+  <title>О сайте — Surf Japan</title>
+  <meta name="language" content="ru">
+  <meta name="description" content="О Surf Japan: независимом некоммерческом гиде, который делают сёрферы, и генераторе статических сайтов Panehe.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+  <article class="article">
+    <h1>О Surf Japan</h1>
+    <p class="standfirst">Surf Japan — независимый гид по побережью, доскам и волнам Японии. Его делают сёрферы, которым интересно не только кататься, но и понимать место.</p>
+
+    <section class="about-panehe" aria-labelledby="panehe-heading">
+      <a class="about-panehe-logo" href="https://github.com/pyotr777/panehe" target="_blank" rel="noopener">
+        <img src="img/panehe-wood.png" alt="Panehe" width="1098" height="1432">
+      </a>
+      <div>
+        <h2 id="panehe-heading">Сделано с Panehe</h2>
+        <p><a href="https://github.com/pyotr777/panehe" target="_blank" rel="noopener">Panehe</a> — небольшой генератор статических сайтов: HTML дополняется Python-вставками во время сборки. Тексты, шаблоны и небольшие расчёты для карт, карточек и схем остаются рядом — без тяжёлого фреймворка.</p>
+      </div>
+    </section>
+
+    <h2>От сёрферов</h2>
+    <p>Мы сёрферы, а не коммерческий путеводитель и не сервис прогноза. Сайт растёт постепенно: когда мы лучше узнаём берег, возвращаемся на спот или находим сведения, которые стоит сверить с реальными условиями. Нам хочется яснее показать контекст сессии: как пляж принимает свелл, для чего создана конкретная доска и почему волна меняется на подходе к берегу.</p>
+
+    <h2>Некоммерческий проект, который развивается</h2>
+    <p>Surf Japan развивается на некоммерческой основе. Здесь нет платных рейтингов и спонсорских списков спотов. Условия быстро меняются, а любое описание — лишь отправная точка: перед выходом в воду всегда проверяйте прогноз, прилив, доступ к берегу и ситуацию на самом пляже.</p>
+  </article>
+</main>
+
+<script type="text/python">
+html, soup = include("_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

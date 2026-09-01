@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/python">
+html, soup = include("_include/head.html")
+print(html)
+</script>
+  <link rel="stylesheet" href="css/about.css">
+  <title>About — Surf Japan</title>
+  <meta name="language" content="en">
+  <meta name="description" content="About Surf Japan: an independent, non-commercial guide made by surfers, and the Panehe static-site generator behind it.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+  <article class="article">
+    <h1>About Surf Japan</h1>
+    <p class="standfirst">Surf Japan is an independent guide to Japan’s coast, boards and waves, made by surfers who enjoy understanding a place as much as riding it.</p>
+
+    <section class="about-panehe" aria-labelledby="panehe-heading">
+      <a class="about-panehe-logo" href="https://github.com/pyotr777/panehe" target="_blank" rel="noopener">
+        <img src="img/panehe-wood.png" alt="Panehe" width="1098" height="1432">
+      </a>
+      <div>
+        <h2 id="panehe-heading">Built with Panehe</h2>
+        <p><a href="https://github.com/pyotr777/panehe" target="_blank" rel="noopener">Panehe</a> is a small static-site generator for HTML with build-time Python inserts. It keeps prose, templates and the small calculations behind maps, cards and diagrams close together, without adding a heavy framework.</p>
+      </div>
+    </section>
+
+    <h2>Made by surfers</h2>
+    <p>We are surfers, not a commercial guidebook or a forecasting service. The site grows slowly as we learn a coast, revisit a break and find information worth checking against local conditions. We aim to make the context around a session clearer: how a beach faces a swell, what a board is designed to do, and why a wave changes on its way to shore.</p>
+
+    <h2>Non-commercial and evolving</h2>
+    <p>Surf Japan is developed on a non-commercial basis. There are no paid rankings or sponsored spot listings. Conditions can change quickly, and every description is only a starting point: check the forecast, tides, access and the beach itself before going in.</p>
+  </article>
+</main>
+
+<script type="text/python">
+html, soup = include("_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

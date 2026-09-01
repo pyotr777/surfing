@@ -1,0 +1,10 @@
+.about-panehe{display:grid;grid-template-columns:minmax(8rem,13rem) minmax(0,1fr);gap:1.8rem;align-items:center;margin:2.5rem 0;padding:1.4rem;background:var(--kapa-warm);border:2px solid var(--bark)}
+.about-panehe-logo{display:block;justify-self:center;line-height:0}
+.about-panehe-logo img{display:block;height:9rem;width:auto;max-width:100%}
+.about-panehe h2{margin:.1rem 0 .6rem}
+.about-panehe p{margin:0;max-width:58ch}
+
+@media(max-width:560px){
+  .about-panehe{grid-template-columns:1fr;gap:1rem}
+  .about-panehe-logo img{height:7rem}
+}

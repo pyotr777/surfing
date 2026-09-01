@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script type="text/python">
+html, soup = include("_include/head.html")
+print(html)
+</script>
+  <link rel="stylesheet" href="css/about.css">
+  <title>このサイトについて — Surf Japan</title>
+  <meta name="language" content="ja">
+  <meta name="description" content="サーファーが非営利で育てる独立したガイド、Surf Japan と、その制作に使っている静的サイトジェネレーター Panehe について。">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+  <article class="article">
+    <h1>Surf Japan について</h1>
+    <p class="standfirst">Surf Japan は、日本の海岸、ボード、波を紹介する独立したガイドです。波に乗るだけでなく、その場所を理解することも好きなサーファーが作っています。</p>
+
+    <section class="about-panehe" aria-labelledby="panehe-heading">
+      <a class="about-panehe-logo" href="https://github.com/pyotr777/panehe" target="_blank" rel="noopener">
+        <img src="img/panehe-wood.png" alt="Panehe" width="1098" height="1432">
+      </a>
+      <div>
+        <h2 id="panehe-heading">Panehe で制作</h2>
+        <p><a href="https://github.com/pyotr777/panehe" target="_blank" rel="noopener">Panehe</a> は、ビルド時にPythonの挿入コードを使える小さな静的サイトジェネレーターです。文章、テンプレート、地図やカード、図のための小さな計算を、重いフレームワークなしで近くに置けます。</p>
+      </div>
+    </section>
+
+    <h2>サーファーによるガイド</h2>
+    <p>私たちはサーファーであり、商業ガイドブックでも予報サービスでもありません。海岸を知り、同じブレイクに戻り、現地の状況と照らし合わせる価値がある情報を見つけながら、サイトを少しずつ育てています。ビーチがうねりをどう受けるのか、ボードが何のために作られているのか、波が岸に近づくとどう変わるのか。そのセッションの背景がより分かりやすくなることを目指しています。</p>
+
+    <h2>非営利で、少しずつ</h2>
+    <p>Surf Japan は非営利で開発しています。有料ランキングやスポンサーによるスポット掲載はありません。コンディションはすぐに変わり、ここでの説明は出発点にすぎません。入水前には必ず予報、潮位、アクセス、そして実際の海を確認してください。</p>
+  </article>
+</main>
+
+<script type="text/python">
+html, soup = include("_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

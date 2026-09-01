@@ -58,7 +58,7 @@ UI = {
         "nav_waves": "Waves",
         "nav_data": "Compare spots",
         "nav_tags": "Tags",
-        "nav_how": "How this site is built",
+        "nav_how": "About",
         "languages": "Languages",
         "skip": "Skip to content",
         "nav_label": "Main navigation",
@@ -114,7 +114,7 @@ UI = {
         "nav_waves": "Волны",
         "nav_data": "Сравнение спотов",
         "nav_tags": "Теги",
-        "nav_how": "Как собран этот сайт",
+        "nav_how": "О сайте",
         "languages": "Языки",
         "skip": "К содержанию",
         "nav_label": "Основная навигация",
@@ -169,7 +169,7 @@ UI = {
         "nav_waves": "波",
         "nav_data": "スポット比較",
         "nav_tags": "タグ",
-        "nav_how": "このサイトの仕組み",
+        "nav_how": "このサイトについて",
         "languages": "言語",
         "skip": "本文へ移動",
         "nav_label": "メインナビゲーション",
@@ -1073,7 +1073,7 @@ def nav_items(page_file):
     items += [
         (b + localize("data/index.html", lang), u["nav_data"]),
         (b + localize("tags/index.html", lang), u["nav_tags"]),
-        (b + localize("how-it-works.html", lang), u["nav_how"]),
+        (b + localize("about.html", lang), u["nav_how"]),
     ]
     return items
 
