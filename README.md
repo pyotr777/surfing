@@ -8,6 +8,21 @@ python3 panehe.py rawsite -o surfing
 
 The build needs Python 3 and BeautifulSoup 4, and nothing else.
 
+## Publishing on GitHub Pages
+
+The repository stores the source site only: `rawsite/`.  The generated
+`surfing/` directory is deliberately ignored.  On every push to `main`, the
+GitHub Actions workflow builds the site and deploys the resulting files to
+GitHub Pages.
+
+Before the first deployment, open the repository's **Settings → Pages** and
+choose **GitHub Actions** as the publishing source.  No generated files need
+to be committed.
+
+The workflow downloads the exact revision of Panehe used by this project and
+checks its checksum before building; it installs BeautifulSoup as the only
+Python dependency.
+
 ## What each feature demonstrates
 
 | Feature on the site | Engine capability |

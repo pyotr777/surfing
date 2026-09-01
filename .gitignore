@@ -1,0 +1,8 @@
+.*
+_*.*
+surfing
+!**/_include
+!.github/
+!.github/workflows/
+!.github/workflows/deploy-pages.yml
+**/__pycache__/
