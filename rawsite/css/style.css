@@ -3,7 +3,7 @@
 :root {
   --kapa:#f3e6c9; --kapa-line:#d9bf95; --koa:#dcb87f; --koa-deep:#c08a4e;
   --alaea:#b0602a; --reef:#3d7a6b; --bark:#6b4a2c; --char:#4a3623;
-  --ink-soft:#6d5335; --ink-muted:#9c7f56; --kapa-warm:#e8d3a6;
+  --ink-soft:#6d5030; --ink-muted:#906040; --kapa-warm:#e8d3a6;
   --bg:var(--kapa); --bg-alt:var(--kapa-warm); --surface:var(--kapa);
   --ink:var(--char); --muted:var(--ink-muted); --accent:var(--alaea);
   --accent-deep:var(--bark); --accent-warm:var(--reef); --amber:var(--koa-deep);
