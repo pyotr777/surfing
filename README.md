@@ -1,125 +1,72 @@
-# Surf Japan 
+# Surf Japan
 
-A small bilingual site in three sections — surf breaks, board shapes, and the physics of the waves. The site is built using [Panehe](https://github.com/pyotr777/panehe/) SSG.  Everything on it (the map pins, the board outlines, the refraction diagram, the card lists, the comparison table, the tag index) is computed while the site is being built, by Python written inline in the HTML.
+[Surf Japan](https://pyotr777.github.io/surfing/) is an independent, non-commercial guide to surfing Japan’s Pacific coast. It begins with Chiba, Kanagawa and Shizuoka: their coastal areas, surf spots, boards and the way the coastline shapes swell.
 
+The site is made and maintained by surfing enthusiasts. It has no paid rankings or sponsored listings, and it will grow gradually as new areas and spots are researched. Conditions, access and safety can change quickly; always check the forecast, local rules and the beach before going out.
+
+## Built with Panehe
+
+<a href="https://github.com/pyotr777/panehe"><img src="rawsite/img/panehe-wood.png" alt="Panehe logo" width="180"></a>
+
+The site is generated with [Panehe](https://github.com/pyotr777/panehe), a small static-site generator that lets HTML pages use Python during the build. Shared navigation, language links, area cards, maps and data panels are assembled from the source files; the published site itself is plain static HTML, CSS, JavaScript and images.
+
+## Languages and structure
+
+Surf Japan is available in English, Russian and Japanese. English pages use the ordinary filename; Russian and Japanese versions add `_ru` and `_ja` before the extension:
+
+```text
+index.html        index_ru.html        index_ja.html
+spots/asahi/index.html
+spots/asahi/index_ru.html
+spots/asahi/index_ja.html
 ```
-python3 panehe.py rawsite -o surfing
+
+The area hierarchy follows the visitor’s path through the guide:
+
+```text
+spots/                       illustrated overview and area cards
+spots/<area>/                area profile and map of its spots
+spots/<area>/<spot>/         spot page, when a detailed page is available
 ```
 
-The build needs Python 3 and BeautifulSoup 4, and nothing else.
+The current overview areas are Asahi, Sosa, Sakuta, Ichinomiya, Katsuura and Fujisawa. They are navigation areas, not a fixed list of all the spots covered by the project.
+
+## Local build
+
+The source site is in `rawsite/`; `surfing/` is generated output and is not committed. You need Python 3, [Beautiful Soup 4](https://www.crummy.com/software/BeautifulSoup/), and a local copy of Panehe:
+
+```bash
+python3 /path/to/panehe.py rawsite -o surfing
+```
+
+For this working copy, run the command from `surfjapan/`:
+
+```bash
+../.venv-surfjapan/bin/python ../panehe.py rawsite -o surfing
+```
 
 ## Publishing on GitHub Pages
 
-The repository stores the source site only: `rawsite/`.  The generated
-`surfing/` directory is deliberately ignored.  On every push to `main`, the
-GitHub Actions workflow builds the site and deploys the resulting files to
-GitHub Pages.
+Every push to `main` starts the GitHub Actions workflow in `.github/workflows/deploy-pages.yml`. The workflow obtains the pinned Panehe revision, verifies its checksum, installs Beautiful Soup 4, builds `rawsite/`, and deploys the result to GitHub Pages. The repository therefore stores only the source site; generated files do not need to be committed.
 
-Before the first deployment, open the repository's **Settings → Pages** and
-choose **GitHub Actions** as the publishing source.  No generated files need
-to be committed.
+For the first deployment, set **Settings → Pages → Source** to **GitHub Actions** in the repository.
 
-The workflow downloads the exact revision of Panehe used by this project and
-checks its checksum before building; it installs BeautifulSoup as the only
-Python dependency.
+## Repository layout
 
-## What each feature demonstrates
-
-| Feature on the site | Engine capability |
-| --- | --- |
-| Header, nav and footer on every page | `include()` with parameters and defaults |
-| Nav inside the header | includes nested inside includes |
-| Pages at `spots/<id>/`, `gear/<id>/`, `waves/<id>/` | `page_file` and `__file__` → relative paths with no hard-coded root |
-| Card lists on each section page | build-time `glob`, pages parsed with BeautifulSoup |
-| Three separate feeds | filtering on `<meta name="section">` and `<meta name="language">` |
-| Table of contents | the same file scan, counted rather than listed |
-| Facts panel, map, table, roses | one `csv/spots.csv`, read at build time |
-| Board outlines, painted | `csv/boards.csv` → a spline through six measured stations |
-| Refraction diagram | Snell's law integrated across the frame at build time |
-| Shoaling block | dispersion relation solved at every depth, height shoaled through the group velocity |
-| Spot card illustrations | wave steepness generated from the difficulty column |
-| Wetsuit heat grid | second CSV, cell colours computed from the values |
-| Tag pages with anchors | cross-page scan against one canonical tag list |
-| Language link | file-name convention, resolved without configuration |
-| `_include/sitedata.py` | shared code and data that never reaches the output |
-| Prev/next links | ordering derived from a data column, not a hand-kept list |
-
-## Layout
-
-```
+```text
 rawsite/
-  index.html  index_ru.html           front page: contents and the map
-  about.html  ..._ru.html             about the project and Panehe
-  data/      tags/                    comparison table, tag index
-  spots/index.html  ..._ru.html       section page, then six breaks below it
-  spots/<id>/index.html  ..._ru.html
-  gear/index.html   ..._ru.html       section page with the boards to scale
-  gear/<id>/index.html   ..._ru.html  five boards + the wetsuit guide
-  waves/index.html  ..._ru.html       section page with the shoaling block
-  waves/<id>/index.html  ..._ru.html  two articles
-  _include/                           templates + sitedata.py (never copied out)
-  css/  js/  csv/  img/               static files, copied verbatim
-tools/                                one-off scripts, not part of the build
+  index.html  index_ru.html  index_ja.html      home page
+  about.html  about_ru.html  about_ja.html      project and authors
+  spots/                                      area overview and profiles
+  gear/                                       boards and wetsuit guide
+  waves/                                      waves and swell articles
+  data/  tags/                               comparison and tag index
+  _include/                                  shared templates and data
+  css/  js/  csv/  img/                      static assets and source data
+.github/workflows/deploy-pages.yml           GitHub Pages build and deployment
+tools/                                       one-off artwork helpers
 ```
 
-Sections are declared once, in `sitedata.SECTIONS`. Adding a fourth means
-creating the folder, adding an entry there, and nothing else: the navigation,
-the table of contents, the tag index and the feeds all read that list.
+## Sources and scope
 
-## The bilingual convention
-
-A Russian page is the same file name with `_ru` before the extension:
-`index.html` ↔ `index_ru.html`, `spots/kugenuma/index.html` ↔
-`spots/kugenuma/index_ru.html`. That single rule does three jobs:
-
-- `sitedata.lang_of()` reads it to decide which language a template prints in,
-  so no page ever passes a `lang` parameter;
-- the language link finds the current page's twin in the same directory;
-- navigation is built with the current language applied, so only the language
-  link ever switches language.
-
-Tags are the exception: they are keys rather than prose, and are identical in
-both languages so that an English and a Russian page with the same tag land in
-the same list. `_include/pagetags.html` refuses to render a tag that is not in
-`sitedata.TAGS`, which keeps typos out of the index.
-
-## Drawings that are not pictures
-
-Four graphics on the site have no image file behind them:
-
-- **Board outlines** (`sitedata.board_outline`) are a spline fitted through the
-  six width measurements a shaper would quote — the tip, six and twelve inches
-  back, the wide point, twelve inches from the tail, and the tail block — then
-  mirrored. That is why the log ends up with a broad round nose and parallel
-  rails while the gun tapers to a needle: the numbers say so. The deck stripes
-  in `_include/board-art.html` are generated from the same sampled profile
-  rather than clipped against it, so a band narrows towards the nose because
-  the board does. The card thumbnails and the scale drawing call the same code.
-- **Compass roses** (`_include/swell-rose.html`) are an SVG arc between the two
-  bearings in the swell-window column, plus an arrow at the wind bearing.
-- **The refraction diagram** (`_include/wave-diagram.html`) traces each wave
-  crest across the frame, turning it by Snell's law at the local depth, so the
-  crests really are perpendicular to the ray and really do flatten towards the
-  beach.
-- **The shoaling block** (`_include/shoaling.html`) solves the dispersion
-  relation `ω² = gk·tanh(kd)` at every step towards the beach, shoals the wave
-  height through the group velocity and accumulates the phase. The waves crowd
-  together and grow on their own, and the break lands where the depth-limited
-  criterion puts it.
-
-## Regenerating the artwork
-
-`tools/` holds two scripts that were run once and whose output is committed.
-The site builds without them.
-
-- `make_art.py` — draws the card illustrations and the favicon as SVG.
-
-If you move the map window, change `MAP` in `_include/sitedata.py` and the
-matching constants in `make_basemap.py`, then re-run the script: the pins
-follow automatically, because they are projected from the same box.
-
-## Sources and licences
-
-The basemap is Natural Earth, which is public domain. Spot descriptions and
-board dimensions were compiled from published surf guides; the numbers are
-indicative and this is a demo, not a forecast.
+Spot profiles are compiled from published surf guides and local mapping. They are intended as an orientation tool, not a forecast or a guarantee of conditions. The illustrated overview map is based on Natural Earth data (public domain); interactive area maps use OpenStreetMap tiles under their applicable terms.
