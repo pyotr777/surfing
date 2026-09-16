@@ -21,7 +21,7 @@ ui = S.UI[lang]
 b = S.base_url(page_file)
 
 W, H = S.MAP["width"], S.MAP["height"]
-basemap = os.path.join(S.ROOT, "img", "kanto-tokai-illustrated-map.png")
+basemap = os.path.join(S.ROOT, "img", "chiba-fantasy-map.png")
 has_basemap = os.path.exists(basemap)
 
 classes = "surfmap" + (" surfmap--mini" if mini else "")
@@ -31,21 +31,28 @@ print(f'  <svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg"'
       f' role="img" aria-label="{ui["map_heading"]}">')
 
 if has_basemap:
-    print(f'    <image href="{b}img/kanto-tokai-illustrated-map.png" x="0" y="0"'
+    print(f'    <image href="{b}img/chiba-fantasy-map.png" x="0" y="0"'
           f' width="{W}" height="{H}" preserveAspectRatio="none"/>')
 else:
     # The site still builds without the basemap file, it just looks plainer.
     print(f'    <rect x="0" y="0" width="{W}" height="{H}" fill="#14527f"/>')
     print(f'    <text x="{W/2}" y="{H/2}" text-anchor="middle" fill="#9ec9dc"'
-          f' font-size="16">img/kanto-tokai-illustrated-map.png is missing</text>')
+          f' font-size="16">img/chiba-fantasy-map.png is missing</text>')
 
 if not mini:
-    for area_id, (x, y) in S.MAP["area_labels"].items():
+    for area_id, position in S.MAP["area_labels"].items():
         meta = S.AREAS_META[area_id]
         url = b + f'spots/{area_id}/' + S.localize("index.html", lang)
+        x = position["x"]
+        y = position["y"]
+        rotation = position["rotation"]
+        skew = position.get("skew", 0)
         print(f'    <a class="spot-marker" href="{url}" aria-label="{meta[lang]}">')
-        print(f'      <text class="pin-label" x="{x:.1f}" y="{y:.1f}" text-anchor="middle">'
+        print(f'      <g transform="translate({x:.1f} {y:.1f}) '
+              f'rotate({rotation:.1f}) skewX({skew:.1f})">')
+        print(f'        <text class="pin-label" x="0" y="0" text-anchor="end">'
               f'{meta[lang]}</text>')
+        print('      </g>')
         print('    </a>')
 
 print('  </svg>')
