@@ -15,7 +15,7 @@
 }
 
 /* Japanese pages use Source Han Sans JP when that language is introduced. */
-:lang(ja) { --display:'Source Han Sans JP','Noto Sans JP',sans-serif; }
+:lang(ja) { --display:source-han-serif-japanese,serif; }
 :lang(ja) h1,:lang(ja) h2,:lang(ja) h3 { font-weight:900; }
 
 *,*::before,*::after{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:7rem}
