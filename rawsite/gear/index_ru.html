@@ -7,7 +7,7 @@ print(html)
 </script>
   <title>Снаряжение — Сёрф Япония</title>
   <meta name="language" content="ru">
-  <meta name="description" content="Пять форм досок, построенных по обмерам в одном масштабе, и сколько неопрена требует температура воды.">
+  <meta name="description" content="Четыре формы досок в одном масштабе и краткие гиды по плавникам, лишам и гидрокостюмам.">
 </head>
 <body>
 <script type="text/python">
@@ -20,25 +20,48 @@ print(html)
   <section class="hero hero--section">
     <h1>Снаряжение</h1>
     <p class="lede">
-      От короткого фиша до длинного гана и лонгборда: форма, объём и длина доски
+      От короткого фиша до лонгборда: форма, объём и длина доски
       определяют, как она гребётся, разгоняется и поворачивает.
     </p>
   </section>
 
+<script type="text/python">
+html, soup = include("../_include/gear-subnav.html")
+print(html)
+</script>
+
+  <section id="boards" class="gear-topic">
+    <h2>Доски</h2>
 <script type="text/python">
 html, soup = include("../_include/board-scale.html")
 print(html)
 </script>
     <p class="hint">
       Универсальной доски не существует: широкий объёмный фиш легко разгоняется в слабой волне,
-      длинный ган создан для скорости, а лонгборд — для раннего входа. Диапазоны у названий — ориентир, а не жёсткое правило.
+      а лонгборд помогает раньше войти в волну. Диапазоны у названий — ориентир, а не жёсткое правило.
     </p>
 
-  <section class="section-feed">
+    <div class="section-feed">
 <script type="text/python">
 html, soup = include("../_include/feed.html", section="gear")
 print(html)
 </script>
+    </div>
+  </section>
+
+  <section id="fins" class="gear-topic article">
+    <h2>Плавники</h2>
+    <p>Плавники задают доске сцепление с водой и направление. Подберите сетап под доску, волну и её финбоксы, а перед выходом проверьте, что каждый плавник надёжно закреплён.</p>
+  </section>
+
+  <section id="leash" class="gear-topic article">
+    <h2>Лиш</h2>
+    <p>Лиш — элемент безопасности. Выбирайте его по длине доски, перед каждым выходом осматривайте шнур, крепление к доске и вертлюг, а изношенный или повреждённый лиш меняйте.</p>
+  </section>
+
+  <section id="wetsuit" class="gear-topic article">
+    <h2>Гидрокостюм</h2>
+    <p>Что надеть, определяют температура воды, ветер и время в море. <a href="wetsuit-guide/index_ru.html">Смотрите гид по гидрокостюмам по месяцам и регионам.</a></p>
   </section>
 
 </main>

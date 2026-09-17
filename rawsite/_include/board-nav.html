@@ -1,8 +1,5 @@
 <script type="text/python">
-# Previous / next between boards, shortest to longest.
-# The order is the order column of csv/boards.csv, so it is never maintained
-# by hand -- the same arrangement as the prev/next links between spots, which
-# follow latitude.
+# Previous / next between the boards shown in the Chiba guide.
 #
 # Parameters:
 #   board  id of the current board
@@ -16,16 +13,18 @@ lang = S.lang_of(page_file)
 ui = S.UI[lang]
 b = S.base_url(page_file)
 
-boards = S.load_boards()
+boards = S.display_boards()
 ids = [r["id"] for r in boards]
-i = ids.index(params["board"])
-
-prev = boards[i - 1] if i > 0 else None
-nxt = boards[i + 1] if i < len(boards) - 1 else None
+if params["board"] in ids:
+    i = ids.index(params["board"])
+    prev = boards[i - 1] if i > 0 else None
+    nxt = boards[i + 1] if i < len(boards) - 1 else None
+else:
+    prev = nxt = None
 labels = {
-    "en": ("← shorter", "longer →", "All gear"),
-    "ru": ("← короче", "длиннее →", "Ко всему снаряжению"),
-    "ja": ("← 短いボード", "長いボード →", "ギア一覧へ"),
+    "en": ("← longer", "shorter →", "All gear"),
+    "ru": ("← длиннее", "короче →", "Ко всему снаряжению"),
+    "ja": ("← 長いボード", "短いボード →", "ギア一覧へ"),
 }[lang]
 label_prev, label_next, back = labels
 

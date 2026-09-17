@@ -1,0 +1,23 @@
+<script type="text/python">
+# Four outline families drawn in the same visual treatment for comparison.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+b = S.base_url(page_file)
+
+print('<figure class="longboard-shape-scale kapa-weave">')
+print('  <div class="longboard-shape-scale-grid">')
+for shape in S.LONGBOARD_SHAPES:
+    meta = shape[lang]
+    print('    <figure class="longboard-shape-slot">')
+    print(f'      <img src="{b}img/longboard-shapes/{shape["id"]}.png" '
+          f'alt="{meta["title"]}" width="1024" height="1536" loading="lazy">')
+    print(f'      <figcaption>{meta["title"]}</figcaption>')
+    print('    </figure>')
+print('  </div>')
+print('</figure>')
+</script>

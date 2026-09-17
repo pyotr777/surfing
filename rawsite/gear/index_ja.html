@@ -7,7 +7,7 @@ print(html)
 </script>
   <title>ギア — Surf Japan</title>
   <meta name="language" content="ja">
-  <meta name="description" content="寸法から同じ縮尺で描いた5種類のボードと、水温に合わせたウェットスーツ。">
+  <meta name="description" content="寸法から同じ縮尺で描いた4種類のボードと、フィン、リーシュ、ウェットスーツのガイド。">
 </head>
 <body>
 <script type="text/python">
@@ -20,23 +20,46 @@ print(html)
   <section class="hero hero--section">
     <h1>ギア</h1>
     <p class="lede">
-      短いフィッシュから長いガン、ロングボードまで。形、浮力、長さが、パドル、加速、ターンの性格を決めます。
+      短いフィッシュからロングボードまで。形、浮力、長さが、パドル、加速、ターンの性格を決めます。
     </p>
   </section>
 
+<script type="text/python">
+html, soup = include("../_include/gear-subnav.html")
+print(html)
+</script>
+
+  <section id="boards" class="gear-topic">
+    <h2>ボード</h2>
 <script type="text/python">
 html, soup = include("../_include/board-scale.html")
 print(html)
 </script>
     <p class="hint">
-      万能なボードはありません。幅広で浮力のあるフィッシュは小波で走りやすく、長いガンはスピードのため、ロングボードは早いテイクオフのためにあります。名前の横の範囲は目安であり、絶対的な規則ではありません。
+      万能なボードはありません。幅広で浮力のあるフィッシュは小波で走りやすく、ロングボードは早いテイクオフのためにあります。名前の横の範囲は目安であり、絶対的な規則ではありません。
     </p>
 
-  <section class="section-feed">
+    <div class="section-feed">
 <script type="text/python">
 html, soup = include("../_include/feed.html", section="gear")
 print(html)
 </script>
+    </div>
+  </section>
+
+  <section id="fins" class="gear-topic article">
+    <h2>フィン</h2>
+    <p>フィンはボードのホールド感と方向性をつくります。ボード、波、フィンボックスに合うセットアップを選び、海に入る前にすべてのフィンが確実に固定されていることを確認しましょう。</p>
+  </section>
+
+  <section id="leash" class="gear-topic article">
+    <h2>リーシュ</h2>
+    <p>リーシュは安全装備です。ボードに合うものを使い、毎回コード、レールセーバー、スイベルを確認し、摩耗や傷みがあれば交換しましょう。</p>
+  </section>
+
+  <section id="wetsuit" class="gear-topic article">
+    <h2>ウェットスーツ</h2>
+    <p>水温、風、海にいる時間によって適したウェアは変わります。<a href="wetsuit-guide/index_ja.html">月と地域別のウェットスーツガイドを見る。</a></p>
   </section>
 
 </main>

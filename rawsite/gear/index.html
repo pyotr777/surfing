@@ -7,7 +7,7 @@ print(html)
 </script>
   <title>Gear — Surf Japan</title>
   <meta name="language" content="en">
-  <meta name="description" content="Five board shapes drawn to scale from their measurements, and how much neoprene the water temperature asks for.">
+  <meta name="description" content="Four board shapes drawn to scale from their measurements, plus guides to fins, leashes and wetsuits.">
 </head>
 <body>
 <script type="text/python">
@@ -20,25 +20,48 @@ print(html)
   <section class="hero hero--section">
     <h1>Gear</h1>
     <p class="lede">
-      From a short fish to a long gun and longboard, a board’s shape, volume and
+      From a short fish to a longboard, a board’s shape, volume and
       length decide how it paddles, gathers speed and turns.
     </p>
   </section>
 
+<script type="text/python">
+html, soup = include("../_include/gear-subnav.html")
+print(html)
+</script>
+
+  <section id="boards" class="gear-topic">
+    <h2>Boards</h2>
 <script type="text/python">
 html, soup = include("../_include/board-scale.html")
 print(html)
 </script>
     <p class="hint">
       There is no universal board: a wide, high-volume fish gathers speed in weak surf,
-      a long gun is built for speed, and a longboard gets in early. The ranges by each name are guides, not rigid rules.
+      while a longboard gets in early. The ranges by each name are guides, not rigid rules.
     </p>
 
-  <section class="section-feed">
+    <div class="section-feed">
 <script type="text/python">
 html, soup = include("../_include/feed.html", section="gear")
 print(html)
 </script>
+    </div>
+  </section>
+
+  <section id="fins" class="gear-topic article">
+    <h2>Fins</h2>
+    <p>Fins give a board its hold and direction. Choose a setup that suits the board, the waves and its fin boxes, then make sure every fin is fitted securely before you paddle out.</p>
+  </section>
+
+  <section id="leash" class="gear-topic article">
+    <h2>Leash</h2>
+    <p>A leash is safety equipment. Use one made for the board, inspect the cord, rail saver and swivel before each session, and replace it when it is worn or damaged.</p>
+  </section>
+
+  <section id="wetsuit" class="gear-topic article">
+    <h2>Wetsuit</h2>
+    <p>Water temperature, wind and time in the sea decide what to wear. <a href="wetsuit-guide/index.html">See the wetsuit guide by month and region.</a></p>
   </section>
 
 </main>

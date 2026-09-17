@@ -1,0 +1,21 @@
+<script type="text/python">
+# In-page navigation for the four Gear topics.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+
+print(f'<nav class="subnav" aria-label="{ui["gear_sections"]}">')
+for target, label in (
+    ("boards", ui["gear_boards"]),
+    ("fins", ui["gear_fins"]),
+    ("leash", ui["gear_leash"]),
+    ("wetsuit", ui["gear_wetsuit"]),
+):
+    print(f'  <a href="#{target}">{label}</a>')
+print('</nav>')
+</script>

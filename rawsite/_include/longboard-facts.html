@@ -1,0 +1,34 @@
+<script type="text/python">
+# Range-based facts for the longboard family. Unlike the other board pages,
+# this page describes several shapes rather than one representative board.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+ui = S.UI[lang]
+fins = {
+    "en": "Single · 2+1 · Thruster",
+    "ru": "Сингл · 2+1 · трёхплавниковая",
+    "ja": "シングル・2+1・スラスター",
+}[lang]
+
+rows = [
+    (ui["board_length"], "8&prime;0&Prime;–12&prime;0&Prime;"),
+    (ui["board_width"], "21&Prime;–24&frac12;&Prime;"),
+    (ui["board_thickness"], "2&frac12;&Prime;–3&frac14;&Prime;"),
+    (ui["board_volume"], "55–120&nbsp;L"),
+    (ui["board_fins"], fins),
+    (ui["board_waves"], "1–6&nbsp;ft"),
+]
+
+print('<aside class="facts">')
+print(f'  <h2>{ui["facts_heading"]}</h2>')
+print('  <dl>')
+for label, value in rows:
+    print(f'    <div><dt>{label}</dt><dd>{value}</dd></div>')
+print('  </dl>')
+print('</aside>')
+</script>

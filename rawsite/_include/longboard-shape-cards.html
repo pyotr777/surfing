@@ -1,0 +1,26 @@
+<script type="text/python">
+# Explanatory cards for the four longboard outline families.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+b = S.base_url(page_file)
+
+print('<div class="cards cards--longboard-shapes">')
+for shape in S.LONGBOARD_SHAPES:
+    meta = shape[lang]
+    print(f'  <article class="card" id="{shape["id"]}">')
+    print('    <div class="card-media">')
+    print(f'      <img class="card-longboard-shape" src="{b}img/longboard-shapes/{shape["id"]}.png" '
+          f'alt="{meta["title"]}" width="1024" height="1536" loading="lazy">')
+    print('    </div>')
+    print('    <div class="card-body">')
+    print(f'      <h3>{meta["title"]}</h3>')
+    print(f'      <p class="card-summary">{meta["summary"]}</p>')
+    print('    </div>')
+    print('  </article>')
+print('</div>')
+</script>

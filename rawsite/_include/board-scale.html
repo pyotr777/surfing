@@ -14,7 +14,7 @@ b = S.base_url(page_file)
 
 print('<figure class="boardscale kapa-weave">')
 print('  <div class="boardscale-grid">')
-for row in S.load_boards():
+for row in S.display_boards():
     board = row["id"]
     name = S.BOARDS_META[board][lang]
     board_range = S.BOARD_RANGES[board]

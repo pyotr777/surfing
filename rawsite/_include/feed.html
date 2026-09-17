@@ -59,7 +59,10 @@ if section == "spots":
     lat = {r["id"]: r["lat"] for r in S.load_spots()}
     entries.sort(key=lambda e: -lat.get(e["slug"], 0))
 elif section == "gear":
-    order = {r["id"]: r["order"] for r in S.load_boards()}
+    visible_board_ids = {r["id"] for r in S.display_boards()}
+    entries = [e for e in entries
+               if e["slug"] not in S.BOARDS_META or e["slug"] in visible_board_ids]
+    order = {r["id"]: i for i, r in enumerate(S.display_boards())}
     entries.sort(key=lambda e: (order.get(e["slug"], 99), e["date"]))
 else:
     entries.sort(key=lambda e: e["date"], reverse=True)

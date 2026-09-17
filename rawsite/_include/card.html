@@ -20,11 +20,8 @@ if section == "spots":
              f'{level[lang]}</span><span class="region">{region}</span>')
 elif section == "gear" and e["slug"] in S.BOARDS_META:
     row = S.board_by_id(e["slug"])
-    level = S.LEVELS[row["level"]]
     board_range = S.BOARD_RANGES[row["id"]]
-    badge = (f'<span class="badge" style="--badge:{level["color"]}">'
-             f'{level[lang]}</span>'
-             f'<span class="region">{S.feet_inches_range(*board_range["length_in"])} · '
+    badge = (f'<span class="region">{S.feet_inches_range(*board_range["length_in"])} · '
              f'{board_range["volume_l"][0]:.0f}–{board_range["volume_l"][1]:.0f} L</span>')
 
 print('<article class="card">')
@@ -47,9 +44,12 @@ elif e["date"]:
     print(f'    <p class="card-meta"><time datetime="{e["date"]}">{e["date"]}</time></p>')
 print(f'    <h3><a href="{e["url"]}">{e["title"]}</a></h3>')
 print(f'    <p class="card-summary">{e["summary"]}</p>')
-if e["tags"]:
+tags = e["tags"]
+if section == "gear" and e["slug"] in S.BOARDS_META:
+    tags = [tag for tag in tags if tag not in S.LEVELS]
+if tags:
     print('    <ul class="taglist">')
-    for tag in e["tags"]:
+    for tag in tags:
         print(f'      <li><a href="{base}{S.localize("tags/index.html", lang)}#{tag}">{tag}</a></li>')
     print('    </ul>')
 print(f'    <a class="read-more" href="{e["url"]}">{ui["read_more"]} &rarr;</a>')
