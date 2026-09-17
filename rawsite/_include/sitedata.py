@@ -32,15 +32,15 @@ LANGUAGE_NAMES = {"en": "English", "ru": "Русский", "ja": "日本語"}
 SITE = {
     "en": {
         "name": "Surf Japan",
-        "tagline": "Surf spots, board types, physics of the waves",
+        "tagline": "Surf areas, boards, wave theory and sea safety",
     },
     "ru": {
         "name": "Surf Japan",
-        "tagline": "Cпоты для серфинга, типы досок, физика волн",
+        "tagline": "Районы для сёрфинга, доски, физика волн и безопасность на море",
     },
     "ja": {
         "name": "Surf Japan",
-        "tagline": "サーフスポット、ボード、波のしくみ",
+        "tagline": "サーフエリア、ボード、波のしくみ、海の安全",
     },
 }
 
@@ -54,25 +54,18 @@ UI = {
     "en":
         {
             "nav_home": "Home",
-            "nav_spots": "Spots",
-            "nav_gear": "Gear",
             "gear_sections": "Gear sections",
             "gear_boards": "Boards",
             "gear_fins": "Fins",
             "gear_leash": "Leash",
             "gear_wetsuit": "Wetsuit",
-            "nav_waves": "Waves",
-            "nav_data": "Compare spots",
             "nav_tags": "Tags",
             "nav_how": "About",
             "languages": "Languages",
             "skip": "Skip to content",
             "nav_label": "Main navigation",
-            "switch": "Русский",
-            "switch_title": "This page in Russian",
             "read_more": "Read more",
             "toc_heading": "What is on this site",
-            "toc_count": "pages",
             "board_length": "Length",
             "board_width": "Width",
             "board_thickness": "Thickness",
@@ -86,9 +79,7 @@ UI = {
                 "width and shape ratios in csv/boards.csv. The bar is "
                 "six feet, for reference.",
             "map_heading": "Where the waves are",
-            "map_caption": "Illustrated map of surfing areas on the Kanto–Tokai coast.",
-            "map_legend": "Difficulty",
-            "map_pending": "Blue pins are new locations; their guides are in preparation.",
+            "map_caption": "Illustrated map of surf areas in Chiba and Shonan.",
             "table_spot": "Spot",
             "table_region": "Region",
             "table_break": "Break",
@@ -102,8 +93,6 @@ UI = {
             "table_sort_hint": "Click a column heading to sort.",
             "facts_heading": "At a glance",
             "tags_heading": "All tags",
-            "tags_intro": "Tags are shared between both languages, so an English "
-                          "and a Russian page carrying the same tag land in the same list.",
             "tagged": "Tagged",
             "back_home": "Back to all spots",
             "no_pages": "No pages yet.",
@@ -116,25 +105,18 @@ UI = {
     "ru":
         {
             "nav_home": "Главная",
-            "nav_spots": "Споты",
-            "nav_gear": "Снаряжение",
             "gear_sections": "Разделы снаряжения",
             "gear_boards": "Доски",
             "gear_fins": "Плавники",
             "gear_leash": "Лиш",
             "gear_wetsuit": "Гидрокостюм",
-            "nav_waves": "Волны",
-            "nav_data": "Сравнение спотов",
             "nav_tags": "Теги",
             "nav_how": "О сайте",
             "languages": "Языки",
             "skip": "К содержанию",
             "nav_label": "Основная навигация",
-            "switch": "English",
-            "switch_title": "Эта же страница по-английски",
             "read_more": "Читать",
             "toc_heading": "Что есть на сайте",
-            "toc_count": "страниц",
             "board_length": "Длина",
             "board_width": "Ширина",
             "board_thickness": "Толщина",
@@ -148,9 +130,7 @@ UI = {
                 "пропорций формы в csv/boards.csv. Полоса внизу — "
                 "шесть футов для сравнения.",
             "map_heading": "Где ловить волну",
-            "map_caption": "Иллюстрированная карта районов для серфинга на побережье Канто–Токай.",
-            "map_legend": "Уровень",
-            "map_pending": "Синие пины — новые точки; страницы для них готовятся.",
+            "map_caption": "Иллюстрированная карта районов для сёрфинга в Тибе и Сёнане.",
             "table_spot": "Спот",
             "table_region": "Регион",
             "table_break": "Тип волны",
@@ -164,8 +144,6 @@ UI = {
             "table_sort_hint": "Нажмите на заголовок столбца, чтобы отсортировать.",
             "facts_heading": "Коротко",
             "tags_heading": "Все теги",
-            "tags_intro": "Теги общие для обоих языков, поэтому английская и русская "
-                          "страницы с одним тегом попадают в один список.",
             "tagged": "Тег",
             "back_home": "Ко всем спотам",
             "no_pages": "Страниц пока нет.",
@@ -178,15 +156,11 @@ UI = {
     "ja":
         {
             "nav_home": "ホーム",
-            "nav_spots": "スポット",
-            "nav_gear": "ギア",
             "gear_sections": "ギアの項目",
             "gear_boards": "ボード",
             "gear_fins": "フィン",
             "gear_leash": "リーシュ",
             "gear_wetsuit": "ウェットスーツ",
-            "nav_waves": "波",
-            "nav_data": "スポット比較",
             "nav_tags": "タグ",
             "nav_how": "このサイトについて",
             "languages": "言語",
@@ -194,7 +168,6 @@ UI = {
             "nav_label": "メインナビゲーション",
             "read_more": "詳しく見る",
             "toc_heading": "このサイトの内容",
-            "toc_count": "ページ",
             "board_length": "長さ",
             "board_width": "幅",
             "board_thickness": "厚さ",
@@ -205,9 +178,7 @@ UI = {
             "board_scale_heading": "4種類を同じ縮尺で",
             "board_scale_caption": "アウトラインは、csv/boards.csv の長さ、幅、形状比からビルド時に描かれます。下のバーは6フィートです。",
             "map_heading": "波を探す場所",
-            "map_caption": "関東・東海沿岸のサーフィンエリアを示す図解地図",
-            "map_legend": "レベル",
-            "map_pending": "青いピンは新しい地点です。ガイドページは準備中です。",
+            "map_caption": "千葉と湘南のサーフィンエリアを示す図解地図",
             "table_spot": "スポット",
             "table_region": "エリア",
             "table_break": "ブレイク",
@@ -221,7 +192,6 @@ UI = {
             "table_sort_hint": "列の見出しをクリックすると並べ替えられます。",
             "facts_heading": "ポイント概要",
             "tags_heading": "すべてのタグ",
-            "tags_intro": "タグは全言語で共通です。同じタグを持つ英語、ロシア語、日本語のページは一つの一覧にまとまります。",
             "tagged": "タグ",
             "back_home": "すべてのスポットへ戻る",
             "no_pages": "ページはまだありません。",
@@ -238,16 +208,6 @@ UI = {
 # --------------------------------------------------------------------------
 
 REGIONS = {
-    "hokkaido": {
-        "en": "Hokkaido",
-        "ru": "Хоккайдо",
-        "ja": "北海道"
-    },
-    "niigata": {
-        "en": "Niigata",
-        "ru": "Ниигата",
-        "ja": "新潟"
-    },
     "chiba": {
         "en": "Chiba",
         "ru": "Тиба",
@@ -258,16 +218,6 @@ REGIONS = {
         "ru": "Сёнан",
         "ja": "湘南"
     },
-    "izu-islands": {
-        "en": "Izu Islands",
-        "ru": "Острова Идзу",
-        "ja": "伊豆諸島"
-    },
-    "miyazaki": {
-        "en": "Miyazaki",
-        "ru": "Миядзаки",
-        "ja": "宮崎"
-    },
 }
 
 BREAKS = {
@@ -275,16 +225,6 @@ BREAKS = {
         "en": "beach break",
         "ru": "бич-брейк",
         "ja": "ビーチブレイク"
-    },
-    "rivermouth": {
-        "en": "rivermouth",
-        "ru": "устье реки",
-        "ja": "河口"
-    },
-    "reef": {
-        "en": "reef",
-        "ru": "риф",
-        "ja": "リーフ"
     },
 }
 
@@ -310,16 +250,6 @@ LEVELS = {
 }
 
 SEASONS = {
-    "winter": {
-        "en": "winter",
-        "ru": "зима",
-        "ja": "冬"
-    },
-    "spring": {
-        "en": "spring",
-        "ru": "весна",
-        "ja": "春"
-    },
     "summer-autumn": {
         "en": "summer–autumn",
         "ru": "лето — осень",
@@ -333,7 +263,7 @@ SEASONS = {
 }
 
 # --------------------------------------------------------------------------
-# The three content sections. Order matters: it drives the table of contents,
+# The content sections. Order matters: it drives the table of contents,
 # the navigation and the order of the feeds on the front page.
 # --------------------------------------------------------------------------
 
@@ -596,99 +526,6 @@ TAILS = {
     },
 }
 
-# Spot names, and where the map label should sit relative to its pin.
-# dx/dy are in map pixels; "anchor" is the SVG text-anchor.
-SPOTS_META = {
-    "shioya": {
-        "en": "Shioya",
-        "ru": "Сиоя",
-        "ja": "塩屋",
-        "dx": 14,
-        "dy": -6,
-        "anchor": "start"
-    },
-    "ikarashi": {
-        "en": "Ikarashi",
-        "ru": "Икараси",
-        "ja": "飯岡",
-        "dx": -14,
-        "dy": -6,
-        "anchor": "end"
-    },
-    "tsurigasaki": {
-        "en": "Tsurigasaki",
-        "ru": "Цуригасаки",
-        "ja": "釣ヶ崎",
-        "dx": 20,
-        "dy": -10,
-        "anchor": "start"
-    },
-    "iioka-mansionshita": {
-        "en": "Iioka Mansionshita",
-        "ru": "Ииока: Мансёнсита",
-        "ja": "飯岡・マンション下",
-        "dx": -18,
-        "dy": -12,
-        "anchor": "end"
-    },
-    "kanpomae": {
-        "en": "Kanpomae",
-        "ru": "Канпомаэ",
-        "ja": "かんぽ前",
-        "dx": -18,
-        "dy": 20,
-        "anchor": "end"
-    },
-    "sakuta": {
-        "en": "Sakuta",
-        "ru": "Сакута",
-        "ja": "作田",
-        "dx": 18,
-        "dy": -12,
-        "anchor": "start"
-    },
-    "ichinomiya": {
-        "en": "Ichinomiya",
-        "ru": "Итиномия",
-        "ja": "一宮",
-        "dx": -18,
-        "dy": -18,
-        "anchor": "end"
-    },
-    "onjuku": {
-        "en": "Onjuku",
-        "ru": "Ондзюку",
-        "ja": "御宿",
-        "dx": 18,
-        "dy": 18,
-        "anchor": "start"
-    },
-    "kugenuma": {
-        "en": "Kugenuma",
-        "ru": "Кугэнума",
-        "ja": "鵠沼",
-        "dx": -20,
-        "dy": 6,
-        "anchor": "end"
-    },
-    "habushiura": {
-        "en": "Habushiura",
-        "ru": "Хабусиура",
-        "ja": "羽伏浦",
-        "dx": 14,
-        "dy": 14,
-        "anchor": "start"
-    },
-    "kisakihama": {
-        "en": "Kisakihama",
-        "ru": "Кисакихама",
-        "ja": "木崎浜",
-        "dx": 14,
-        "dy": 4,
-        "anchor": "start"
-    },
-}
-
 # Area names and label placement on the illustrated overview map.  These are
 # navigation areas, not administrative prefectures: a dense coast can then be
 # explored on a separate map without overlapping every individual surf spot.
@@ -725,13 +562,17 @@ AREAS_META = {
     },
 }
 
+# The comparison presents those same six navigation areas. Keeping one source
+# of names prevents the map and the table from drifting apart again.
+SPOTS_META = AREAS_META
+
 # The overview groups the coast into navigation areas.  A card describes the
 # shared feel of a stretch of shore; individual spot pages carry the more
 # precise, local conditions.
 AREAS = {
     "asahi":
         {
-            "image": "ikarashi",
+            "image": "asahi",
             "region": {
                 "en": "Chiba · Chiba North",
                 "ru": "Тиба · Тиба Кита",
@@ -746,7 +587,7 @@ AREAS = {
         },
     "sosa":
         {
-            "image": "shioya",
+            "image": "sosa",
             "region": {
                 "en": "Chiba · Chiba North",
                 "ru": "Тиба · Тиба Кита",
@@ -761,7 +602,7 @@ AREAS = {
         },
     "sakuta":
         {
-            "image": "tsurigasaki",
+            "image": "sakuta",
             "region": {
                 "en": "Chiba · Chiba North",
                 "ru": "Тиба · Тиба Кита",
@@ -776,7 +617,7 @@ AREAS = {
         },
     "ichinomiya":
         {
-            "image": "habushiura",
+            "image": "ichinomiya",
             "region": {
                 "en": "Chiba · Chiba North",
                 "ru": "Тиба · Тиба Кита",
@@ -794,7 +635,7 @@ AREAS = {
         },
     "katsuura":
         {
-            "image": "kisakihama",
+            "image": "katsuura",
             "region": {
                 "en": "Chiba · Chiba South",
                 "ru": "Тиба · Тиба Минами",
@@ -812,7 +653,7 @@ AREAS = {
         },
     "fujisawa":
         {
-            "image": "kugenuma",
+            "image": "fujisawa",
             "region": {
                 "en": "Kanagawa · Shonan",
                 "ru": "Канагава · Сёнан",
@@ -964,21 +805,14 @@ AREA_MAPS = {
         },
 }
 
-# Tag labels are deliberately identical in both languages -- see UI["tags_intro"].
+# Tag labels are deliberately identical in every language.
 TAGS = [
     "beginner",
     "intermediate",
     "advanced",
-    "beach-break",
-    "rivermouth",
-    "barrel",
     "cold-water",
     "warm-water",
     "typhoon-swell",
-    "winter-swell",
-    "tokyo-daytrip",
-    "island",
-    "olympic",
     "board",
     "small-waves",
     "big-waves",
@@ -1082,7 +916,7 @@ def swell_arc(window):
 
 
 def load_spots():
-    """Read csv/spots.csv and return a list of dicts, north to south."""
+    """Read the current area comparison data, ordered north to south."""
     path = os.path.join(ROOT, "csv", "spots.csv")
     with open(path, encoding="utf-8", newline="") as f:
         rows = list(csv.DictReader(f))
@@ -1339,7 +1173,7 @@ def local_name(page_file, lang):
 def base_url(page_file):
     """Relative path from the page being rendered up to the site root.
 
-    Returns '' for a page in the root and '../../' for spots/kugenuma/index.html,
+    Returns '' for a page in the root and '../../' for spots/<area>/index.html,
     so templates can link without ever hard-coding an absolute path.
     """
     rel = os.path.relpath(ROOT, os.path.dirname(os.path.abspath(page_file)))
@@ -1353,6 +1187,23 @@ def localize(name, lang):
     if lang == "ja":
         return name[:-len(".html")] + JA_SUFFIX
     return name
+
+
+def page_count_label(count, lang):
+    """Return the correctly inflected word for a section page count."""
+    if lang == "en":
+        return "page" if count == 1 else "pages"
+    if lang == "ja":
+        return "ページ"
+    last_two = count % 100
+    last = count % 10
+    if 11 <= last_two <= 14:
+        return "страниц"
+    if last == 1:
+        return "страница"
+    if 2 <= last <= 4:
+        return "страницы"
+    return "страниц"
 
 
 def nav_items(page_file):

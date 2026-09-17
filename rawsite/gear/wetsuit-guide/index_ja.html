@@ -5,10 +5,10 @@
 html, soup = include("../../_include/head.html")
 print(html)
 </script>
-  <title>What to wear, by month and latitude — Surf Japan</title>
-  <meta name="section" content="guide">
+  <title>千葉と湘南のウェットスーツ — Surf Japan</title>
+  <meta name="section" content="gear">
   <meta name="language" content="ja">
-  <meta name="description" content="Japan spans eleven degrees of latitude in this guide alone. In February that is a ten-degree difference in water temperature — and the difference between a spring suit and a hood.">
+  <meta name="description" content="千葉と湘南で月ごとに選ぶウェットスーツの厚みのガイド。">
   <meta name="keywords" content="cold-water, warm-water">
   <meta name="date" content="2026-07-02">
 </head>
@@ -20,45 +20,37 @@ print(html)
 
 <main id="main">
 <script type="text/python">
-html, soup = include("../../_include/breadcrumbs.html", title="What to wear")
+html, soup = include("../../_include/breadcrumbs.html", title="ウェットスーツの選び方")
 print(html)
 </script>
 
   <article class="article">
-    <h1>What to wear, by month and latitude</h1>
-    <p class="standfirst">One table, six regions, twelve months. The gradient is the interesting part.</p>
+    <h1>千葉と湘南で何を着るか</h1>
+    <p class="standfirst">ひとつの表、ふたつの海岸、十二か月。</p>
 
     <p>
-      Japan is long. The six spots on this site span from 43&nbsp;°N in Hokkaido
-      to 32&nbsp;°N in Miyazaki — roughly the distance from Milan to Tunis. In
-      August that barely matters: the whole archipelago sits between 22 and
-      28&nbsp;°C and almost everyone is in a spring suit or less.
+      このガイドのエリアはほぼ同じ緯度にありますが、水温は季節によって大きく
+      変わります。7月と8月は通常2&nbsp;mmのスプリングスーツで十分です。冬は
+      表が5&nbsp;mmを示し、フード、ブーツ、グローブが必要になることもあります。
     </p>
     <p>
-      February is where it shows. Miyazaki is still 18&nbsp;°C, which is
-      comfortable in 3&nbsp;mm. Shioya, on the Sea of Japan coast of Hokkaido, is
-      8&nbsp;°C, which means 5&nbsp;mm with a hood, boots and gloves, and a
-      session that ends when your hands stop working rather than when the waves
-      do.
+      千葉と湘南はおおむね同じ季節のリズムです。太平洋に開いた千葉のビーチは
+      春に少し早く冷えますが、夏の終わりには両地域とも暖かく、台風うねりが
+      届き始めます。
     </p>
 <script type="text/python">
 html, soup = include("../../_include/wetsuit-table.html")
 print(html)
 </script>
-    <h2>Reading the grid</h2>
+    <h2>表の読み方</h2>
     <p>
-      Two patterns are worth noticing. The first is the obvious one: the table
-      gets darker as you move up the rows, because the rows are ordered north to
-      south, exactly like the pins on the map. The second is that the seasons are
-      not symmetrical. Water lags air by about two months, so September is warmer
-      than June everywhere, and the coldest column is February rather than
-      December.
+      1年の装備計画は、どの行も左から右へ読んでください。数字はミリメートル
+      単位の厚みで、絶対の答えではありません。風、入水時間、寒さへの強さで
+      快適な選択は変わります。
     </p>
     <p>
-      That lag is convenient. On the Pacific side it means typhoon season, the
-      best swell of the year, lands on the warmest water of the year. On the Sea
-      of Japan side it means the opposite: the swell arrives exactly when the
-      water is at its worst.
+      実用的な目安は、初夏から秋は2〜3&nbsp;mm、冬の半年は4〜5&nbsp;mmです。
+      入水前には必ず実際の予報とローカルの状況も確認してください。
     </p>
     <p>
       The grid is generated from <code>csv/wetsuit.csv</code> during the build,

@@ -12,13 +12,7 @@ ui = S.UI[lang]
 e = entry
 
 badge = ""
-if section == "spots":
-    row = S.spot_by_id(e["slug"])
-    level = S.LEVELS[row["level"]]
-    region = S.REGIONS[row["region"]][lang]
-    badge = (f'<span class="badge" style="--badge:{level["color"]}">'
-             f'{level[lang]}</span><span class="region">{region}</span>')
-elif section == "gear" and e["slug"] in S.BOARDS_META:
+if section == "gear" and e["slug"] in S.BOARDS_META:
     row = S.board_by_id(e["slug"])
     board_range = S.BOARD_RANGES[row["id"]]
     badge = (f'<span class="region">{S.feet_inches_range(*board_range["length_in"])} · '
@@ -31,9 +25,6 @@ if section == "gear" and e["slug"] in S.BOARDS_META:
     name = S.BOARDS_META[row["id"]][lang]
     print(f'    <img class="card-board" src="{base}img/boards-2b/cards/{row["id"]}.png" '
           f'alt="{name}" width="240" height="360" loading="lazy">')
-elif section == "spots":
-    print(f'    <img src="{base}img/spots-2b/{e["slug"]}.png" alt="" '
-          'width="1672" height="941" loading="lazy">')
 else:
     print(f'    <img src="{base}img/{e["slug"]}.svg" alt="" width="480" height="270" loading="lazy">')
 print('  </a>')

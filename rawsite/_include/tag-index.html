@@ -19,6 +19,7 @@ ui = S.UI[lang]
 b = S.base_url(page_file)
 
 pages = []
+visible_board_ids = {row["id"] for row in S.display_boards()}
 for section in S.SECTIONS:
     for path in sorted(glob.glob(os.path.join(S.ROOT, section, "*", "index*.html"))):
         with open(path, encoding="utf-8") as f:
@@ -32,6 +33,10 @@ for section in S.SECTIONS:
             continue
         h1 = soup.find("h1")
         slug = os.path.basename(os.path.dirname(path))
+        # Gun artwork and its archived source page are retained in the
+        # repository, but the board is not part of the current Chiba guide.
+        if section == "gear" and slug in S.BOARDS_META and slug not in visible_board_ids:
+            continue
         pages.append({
             "url": b + f"{section}/{slug}/" + os.path.basename(path),
             "title": h1.decode_contents().strip() if h1 else slug,

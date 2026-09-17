@@ -1,20 +1,11 @@
 <script type="text/python">
-# The map. A label-free illustrated Japan map is used as a flat backdrop.
-# Each pin is positioned against its hand-drawn coastline at build time.
-#
-# Parameters (all optional):
-#   highlight  spot id to emphasise; all others are dimmed
-#   mini       True for the compact version used on a spot page
-#   linked     False to render pins without links (used on the spot's own page)
+# The overview map. A label-free illustrated map is used as a flat backdrop;
+# area labels are positioned against its hand-drawn coastline at build time.
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
-
-highlight = params.get("highlight")
-mini = params.get("mini", False)
-linked = params.get("linked", True)
 
 lang = S.lang_of(page_file)
 ui = S.UI[lang]
@@ -24,8 +15,7 @@ W, H = S.MAP["width"], S.MAP["height"]
 basemap = os.path.join(S.ROOT, "img", "chiba-fantasy-map.png")
 has_basemap = os.path.exists(basemap)
 
-classes = "surfmap" + (" surfmap--mini" if mini else "")
-print(f'<figure class="{classes}">')
+print('<figure class="surfmap">')
 print('  <div class="surfmap-frame">')
 print(f'  <svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg"'
       f' role="img" aria-label="{ui["map_heading"]}">')
@@ -39,29 +29,27 @@ else:
     print(f'    <text x="{W/2}" y="{H/2}" text-anchor="middle" fill="#9ec9dc"'
           f' font-size="16">img/chiba-fantasy-map.png is missing</text>')
 
-if not mini:
-    for area_id, position in S.MAP["area_labels"].items():
-        meta = S.AREAS_META[area_id]
-        url = b + f'spots/{area_id}/' + S.localize("index.html", lang)
-        x = position["x"]
-        y = position["y"]
-        rotation = position["rotation"]
-        skew = position.get("skew", 0)
-        print(f'    <a class="spot-marker" href="{url}" aria-label="{meta[lang]}">')
-        print(f'      <g transform="translate({x:.1f} {y:.1f}) '
-              f'rotate({rotation:.1f}) skewX({skew:.1f})">')
-        print(f'        <text class="pin-label" x="0" y="0" text-anchor="end">'
-              f'{meta[lang]}</text>')
-        print('      </g>')
-        print('    </a>')
+for area_id, position in S.MAP["area_labels"].items():
+    meta = S.AREAS_META[area_id]
+    url = b + f'spots/{area_id}/' + S.localize("index.html", lang)
+    x = position["x"]
+    y = position["y"]
+    rotation = position["rotation"]
+    skew = position.get("skew", 0)
+    print(f'    <a class="spot-marker" href="{url}" aria-label="{meta[lang]}">')
+    print(f'      <g transform="translate({x:.1f} {y:.1f}) '
+          f'rotate({rotation:.1f}) skewX({skew:.1f})">')
+    print(f'        <text class="pin-label" x="0" y="0" text-anchor="end">'
+          f'{meta[lang]}</text>')
+    print('      </g>')
+    print('    </a>')
 
 print('  </svg>')
 print('  </div>')
 
-if not mini:
-    print('  <figcaption>')
-    print(f'    <span class="map-note">{ui["map_caption"]}</span>')
-    print('  </figcaption>')
+print('  <figcaption>')
+print(f'    <span class="map-note">{ui["map_caption"]}</span>')
+print('  </figcaption>')
 
 print('</figure>')
 </script>

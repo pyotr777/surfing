@@ -2,7 +2,7 @@
 # A list of cards built by reading the other pages of the site.
 #
 # Parameters:
-#   section  "spots" or "guide"  (which subdirectory to scan)
+#   section  directory to scan (currently "gear" or "waves")
 #
 # Nothing is duplicated: the title, the summary and the tags of every card
 # are pulled out of the target page itself with BeautifulSoup, so editing a
@@ -53,15 +53,13 @@ for path in sorted(glob.glob(pattern)):
     })
 
 # Each section has its own natural order, and all three come from data rather
-# than from a hand-kept list: spots follow the map from north to south, boards
-# follow the order column of csv/boards.csv, articles read newest first.
-if section == "spots":
-    lat = {r["id"]: r["lat"] for r in S.load_spots()}
-    entries.sort(key=lambda e: -lat.get(e["slug"], 0))
-elif section == "gear":
+# than from a hand-kept list: boards follow the order column of csv/boards.csv,
+# and articles read newest first.
+if section == "gear":
     visible_board_ids = {r["id"] for r in S.display_boards()}
-    entries = [e for e in entries
-               if e["slug"] not in S.BOARDS_META or e["slug"] in visible_board_ids]
+    # The Gear landing page uses this feed for the Boards subsection only.
+    # Other gear guides, such as wetsuits, are reached through the subnavigation.
+    entries = [e for e in entries if e["slug"] in visible_board_ids]
     order = {r["id"]: i for i, r in enumerate(S.display_boards())}
     entries.sort(key=lambda e: (order.get(e["slug"], 99), e["date"]))
 else:

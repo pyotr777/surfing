@@ -1,6 +1,6 @@
 # Surf Japan
 
-[Surf Japan](https://pyotr777.github.io/surfing/) is an independent, non-commercial guide to surfing Japan’s Pacific coast. It begins with Chiba, Kanagawa and Shizuoka: their coastal areas, surf spots, boards and the way the coastline shapes swell.
+[Surf Japan](https://pyotr777.github.io/surfing/) is an independent, non-commercial guide to surfing Japan’s Pacific coast. It currently covers Chiba and Shonan: their coastal areas, surf spots, boards, sea safety and the way the coastline shapes swell.
 
 The site is made and maintained by surfing enthusiasts. It has no paid rankings or sponsored listings, and it will grow gradually as new areas and spots are researched. Conditions, access and safety can change quickly; always check the forecast, local rules and the beach before going out.
 
@@ -60,6 +60,7 @@ rawsite/
   spots/                                      area overview and profiles
   gear/                                       boards and wetsuit guide
   waves/                                      waves and swell articles
+  safety/                                     sea-safety overview
   data/  tags/                               comparison and tag index
   _include/                                  shared templates and data
   css/  js/  csv/  img/                      static assets and source data

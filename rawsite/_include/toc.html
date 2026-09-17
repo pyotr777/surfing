@@ -20,7 +20,16 @@ print('<nav class="toc" aria-label="' + ui["toc_heading"] + '">')
 print('  <ol>')
 for i, section in enumerate(S.SECTIONS, start=1):
     meta = S.SECTION_META[section][lang]
-    count = len(glob.glob(os.path.join(S.ROOT, section, "*", suffix)))
+    paths = glob.glob(os.path.join(S.ROOT, section, "*", suffix))
+    # Gun source files are intentionally retained but no longer belong to the
+    # public Chiba board guide, so they do not inflate the visible page count.
+    if section == "gear":
+        visible_board_ids = {row["id"] for row in S.display_boards()}
+        paths = [path for path in paths
+                 if os.path.basename(os.path.dirname(path)) not in S.BOARDS_META
+                 or os.path.basename(os.path.dirname(path)) in visible_board_ids]
+    # Safety currently starts with its landing page rather than child guides.
+    count = len(paths) or (1 if section == "safety" else 0)
     print(f'    <li class="toc-item">')
     print(f'      <a href="{S.section_url(section, page_file)}">')
     print(f'        <span class="toc-num">{i:02d}</span>')
@@ -28,7 +37,7 @@ for i, section in enumerate(S.SECTIONS, start=1):
     print(f'          <span class="toc-title">{meta["title"]}</span>')
     print(f'          <span class="toc-blurb">{meta["blurb"]}</span>')
     print(f'        </span>')
-    print(f'        <span class="toc-count">{count}&nbsp;{ui["toc_count"]}</span>')
+    print(f'        <span class="toc-count">{count}&nbsp;{S.page_count_label(count, lang)}</span>')
     print(f'      </a>')
     print(f'    </li>')
 print('  </ol>')

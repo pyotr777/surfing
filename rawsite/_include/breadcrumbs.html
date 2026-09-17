@@ -13,7 +13,7 @@ lang = S.lang_of(page_file)
 ui = S.UI[lang]
 b = S.base_url(page_file)
 
-# rawsite/spots/kugenuma/index_ru.html -> ["spots", "kugenuma"]
+# rawsite/spots/<area>/index_ru.html -> ["spots", "<area>"]
 rel = os.path.relpath(os.path.dirname(os.path.abspath(page_file)), S.ROOT)
 parts = [] if rel == "." else rel.split(os.sep)
 
