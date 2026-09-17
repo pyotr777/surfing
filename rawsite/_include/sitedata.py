@@ -835,40 +835,40 @@ MAP = {
         # All labels use a right-aligned SVG anchor so their ends retain a
         # consistent small gap from the waterline in every language.
         "asahi": {
-            "x": 1410,
-            "y": 320,
-            "rotation": 29,
-            "skew": -23
+            "x": 1440,
+            "y": 340,
+            "rotation": 32,
+            "skew": -11
         },
         "sosa": {
             "x": 1280,
             "y": 325,
-            "rotation": 29,
-            "skew": -23
+            "rotation": 32,
+            "skew": -11
         },
         "sakuta": {
             "x": 1120,
             "y": 380,
-            "rotation": 29,
-            "skew": -23
+            "rotation": 32,
+            "skew": -11
         },
         "ichinomiya": {
             "x": 980,
             "y": 500,
-            "rotation": 29,
-            "skew": -23
+            "rotation": 32,
+            "skew": -11
         },
         "katsuura": {
             "x": 820,
             "y": 690,
-            "rotation": 29,
-            "skew": -23
+            "rotation": 32,
+            "skew": -11
         },
         "fujisawa": {
             "x": 300,
             "y": 255,
-            "rotation": 29,
-            "skew": -23
+            "rotation": 32,
+            "skew": -11
         },
     },
 }
