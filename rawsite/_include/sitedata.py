@@ -60,6 +60,7 @@ UI = {
             "gear_leash": "Leash",
             "gear_wetsuit": "Wetsuit",
             "nav_tags": "Tags",
+            "nav_glossary": "Glossary",
             "nav_how": "About",
             "languages": "Languages",
             "skip": "Skip to content",
@@ -111,6 +112,7 @@ UI = {
             "gear_leash": "Лиш",
             "gear_wetsuit": "Гидрокостюм",
             "nav_tags": "Теги",
+            "nav_glossary": "Глоссарий",
             "nav_how": "О сайте",
             "languages": "Языки",
             "skip": "К содержанию",
@@ -162,6 +164,7 @@ UI = {
             "gear_leash": "リーシュ",
             "gear_wetsuit": "ウェットスーツ",
             "nav_tags": "タグ",
+            "nav_glossary": "用語集",
             "nav_how": "このサイトについて",
             "languages": "言語",
             "skip": "本文へ移動",
@@ -1217,6 +1220,9 @@ def nav_items(page_file):
     items = [(b + localize("index.html", lang), u["nav_home"])]
     for name in SECTIONS:
         items.append((b + localize(f"{name}/index.html", lang), SECTION_META[name][lang]["title"]))
+    glossary_source = os.path.join(ROOT, localize("glossary/index.html", lang))
+    if os.path.exists(glossary_source):
+        items.append((b + localize("glossary/index.html", lang), u["nav_glossary"]))
     items += [
         (b + localize("tags/index.html", lang), u["nav_tags"]),
         (b + localize("about.html", lang), u["nav_how"]),

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Surf glossary — Surf Japan</title>
+  <meta name="language" content="en">
+  <meta name="description" content="An English-first surf glossary of waves, breaks, conditions, boards, techniques, safety and surf language.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+  <section class="hero hero--section">
+    <h1>Surf glossary</h1>
+    <p class="lede">The vocabulary of waves, boards, conditions and riding — arranged as a set of connected classifications rather than one long A–Z list.</p>
+  </section>
+
+  <section class="glossary-intro" aria-label="How to use the glossary">
+    <p>
+      Open a classification, then a subgroup, to browse its terms and concise
+      definitions. Some terms belong in more than one part of the surf world;
+      this first edition gives each term one clear home and links established
+      board guides where they already exist.
+    </p>
+    <aside class="glossary-key">
+      <h2>How it is organised</h2>
+      <p><strong>Classifications</strong> sort related terms by meaning. English is the canonical language; Russian and Japanese names will be added as localised terms and aliases.</p>
+    </aside>
+  </section>
+
+<script type="text/python">
+html, soup = include("../_include/glossary-tree.html")
+print(html)
+</script>
+
+  <p class="glossary-footer-note">There are no unclassified terms in this edition. New terms will be added to the relevant branch rather than collected in a separate catch-all list.</p>
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

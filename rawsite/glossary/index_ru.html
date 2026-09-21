@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>Глоссарий сёрфинга — Surf Japan</title>
+  <meta name="language" content="ru">
+  <meta name="description" content="Русский глоссарий сёрфинга: волны, брейки, условия, доски, техники, безопасность и язык сёрфинга.">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+  <section class="hero hero--section">
+    <h1>Глоссарий сёрфинга</h1>
+    <p class="lede">Словарь волн, досок, условий и катания — не единым алфавитным списком, а через связанные классификации.</p>
+  </section>
+
+  <section class="glossary-intro" aria-label="Как пользоваться глоссарием">
+    <p>
+      Откройте классификацию, затем подгруппу, чтобы увидеть термины и короткие
+      определения. Английское название и распространённые варианты приведены под
+      русским термином: в сёрфинге они часто употребляются рядом.
+    </p>
+    <aside class="glossary-key">
+      <h2>Как устроен словарь</h2>
+      <p><strong>Классификации</strong> объединяют близкие по смыслу понятия. Английские ключи остаются общими для всех языков; русский термин — основной на этой странице.</p>
+    </aside>
+  </section>
+
+<script type="text/python">
+html, soup = include("../_include/glossary-tree.html")
+print(html)
+</script>
+
+  <p class="glossary-footer-note">В этой версии нет терминов вне классификаций: новые понятия будут добавляться в подходящую ветвь, а не в отдельный общий список.</p>
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

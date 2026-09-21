@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script type="text/python">
+html, soup = include("../_include/head.html")
+print(html)
+</script>
+  <title>サーフィン用語集 — Surf Japan</title>
+  <meta name="language" content="ja">
+  <meta name="description" content="波、ブレイク、コンディション、ボード、テクニック、安全、サーフィンの言葉をまとめた日本語の用語集。">
+</head>
+<body>
+<script type="text/python">
+html, soup = include("../_include/header.html")
+print(html)
+</script>
+
+<main id="main">
+  <section class="hero hero--section">
+    <h1>サーフィン用語集</h1>
+    <p class="lede">波、ボード、コンディション、乗り方の言葉を、一つの長い五十音順リストではなく、関連する分類としてまとめました。</p>
+  </section>
+
+  <section class="glossary-intro" aria-label="用語集の使い方">
+    <p>
+      分類を開き、次に下位のグループを開くと、用語と短い定義を読めます。
+      英語の正式な用語とよく使われる別名は、日本語の用語の下に示しています。
+    </p>
+    <aside class="glossary-key">
+      <h2>用語集の構成</h2>
+      <p><strong>分類</strong>は意味の近い言葉をまとめます。英語のキーはすべての言語で共通とし、このページでは日本語を主な用語として表示します。</p>
+    </aside>
+  </section>
+
+<script type="text/python">
+html, soup = include("../_include/glossary-tree.html")
+print(html)
+</script>
+
+  <p class="glossary-footer-note">この版では分類に入らない用語はありません。新しい言葉は、別の総合リストに集めるのではなく、適切な枝へ追加します。</p>
+</main>
+
+<script type="text/python">
+html, soup = include("../_include/footer.html")
+print(html)
+</script>
+</body>
+</html>

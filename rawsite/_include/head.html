@@ -18,7 +18,8 @@ print('<meta charset="utf-8">')
 print('<meta name="viewport" content="width=device-width, initial-scale=1">')
 print(f'<link rel="stylesheet" href="{b}css/style.css?v={css_version}">')
 for other_lang in S.LANGS:
-    if other_lang != lang:
+    target_file = os.path.join(os.path.dirname(os.path.abspath(page_file)), S.local_name(page_file, other_lang))
+    if other_lang != lang and os.path.exists(target_file):
         print(f'<link rel="alternate" hreflang="{other_lang}" href="{S.local_name(page_file, other_lang)}">')
 print(f'<link rel="icon" href="{b}img/favicon.svg" type="image/svg+xml">')
 print('''<script>(function(d){var config={kitId:"cvs6exh",scriptTimeout:3000,async:true},h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\\bwf-loading\\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src="https://use.typekit.net/"+config.kitId+".js";tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)})(document);''' + '</' + 'script>')

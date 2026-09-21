@@ -1,0 +1,62 @@
+<script type="text/python">
+# Render the glossary from its language-specific vocabulary data.  The page is
+# a native nested details tree, so it works without JavaScript.
+import html
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+from glossary_data import TERMS, TREE
+
+lang = S.lang_of(page_file)
+if lang == "ru":
+    from glossary_data_ru import TREE, localized_terms
+    TERMS = localized_terms()
+elif lang == "ja":
+    from glossary_data_ja import TREE, localized_terms
+    TERMS = localized_terms()
+
+ALIAS_LABEL = {"en": "Also", "ru": "Также", "ja": "関連語・英語"}[lang]
+TREE_LABEL = {
+    "en": "Surf glossary classifications",
+    "ru": "Классификации сёрф-глоссария",
+    "ja": "サーフィン用語集の分類",
+}[lang]
+
+
+def print_term(key, instance_id):
+    entry = TERMS[key]
+    title = html.escape(entry["title"])
+    if entry["url"]:
+        url = S.localize(entry["url"], lang)
+        title = f'<a href="{html.escape(url, quote=True)}">{title}</a>'
+    print(f'          <li class="glossary-term" id="term-{html.escape(instance_id, quote=True)}">')
+    print(f'            <div class="glossary-term-name">{title}</div>')
+    print(f'            <p class="glossary-definition">{html.escape(entry["definition"])}</p>')
+    if entry["aliases"]:
+        aliases = " · ".join(html.escape(alias) for alias in entry["aliases"])
+        print(f'            <p class="glossary-aliases">{ALIAS_LABEL}: {aliases}</p>')
+    print('          </li>')
+
+
+print(f'<section class="glossary-tree" aria-label="{TREE_LABEL}">')
+for category in TREE:
+    category_id = html.escape(category["id"], quote=True)
+    print(f'  <details class="glossary-category" id="{category_id}">')
+    print(f'    <summary>{html.escape(category["title"])}</summary>')
+    print('    <div class="glossary-category-body">')
+    print(f'      <p class="glossary-category-note">{html.escape(category["note"])}</p>')
+    for index, (group_title, term_keys) in enumerate(category["groups"], start=1):
+        group_id = f'{category["id"]}-group-{index}'
+        print(f'      <details class="glossary-group" id="{html.escape(group_id, quote=True)}">')
+        print(f'        <summary>{html.escape(group_title)}</summary>')
+        print('        <ul class="glossary-terms">')
+        for term_index, key in enumerate(term_keys, start=1):
+            print_term(key, f'{group_id}-{term_index}-{key}')
+        print('        </ul>')
+        print('      </details>')
+    print('    </div>')
+    print('  </details>')
+print('</section>')
+</script>
