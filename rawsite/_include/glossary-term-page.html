@@ -1,0 +1,104 @@
+<script type="text/python">
+import html
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+from glossary_article_data import ARTICLES as EN_ARTICLES
+from glossary_data import TERMS as EN_TERMS
+
+key = params["key"]
+lang = S.lang_of(page_file)
+if lang == "ru":
+    from glossary_article_data_ru import ARTICLES
+    from glossary_data_ru import localized_terms
+    TERMS = localized_terms()
+elif lang == "ja":
+    from glossary_article_data_ja import ARTICLES
+    from glossary_data_ja import localized_terms
+    TERMS = localized_terms()
+else:
+    ARTICLES = EN_ARTICLES
+    TERMS = EN_TERMS
+
+COPY = {
+    "en": {
+        "home": "Home", "glossary": "Glossary", "waves": "Waves",
+        "group": "Swell & wave formation", "branch": "In this branch",
+        "classification": "Classification", "group_label": "Group",
+        "related": "Related terms", "back": "← Back to Waves in the glossary",
+    },
+    "ru": {
+        "home": "Главная", "glossary": "Глоссарий", "waves": "Волны",
+        "group": "Свелл и формирование волн", "branch": "В этом разделе",
+        "classification": "Классификация", "group_label": "Группа",
+        "related": "Связанные термины", "back": "← К разделу «Волны» в глоссарии",
+    },
+    "ja": {
+        "home": "ホーム", "glossary": "用語集", "waves": "波",
+        "group": "うねりと波の形成", "branch": "この分類内",
+        "classification": "分類", "group_label": "グループ",
+        "related": "関連する用語", "back": "← 用語集の「波」に戻る",
+    },
+}[lang]
+
+article = ARTICLES[key]
+meta = EN_ARTICLES[key]
+term = TERMS[key]
+b = S.base_url(page_file)
+home_url = b + S.localize("index.html", lang)
+glossary_url = b + S.localize("glossary/index.html", lang)
+
+print('<nav class="crumbs" aria-label="breadcrumb"><ol>')
+print(f'  <li><a href="{html.escape(home_url, quote=True)}">{COPY["home"]}</a></li>')
+print(f'  <li><a href="{html.escape(glossary_url, quote=True)}">{COPY["glossary"]}</a></li>')
+print(f'  <li>{COPY["waves"]}</li>')
+print(f'  <li>{COPY["group"]}</li>')
+print(f'  <li aria-current="page">{html.escape(term["title"])}</li>')
+print('</ol></nav>')
+
+print('<article class="article glossary-article">')
+print(f'  <p class="glossary-article-eyebrow">{COPY["waves"]} · {COPY["group"]}</p>')
+print(f'  <h1>{html.escape(term["title"])}</h1>')
+print(f'  <p class="standfirst">{html.escape(article["standfirst"])}</p>')
+print('  <div class="glossary-term-layout">')
+print('    <div class="glossary-term-body">')
+print(f'      <p class="glossary-definition glossary-definition--lead">{html.escape(term["definition"])}</p>')
+for heading, paragraph in article["sections"]:
+    print(f'      <h2>{html.escape(heading)}</h2>')
+    print(f'      <p>{html.escape(paragraph)}</p>')
+if key in ("surf", "swell", "groundswell", "wind-swell"):
+    illustration, soup = include("glossary-swell-illustration.html", current=key)
+    print(illustration)
+if meta.get("diagram") == "period":
+    diagram, soup = include("wave-diagram.html", kind="period")
+    print(diagram)
+print('    </div>')
+print('    <aside class="facts glossary-article-facts">')
+print(f'      <h2>{COPY["branch"]}</h2>')
+print('      <dl>')
+print(f'        <div><dt>{COPY["classification"]}</dt><dd>{COPY["waves"]}</dd></div>')
+print(f'        <div><dt>{COPY["group_label"]}</dt><dd>{COPY["group"]}</dd></div>')
+print('      </dl>')
+print(f'      <h3>{COPY["related"]}</h3>')
+print('      <ul class="glossary-related">')
+for related_key in meta["related"]:
+    related = TERMS[related_key]
+    if related["url"]:
+        local_url = S.localize(related["url"], lang)
+        source = os.path.join(S.ROOT, "glossary", local_url)
+        if os.path.exists(source):
+            href = b + "glossary/" + local_url
+            label = f'<a href="{html.escape(href, quote=True)}">{html.escape(related["title"])}</a>'
+        else:
+            label = html.escape(related["title"])
+    else:
+        label = html.escape(related["title"])
+    print(f'        <li>{label}</li>')
+print('      </ul>')
+print('    </aside>')
+print('  </div>')
+print('  <p class="glossary-back"><a href="' + html.escape(glossary_url + '#waves', quote=True) + '">' + COPY["back"] + '</a></p>')
+print('</article>')
+</script>

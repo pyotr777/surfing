@@ -1,0 +1,63 @@
+<script type="text/python">
+import html
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+b = S.base_url(page_file)
+current = params["current"]
+lang = S.lang_of(page_file)
+COPY = {
+    "en": {
+        "alt": "Four coastal scenes: nearby wind waves, a distant storm creating swell, smooth open-ocean groundswell, and a breaking wave at a sandy shore.",
+        "aria": "Illustrated terms",
+        "panels": (
+            ("wind-swell", "Wind swell", "Nearby wind makes short, irregular, closely spaced waves."),
+            ("swell", "Swell", "A distant storm sends organised wave lines out across the ocean."),
+            ("groundswell", "Groundswell", "Far from its source, long-period energy moves in smooth, widely spaced lines."),
+            ("surf", "Surf", "In shallow water, the incoming swell steepens and breaks into a rideable wave."),
+        ),
+    },
+    "ru": {
+        "alt": "Четыре морские сцены: ветровые волны у берега, свелл от далёкого шторма, гладкий граундсвелл в открытом океане и ломающаяся волна у песчаного берега.",
+        "aria": "Термины на иллюстрации",
+        "panels": (
+            ("wind-swell", "Ветровой свелл", "Ближний ветер создаёт короткие, неровные и тесно расположенные волны."),
+            ("swell", "Свелл", "Далёкий шторм посылает через океан упорядоченные линии волн."),
+            ("groundswell", "Граундсвелл", "Вдали от источника длиннопериодная энергия движется плавными, широко расставленными линиями."),
+            ("surf", "Прибой", "На мелководье входящий свелл крутеет и ломается, превращаясь в пригодную для катания волну."),
+        ),
+    },
+    "ja": {
+        "alt": "近くの風波、遠方の低気圧が生むうねり、滑らかな外洋のグラウンドスウェル、砂浜で砕ける波を描いた四つの海の場面。",
+        "aria": "イラストの用語",
+        "panels": (
+            ("wind-swell", "ウインドスウェル", "近くの風が、短く不規則で間隔の狭い波を作る。"),
+            ("swell", "うねり", "遠くの低気圧が、整った波のラインを海へ送る。"),
+            ("groundswell", "グラウンドスウェル", "発生源から遠く離れ、長周期のエネルギーが滑らかで間隔の広いラインとして進む。"),
+            ("surf", "砕けた波", "浅い水深で、入ってきたうねりが急になり、乗れる波として砕ける。"),
+        ),
+    },
+}[lang]
+panels = COPY["panels"]
+
+print('<figure class="glossary-swell-figure">')
+print('  <div class="glossary-swell-art">')
+print(f'    <img src="{b}img/glossary/waves-swell-formation-v3.png" alt="{html.escape(COPY["alt"], quote=True)}" width="1254" height="1254" loading="lazy">')
+print(f'    <ol class="glossary-swell-labels" aria-label="{html.escape(COPY["aria"], quote=True)}">')
+for key, label, description in panels:
+    active = ' aria-current="page"' if key == current else ''
+    href = b + "glossary/" + S.localize(f"{key}/index.html", lang)
+    print(f'      <li><a href="{html.escape(href, quote=True)}"{active}>{html.escape(label)}</a></li>')
+print('    </ol>')
+print('  </div>')
+print('  <figcaption>')
+print('    <dl class="glossary-swell-key">')
+for key, label, description in panels:
+    print(f'      <div><dt>{html.escape(label)}</dt><dd>{html.escape(description)}</dd></div>')
+print('    </dl>')
+print('  </figcaption>')
+print('</figure>')
+</script>

@@ -1,0 +1,49 @@
+<script type="text/python">
+import html
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+from glossary_data import TERMS as EN_TERMS
+
+key = params["key"]
+lang = S.lang_of(page_file)
+if lang == "ru":
+    from glossary_data_ru import localized_terms
+    terms = localized_terms()
+elif lang == "ja":
+    from glossary_data_ja import localized_terms
+    terms = localized_terms()
+else:
+    terms = EN_TERMS
+
+term = terms[key]
+suffix = {
+    "en": "Surf glossary | Surf Japan",
+    "ru": "Глоссарий сёрфинга | Surf Japan",
+    "ja": "サーフィン用語集 | Surf Japan",
+}[lang]
+
+head, soup = include("head.html")
+header, soup = include("header.html")
+article, soup = include("glossary-term-page.html", key=key)
+footer, soup = include("footer.html")
+
+print('<!DOCTYPE html>')
+print(f'<html lang="{lang}">')
+print('<head>')
+print(head)
+print(f'  <title>{html.escape(term["title"])} — {suffix}</title>')
+print(f'  <meta name="language" content="{lang}">')
+print(f'  <meta name="description" content="{html.escape(term["definition"], quote=True)}">')
+print('</head>')
+print('<body>')
+print(header)
+print('<main id="main">')
+print(article)
+print('</main>')
+print(footer)
+print('</body>')
+print('</html>')
+</script>
