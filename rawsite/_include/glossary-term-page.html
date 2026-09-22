@@ -37,7 +37,7 @@ COPY = {
     },
     "ja": {
         "home": "ホーム", "glossary": "用語集", "waves": "波",
-        "group": "うねりと波の形成", "branch": "この分類内",
+        "group": "うねりと波の形成", "branch": "この項目の分類",
         "classification": "分類", "group_label": "グループ",
         "related": "関連する用語", "back": "← 用語集の「波」に戻る",
     },
@@ -50,7 +50,8 @@ b = S.base_url(page_file)
 home_url = b + S.localize("index.html", lang)
 glossary_url = b + S.localize("glossary/index.html", lang)
 
-print('<nav class="crumbs" aria-label="breadcrumb"><ol>')
+CRUMBS_LABEL = {"en": "breadcrumb", "ru": "хлебные крошки", "ja": "パンくずリスト"}[lang]
+print(f'<nav class="crumbs" aria-label="{CRUMBS_LABEL}"><ol>')
 print(f'  <li><a href="{html.escape(home_url, quote=True)}">{COPY["home"]}</a></li>')
 print(f'  <li><a href="{html.escape(glossary_url, quote=True)}">{COPY["glossary"]}</a></li>')
 print(f'  <li>{COPY["waves"]}</li>')

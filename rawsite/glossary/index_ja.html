@@ -18,17 +18,17 @@ print(html)
 <main id="main">
   <section class="hero hero--section">
     <h1>サーフィン用語集</h1>
-    <p class="lede">波、ボード、コンディション、乗り方の言葉を、一つの長い五十音順リストではなく、関連する分類としてまとめました。</p>
+    <p class="lede">波、ボード、コンディション、乗り方に関する言葉を、五十音順の長い一覧ではなく、意味のつながりごとにまとめました。</p>
   </section>
 
   <section class="glossary-intro" aria-label="用語集の使い方">
     <p>
-      分類を開き、次に下位のグループを開くと、用語と短い定義を読めます。
-      英語の正式な用語とよく使われる別名は、日本語の用語の下に示しています。
+      まず分類を開き、次にグループを開くと、用語と短い説明を読めます。
+      英語の基本表記やよく使われる別名は、日本語の用語の下に併記しています。
     </p>
     <aside class="glossary-key">
       <h2>用語集の構成</h2>
-      <p><strong>分類</strong>は意味の近い言葉をまとめます。英語のキーはすべての言語で共通とし、このページでは日本語を主な用語として表示します。</p>
+      <p><strong>分類</strong>は、意味の近い言葉をまとめたものです。各項目の英語キーはすべての言語で共通ですが、このページでは日本語を主な表記として示しています。</p>
     </aside>
   </section>
 
@@ -37,7 +37,7 @@ html, soup = include("../_include/glossary-tree.html")
 print(html)
 </script>
 
-  <p class="glossary-footer-note">上記の各項目は、用語の階層リストとなっています。該当する見出しをクリックすると、リストが展開されます。</p>
+  <p class="glossary-footer-note">各分類とグループの見出しをクリックすると、用語の一覧が開きます。</p>
 </main>
 
 <script type="text/python">

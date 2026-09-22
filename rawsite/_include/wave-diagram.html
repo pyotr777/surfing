@@ -23,7 +23,7 @@ TEXT = {
         "ru": ("Свелл приходит под 45° на глубокой воде, дно равномерно мелеет к "
                "пляжу. Каждый гребень строится шагами поперёк схемы, поворачиваясь "
                "по закону Снеллиуса на местной глубине."),
-        "ja": ("深い海で45°から入るうねりが、岸へ向かって均一に浅くなる海底を通ります。各波の峰は、図を横切るステップごとに、その地点の水深でスネルの法則に従って向きを変えながら描かれます。"),
+        "ja": ("深海から45°の角度で入ったうねりが、岸に向かってなだらかに浅くなる海底を進みます。図では、各波の峰が水深に応じてスネルの法則どおりに向きを変える様子を示しています。"),
     },
     "period": {
         "en": ("Deep-water wavelength is L = gT²/2π, and a wave feels the bottom "
@@ -32,7 +32,7 @@ TEXT = {
         "ru": ("Длина волны на глубокой воде L = gT²/2π, а дно волна начинает "
                "чувствовать примерно с L/2. Одинаковая высота, разный период: "
                "длинная несёт куда больше воды и достаёт заметно глубже."),
-        "ja": ("深海での波長は L = gT²/2π で、波はおよそ L/2 の深さから海底の影響を感じ始めます。同じ波高でも周期が違えば、長い周期の波の方がはるかに多くの水を動かし、より深い場所まで届きます。"),
+        "ja": ("深海での波長は L = gT²/2π で表され、波はおよそ波長の半分の水深から海底の影響を受け始めます。同じ波高でも、周期が長い波ほど多くの水を動かし、より深い場所までエネルギーが届きます。"),
     },
 }
 
@@ -97,45 +97,110 @@ def refraction():
 
 
 def period():
-    W, H = 640, 300
+    W, H = 640, 400
     out = []
+    left, right = 60, 580
+    span = right - left
+    # Both rows use the same idealised seabed: 185 m at the left edge,
+    # rising evenly to 10 m at the beach.  The different interaction points
+    # therefore come only from the waves' different periods.
+    deep, shallow = 185.0, 10.0
+    depth_scale = 0.32              # diagram pixels per metre
+    min_water_column = 30           # keeps the shallow-water action legible
+
+    def depth_at(x):
+        t = min(1.0, max(0.0, (x - left) / span))
+        return deep + (shallow - deep) * t
+
+    def x_at_depth(depth):
+        return left + span * (deep - depth) / (deep - shallow)
+
+    def bottom_y(surface, x):
+        return surface + min_water_column + depth_at(x) * depth_scale
+
     cases = [
-        (6, 60, "#5aa6c9"),        # short period, wind sea
-        (14, 190, "#0e9aa7"),      # long period, ground swell
+        (6, 70, 190, "#5aa6c9"),   # short period, wind sea
+        (14, 270, 400, "#0e9aa7"), # long period, ground swell
     ]
-    for T, y0, colour in cases:
+    for T, y0, panel_bottom, colour in cases:
         L = G * T * T / (2 * math.pi)          # deep-water wavelength, metres
         feel = L / 2                            # depth at which it feels the bottom
-        px_per_m = 520 / 320                    # fit the longer wave in the frame
+        interaction_x = x_at_depth(feel)
+        px_per_m = span / 320                    # fit the longer wave in the frame
         wl = L * px_per_m
-        amp = 16
+
+        # The bottom is deliberately identical in the two panels.  It is a
+        # filled land shape rather than a reference line, so the viewer can
+        # see the water column becoming shallower from left to right.
+        seabed = [f'M {left},{panel_bottom}', f'L {left},{bottom_y(y0, left):.1f}']
+        for x in range(left, right + 1, 4):
+            seabed.append(f'L {x},{bottom_y(y0, x):.1f}')
+        seabed.append(f'L {right},{panel_bottom} Z')
+        out.append(f'  <path class="seabed" d="{" ".join(seabed)}"/>')
+
+        # A vertical marker says where this particular period first feels the
+        # same seabed.  The numerical depth is placed at the bottom endpoint.
+        marker_y = bottom_y(y0, interaction_x)
+        out.append(f'  <line class="interaction" x1="{interaction_x:.1f}" y1="{y0 - 28}" '
+                   f'x2="{interaction_x:.1f}" y2="{marker_y:.1f}" stroke="{colour}"/>')
+        anchor = "end" if interaction_x > W / 2 else "start"
+        label_x = interaction_x - 5 if anchor == "end" else interaction_x + 5
+        out.append(f'  <text class="depth-label" text-anchor="{anchor}" x="{label_x:.1f}" '
+                   f'y="{marker_y - 5:.1f}">{feel:.0f} m</text>')
+
+        # In deep water the train is low.  Past the interaction marker it
+        # steepens steadily; its final crest turns into a breaking lip.
         pts = []
-        for i in range(0, 521, 4):
-            x = 60 + i
-            pts.append(f"{x},{y0 - amp * math.sin(2 * math.pi * i / wl):.1f}")
+        for i in range(0, span + 1, 4):
+            x = left + i
+            progress = max(0.0, (x - interaction_x) / (right - interaction_x))
+            amp = 8 + 17 * progress ** 0.72
+            # Shortening the visible spacing after interaction hints at the
+            # slower, shorter waves in shallowing water.
+            phase = 2 * math.pi * i / wl + 1.15 * progress * progress
+            pts.append(f"{x},{y0 - amp * math.sin(phase):.1f}")
         out.append(f'  <polyline class="wave-line" points="{" ".join(pts)}"'
                    f' stroke="{colour}"/>')
+        lip_x = right - 12
+        lip_y = y0 - 19
+        out.append(f'  <path class="breaking-lip" fill="{colour}" d="M {lip_x},{lip_y} '
+                   f'C {right - 2},{lip_y - 10} {right + 2},{lip_y + 5} {right - 1},{lip_y + 18} '
+                   f'C {right - 8},{lip_y + 10} {right - 14},{lip_y + 9} {lip_x},{lip_y} Z"/>')
+        out.append(f'  <path class="whitewater" d="M {right - 12},{lip_y + 17} '
+                   f'C {right - 3},{lip_y + 23} {right - 6},{lip_y + 29} {right - 18},{lip_y + 31}"/>')
         sec, note = {
             "en": ("s", "feels the bottom from {d:.0f} m down"),
             "ru": ("с", "чувствует дно начиная с {d:.0f} м"),
-            "ja": ("秒", "水深およそ {d:.0f} m から海底を感じ始める"),
+            "ja": ("秒", "水深およそ {d:.0f} m から海底の影響を受け始める"),
         }[lang]
         out.append(f'  <text class="diag-label" x="60" y="{y0 - 34}">'
                    f'T = {T} {sec} · L = {L:.0f} m</text>')
-        out.append(f'  <line class="feel" x1="60" y1="{y0 + 44}" x2="580" y2="{y0 + 44}"'
-                   f' stroke="{colour}"/>')
-        out.append(f'  <text class="diag-note" x="60" y="{y0 + 60}">'
+        out.append(f'  <text class="diag-note" x="60" y="{panel_bottom - 10}">'
                    f'{note.format(d=feel)}</text>')
     return W, H, "\n".join(out)
 
 
-W, H, body = refraction() if kind == "refraction" else period()
-
-print(f'<figure class="diagram diagram--{kind}">')
-print(f'  <svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img"'
-      f' aria-label="{TEXT[kind][lang]}">')
-print(body)
-print('  </svg>')
-print(f'  <figcaption>{TEXT[kind][lang]}</figcaption>')
-print('</figure>')
+if kind == "period":
+    # The period comparison is intentionally a raster illustration. It is
+    # rendered with exact labels baked in, while this localized caption remains
+    # accessible HTML and is shared by every page that embeds the diagram.
+    image_name = {
+        "en": "wave-period-shoaling.png",
+        "ru": "wave-period-shoaling-ru.png",
+        "ja": "wave-period-shoaling-ja.png",
+    }[lang]
+    image_url = S.base_url(page_file) + "img/" + image_name
+    print('<figure class="diagram diagram--period">')
+    print(f'  <img src="{image_url}" alt="{TEXT[kind][lang]}" width="1611" height="976">')
+    print(f'  <figcaption>{TEXT[kind][lang]}</figcaption>')
+    print('</figure>')
+else:
+    W, H, body = refraction()
+    print(f'<figure class="diagram diagram--{kind}">')
+    print(f'  <svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img"'
+          f' aria-label="{TEXT[kind][lang]}">')
+    print(body)
+    print('  </svg>')
+    print(f'  <figcaption>{TEXT[kind][lang]}</figcaption>')
+    print('</figure>')
 </script>
