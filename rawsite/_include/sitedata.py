@@ -455,13 +455,28 @@ LONGBOARD_SHAPES = [
         },
     },
     {
+        "id": "all-around",
+        "en": {
+            "title": "All-around",
+            "summary": "A balanced outline with a full nose and rounded tail; moderate rocker combines early entry and trim with confident turns.",
+        },
+        "ru": {
+            "title": "Универсальный (all-around)",
+            "summary": "Сбалансированный outline, полный нос и округлая корма; умеренный рокер сочетает ранний вход в волну, трим и уверенные повороты.",
+        },
+        "ja": {
+            "title": "オールラウンド",
+            "summary": "バランスの取れたアウトラインに、幅を残したノーズと丸みのあるテール。ほどよいロッカーが早いテイクオフ、トリム、安定したターンを両立します。",
+        },
+    },
+    {
         "id": "noserider",
         "en": {
             "title": "Noserider",
             "summary": "A wide, full nose and a wide tail; a flatter entry and tail kick help it settle in the pocket.",
         },
         "ru": {
-            "title": "Носерайдер",
+            "title": "Нозрайдер",
             "summary": "Широкий полный нос и широкая корма; плоский вход и подъём кормы помогают доске держаться в кармане волны.",
         },
         "ja": {
