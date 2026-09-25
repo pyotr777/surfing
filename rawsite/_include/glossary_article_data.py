@@ -74,4 +74,20 @@ ARTICLES = {
         ],
         "related": ("set", "paddle-out", "impact-zone", "cleanup-set"),
     },
+    "paddle-out": {
+        "standfirst": "Paddling out is the route and work of getting from shore to the lineup without putting yourself or others in the path of breaking waves.",
+        "sections": [
+            ("Find the quieter route", "Before entering the water, watch several sets. A channel, a deeper patch or the edge of the breaking area can offer a calmer way out. The safest route changes with the tide, swell and crowd, so do not assume yesterday's path still works."),
+            ("Make room for riders", "Paddle wide of the peak and avoid crossing the path of someone already riding a wave. If a set arrives, protect your board and choose the option that keeps it under control. Reaching the lineup is not a race; good timing saves energy and reduces risk."),
+        ],
+        "related": ("lineup", "channel", "impact-zone", "caught-inside", "set"),
+    },
+    "caught-inside": {
+        "standfirst": "Caught inside means being trapped between shore and the main breaking area, unable to reach the outside before more waves arrive.",
+        "sections": [
+            ("Why it happens", "A set can close the route you used on the way out, or the current can carry you into the impact zone. It is common, especially at beach breaks whose peaks and channels move. Recognising the situation early gives you more choices."),
+            ("Reset safely", "Do not fight every wave in a panic. Keep control of your board, look for a gap or channel, and move away from surfers riding toward shore. If you are tiring or conditions are beyond your level, returning to the beach to reset is a sound decision."),
+        ],
+        "related": ("paddle-out", "inside", "outside", "impact-zone", "channel"),
+    },
 }

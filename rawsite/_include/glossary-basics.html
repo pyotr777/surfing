@@ -1,0 +1,78 @@
+<script type="text/python">
+# A short orientation layer before the expandable classification tree.  It
+# deliberately repeats the few terms needed to understand the section labels.
+import html
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+
+COPY = {
+    "en": {
+        "heading": "Basic terms",
+        "intro": "Short explanations of important terms. Memorize them, as you'll need these when reviewing the glossary sections below.",
+        "terms": [
+            ("Break", "A place and set of bottom conditions where waves break."),
+            ("Conditions", "The combined swell, wind, tide and water state at a spot."),
+            ("Inside", "The shoreward side of the lineup, where waves often break again."),
+            ("Lineup", "The area where surfers wait and position themselves for incoming waves."),
+            ("Outside", "The seaward side of the main breaking area."),
+            ("Spot", "A particular area in the sea or ocean close to the shore where waves suitable for surfing regularly develop and break."),
+            ("Surf", "A wave that has risen and broken in shallow water and can be ridden."),
+            ("Swell", "Organised wave energy travelling from the wind or storm that created it."),
+            ("Tide", "The rise and fall of sea level, which changes the depth over a break."),
+            ("Wave", "A moving rise and fall of water; it becomes surf when it breaks rideably."),
+            ("Wind", "Moving air that shapes the surface and can improve or spoil a breaking wave."),
+        ],
+    },
+    "ru": {
+        "heading": " Основные понятия",
+        "intro": "Краткие объяснения основных терминов. Запомните их — они понадобятся при изучении разделов глоссария ниже.",
+        "terms": [
+            ("Аутсайд", "Сторона основного места ломки, обращённая к морю."),
+            ("Брейк", "Место и особенности дна, из-за которых волны здесь ломаются."),
+            ("Ветер", "Движение воздуха, которое меняет поверхность воды и форму ломающейся волны."),
+            ("Волна", "Движущееся возвышение воды; пригодной для катания она становится, когда ломается."),
+            ("Инсайд", "Сторона лайнапа, обращённая к берегу; здесь волны часто ломаются повторно."),
+            ("Лайнап", "Зона, где сёрферы ждут приходящих волн и выбирают позицию."),
+            ("Прилив", "Подъём и спад уровня моря, меняющий глубину над брейком."),
+            ("Свелл", "Упорядоченная волновая энергия, идущая от породившего её ветра или шторма."),
+            ("Сёрф", "Волна, которая поднялась на мелководье, сломалась и стала пригодной для катания."),
+            ("Спот", "Конкретное место в море или океане возле берега, где стаблильно формируются и обрушиваются волны, подходящие для сёрфинга."),
+            ("Условия", "Сочетание свелла, ветра, прилива и состояния воды на конкретном споте."),
+        ],
+    },
+    "ja": {
+        "heading": "基本用語",
+        "intro": "重要な用語の簡単な説明です。以下の用語集の分類の見出しを確認する際に必要となるため、これらを覚えておいてください。",
+        "terms": [
+            ("アウトサイド", "主なブレイクする場所より沖側のエリア。"),
+            ("インサイド", "ラインアップより岸側のエリア。波がもう一度割れることが多い。"),
+            ("うねり", "風や低気圧で生まれ、まとまりを保って進む波のエネルギー。"),
+            ("風", "水面やブレイクする波の形を整えたり乱したりする空気の流れ。"),
+            ("コンディション", "あるスポットでの、うねり・風・潮・海面の状態の組み合わせ。"),
+            ("サーフボード", "波に乗るための専用の板。"),
+            ("潮", "海面の上下運動。ブレイク上の水深を変える。"),
+            ("スポット", "海岸に近い特定の海域で、サーフィンに適した波が定期的に発生し、砕ける場所。"),
+            ("波", "水面を進む上下の動き。乗れる形で砕けるとサーフィンの波になる。"),
+            ("ブレイク", "波が割れる場所、またはその波を作る海底地形と条件。"),
+            ("ラインアップ", "サーファーが沖から来る波を待ち、位置を取るエリア。"),
+        ],
+    },
+}[lang]
+
+print('<section class="glossary-basics" aria-labelledby="glossary-basics-title">')
+print(f'  <h2 id="glossary-basics-title">{html.escape(COPY["heading"])}</h2>')
+print(f'  <p class="glossary-basics-intro">{html.escape(COPY["intro"])}</p>')
+print('  <dl class="glossary-basics-list">')
+for title, definition in COPY["terms"]:
+    print('    <div>')
+    print(f'      <dt>{html.escape(title)}</dt>')
+    print(f'      <dd>{html.escape(definition)}</dd>')
+    print('    </div>')
+print('  </dl>')
+print('</section>')
+</script>

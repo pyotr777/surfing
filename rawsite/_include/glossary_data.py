@@ -98,8 +98,8 @@ TERMS = {
     "impact-zone": term("Impact zone", "The area where waves break repeatedly and with most force."),
     "channel": term("Channel", "A deeper, calmer route through a break, often used to paddle out."),
     "takeoff-zone": term("Take-off zone", "The area where surfers position themselves to catch a wave."),
-    "paddle-out": term("Paddle out", "The route and effort used to reach the line-up from shore."),
-    "caught-inside": term("Caught inside", "Unable to get past the breaking waves to the outside."),
+    "paddle-out": term("Paddle out", "Moving from the shore or shallow water and breaking waves out to the calmer open-ocean swells, where you can wait to catch waves.", ("Paddling out",), url="paddle-out/index.html"),
+    "caught-inside": term("Caught inside", "Unable to get past the breaking waves to the outside.", url="caught-inside/index.html"),
     "reading-the-lineup": term("Reading the line-up", "Observing waves, currents and surfers to decide where and when to paddle."),
 
     # Boards

@@ -50,17 +50,33 @@ b = S.base_url(page_file)
 home_url = b + S.localize("index.html", lang)
 glossary_url = b + S.localize("glossary/index.html", lang)
 
+LOCATION = {
+    "paddle-out": {
+        "en": ("Spots & zones", "Finding a route", "spots-zones", "← Back to Spots & zones in the glossary"),
+        "ru": ("Споты и зоны в воде", "Как пройти на лайнап", "spots-zones", "← К разделу «Споты и зоны в воде» в глоссарии"),
+        "ja": ("スポットと海の中のエリア", "沖へのルート", "spots-zones", "← 用語集の「スポットと海の中のエリア」に戻る"),
+    },
+    "caught-inside": {
+        "en": ("Spots & zones", "Finding a route", "spots-zones", "← Back to Spots & zones in the glossary"),
+        "ru": ("Споты и зоны в воде", "Как пройти на лайнап", "spots-zones", "← К разделу «Споты и зоны в воде» в глоссарии"),
+        "ja": ("スポットと海の中のエリア", "沖へのルート", "spots-zones", "← 用語集の「スポットと海の中のエリア」に戻る"),
+    },
+}
+category, group, category_id, back = LOCATION.get(key, {}).get(
+    lang, (COPY["waves"], COPY["group"], "waves", COPY["back"])
+)
+
 CRUMBS_LABEL = {"en": "breadcrumb", "ru": "хлебные крошки", "ja": "パンくずリスト"}[lang]
 print(f'<nav class="crumbs" aria-label="{CRUMBS_LABEL}"><ol>')
 print(f'  <li><a href="{html.escape(home_url, quote=True)}">{COPY["home"]}</a></li>')
 print(f'  <li><a href="{html.escape(glossary_url, quote=True)}">{COPY["glossary"]}</a></li>')
-print(f'  <li>{COPY["waves"]}</li>')
-print(f'  <li>{COPY["group"]}</li>')
+print(f'  <li>{html.escape(category)}</li>')
+print(f'  <li>{html.escape(group)}</li>')
 print(f'  <li aria-current="page">{html.escape(term["title"])}</li>')
 print('</ol></nav>')
 
 print('<article class="article glossary-article">')
-print(f'  <p class="glossary-article-eyebrow">{COPY["waves"]} · {COPY["group"]}</p>')
+print(f'  <p class="glossary-article-eyebrow">{html.escape(category)} · {html.escape(group)}</p>')
 print(f'  <h1>{html.escape(term["title"])}</h1>')
 print(f'  <p class="standfirst">{html.escape(article["standfirst"])}</p>')
 print('  <div class="glossary-term-layout">')
@@ -79,8 +95,8 @@ print('    </div>')
 print('    <aside class="facts glossary-article-facts">')
 print(f'      <h2>{COPY["branch"]}</h2>')
 print('      <dl>')
-print(f'        <div><dt>{COPY["classification"]}</dt><dd>{COPY["waves"]}</dd></div>')
-print(f'        <div><dt>{COPY["group_label"]}</dt><dd>{COPY["group"]}</dd></div>')
+print(f'        <div><dt>{COPY["classification"]}</dt><dd>{html.escape(category)}</dd></div>')
+print(f'        <div><dt>{COPY["group_label"]}</dt><dd>{html.escape(group)}</dd></div>')
 print('      </dl>')
 print(f'      <h3>{COPY["related"]}</h3>')
 print('      <ul class="glossary-related">')
@@ -100,6 +116,6 @@ for related_key in meta["related"]:
 print('      </ul>')
 print('    </aside>')
 print('  </div>')
-print('  <p class="glossary-back"><a href="' + html.escape(glossary_url + '#waves', quote=True) + '">' + COPY["back"] + '</a></p>')
+print('  <p class="glossary-back"><a href="' + html.escape(glossary_url + '#' + category_id, quote=True) + '">' + html.escape(back) + '</a></p>')
 print('</article>')
 </script>

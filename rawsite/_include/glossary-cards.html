@@ -1,0 +1,43 @@
+<script type="text/python">
+# Short glossary cards are progressively enhanced: their links still lead to
+# full articles when JavaScript is unavailable.
+import html
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+from glossary_data import TERMS as EN_TERMS
+
+lang = S.lang_of(page_file)
+if lang == "ru":
+    from glossary_data_ru import localized_terms
+    TERMS = localized_terms()
+elif lang == "ja":
+    from glossary_data_ja import localized_terms
+    TERMS = localized_terms()
+else:
+    TERMS = EN_TERMS
+
+COPY = {
+    "en": {"more": "Read the full glossary article", "close": "Close"},
+    "ru": {"more": "Подробнее в глоссарии", "close": "Закрыть"},
+    "ja": {"more": "用語集の記事を読む", "close": "閉じる"},
+}[lang]
+b = S.base_url(page_file)
+
+for key in ("paddle-out", "caught-inside"):
+    term = TERMS[key]
+    href = b + "glossary/" + S.localize(term["url"], lang)
+    print(f'<dialog class="glossary-card" id="glossary-card-{key}" aria-labelledby="glossary-card-title-{key}">')
+    print('  <div class="glossary-card-inner">')
+    print(f'    <h2 id="glossary-card-title-{key}">{html.escape(term["title"])}</h2>')
+    print(f'    <p>{html.escape(term["definition"])}</p>')
+    print('    <div class="glossary-card-actions">')
+    print(f'      <a href="{html.escape(href, quote=True)}">{html.escape(COPY["more"])}</a>')
+    print(f'      <button type="button" class="glossary-card-close">{html.escape(COPY["close"])}</button>')
+    print('    </div>')
+    print('  </div>')
+    print('</dialog>')
+print(f'<script src="{b}js/glossary-cards.js" defer><' + '/script>')
+</script>
