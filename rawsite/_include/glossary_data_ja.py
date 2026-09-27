@@ -34,22 +34,22 @@ JA_TERMS = {
     "flats": term("フラット", "ブレイクするセクションの前にある、フェイスの平らな部分。"),
     "whitewater": term("ホワイトウォーター", "波が砕けたあとに残る、乱れた白い泡。"),
     "foam-ball": term("フォームボール", "バレルの最も深い部分を動く、密度の高い白波。"),
-    "left": term("レフト", "岸から海を見て左へ向かってブレイクする波。"),
-    "right": term("ライト", "岸から海を見て右へ向かってブレイクする波。"),
-    "a-frame": term("Aフレーム", "左右両方へきれいにブレイクするピーク。"),
-    "closeout": term("クローズアウト", "全体が同時に崩れ、開いたフェイスを残さない波。"),
+    "left": term("グーフィーブレイク", "サーファーから見て左方向へブレイクし、左へ走れる波。", ("レフトブレイク", )),
+    "right": term("レギュラーブレイク", "サーファーから見て右方向へブレイクし、右へ走れる波。", ("ライトブレイク", )),
+    "a-frame": term("三角波", "はっきりした一つのピークから、左右両方向へきれいにブレイクする波。", ("Aフレーム", )),
+    "closeout": term("ダンパー", "波の広い範囲がほぼ同時に崩れ、横へ走れるフェイスをほとんど残さない波。", ("クローズアウト", "ダンパーブレイク")),
     "reform": term("リフォーム", "一度砕けてからまた整い、岸寄りで再びブレイクする波。"),
     "double-up": term("ダブルアップ", "二つの波のエネルギーが重なり、急に立ち上がる波。"),
     "wedge": term("ウェッジ", "波が斜めに交わって生まれる、急でしばしばパワフルなピーク。"),
-    "mushy": term("マッシー", "緩く、遅く、比較的パワーの弱い状態。"),
-    "hollow": term("ホロー", "砕けるときに管状の空間を作るほど急な波。"),
-    "peeling": term("きれいに割れる波", "一度に閉じず、波に沿って順にブレイクする状態。"),
-    "spilling": term("スピリング波", "波の山がフェイスをやさしく崩れ落ちる波。"),
-    "plunging": term("プランジング波", "リップが前へ投げ出され、力強く砕ける波。"),
-    "surging": term("サージング波", "フェイスに沿って割れず、急に盛り上がって岸へ押し寄せる波。"),
+    "mushy": term("トロい波", "ブレイクが遅く、押しが弱いためスピードを出しにくい波。", ("トロめ", "タルい波", "マッシー")),
+    "hollow": term("ホレた波", "フェイスが急に立ち上がって巻き、チューブを作りやすい波。", ("掘れた波", "ホロー")),
+    "peeling": term("切れた波", "はっきりしたピークからショルダーへ、順序よくブレイクする波。", ("ピーリング", )),
+    "spilling": term("崩れ波", "波頭が白く泡立ち、その泡がフェイスを徐々に広がりながら崩れる波。", ("スピリング波", )),
+    "plunging": term("巻き波", "リップが前へ張り出し、空気を巻き込みながら力強く落ちる波。", ("プランジング波", )),
+    "surging": term("砕け寄せ波", "はっきりしたリップを投げ出さず、フェイスが急に立って岸へ押し寄せる波。", ("サージング波", )),
     "slab": term("スラブ", "浅い岩棚の上で急に割れる、厚くパワフルな波。"),
-    "shore-dump": term("ショアダンプ", "岸際で強く閉じるように割れる波。"),
-    "big-wave": term("ビッグウェーブ", "大きく速く、危険性も高い波。経験に見合う判断と装備が必要になる。"),
+    "shore-dump": term("岸際のダンパー", "岸際で一気に崩れ、海底へ強く打ちつけるようにブレイクする波。", ("ショアダンプ", )),
+    "big-wave": term("大波", "大きく速く、危険性も高い波。経験に見合う判断と装備が必要になる。", ("ビッグウェーブ", )),
 
     # ブレイクと海底
     "beach-break": term("ビーチブレイク", "砂地またはサンドバーの上で割れるブレイク。"),
@@ -230,7 +230,20 @@ JA_TERMS = {
     "inch": term("インチ", "ボード寸法に使う小さな長さの単位。", ("in", )),
     "litre": term("リットル", "サーフボードのボリュームに使う標準的な単位。", ("L", )),
     "knot": term("ノット", "海上予報で使う風速の単位。", ("kt", )),
-    "wave-height": term("波高", "波について示される高さ。どの測り方かを常に確認する必要がある。"),
+    "wave-height": term("波高", "波の谷から波頂までの鉛直方向の距離。"),
+}
+
+# 日本のサーファーや波情報で使われる、英語版に独立した項目がない表現。
+JA_ONLY_TERMS = {
+    "ja-thick-wave": {**term("厚い波", "フェイスの傾斜が緩く、リップが立ちにくいため、なかなかブレイクせずスピードも出しにくい波。", ("ファットウェーブ", "Fat wave")), "url": None},
+    "ja-slow-thick-wave": {**term("トロ厚い波", "うねりの力が弱く、フェイスも緩いまま、ゆっくりと力なく崩れる波。", ("トロ厚め", )), "url": None},
+    "ja-weak-fast-wave": {**term("トロ速い波", "押しは弱いのに、ブレイクし始めると横方向へ速く崩れていく波。", ("トロ速め", )), "url": None},
+    "ja-lingering-wave": {**term("ダラダラの波", "はっきりしたポケットを作らず、力なく長く崩れ続ける波。", ("ダラついた波", )), "url": None},
+    "ja-fast-wave": {**term("速い波", "ピークからショルダーへ進むブレイクの速度が速く、すぐ横へ走らないと捕まりやすい波。", ("速めのブレイク", "Fast-breaking wave", "ファストブレイキングウェーブ")), "url": None},
+    "ja-connected-wave": {**term("繋がった波", "複数のピークやセクションがほぼ同時に崩れてつながり、開いたショルダーがすぐになくなる波。", ("つながった波", "Walled-up wave", "ウォールドアップウェーブ")), "url": None},
+    "ja-wide-wave": {**term("ワイドな波", "横に広い範囲が一度に崩れやすく、ピークが不明瞭で抜けにくい波。ダンパーより弱く、一部に走れる場所が残ることもある。", ("ワイドブレイク", "Wide break", "ワイドブレーク")), "url": None},
+    "ja-weak-closeout": {**term("トロダンパー", "うねりの押しは弱いが、崩れるときには広い範囲が一気に閉じる波。", ("Weak closeout", "ウィーククローズアウト")), "url": None},
+    "ja-collapsing-wave": {**term("巻き寄せ波", "巻き波と砕け寄せ波の中間にあたり、波の前面下部が崩れるように砕ける波。", ("コラプシング波", "Collapsing wave")), "url": None},
 }
 
 TREE = [
@@ -243,12 +256,13 @@ TREE = [
             "うねりが生まれ、岸で砕け、乗れる波になるまでの言葉。",
         "groups":
             [
-                ("うねりと波の形成", ["surf", "swell", "groundswell", "wind-swell", "fetch", "wave-period", "swell-direction", "set", "lull"]),
-                ("波の構造", ["peak", "crest", "face", "lip", "curl", "shoulder", "pocket", "trough", "section", "flats", "whitewater", "foam-ball"]),
+                ("うねりと波の形成", ["surf", "swell", "groundswell", "wind-swell", "fetch", "swell-direction", "set", "lull"]),
+                ("波の構造", ["peak", "crest", "face", "lip", "curl", "shoulder", "pocket", "trough", "wave-height", "wave-period", "section", "flats", "whitewater", "foam-ball"]),
                 (
                     "形とブレイクの仕方", [
-                        "left", "right", "a-frame", "closeout", "reform", "double-up", "wedge", "mushy", "hollow", "peeling", "spilling", "plunging", "surging",
-                        "slab", "shore-dump", "big-wave"
+                        "ja-thick-wave", "wedge", "big-wave", "shore-dump", "peeling", "surging", "spilling", "left", "a-frame", "slab", "double-up",
+                        "ja-lingering-wave", "closeout", "ja-connected-wave", "ja-slow-thick-wave", "mushy", "ja-weak-closeout", "ja-weak-fast-wave",
+                        "ja-fast-wave", "hollow", "plunging", "ja-collapsing-wave", "reform", "right", "ja-wide-wave"
                     ]
                 ),
             ]
@@ -275,7 +289,7 @@ TREE = [
             "その日の波の状態を左右する、予報と海況の要素。",
         "groups":
             [
-                ("うねりと予報", ["swell-height", "surf-height", "significant-wave-height", "wave-period", "swell-direction", "wave-energy"]),
+                ("うねりと予報", ["swell-height", "surf-height", "significant-wave-height", "swell-direction", "wave-energy"]),
                 ("風と水面", ["offshore-wind", "onshore-wind", "cross-shore-wind", "glassy", "chop", "blown-out", "clean"]),
                 ("潮と流れ", ["tide", "high-tide", "low-tide", "incoming-tide", "outgoing-tide", "rip-current", "sweep", "backwash"]),
             ]
@@ -387,20 +401,24 @@ TREE = [
             [
                 ("セッションの言葉", ["dawn-patrol", "quiver", "firing", "flat", "corduroy", "mysto-spot"]),
                 ("サーフスラング", ["stoked", "froth", "gnarly", "shacked", "hang-loose"]),
-                ("単位", ["foot", "inch", "litre", "knot", "wave-height"]),
+                ("単位", ["foot", "inch", "litre", "knot"]),
             ]
     },
 ]
 
 
 def localized_terms():
-    """Combine Japanese text with stable English links and aliases."""
-    if set(JA_TERMS) != set(EN_TERMS):
-        missing = set(EN_TERMS) ^ set(JA_TERMS)
+    """Combine Japanese text with stable English links, aliases and local terms."""
+    japanese_terms = {**JA_TERMS, **JA_ONLY_TERMS}
+    if set(japanese_terms) != set(EN_TERMS):
+        missing = set(EN_TERMS) ^ set(japanese_terms)
         raise ValueError(f"Japanese glossary keys are out of sync: {sorted(missing)}")
     result = {}
     for key, english in EN_TERMS.items():
-        japanese = JA_TERMS[key]
-        aliases = tuple(dict.fromkeys((*japanese["aliases"], english["title"], *english["aliases"])))
-        result[key] = {**english, **japanese, "aliases": aliases}
+        japanese = japanese_terms[key]
+        if key in JA_ONLY_TERMS:
+            aliases = japanese["aliases"]
+        else:
+            aliases = tuple(dict.fromkeys((*japanese["aliases"], english["title"])))
+        result[key] = {**english, **japanese, "url": english["url"], "aliases": aliases}
     return result

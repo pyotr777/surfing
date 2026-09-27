@@ -6,21 +6,22 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
 from glossary_article_data import ARTICLES as EN_ARTICLES
-from glossary_data import TERMS as EN_TERMS
+from glossary_data import TERMS as EN_TERMS, TREE as EN_TREE
 
 key = params["key"]
 lang = S.lang_of(page_file)
 if lang == "ru":
     from glossary_article_data_ru import ARTICLES
-    from glossary_data_ru import localized_terms
+    from glossary_data_ru import TREE, localized_terms
     TERMS = localized_terms()
 elif lang == "ja":
     from glossary_article_data_ja import ARTICLES
-    from glossary_data_ja import localized_terms
+    from glossary_data_ja import TREE, localized_terms
     TERMS = localized_terms()
 else:
     ARTICLES = EN_ARTICLES
     TERMS = EN_TERMS
+    TREE = EN_TREE
 
 COPY = {
     "en": {
@@ -43,9 +44,8 @@ COPY = {
     },
 }[lang]
 
-article = ARTICLES[key]
-meta = EN_ARTICLES[key]
 term = TERMS[key]
+article = ARTICLES.get(key, {"standfirst": term["definition"], "sections": []})
 b = S.base_url(page_file)
 home_url = b + S.localize("index.html", lang)
 glossary_url = b + S.localize("glossary/index.html", lang)
@@ -62,9 +62,30 @@ LOCATION = {
         "ja": ("スポットと海の中のエリア", "沖へのルート", "spots-zones", "← 用語集の「スポットと海の中のエリア」に戻る"),
     },
 }
-category, group, category_id, back = LOCATION.get(key, {}).get(
-    lang, (COPY["waves"], COPY["group"], "waves", COPY["back"])
-)
+
+
+def find_location(term_key):
+    for tree_category in TREE:
+        for group_title, group_keys in tree_category["groups"]:
+            if term_key in group_keys:
+                return tree_category["title"], group_title, tree_category["id"], group_keys
+    return COPY["waves"], COPY["group"], "waves", ()
+
+
+category, group, category_id, group_keys = find_location(key)
+back = COPY["back"]
+if key in LOCATION:
+    category, group, category_id, back = LOCATION[key][lang]
+
+meta = EN_ARTICLES.get(key, {})
+related_keys = meta.get("related")
+if related_keys is None:
+    position = group_keys.index(key)
+    related_keys = tuple(
+        group_keys[index]
+        for index in (position - 2, position - 1, position + 1, position + 2)
+        if 0 <= index < len(group_keys)
+    )
 
 CRUMBS_LABEL = {"en": "breadcrumb", "ru": "хлебные крошки", "ja": "パンくずリスト"}[lang]
 print(f'<nav class="crumbs" aria-label="{CRUMBS_LABEL}"><ol>')
@@ -81,16 +102,23 @@ print(f'  <h1>{html.escape(term["title"])}</h1>')
 print(f'  <p class="standfirst">{html.escape(article["standfirst"])}</p>')
 print('  <div class="glossary-term-layout">')
 print('    <div class="glossary-term-body">')
-print(f'      <p class="glossary-definition glossary-definition--lead">{html.escape(term["definition"])}</p>')
+if article["standfirst"] != term["definition"]:
+    print(f'      <p class="glossary-definition glossary-definition--lead">{html.escape(term["definition"])}</p>')
 for heading, paragraph in article["sections"]:
     print(f'      <h2>{html.escape(heading)}</h2>')
     print(f'      <p>{html.escape(paragraph)}</p>')
+WAVE_ANATOMY_PROFILE = {"crest", "trough", "wave-height", "wave-period"}
+WAVE_ANATOMY_BREAKING = {
+    "peak", "face", "lip", "curl", "shoulder", "pocket", "section",
+    "flats", "whitewater", "foam-ball",
+}
+if key in WAVE_ANATOMY_PROFILE | WAVE_ANATOMY_BREAKING:
+    kind = "profile" if key in WAVE_ANATOMY_PROFILE else "breaking"
+    illustration, soup = include("glossary-wave-anatomy-illustration.html", current=key, kind=kind)
+    print(illustration)
 if key in ("surf", "swell", "groundswell", "wind-swell"):
     illustration, soup = include("glossary-swell-illustration.html", current=key)
     print(illustration)
-if meta.get("diagram") == "period":
-    diagram, soup = include("wave-diagram.html", kind="period")
-    print(diagram)
 print('    </div>')
 print('    <aside class="facts glossary-article-facts">')
 print(f'      <h2>{COPY["branch"]}</h2>')
@@ -100,7 +128,7 @@ print(f'        <div><dt>{COPY["group_label"]}</dt><dd>{html.escape(group)}</dd>
 print('      </dl>')
 print(f'      <h3>{COPY["related"]}</h3>')
 print('      <ul class="glossary-related">')
-for related_key in meta["related"]:
+for related_key in related_keys:
     related = TERMS[related_key]
     if related["url"]:
         local_url = S.localize(related["url"], lang)

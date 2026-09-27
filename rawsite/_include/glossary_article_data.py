@@ -42,13 +42,12 @@ ARTICLES = {
         "related": ("wind-swell", "groundswell", "swell", "wave-period"),
     },
     "wave-period": {
-        "standfirst": "Wave period is the number of seconds between crests. It is the quickest way to understand how a swell will feel, not just how tall it looks.",
+        "standfirst": "Wave period is the number of seconds between successive crests passing the same fixed point. It is the quickest way to understand how a swell will feel, not just how tall it looks.",
         "sections": [
             ("Spacing carries information", "A six-second wave train has closely spaced crests and is commonly linked to local wind swell. A fourteen-second train has much more distance between crests and usually comes from farther away. Longer periods carry their energy deeper and interact with the coast sooner."),
             ("Use it before wave height", "Two forecasts can show the same height yet produce very different surf. The longer-period swell can arrive with more power, wrap around a headland and stand up farther outside. Treat height as one part of the forecast; use period to give it context."),
         ],
-        "diagram": "period",
-        "related": ("swell", "groundswell", "wind-swell", "wave-energy"),
+        "related": ("wave-height", "swell", "groundswell", "wind-swell", "wave-energy"),
     },
     "swell-direction": {
         "standfirst": "Swell direction is the compass direction a swell comes from. It decides whether a coast is exposed, sheltered or only catching a refracted edge.",

@@ -19,7 +19,7 @@ RU_TERMS = {
     "groundswell": term("Граундсвелл", "Длиннопериодный свелл от удалённого шторма."),
     "wind-swell": term("Ветровой свелл", "Короткопериодные волны, созданные местным ветром."),
     "fetch": term("Фетч", "Расстояние над открытой водой, на котором ветер дует и создаёт волны."),
-    "wave-period": term("Период волны", "Время между соседними гребнями, измеряемое в секундах."),
+    "wave-period": term("Период волны", "Время между прохождением последовательных гребней через одну фиксированную точку, измеряемое в секундах."),
     "swell-direction": term("Направление свелла", "Направление по компасу, откуда приходит свелл."),
     "set": term("Сет", "Группа волн, идущих одна за другой; часто они больше волн между сетами."),
     "lull": term("Пауза между сетами", "Более спокойный промежуток между сетами."),
@@ -35,22 +35,31 @@ RU_TERMS = {
     "flats": term("Флэт", "Более плоская часть стенки перед ломающейся секцией."),
     "whitewater": term("Пена", "Бурлящая пена, остающаяся после того, как волна разбилась."),
     "foam-ball": term("Фоумбол", "Плотная пена, движущаяся через самую глубокую часть трубы."),
-    "left": term("Левая волна", "Волна, ломающаяся влево для сёрфера, если смотреть на неё с берега."),
-    "right": term("Правая волна", "Волна, ломающаяся вправо для сёрфера, если смотреть на неё с берега."),
-    "a-frame": term("A-фрейм", "Пик, который ровно ломается в обе стороны."),
-    "closeout": term("Клоусаут", "Волна, ломающаяся сразу по всей длине и не оставляющая открытой стенки."),
-    "reform": term("Реформ", "Волна, которая разбилась, снова стала целой, а затем ломается ещё раз ближе к берегу."),
-    "double-up": term("Дабл-ап", "Резко крутеющая волна, возникающая там, где сходятся две волновые энергии."),
-    "wedge": term("Ведж", "Крутой, часто мощный пик, возникающий при встрече волн под углом."),
-    "mushy": term("Мягкая волна", "Некрутая, медленная и сравнительно маломощная волна."),
-    "hollow": term("Полая волна", "Достаточно крутая волна, образующая при ломке вогнутое пространство, похожее на трубу."),
-    "peeling": term("Ровно раскатывающаяся волна", "Волна, которая ломается постепенно вдоль стенки, а не вся сразу."),
-    "spilling": term("Спиллинг", "Волна, у которой гребень мягко осыпается по стенке."),
-    "plunging": term("Планджинг", "Волна, у которой лип выбрасывается вперёд и с силой обрушивается."),
-    "surging": term("Сёрджинг", "Волна, которая резко поднимается и накатывает на берег, а не раскатывается вдоль стенки."),
-    "slab": term("Слэб", "Толстая мощная волна, резко ломающаяся над мелким уступом."),
-    "shore-dump": term("Шор-дамп", "Сильная закрывающаяся волна, разбивающаяся прямо на береговой линии."),
-    "big-wave": term("Большая волна", "Крупная, быстрая и серьёзная волна, требующая специального опыта и снаряжения."),
+    "left": term("Left", "Волна, которая ломается влево от сёрфера и позволяет ехать в этом направлении."),
+    "right": term("Right", "Волна, которая ломается вправо от сёрфера и позволяет ехать в этом направлении."),
+    "a-frame": term("A-frame", "Волна, чисто раскрывающаяся в обе стороны от одного хорошо выраженного пика."),
+    "closeout": term("Closeout", "Волна, которая почти одновременно ломается на широком участке, почти не оставляя открытой стенки для проезда."),
+    "reform": term("Reform", "Волна, которая разбилась, снова стала целой, а затем ломается ещё раз ближе к берегу."),
+    "double-up": term("Double-up", "Волна, резко становящаяся круче в месте схождения энергии двух волн."),
+    "wedge": term("Wedge", "Крутой, часто мощный пик, возникающий при встрече волн под углом."),
+    "mushy": term("Mushy", "Медленно ломающаяся слабая волна, на которой трудно набрать скорость."),
+    "hollow": term("Hollow", "Волна с резко встающей и загибающейся стенкой, способная образовать трубу."),
+    "peeling": term("Peeling", "Волна, последовательно раскрывающаяся от хорошо выраженного пика к плечу."),
+    "spilling": term("Spilling wave", "Волна, гребень которой начинает пениться, а затем постепенно осыпается вниз по стенке."),
+    "plunging": term("Plunging wave", "Волна, лип которой выдвигается вперёд и с силой падает, захватывая воздух."),
+    "surging": term("Surging wave", "Волна, стенка которой резко встаёт и накатывает на берег, не выбрасывая выраженного липа."),
+    "slab": term("Slab", "Толстая мощная волна, резко ломающаяся над мелким уступом."),
+    "shore-dump": term("Shore dump", "Волна, которая закрывается у самого берега и с силой разбивается, толкая сёрфера ко дну."),
+    "big-wave": term("Big wave", "Крупная, быстрая и опасная волна, требующая соответствующего опыта, суждения и снаряжения."),
+    "ja-thick-wave": term("厚い波 ・ atsui nami ・ толстая волна", "Волна с пологой стенкой и липом, который долго не встаёт; такую волну трудно поймать, и на ней сложно набрать скорость.", ("Fat wave", )),
+    "ja-slow-thick-wave": term("トロ厚い波 ・ toro-atsui nami ・ слабая толстая волна", "Слабая волна, стенка которой остаётся пологой и медленно ломается без заметного толчка.", ("トロ厚め", )),
+    "ja-weak-fast-wave": term("トロ速い波 ・ toro-hayai nami ・ слабая быстро ломающаяся волна", "Волна со слабым толчком, которая после начала ломки быстро закрывается вдоль линии.", ("トロ速め", )),
+    "ja-lingering-wave": term("ダラダラの波 ・ daradara no nami ・ вяло тянущаяся волна", "Волна, которая долго и слабо ломается, не образуя хорошо выраженного кармана.", ("ダラついた波", )),
+    "ja-fast-wave": term("Fast-breaking wave", "Волна, точка ломки которой быстро движется от пика к плечу; если сразу не уйти вдоль стенки, волна легко догоняет сёрфера."),
+    "ja-connected-wave": term("繋がった波 ・ tsunagatta nami ・ соединённая волна", "Волна, пики или секции которой ломаются почти одновременно и соединяются, быстро убирая открытое плечо.", ("つながった波", "Walled-up wave")),
+    "ja-wide-wave": term("ワイドな波 ・ waido na nami ・ широкая волна", "Волна, склонная ломаться сразу на широком участке: пик выражен плохо, а выйти из секции трудно; в отличие от полного клоусаута, проезжаемая часть иногда остаётся.", ("Wide break", )),
+    "ja-weak-closeout": term("トロダンパー ・ toro danpā ・ слабый клоусаут", "Волна со слабым толчком, которая при ломке всё же закрывается на широком участке.", ("Weak closeout", )),
+    "ja-collapsing-wave": term("Collapsing wave", "Промежуточный тип между plunging wave и surging wave, при котором во время ломки обрушивается нижняя часть передней стенки."),
 
     # Брейки и дно
     "beach-break": term("Бич-брейк", "Брейк над песком или песчаными банками."),
@@ -231,22 +240,26 @@ RU_TERMS = {
     "inch": term("Дюйм", "Небольшая единица длины для размеров доски.", ("дюйм.",)),
     "litre": term("Литр", "Обычная единица объёма сёрфборда.", ("л",)),
     "knot": term("Узел", "Единица скорости ветра в морских прогнозах.", ("уз",)),
-    "wave-height": term("Высота волны", "Заявленная высота волн; всегда важно понимать способ измерения."),
+    "wave-height": term("Высота волны", "Вертикальное расстояние от ложбины волны до её гребня."),
 }
 
 
 TREE = [
     {"id": "waves", "title": "Волны", "note": "Как волны формируются, ломаются и дают пригодную для катания стенку.", "groups": [
-        ("Свелл и формирование волн", ["surf", "swell", "groundswell", "wind-swell", "fetch", "wave-period", "swell-direction", "set", "lull"]),
-        ("Строение волны", ["peak", "crest", "face", "lip", "curl", "shoulder", "pocket", "trough", "section", "flats", "whitewater", "foam-ball"]),
-        ("Форма и характер ломки", ["left", "right", "a-frame", "closeout", "reform", "double-up", "wedge", "mushy", "hollow", "peeling", "spilling", "plunging", "surging", "slab", "shore-dump", "big-wave"]),
+        ("Свелл и формирование волн", ["surf", "swell", "groundswell", "wind-swell", "fetch", "swell-direction", "set", "lull"]),
+        ("Строение волны", ["peak", "crest", "face", "lip", "curl", "shoulder", "pocket", "trough", "wave-height", "wave-period", "section", "flats", "whitewater", "foam-ball"]),
+        ("Форма и характер ломки", [
+            "ja-thick-wave", "wedge", "big-wave", "shore-dump", "peeling", "surging", "spilling", "left", "a-frame", "slab", "double-up",
+            "ja-lingering-wave", "closeout", "ja-connected-wave", "ja-slow-thick-wave", "mushy", "ja-weak-closeout", "ja-weak-fast-wave",
+            "ja-fast-wave", "hollow", "plunging", "ja-collapsing-wave", "reform", "right", "ja-wide-wave"
+        ]),
     ]},
     {"id": "breaks", "title": "Сёрф-брейки", "note": "Места и особенности дна, из-за которых волна ломается.", "groups": [
         ("Типы брейков", ["beach-break", "reef-break", "point-break", "rivermouth", "shorebreak", "tidal-bore", "wave-pool"]),
         ("Дно и береговая линия", ["sandbar", "bank", "reef", "rock-shelf", "cobblestones", "bathymetry", "headland"]),
     ]},
     {"id": "conditions", "title": "Условия для сёрфинга", "note": "Параметры прогноза и моря, определяющие работу брейка сегодня.", "groups": [
-        ("Свелл и прогноз", ["swell-height", "surf-height", "significant-wave-height", "wave-period", "swell-direction", "wave-energy"]),
+        ("Свелл и прогноз", ["swell-height", "surf-height", "significant-wave-height", "swell-direction", "wave-energy"]),
         ("Ветер и поверхность воды", ["offshore-wind", "onshore-wind", "cross-shore-wind", "glassy", "chop", "blown-out", "clean"]),
         ("Прилив и течения", ["tide", "high-tide", "low-tide", "incoming-tide", "outgoing-tide", "rip-current", "sweep", "backwash"]),
     ]},
@@ -288,7 +301,7 @@ TREE = [
     {"id": "culture-language", "title": "Культура, язык сессии и единицы", "note": "Обычные выражения на сессии, сёрф-слэнг и единицы из прогнозов и стоек с досками.", "groups": [
         ("Язык сессии", ["dawn-patrol", "quiver", "firing", "flat", "corduroy", "mysto-spot"]),
         ("Сёрф-слэнг", ["stoked", "froth", "gnarly", "shacked", "hang-loose"]),
-        ("Единицы измерения", ["foot", "inch", "litre", "knot", "wave-height"]),
+        ("Единицы измерения", ["foot", "inch", "litre", "knot"]),
     ]},
 ]
 
@@ -299,8 +312,20 @@ def localized_terms():
         missing = set(EN_TERMS) ^ set(RU_TERMS)
         raise ValueError(f"Russian glossary keys are out of sync: {sorted(missing)}")
     result = {}
+    japanese_wave_keys = {
+        key
+        for category in TREE
+        if category["id"] == "waves"
+        for group_title, keys in category["groups"]
+        if group_title == "Форма и характер ломки"
+        for key in keys
+    }
     for key, english in EN_TERMS.items():
         russian = RU_TERMS[key]
-        aliases = tuple(dict.fromkeys((*russian["aliases"], english["title"], *english["aliases"])))
+        if key in japanese_wave_keys:
+            aliases = tuple(dict.fromkeys((*russian["aliases"], *english["aliases"])))
+        else:
+            aliases = tuple(dict.fromkeys((*russian["aliases"], english["title"], *english["aliases"])))
+        aliases = tuple(alias for alias in aliases if alias != russian["title"])
         result[key] = {**english, **russian, "aliases": aliases}
     return result

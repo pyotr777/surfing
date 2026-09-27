@@ -1,0 +1,142 @@
+<script type="text/python">
+import html
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+from glossary_data import TERMS as EN_TERMS
+
+lang = S.lang_of(page_file)
+current = params["current"]
+kind = params["kind"]
+if lang == "ru":
+    from glossary_data_ru import localized_terms
+    TERMS = localized_terms()
+elif lang == "ja":
+    from glossary_data_ja import localized_terms
+    TERMS = localized_terms()
+else:
+    TERMS = EN_TERMS
+
+COPY = {
+    "en": {
+        "aria": "Wave anatomy shown on the illustration",
+        "breaking_alt": "A hollow wave breaking from left to right, with a throwing lip, open face, shoulder, whitewater and foam inside the curl.",
+        "profile_alt": "Two smooth unbroken wave crests with a deep trough between them.",
+        "breaking_caption": "The parts of a breaking wave overlap and move together. Select a label to open that term; the highlighted label is the current page.",
+        "profile_caption": "Crest and trough describe the highest and lowest points of an unbroken wave profile.",
+        "height_alt": "A side view of two unbroken waves with wave height marked vertically from trough level to crest level.",
+        "height_caption": "Wave height is the vertical distance from trough level to crest level.",
+        "period_alt": "A side view of two unbroken waves with a double-headed arrow between successive crests for wave period and another arrow showing their direction of travel.",
+        "period_caption": "The arrow between successive crests represents the time interval between them, measured in seconds. The separate arrow shows the direction in which the waves travel.",
+        "period_label": "Wave period · seconds",
+        "motion": "Direction of travel",
+    },
+    "ru": {
+        "aria": "Строение волны на иллюстрации",
+        "breaking_alt": "Полая волна ломается слева направо: видны выброшенный лип, открытая стенка, плечо, пена и фоумбол внутри кёрла.",
+        "profile_alt": "Два плавных гребня неразбившихся волн с глубокой ложбиной между ними.",
+        "breaking_caption": "Части ломающейся волны перекрываются и движутся вместе. Подписи ведут на страницы терминов; текущий термин выделен.",
+        "profile_caption": "Гребень и ложбина обозначают самую высокую и самую низкую точки профиля неразбившейся волны.",
+        "height_alt": "Профиль двух неразбившихся волн, на котором высота волны показана вертикальным размером от уровня ложбины до уровня гребня.",
+        "height_caption": "Высота волны — это вертикальное расстояние от уровня ложбины до уровня гребня.",
+        "period_alt": "Профиль двух неразбившихся волн: двусторонняя стрелка между последовательными гребнями обозначает период, ещё одна стрелка показывает направление движения.",
+        "period_caption": "Стрелка между последовательными гребнями обозначает временной интервал между ними, измеряемый в секундах. Отдельная стрелка показывает направление движения волн.",
+        "period_label": "Период волны · секунды",
+        "motion": "Направление движения",
+    },
+    "ja": {
+        "aria": "イラストで見る波の構造",
+        "breaking_alt": "左から右へブレイクするホローな波。前へ出るリップ、開いたフェイス、ショルダー、ホワイトウォーター、カール内部のフォームボールが見える。",
+        "profile_alt": "滑らかな二つの波頂と、その間にある深い波の谷。",
+        "breaking_caption": "ブレイクする波の各部分は重なり合いながら一緒に動きます。ラベルから各用語のページへ移動でき、現在の用語が強調表示されます。",
+        "profile_caption": "波頂と波の谷は、まだ砕けていない波の断面で最も高い点と低い点を示します。",
+        "height_alt": "二つの砕けていない波の側面図。波の谷の高さから波頂の高さまでを波高として鉛直に示している。",
+        "height_caption": "波高は、波の谷の高さから波頂の高さまでの鉛直距離です。",
+        "period_alt": "二つの砕けていない波の側面図。隣り合う波頂の間の両矢印で波周期を、もう一つの矢印で進行方向を示している。",
+        "period_caption": "隣り合う波頂の間の矢印は、秒で測る時間間隔を表します。もう一つの矢印は波の進行方向を示します。",
+        "period_label": "波周期・秒",
+        "motion": "波の進行方向",
+    },
+}[lang]
+
+BREAKING = (
+    ("section", 7, 31),
+    ("whitewater", 5, 53),
+    ("curl", 27, 40),
+    ("foam-ball", 29, 58),
+    ("lip", 31, 27),
+    ("peak", 43, 18),
+    ("pocket", 44, 43),
+    ("face", 54, 58),
+    ("shoulder", 69, 35),
+    ("flats", 79, 61),
+)
+PROFILE = (
+    ("crest", 22, 20),
+    ("trough", 47, 68),
+)
+if kind == "breaking":
+    labels = BREAKING
+    copy_kind = "breaking"
+elif current == "wave-height":
+    labels = PROFILE + (("wave-height", 89, 50),)
+    copy_kind = "height"
+elif current == "wave-period":
+    labels = PROFILE + (("wave-period", 47, 12),)
+    copy_kind = "period"
+else:
+    labels = PROFILE
+    copy_kind = "profile"
+alt = COPY[f"{copy_kind}_alt"]
+caption = COPY[f"{copy_kind}_caption"]
+b = S.base_url(page_file)
+
+print(f'<figure class="wave-anatomy-figure wave-anatomy-figure--{kind}">')
+print('  <div class="wave-anatomy-scroll">')
+print('    <div class="wave-anatomy-art">')
+if kind == "breaking":
+    print(f'      <img src="{b}img/glossary/wave-anatomy-breaking-v1.png" alt="{html.escape(alt, quote=True)}" width="1672" height="941" loading="lazy">')
+else:
+    print(f'      <svg class="wave-anatomy-profile-svg" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{html.escape(alt, quote=True)}">')
+    print('        <rect class="wave-profile-bg" width="1200" height="520"/>')
+    print('        <path class="wave-profile-water" d="M 0 260 C 100 260 120 130 260 130 C 400 130 410 390 560 390 C 710 390 720 130 860 130 C 1000 130 1020 260 1200 260 L 1200 520 L 0 520 Z"/>')
+    print('        <path class="wave-profile-surface" d="M 0 260 C 100 260 120 130 260 130 C 400 130 410 390 560 390 C 710 390 720 130 860 130 C 1000 130 1020 260 1200 260"/>')
+    print('        <path class="wave-profile-depthline wave-profile-depthline--one" d="M 0 330 C 130 330 145 225 270 225 C 395 225 430 440 560 440 C 690 440 725 225 850 225 C 975 225 1010 330 1200 330"/>')
+    print('        <path class="wave-profile-depthline wave-profile-depthline--two" d="M 0 402 C 150 402 175 330 285 330 C 395 330 450 482 560 482 C 670 482 725 330 835 330 C 945 330 1000 402 1200 402"/>')
+    print('        <circle class="wave-profile-point" cx="260" cy="130" r="7"/>')
+    print('        <circle class="wave-profile-point" cx="560" cy="390" r="7"/>')
+    if current == "wave-height":
+        print('        <path class="wave-profile-guide" d="M 860 130 H 1080 M 560 390 H 1080"/>')
+        print('        <path class="wave-profile-measure" d="M 1080 145 V 375"/>')
+        print('        <path class="wave-profile-arrow" d="M 1080 130 L 1068 151 H 1092 Z M 1080 390 L 1068 369 H 1092 Z"/>')
+    elif current == "wave-period":
+        print('        <path class="wave-profile-guide" d="M 260 72 V 120 M 860 72 V 120"/>')
+        print('        <path class="wave-profile-period-measure" d="M 275 72 H 845"/>')
+        print('        <path class="wave-profile-arrow" d="M 260 72 L 281 60 V 84 Z M 860 72 L 839 60 V 84 Z"/>')
+        print('        <path class="wave-profile-motion" d="M 920 325 H 1115"/>')
+        print('        <path class="wave-profile-motion-arrow" d="M 1140 325 L 1108 307 V 343 Z"/>')
+    print('      </svg>')
+    if current == "wave-period":
+        print(f'      <span class="wave-profile-motion-label">{html.escape(COPY["motion"])}</span>')
+print(f'      <ol class="wave-anatomy-labels" aria-label="{html.escape(COPY["aria"], quote=True)}">')
+for key, x, y in labels:
+    term = TERMS[key]
+    active = ' aria-current="page"' if key == current else ''
+    href = b + "glossary/" + S.localize(EN_TERMS[key]["url"], lang)
+    label = COPY["period_label"] if key == "wave-period" else term["title"]
+    print(f'        <li style="--label-x:{x}%;--label-y:{y}%"><a href="{html.escape(href, quote=True)}"{active}>{html.escape(label)}</a></li>')
+print('      </ol>')
+print('    </div>')
+print('  </div>')
+print('  <figcaption>')
+print(f'    <p>{html.escape(caption)}</p>')
+print('    <dl class="wave-anatomy-key">')
+for key, x, y in labels:
+    term = TERMS[key]
+    print(f'      <div><dt>{html.escape(term["title"])}</dt><dd>{html.escape(term["definition"])}</dd></div>')
+print('    </dl>')
+print('  </figcaption>')
+print('</figure>')
+</script>
