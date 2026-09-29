@@ -24,6 +24,8 @@ TREE_LABEL = {
     "ja": "サーフィン用語集の分類",
 }[lang]
 
+OMITTED_TERM_KEYS = {"big-wave"}
+
 
 def print_term(key, instance_id):
     entry = TERMS[key]
@@ -54,7 +56,8 @@ for category in TREE:
         print(f'      <details class="glossary-group" id="{html.escape(group_id, quote=True)}">')
         print(f'        <summary>{html.escape(group_title)}</summary>')
         print('        <ul class="glossary-terms">')
-        for term_index, key in enumerate(term_keys, start=1):
+        visible_keys = [key for key in term_keys if key not in OMITTED_TERM_KEYS]
+        for term_index, key in enumerate(visible_keys, start=1):
             print_term(key, f'{group_id}-{term_index}-{key}')
         print('        </ul>')
         print('      </details>')
