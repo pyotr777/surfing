@@ -7,7 +7,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
-from glossary_data import TERMS, TREE
+from glossary_data import TERMS, TREE, WAVE_RIDING
 
 lang = S.lang_of(page_file)
 if lang == "ru":
@@ -18,6 +18,23 @@ elif lang == "ja":
     TERMS = localized_terms()
 
 ALIAS_LABEL = {"en": "Also", "ru": "Также", "ja": "別名"}[lang]
+RIDING_COPY = {
+    "en": {
+        "boards": "Boards", "level": "Level",
+        "not-rideable": "Not recommended for surfing.",
+        "conditions": "Direction only — board choice and skill depend on conditions.",
+    },
+    "ru": {
+        "boards": "Подходящие доски", "level": "Уровень",
+        "not-rideable": "Для катания не рекомендуется.",
+        "conditions": "Это только направление волны: выбор доски и уровень зависят от условий.",
+    },
+    "ja": {
+        "boards": "向くボード", "level": "レベル",
+        "not-rideable": "サーフィンには向きません。",
+        "conditions": "波の向きの説明です。ボードと必要なレベルはコンディション次第です。",
+    },
+}[lang]
 TREE_LABEL = {
     "en": "Surf glossary classifications",
     "ru": "Классификации сёрф-глоссария",
@@ -41,6 +58,16 @@ def print_term(key, instance_id):
     if entry["aliases"]:
         aliases = " · ".join(html.escape(alias) for alias in entry["aliases"])
         print(f'            <p class="glossary-aliases">{ALIAS_LABEL}: {aliases}</p>')
+    riding = WAVE_RIDING.get(key)
+    if riding:
+        print('            <div class="glossary-riding">')
+        if "status" in riding:
+            print(f'              <p>{html.escape(RIDING_COPY[riding["status"]])}</p>')
+        else:
+            boards = " · ".join(html.escape(TERMS[board]["title"]) for board in riding["boards"])
+            print(f'              <p><strong>{RIDING_COPY["boards"]}:</strong> {boards}</p>')
+            print(f'              <p><strong>{RIDING_COPY["level"]}:</strong> {html.escape(TERMS[riding["level"]]["title"])}</p>')
+        print('            </div>')
     print('          </li>')
 
 

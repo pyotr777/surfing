@@ -6,7 +6,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
 from glossary_article_data import ARTICLES as EN_ARTICLES
-from glossary_data import TERMS as EN_TERMS, TREE as EN_TREE
+from glossary_data import TERMS as EN_TERMS, TREE as EN_TREE, WAVE_RIDING
 
 key = params["key"]
 lang = S.lang_of(page_file)
@@ -28,18 +28,30 @@ COPY = {
         "home": "Home", "glossary": "Glossary", "waves": "Waves",
         "group": "Swell & wave formation", "branch": "In this branch",
         "classification": "Classification", "group_label": "Group",
+        "riding": "Riding guide", "boards": "Recommended boards", "level": "Experience level",
+        "not-rideable": "Not recommended for surfing.",
+        "conditions": "Direction only — board choice and skill depend on conditions.",
+        "riding_note": "Guidance only: size, current and bottom can change the choice.",
         "related": "Related terms", "back": "← Back to Waves in the glossary",
     },
     "ru": {
         "home": "Главная", "glossary": "Глоссарий", "waves": "Волны",
         "group": "Свелл и формирование волн", "branch": "В этом разделе",
         "classification": "Классификация", "group_label": "Группа",
+        "riding": "Для катания", "boards": "Подходящие доски", "level": "Уровень сёрфера",
+        "not-rideable": "Для катания не рекомендуется.",
+        "conditions": "Это только направление волны: выбор доски и уровень зависят от условий.",
+        "riding_note": "Это ориентир: размер волны, течение и дно могут изменить выбор.",
         "related": "Связанные термины", "back": "← К разделу «Волны» в глоссарии",
     },
     "ja": {
         "home": "ホーム", "glossary": "用語集", "waves": "波",
         "group": "うねりと波の形成", "branch": "この項目の分類",
         "classification": "分類", "group_label": "グループ",
+        "riding": "乗るための目安", "boards": "向くボード", "level": "レベル",
+        "not-rideable": "サーフィンには向きません。",
+        "conditions": "波の向きの説明です。ボードと必要なレベルはコンディション次第です。",
+        "riding_note": "あくまで目安です。波のサイズ、流れ、海底で選択は変わります。",
         "related": "関連する用語", "back": "← 用語集の「波」に戻る",
     },
 }[lang]
@@ -126,6 +138,18 @@ print('      <dl>')
 print(f'        <div><dt>{COPY["classification"]}</dt><dd>{html.escape(category)}</dd></div>')
 print(f'        <div><dt>{COPY["group_label"]}</dt><dd>{html.escape(group)}</dd></div>')
 print('      </dl>')
+riding = WAVE_RIDING.get(key)
+if riding:
+    print(f'      <h3>{COPY["riding"]}</h3>')
+    if "status" in riding:
+        print(f'      <p class="glossary-riding-status">{html.escape(COPY[riding["status"]])}</p>')
+    else:
+        boards = " · ".join(html.escape(TERMS[board]["title"]) for board in riding["boards"])
+        print('      <dl>')
+        print(f'        <div><dt>{COPY["boards"]}</dt><dd>{boards}</dd></div>')
+        print(f'        <div><dt>{COPY["level"]}</dt><dd>{html.escape(TERMS[riding["level"]]["title"])}</dd></div>')
+        print('      </dl>')
+    print(f'      <p class="glossary-riding-note">{html.escape(COPY["riding_note"])}</p>')
 print(f'      <h3>{COPY["related"]}</h3>')
 print('      <ul class="glossary-related">')
 for related_key in related_keys:

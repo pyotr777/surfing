@@ -1,0 +1,66 @@
+<script type="text/python">
+import html
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+spot_id = params["spot"]
+detail = S.SPOT_DETAILS[spot_id]
+area_id = detail["area"]
+lang = S.lang_of(page_file)
+b = S.base_url(page_file)
+title = detail["title"][lang]
+summary = detail["summary"][lang]
+description = detail["description"][lang]
+
+COPY = {
+    "en": {"home": "Home", "spots": "Spots", "about": "Spot character", "area": "← Back to Asahi"},
+    "ru": {"home": "Главная", "spots": "Споты", "about": "Характер спота", "area": "← К Асахи"},
+    "ja": {"home": "ホーム", "spots": "スポット", "about": "ポイントの特徴", "area": "← 旭に戻る"},
+}[lang]
+
+suffix = {"en": "Surf Japan", "ru": "Сёрф Япония", "ja": "Surf Japan"}[lang]
+home_url = b + S.localize("index.html", lang)
+spots_url = b + S.localize("spots/index.html", lang)
+area_url = b + f"spots/{area_id}/" + S.localize("index.html", lang)
+head, soup = include("head.html")
+header, soup = include("header.html")
+facts, soup = include("spot-facts.html", spot=spot_id)
+footer, soup = include("footer.html")
+
+print('<!DOCTYPE html>')
+print(f'<html lang="{lang}">')
+print('<head>')
+print(head)
+print(f'  <title>{html.escape(title)} — {suffix}</title>')
+print(f'  <meta name="language" content="{lang}">')
+print(f'  <meta name="description" content="{html.escape(summary, quote=True)}">')
+print('</head>')
+print('<body>')
+print(header)
+print('<main id="main">')
+print('<nav class="crumbs" aria-label="breadcrumb"><ol>')
+print(f'  <li><a href="{html.escape(home_url, quote=True)}">{COPY["home"]}</a></li>')
+print(f'  <li><a href="{html.escape(spots_url, quote=True)}">{COPY["spots"]}</a></li>')
+print(f'  <li><a href="{html.escape(area_url, quote=True)}">{html.escape(S.AREAS_META[area_id][lang])}</a></li>')
+print(f'  <li aria-current="page">{html.escape(title)}</li>')
+print('</ol></nav>')
+print('<article class="article">')
+print(f'  <h1>{html.escape(title)}</h1>')
+print(f'  <p class="standfirst">{html.escape(summary)}</p>')
+print('  <div class="spot-layout">')
+print('    <div class="spot-body">')
+print(f'      <h2>{COPY["about"]}</h2>')
+print(f'      <p>{html.escape(description)}</p>')
+print(f'      <p class="section-link"><a href="{html.escape(area_url, quote=True)}">{COPY["area"]}</a></p>')
+print('    </div>')
+print(facts)
+print('  </div>')
+print('</article>')
+print('</main>')
+print(footer)
+print('</body>')
+print('</html>')
+</script>

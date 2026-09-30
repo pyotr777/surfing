@@ -268,6 +268,39 @@ for _key, _slug in GLOSSARY_PAGE_SLUGS.items():
     TERMS[_key]["url"] = f"{_slug}/index.html"
 
 
+# Practical guidance for the wave types in Shape & breaking behaviour.  The
+# keys point to glossary entries, so each language can use its own names for
+# boards and experience levels.  These are starting points, not a substitute
+# for judging the actual size, current and bottom at a spot.
+WAVE_RIDING = {
+    "ja-thick-wave": {"boards": ("longboard", "funboard", "mid-length"), "level": "beginner"},
+    "wedge": {"boards": ("shortboard", "fish"), "level": "intermediate"},
+    "big-wave": {"boards": ("gun",), "level": "expert"},
+    "shore-dump": {"status": "not-rideable"},
+    "peeling": {"boards": ("longboard", "funboard", "shortboard"), "level": "beginner"},
+    "surging": {"status": "not-rideable"},
+    "spilling": {"boards": ("soft-top", "longboard", "funboard"), "level": "beginner"},
+    "left": {"status": "conditions"},
+    "a-frame": {"boards": ("shortboard", "longboard", "funboard"), "level": "beginner"},
+    "slab": {"boards": ("shortboard", "gun"), "level": "advanced"},
+    "double-up": {"boards": ("shortboard", "gun"), "level": "advanced"},
+    "ja-lingering-wave": {"boards": ("longboard", "funboard", "groveler"), "level": "beginner"},
+    "closeout": {"status": "not-rideable"},
+    "ja-connected-wave": {"status": "not-rideable"},
+    "ja-slow-thick-wave": {"boards": ("longboard", "funboard", "soft-top"), "level": "beginner"},
+    "mushy": {"boards": ("longboard", "groveler", "fish"), "level": "beginner"},
+    "ja-weak-closeout": {"status": "not-rideable"},
+    "ja-weak-fast-wave": {"boards": ("fish", "shortboard"), "level": "intermediate"},
+    "ja-fast-wave": {"boards": ("shortboard",), "level": "advanced"},
+    "hollow": {"boards": ("shortboard", "gun"), "level": "advanced"},
+    "plunging": {"boards": ("shortboard", "gun"), "level": "advanced"},
+    "ja-collapsing-wave": {"boards": ("mid-length", "shortboard"), "level": "intermediate"},
+    "reform": {"boards": ("longboard", "funboard", "mid-length"), "level": "beginner"},
+    "right": {"status": "conditions"},
+    "ja-wide-wave": {"boards": ("fish", "shortboard"), "level": "intermediate"},
+}
+
+
 TREE = [
     {
         "id": "waves",

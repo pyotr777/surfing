@@ -15,14 +15,24 @@ print(f'<p class="standfirst">{area["summary"][lang]}</p>')
 print('<div class="spot-layout">')
 print('  <div class="spot-body">')
 copy = {
-    "en": ("Coast character", "This is a profile of the area rather than a promise for every break. Sandbanks, wind and swell vary along the shore and through the seasons, so check the forecast and the beach before paddling out.", "Spots in this area", "At a glance"),
-    "ru": ("Характер побережья", "Песчаный пляж с плавным понижением дна. Регулярно расположены параллельные берегу груды тетраподов. Найдутся споты для любого уровня прилива. Лучшие направления прибоя — с восточного по юго-юго-западный. В северо-восточной части могут формироваться  ", "Споты района", "Кратко"),
-    "ja": ("海岸の特徴", "海底が遠浅のビーチです。ほれた波　サンドバー、風、うねりは場所や季節で変わるため、入水前には予報と現地の状況を確認してください。", "このエリアのスポット", "ポイント概要"),
+    "en": ("Coast character", "A sandy beach with a gently sloping seabed. Lines of tetrapods run parallel to the shore. Suitable tide levels are low and mid, and more rarely high. The best swell directions run from east through south-southwest. In the north-eastern part (Mansionsita), soft waves suitable for longboards can form. The south-western side of the area is characterised by higher, faster waves, more suitable for mid-length and short boards.", "Spots in this area", "At a glance"),
+    "ru": ("Характер побережья", "Песчаный пляж с плавным понижением дна. Параллельно берегу расположены гряды тетраподов. Подходящие уровни прилива — низкий и средний, реже высокий. Лучшие направления свелла — с восточного по юго-юго-западный. В северо-восточной части («Мансёнсита») могут формироваться мягкие волны, хорошие для длинных досок. Юго-западная сторона района характеризуется более высокими и быстрыми волнами, подходящими скорее для средних и коротких досок.", "Споты района", "Кратко"),
+    "ja": ("海岸の特徴", "緩やかに深くなる砂浜です。海岸と平行にテトラポッドの列が並んでいます。向く潮位はロー〜ミドルで、ハイタイドはまれです。うねりは東から南南西までがよく、北東側のマンション下ではロングボード向きの緩やかな波が立つことがあります。エリア南西側はよりサイズがあり速い波で、ミッドレングスやショートボードにより向いています。", "このエリアのスポット", "ポイント概要"),
 }[lang]
 print('<h2>' + copy[0] + '</h2>')
 print('<p>' + copy[1] + '</p>')
 print('<h2>' + copy[2] + '</h2>')
-print('<p>' + ' · '.join(facts["spots"][lang]) + '</p>')
+spots = facts["spots"][lang]
+map_spots = S.AREA_MAPS.get(area_id, {}).get("spots", [])
+if map_spots:
+    spots = []
+    for spot in map_spots:
+        label = S.SPOT_DETAILS.get(spot["id"], {}).get("title", {}).get(lang, spot[lang])
+        if spot.get("url"):
+            url = S.localize(spot["url"], lang)
+            label = f'<a href="{url}">{label}</a>'
+        spots.append(label)
+print('<p>' + ' · '.join(spots) + '</p>')
 print('  </div>')
 print('  <aside class="facts">')
 print('    <h2>' + copy[3] + '</h2>')

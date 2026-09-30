@@ -445,10 +445,11 @@ LONGBOARD_SHAPES = [
             "title": "Classic / Traditional",
             "summary": "A full outline with balanced nose, tail and rocker for stable trim and smooth turns.",
         },
-        "ru": {
-            "title": "Классический / традиционный",
-            "summary": "Полный outline, сбалансированные нос, корма и рокер — для устойчивого трима и плавных поворотов.",
-        },
+        "ru":
+            {
+                "title": "Классический / традиционный",
+                "summary": "Полный outline, сбалансированные нос, корма и рокер — для устойчивого трима и плавных поворотов.",
+            },
         "ja": {
             "title": "クラシック / トラディショナル",
             "summary": "幅のあるアウトラインと、バランスの取れたノーズ、テール、ロッカー。安定したトリムと滑らかなターン向きです。",
@@ -456,14 +457,16 @@ LONGBOARD_SHAPES = [
     },
     {
         "id": "all-around",
-        "en": {
-            "title": "All-around",
-            "summary": "A balanced outline with a full nose and rounded tail; moderate rocker combines early entry and trim with confident turns.",
-        },
-        "ru": {
-            "title": "Универсальный (all-around)",
-            "summary": "Сбалансированный outline, полный нос и округлая корма; умеренный рокер сочетает ранний вход в волну, трим и уверенные повороты.",
-        },
+        "en":
+            {
+                "title": "All-around",
+                "summary": "A balanced outline with a full nose and rounded tail; moderate rocker combines early entry and trim with confident turns.",
+            },
+        "ru":
+            {
+                "title": "Универсальный (all-around)",
+                "summary": "Сбалансированный outline, полный нос и округлая корма; умеренный рокер сочетает ранний вход в волну, трим и уверенные повороты.",
+            },
         "ja": {
             "title": "オールラウンド",
             "summary": "バランスの取れたアウトラインに、幅を残したノーズと丸みのあるテール。ほどよいロッカーが早いテイクオフ、トリム、安定したターンを両立します。",
@@ -686,6 +689,132 @@ AREAS = {
         },
 }
 
+# Detailed spot pages live inside their parent area.  These deliberately keep
+# their compact facts separate from csv/spots.csv, which compares the six
+# navigation areas rather than every individual break.
+SPOT_DETAILS = {
+    "shingosita":
+        {
+            "area": "asahi",
+            "title": {
+                "en": "Shingosita",
+                "ru": "Сингосита",
+                "ja": "信号下",
+            },
+            "summary":
+                {
+                    "en": "A hollow beach break with occasional barrels, shaped by the swell direction and the tetrapods.",
+                    "ru": "Холлоу-бич-брейк с возможными трубами; его характер меняется в зависимости от направления свелла и тетраподов.",
+                    "ja": "うねりの向きとテトラポッドで波質が変わる、ときにバレルも現れるホローなビーチブレイク。",
+                },
+            "description":
+                {
+                    "en":
+                        "When the surf has size, faster hollow sections can appear and may suit shortboards; gentler, thicker waves can be better for longboards. Both lefts and rights can run, although the final section often closes out. When the conditions line up, three peaks can form and a tube is possible. Complex currents develop around the tetrapods: choose a paddle-out that stays clear of riders, and take particular care outside the blocks.",
+                    "ru":
+                        "Когда свелл набирает размер, могут появляться быстрые холлоу-секции, подходящие для шортбордов; при более мягкой и толстой волне лучше подойдёт лонгборд. Здесь возможны и правые, и левые волны, хотя финальная секция часто закрывается. При удачном совпадении условий могут сформироваться три пика и труба. У тетраподов возникают сложные течения: выбирайте выход в воду так, чтобы не мешать катающимся, и особенно внимательно следите за течением с внешней стороны блоков.",
+                    "ja":
+                        "信号下では、サイズが上がると掘れた速いセクションが現れ、ショートボード向きになることがあります。緩やかで厚めの波ではロングボードにも向きます。レギュラー、グーフィーともに乗れますが、最後のセクションはクローズアウトしやすい傾向があります。条件がそろうと三つのピークができ、チューブになることもあります。テトラポッド周辺には複雑なカレントがあるため、ライディングしている人の妨げにならないルートで沖へ出て、特にブロックのアウト側では流れをよく確認してください。",
+                },
+            "facts":
+                {
+                    "en":
+                        [
+                            ("Area", "Chiba North · Iioka"),
+                            ("Break", "hollow beach break"),
+                            ("Level", "beginner to advanced, depending on conditions"),
+                            ("Season", "year-round; especially autumn–winter"),
+                            ("Best size", "chest to shoulder high"),
+                            ("Working tide", "mid to mid-low"),
+                            ("Best swell", "S–SE"),
+                            ("Clean wind", "N"),
+                            ("Best board", "shortboard"),
+                        ],
+                    "ru":
+                        [
+                            ("Район", "Северная Тиба · Ииока"),
+                            ("Брейк", "холлоу-бич-брейк"),
+                            ("Уровень", "от начинающего до продвинутого — по условиям"),
+                            ("Сезон", "круглый год; особенно осень — зима"),
+                            ("Лучший размер", "по грудь — по плечи"),
+                            ("Подходящий уровень воды", "средний — средне-низкий"),
+                            ("Лучший свелл", "Ю–ЮВ"),
+                            ("Чистый ветер", "С"),
+                            ("Подходящая доска", "шортборд"),
+                        ],
+                    "ja":
+                        [
+                            ("エリア", "千葉北・飯岡"),
+                            ("ブレイク", "ホローなビーチブレイク"),
+                            ("レベル", "初級〜上級（コンディション次第）"),
+                            ("シーズン", "通年、特に秋〜冬"),
+                            ("ベストサイズ", "ムネ〜カタ"),
+                            ("対応する潮位", "ミドル〜ミドルロー"),
+                            ("ベストうねり", "南〜南東"),
+                            ("オフショア", "北"),
+                            ("向くボード", "ショートボード"),
+                        ],
+                },
+        },
+    "mansionsita":
+        {
+            "area": "asahi",
+            "title": {
+                "en": "Mansionsita",
+                "ru": "Мансёнсита",
+                "ja": "マンション下",
+            },
+            "summary":
+                {
+                    "en": "A smaller, gentler beach break between the tetrapods on Iioka’s north-east side.",
+                    "ru": "Более мягкий и обычно меньший бич-брейк между тетраподами в северо-восточной части Ииоки.",
+                    "ja": "飯岡の北東側、テトラポッドの間で割れる、比較的サイズが小さく穏やかなビーチブレイク。",
+                },
+            "description":
+                {
+                    "en":
+                        "Mansionsita is often softer than the breaks farther south in Asahi, so longer boards tend to be the natural choice. The sandbanks shift regularly, but when they line up, rides of up to 100 metres are possible. In the north-east corner, a pocket known as ‘Silver’ sits behind the first line of tetrapods and produces small, smooth, forgiving waves, so it often draws many beginners.",
+                    "ru":
+                        "В Мансёнсите волны часто мягче, чем на спотах южнее в районе Асахи, поэтому здесь естественно выбирать более длинные доски. Рельеф дна регулярно меняется, но иногда при благоприятных условиях возможны длинные проезды протяжённостью до 100 м. Северо-восточный угол закрытый первой грядой тетраподов, называемый «Сильвер», даёт ровные, небольшие и мягкие волны, поэтому часто собирает много начинающих серферов.",
+                    "ja":
+                        "マンション下は、旭エリアで南にあるポイントよりも波が柔らかいことが多く、長めのボードが自然に合います。海底地形は頻繁に変わりますが、条件が整えば100メートルほどのロングライドができることもあります。北東側の最初のテトラポッド列に守られた一角は「シルバー」と呼ばれ、小さく整った穏やかな波が立つため、初心者が多く集まります。",
+                },
+            "facts":
+                {
+                    "en":
+                        [
+                            ("Area", "Chiba North · Iioka"),
+                            ("Break", "beach break between tetrapods"),
+                            ("Level", "beginner in small surf"),
+                            ("Working tide", "low to high"),
+                            ("Swell", "E–SSW, especially south"),
+                            ("Clean wind", "N–NNE"),
+                            ("Best board", "longboard"),
+                        ],
+                    "ru":
+                        [
+                            ("Район", "Северная Тиба · Ииока"),
+                            ("Брейк", "бич-брейк между тетраподами"),
+                            ("Уровень", "начинающий при небольшой волне"),
+                            ("Подходящий уровень воды", "от низкого до высокого"),
+                            ("Свелл", "В–ЮЮЗ, особенно южный"),
+                            ("Чистый ветер", "С–ССВ"),
+                            ("Подходящая доска", "лонгборд"),
+                        ],
+                    "ja":
+                        [
+                            ("エリア", "千葉北・飯岡"),
+                            ("ブレイク", "テトラポッドの間のビーチブレイク"),
+                            ("レベル", "小波なら初級者向け"),
+                            ("対応する潮位", "ロー〜ハイ"),
+                            ("うねり", "東〜南南西、特に南うねり"),
+                            ("オフショア", "北〜北北東"),
+                            ("向くボード", "ロングボード"),
+                        ],
+                },
+        },
+}
+
 AREA_FACTS = {
     "asahi":
         {
@@ -813,13 +942,24 @@ AREA_MAPS = {
             "zoom":
                 15,
             "spots":
-                [{
-                    "id": "mansionsita",
-                    "coordinates": (35.69908, 140.71730),
-                    "en": "Mansionsita (マンション下)",
-                    "ru": "Мансёнсита (マンション下)",
-                    "ja": "マンション下",
-                }, ],
+                [
+                    {
+                        "id": "shingosita",
+                        "coordinates": (35.700368, 140.714157),
+                        "url": "shingosita/index.html",
+                        "en": "Shingosita (信号下)",
+                        "ru": "Сингосита (信号下)",
+                        "ja": "信号下",
+                    },
+                    {
+                        "id": "mansionsita",
+                        "coordinates": (35.697362, 140.721728),
+                        "url": "mansionsita/index.html",
+                        "en": "Mansionsita (マンション下)",
+                        "ru": "Мансёнсита (マンション下)",
+                        "ja": "マンション下",
+                    },
+                ],
         },
 }
 
