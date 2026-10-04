@@ -72,6 +72,15 @@ for label, value in rows:
         print('    </dd></div>')
     else:
         print(f'    <div><dt>{html.escape(label)}</dt><dd>{html.escape(value)}</dd></div>')
+
+amenities = detail.get("amenities", {}).get(lang, [])
+if amenities:
+    amenities_label = {"en": "Amenities", "ru": "Удобства", "ja": "設備"}[lang]
+    print(f'    <div class="fact-amenities"><dt>{amenities_label}</dt><dd>')
+    for label, icon_name in amenities:
+        icon = S.base_url(page_file) + "img/stickers/" + icon_name
+        print(f'        <img src="{html.escape(icon, quote=True)}" alt="{html.escape(label, quote=True)}" title="{html.escape(label, quote=True)}">')
+    print('      </dd></div>')
 print('  </dl>')
 print('</aside>')
 </script>
