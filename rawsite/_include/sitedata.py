@@ -51,158 +51,154 @@ SITE = {
 # --------------------------------------------------------------------------
 
 UI = {
-    "en":
-        {
-            "nav_home": "Home",
-            "gear_sections": "Gear sections",
-            "gear_boards": "Boards",
-            "gear_fins": "Fins",
-            "gear_leash": "Leash",
-            "gear_wetsuit": "Wetsuit",
-            "nav_tags": "Tags",
-            "nav_glossary": "Glossary",
-            "nav_how": "About",
-            "languages": "Languages",
-            "skip": "Skip to content",
-            "nav_label": "Main navigation",
-            "read_more": "Read more",
-            "toc_heading": "What is on this site",
-            "board_length": "Length",
-            "board_width": "Width",
-            "board_thickness": "Thickness",
-            "board_volume": "Volume",
-            "board_fins": "Fins",
-            "board_tail": "Tail",
-            "board_waves": "Wave size",
-            "board_scale_heading": "All four to scale",
-            "board_scale_caption":
-                "Outlines are drawn during the build from the length, "
-                "width and shape ratios in csv/boards.csv. The bar is "
-                "six feet, for reference.",
-            "map_heading": "Where the waves are",
-            "map_caption": "Illustrated map of surf areas in Chiba and Shonan.",
-            "table_spot": "Spot",
-            "table_region": "Region",
-            "table_break": "Break",
-            "table_level": "Level",
-            "table_season": "Peak season",
-            "table_swell": "Swell window",
-            "table_wind": "Best wind",
-            "table_size": "Typical size",
-            "table_aug": "Water, Aug",
-            "table_feb": "Water, Feb",
-            "table_sort_hint": "Click a column heading to sort.",
-            "facts_heading": "At a glance",
-            "tags_heading": "All tags",
-            "tagged": "Tagged",
-            "back_home": "Back to all spots",
-            "no_pages": "No pages yet.",
-            "built_with": "Built with <a href='https://github.com/pyotr777/panehe/'>Panehe</a>",
-            "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            "wetsuit_region": "Region",
-            "wetsuit_note": "Thickness in millimetres. 2 mm means a spring suit is enough; "
-                            "5 mm implies a hood, boots and gloves.",
-        },
-    "ru":
-        {
-            "nav_home": "Главная",
-            "gear_sections": "Разделы снаряжения",
-            "gear_boards": "Доски",
-            "gear_fins": "Плавники",
-            "gear_leash": "Лиш",
-            "gear_wetsuit": "Гидрокостюм",
-            "nav_tags": "Теги",
-            "nav_glossary": "Глоссарий",
-            "nav_how": "О сайте",
-            "languages": "Языки",
-            "skip": "К содержанию",
-            "nav_label": "Основная навигация",
-            "read_more": "Читать",
-            "toc_heading": "Что есть на сайте",
-            "board_length": "Длина",
-            "board_width": "Ширина",
-            "board_thickness": "Толщина",
-            "board_volume": "Объём",
-            "board_fins": "Плавники",
-            "board_tail": "Хвост",
-            "board_waves": "Размер волны",
-            "board_scale_heading": "Все четыре в одном масштабе",
-            "board_scale_caption":
-                "Контуры рисуются на сборке из длины, ширины и "
-                "пропорций формы в csv/boards.csv. Полоса внизу — "
-                "шесть футов для сравнения.",
-            "map_heading": "Где ловить волну",
-            "map_caption": "Иллюстрированная карта районов для сёрфинга в Тибе и Сёнане.",
-            "table_spot": "Спот",
-            "table_region": "Регион",
-            "table_break": "Тип волны",
-            "table_level": "Уровень",
-            "table_season": "Сезон",
-            "table_swell": "Свелл-окно",
-            "table_wind": "Лучший ветер",
-            "table_size": "Обычный размер",
-            "table_aug": "Вода, авг.",
-            "table_feb": "Вода, фев.",
-            "table_sort_hint": "Нажмите на заголовок столбца, чтобы отсортировать.",
-            "facts_heading": "Коротко",
-            "tags_heading": "Все теги",
-            "tagged": "Тег",
-            "back_home": "Ко всем спотам",
-            "no_pages": "Страниц пока нет.",
-            "built_with": "Сайт сделан при помощи <a href='https://github.com/pyotr777/panehe/'>Panehe</a>",
-            "months": ["янв.", "фев.", "март", "апр.", "май", "июнь", "июль", "авг.", "сен.", "окт.", "нояб.", "дек."],
-            "wetsuit_region": "Регион",
-            "wetsuit_note": "Толщина в миллиметрах. 2 мм — хватит короткого гидрокостюма; "
-                            "5 мм — подразумевает шлем, боты и перчатки.",
-        },
-    "ja":
-        {
-            "nav_home": "ホーム",
-            "gear_sections": "ギアの項目",
-            "gear_boards": "ボード",
-            "gear_fins": "フィン",
-            "gear_leash": "リーシュ",
-            "gear_wetsuit": "ウェットスーツ",
-            "nav_tags": "タグ",
-            "nav_glossary": "用語集",
-            "nav_how": "このサイトについて",
-            "languages": "言語",
-            "skip": "本文へ移動",
-            "nav_label": "メインナビゲーション",
-            "read_more": "詳しく見る",
-            "toc_heading": "このサイトの内容",
-            "board_length": "長さ",
-            "board_width": "幅",
-            "board_thickness": "厚さ",
-            "board_volume": "容量",
-            "board_fins": "フィン",
-            "board_tail": "テール",
-            "board_waves": "対応する波のサイズ",
-            "board_scale_heading": "4種類を同じ縮尺で",
-            "board_scale_caption": "アウトラインは、csv/boards.csv の長さ、幅、形状比からビルド時に描かれます。下のバーは6フィートです。",
-            "map_heading": "波を探す場所",
-            "map_caption": "千葉と湘南のサーフィンエリアを示す図解地図",
-            "table_spot": "スポット",
-            "table_region": "エリア",
-            "table_break": "ブレイク",
-            "table_level": "レベル",
-            "table_season": "ベストシーズン",
-            "table_swell": "対応するうねり",
-            "table_wind": "最適風向",
-            "table_size": "一般的なサイズ",
-            "table_aug": "水温・8月",
-            "table_feb": "水温・2月",
-            "table_sort_hint": "列の見出しをクリックすると並べ替えられます。",
-            "facts_heading": "ポイント概要",
-            "tags_heading": "すべてのタグ",
-            "tagged": "タグ",
-            "back_home": "すべてのスポットへ戻る",
-            "no_pages": "ページはまだありません。",
-            "built_with": "<a href='https://github.com/pyotr777/panehe/'>Panehe</a> で作成",
-            "months": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
-            "wetsuit_region": "エリア",
-            "wetsuit_note": "厚さはミリメートル。2 mm はスプリングスーツで十分な目安、5 mm はフード、ブーツ、グローブも必要になる水温です。",
-        },
+    "en": {
+        "nav_home": "Home",
+        "gear_sections": "Gear sections",
+        "gear_boards": "Boards",
+        "gear_fins": "Fins",
+        "gear_leash": "Leash",
+        "gear_wetsuit": "Wetsuit",
+        "nav_tags": "Tags",
+        "nav_glossary": "Glossary",
+        "nav_how": "About",
+        "languages": "Languages",
+        "skip": "Skip to content",
+        "nav_label": "Main navigation",
+        "read_more": "Read more",
+        "toc_heading": "What is on this site",
+        "board_length": "Length",
+        "board_width": "Width",
+        "board_thickness": "Thickness",
+        "board_volume": "Volume",
+        "board_fins": "Fins",
+        "board_tail": "Tail",
+        "board_waves": "Wave size",
+        "board_scale_heading": "All four to scale",
+        "board_scale_caption":
+            "Outlines are drawn during the build from the length, "
+            "width and shape ratios in csv/boards.csv. The bar is "
+            "six feet, for reference.",
+        "map_heading": "Where the waves are",
+        "map_caption": "Illustrated map of surf areas in Chiba and Shonan.",
+        "table_spot": "Spot",
+        "table_region": "Region",
+        "table_break": "Break",
+        "table_level": "Level",
+        "table_season": "Peak season",
+        "table_swell": "Swell window",
+        "table_wind": "Best wind",
+        "table_size": "Typical size",
+        "table_aug": "Water, Aug",
+        "table_feb": "Water, Feb",
+        "table_sort_hint": "Click a column heading to sort.",
+        "facts_heading": "At a glance",
+        "tags_heading": "All tags",
+        "tagged": "Tagged",
+        "back_home": "Back to all spots",
+        "no_pages": "No pages yet.",
+        "built_with": "Built with <a href='https://github.com/pyotr777/panehe/'>Panehe</a>",
+        "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        "wetsuit_region": "Region",
+        "wetsuit_note": "Thickness in millimetres. 2 mm means a spring suit is enough; "
+                        "5 mm implies a hood, boots and gloves.",
+    },
+    "ru": {
+        "nav_home": "Главная",
+        "gear_sections": "Разделы снаряжения",
+        "gear_boards": "Доски",
+        "gear_fins": "Плавники",
+        "gear_leash": "Лиш",
+        "gear_wetsuit": "Гидрокостюм",
+        "nav_tags": "Теги",
+        "nav_glossary": "Глоссарий",
+        "nav_how": "О сайте",
+        "languages": "Языки",
+        "skip": "К содержанию",
+        "nav_label": "Основная навигация",
+        "read_more": "Читать",
+        "toc_heading": "Что есть на сайте",
+        "board_length": "Длина",
+        "board_width": "Ширина",
+        "board_thickness": "Толщина",
+        "board_volume": "Объём",
+        "board_fins": "Плавники",
+        "board_tail": "Хвост",
+        "board_waves": "Размер волны",
+        "board_scale_heading": "Все четыре в одном масштабе",
+        "board_scale_caption": "Контуры рисуются на сборке из длины, ширины и "
+                               "пропорций формы в csv/boards.csv. Полоса внизу — "
+                               "шесть футов для сравнения.",
+        "map_heading": "Где ловить волну",
+        "map_caption": "Иллюстрированная карта районов для сёрфинга в Тибе и Сёнане.",
+        "table_spot": "Спот",
+        "table_region": "Регион",
+        "table_break": "Тип волны",
+        "table_level": "Уровень",
+        "table_season": "Сезон",
+        "table_swell": "Свелл-окно",
+        "table_wind": "Лучший ветер",
+        "table_size": "Обычный размер",
+        "table_aug": "Вода, авг.",
+        "table_feb": "Вода, фев.",
+        "table_sort_hint": "Нажмите на заголовок столбца, чтобы отсортировать.",
+        "facts_heading": "Коротко",
+        "tags_heading": "Все теги",
+        "tagged": "Тег",
+        "back_home": "Ко всем спотам",
+        "no_pages": "Страниц пока нет.",
+        "built_with": "Сайт сделан при помощи <a href='https://github.com/pyotr777/panehe/'>Panehe</a>",
+        "months": ["янв.", "фев.", "март", "апр.", "май", "июнь", "июль", "авг.", "сен.", "окт.", "нояб.", "дек."],
+        "wetsuit_region": "Регион",
+        "wetsuit_note": "Толщина в миллиметрах. 2 мм — хватит короткого гидрокостюма; "
+                        "5 мм — подразумевает шлем, боты и перчатки.",
+    },
+    "ja": {
+        "nav_home": "ホーム",
+        "gear_sections": "ギアの項目",
+        "gear_boards": "ボード",
+        "gear_fins": "フィン",
+        "gear_leash": "リーシュ",
+        "gear_wetsuit": "ウェットスーツ",
+        "nav_tags": "タグ",
+        "nav_glossary": "用語集",
+        "nav_how": "このサイトについて",
+        "languages": "言語",
+        "skip": "本文へ移動",
+        "nav_label": "メインナビゲーション",
+        "read_more": "詳しく見る",
+        "toc_heading": "このサイトの内容",
+        "board_length": "長さ",
+        "board_width": "幅",
+        "board_thickness": "厚さ",
+        "board_volume": "容量",
+        "board_fins": "フィン",
+        "board_tail": "テール",
+        "board_waves": "対応する波のサイズ",
+        "board_scale_heading": "4種類を同じ縮尺で",
+        "board_scale_caption": "アウトラインは、csv/boards.csv の長さ、幅、形状比からビルド時に描かれます。下のバーは6フィートです。",
+        "map_heading": "波を探す場所",
+        "map_caption": "千葉と湘南のサーフィンエリアを示す図解地図",
+        "table_spot": "スポット",
+        "table_region": "エリア",
+        "table_break": "ブレイク",
+        "table_level": "レベル",
+        "table_season": "ベストシーズン",
+        "table_swell": "対応するうねり",
+        "table_wind": "最適風向",
+        "table_size": "一般的なサイズ",
+        "table_aug": "水温・8月",
+        "table_feb": "水温・2月",
+        "table_sort_hint": "列の見出しをクリックすると並べ替えられます。",
+        "facts_heading": "ポイント概要",
+        "tags_heading": "すべてのタグ",
+        "tagged": "タグ",
+        "back_home": "すべてのスポットへ戻る",
+        "no_pages": "ページはまだありません。",
+        "built_with": "<a href='https://github.com/pyotr777/panehe/'>Panehe</a> で作成",
+        "months": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        "wetsuit_region": "エリア",
+        "wetsuit_note": "厚さはミリメートル。2 mm はスプリングスーツで十分な目安、5 mm はフード、ブーツ、グローブも必要になる水温です。",
+    },
 }
 
 # --------------------------------------------------------------------------
@@ -273,72 +269,68 @@ SEASONS = {
 SECTIONS = ["spots", "gear", "waves", "safety"]
 
 SECTION_META = {
-    "spots":
-        {
-            "en": {
-                "title": "Spots",
-                "blurb": "Regions and surf spots, with the conditions that "
-                         "make each one work."
-            },
-            "ru": {
-                "title": "Споты",
-                "blurb": "Области и споты, а также условия, при которых "
-                         "каждый из них работает."
-            },
-            "ja": {
-                "title": "スポット",
-                "blurb": "エリアとスポット、それぞれが良くなる条件を紹介します。"
-            },
+    "spots": {
+        "en": {
+            "title": "Spots",
+            "blurb": "Regions and surf spots, with the conditions that "
+                     "make each one work."
         },
-    "gear":
-        {
-            "en": {
-                "title": "Gear",
-                "blurb": "Four board shapes drawn to scale, and how "
-                         "much rubber the water temperature demands."
-            },
-            "ru": {
-                "title": "Снаряжение",
-                "blurb": "Четыре формы досок в одном масштабе и "
-                         "сколько резины требует температура воды."
-            },
-            "ja": {
-                "title": "ギア",
-                "blurb": "縮尺を揃えて描いた4種類のボードと、水温に合うウェットスーツ。"
-            },
+        "ru": {
+            "title": "Споты",
+            "blurb": "Области и споты, а также условия, при которых "
+                     "каждый из них работает."
         },
-    "waves":
-        {
-            "en": {
-                "title": "Waves",
-                "blurb": "Where a wave comes from, and what the "
-                         "coast does to it on the way in."
-            },
-            "ru": {
-                "title": "Волны",
-                "blurb": "Откуда берётся волна и что делает с ней "
-                         "берег по дороге."
-            },
-            "ja": {
-                "title": "波",
-                "blurb": "波が生まれる場所と、岸に近づく途中で海岸が波にすること。"
-            },
+        "ja": {
+            "title": "スポット",
+            "blurb": "エリアとスポット、それぞれが良くなる条件を紹介します。"
         },
-    "safety":
-        {
-            "en": {
-                "title": "Safety",
-                "blurb": "Simple checks and decisions for a safer session in the sea."
-            },
-            "ru": {
-                "title": "Безопасность",
-                "blurb": "Простые проверки и решения для более безопасного выхода в море."
-            },
-            "ja": {
-                "title": "海の安全",
-                "blurb": "海で安全に過ごすための、基本的な確認と判断。"
-            },
+    },
+    "gear": {
+        "en": {
+            "title": "Gear",
+            "blurb": "Four board shapes drawn to scale, and how "
+                     "much rubber the water temperature demands."
         },
+        "ru": {
+            "title": "Снаряжение",
+            "blurb": "Четыре формы досок в одном масштабе и "
+                     "сколько резины требует температура воды."
+        },
+        "ja": {
+            "title": "ギア",
+            "blurb": "縮尺を揃えて描いた4種類のボードと、水温に合うウェットスーツ。"
+        },
+    },
+    "waves": {
+        "en": {
+            "title": "Waves",
+            "blurb": "Where a wave comes from, and what the "
+                     "coast does to it on the way in."
+        },
+        "ru": {
+            "title": "Волны",
+            "blurb": "Откуда берётся волна и что делает с ней "
+                     "берег по дороге."
+        },
+        "ja": {
+            "title": "波",
+            "blurb": "波が生まれる場所と、岸に近づく途中で海岸が波にすること。"
+        },
+    },
+    "safety": {
+        "en": {
+            "title": "Safety",
+            "blurb": "Simple checks and decisions for a safer session in the sea."
+        },
+        "ru": {
+            "title": "Безопасность",
+            "blurb": "Простые проверки и решения для более безопасного выхода в море."
+        },
+        "ja": {
+            "title": "海の安全",
+            "blurb": "海で安全に過ごすための、基本的な確認と判断。"
+        },
+    },
 }
 
 # Board names and how each deck is painted. The measurements that decide the
@@ -361,52 +353,48 @@ BOARDS_META = {
         "rail": "#6ec05c",
         "stringer": "#8a5a33",
     },
-    "shortboard":
-        {
-            "en": "Shortboard",
-            "ru": "Шортборд",
-            "ja": "ショートボード",
-            "deck": "panel",
-            "base": "#f3f6f7",
-            "accent": "#d9563f",
-            "accent2": "#e8b13a",
-            "rail": "#e8b13a",
-            "stringer": "#c9d2d6",
-        },
-    "funboard":
-        {
-            "en": "Funboard",
-            "ru": "Фанборд",
-            "ja": "ファンボード",
-            "deck": "solid",
-            "base": "#eef4f5",
-            "accent": "#0e9aa7",
-            "rail": "#0e9aa7",
-            "stringer": "#0e9aa7",
-        },
-    "gun":
-        {
-            "en": "Gun",
-            "ru": "Ган",
-            "ja": "ガン",
-            "deck": "rails",
-            "base": "#f3f6f7",
-            "accent": "#7cc242",
-            "accent2": "#0e9aa7",
-            "rail": "#0e9aa7",
-            "stringer": "#c9d2d6",
-        },
-    "longboard":
-        {
-            "en": "Longboard",
-            "ru": "Лонгборд",
-            "ja": "ロングボード",
-            "deck": "bands",
-            "base": "#f3f6f7",
-            "bands": ["#7cc242", "#2fb3a8", "#d9563f", "#f0a92e", "#2fb3a8", "#7cc242"],
-            "rail": "#7cc242",
-            "stringer": "#e6eef0",
-        },
+    "shortboard": {
+        "en": "Shortboard",
+        "ru": "Шортборд",
+        "ja": "ショートボード",
+        "deck": "panel",
+        "base": "#f3f6f7",
+        "accent": "#d9563f",
+        "accent2": "#e8b13a",
+        "rail": "#e8b13a",
+        "stringer": "#c9d2d6",
+    },
+    "funboard": {
+        "en": "Funboard",
+        "ru": "Фанборд",
+        "ja": "ファンボード",
+        "deck": "solid",
+        "base": "#eef4f5",
+        "accent": "#0e9aa7",
+        "rail": "#0e9aa7",
+        "stringer": "#0e9aa7",
+    },
+    "gun": {
+        "en": "Gun",
+        "ru": "Ган",
+        "ja": "ガン",
+        "deck": "rails",
+        "base": "#f3f6f7",
+        "accent": "#7cc242",
+        "accent2": "#0e9aa7",
+        "rail": "#0e9aa7",
+        "stringer": "#c9d2d6",
+    },
+    "longboard": {
+        "en": "Longboard",
+        "ru": "Лонгборд",
+        "ja": "ロングボード",
+        "deck": "bands",
+        "base": "#f3f6f7",
+        "bands": ["#7cc242", "#2fb3a8", "#d9563f", "#f0a92e", "#2fb3a8", "#7cc242"],
+        "rail": "#7cc242",
+        "stringer": "#e6eef0",
+    },
 }
 
 # The drawings use one representative board per shape; these are the broader
@@ -445,11 +433,10 @@ LONGBOARD_SHAPES = [
             "title": "Classic / Traditional",
             "summary": "A full outline with balanced nose, tail and rocker for stable trim and smooth turns.",
         },
-        "ru":
-            {
-                "title": "Классический / традиционный",
-                "summary": "Полный outline, сбалансированные нос, корма и рокер — для устойчивого трима и плавных поворотов.",
-            },
+        "ru": {
+            "title": "Классический / традиционный",
+            "summary": "Полный outline, сбалансированные нос, корма и рокер — для устойчивого трима и плавных поворотов.",
+        },
         "ja": {
             "title": "クラシック / トラディショナル",
             "summary": "幅のあるアウトラインと、バランスの取れたノーズ、テール、ロッカー。安定したトリムと滑らかなターン向きです。",
@@ -457,16 +444,14 @@ LONGBOARD_SHAPES = [
     },
     {
         "id": "all-around",
-        "en":
-            {
-                "title": "All-around",
-                "summary": "A balanced outline with a full nose and rounded tail; moderate rocker combines early entry and trim with confident turns.",
-            },
-        "ru":
-            {
-                "title": "Универсальный (all-around)",
-                "summary": "Сбалансированный outline, полный нос и округлая корма; умеренный рокер сочетает ранний вход в волну, трим и уверенные повороты.",
-            },
+        "en": {
+            "title": "All-around",
+            "summary": "A balanced outline with a full nose and rounded tail; moderate rocker combines early entry and trim with confident turns.",
+        },
+        "ru": {
+            "title": "Универсальный (all-around)",
+            "summary": "Сбалансированный outline, полный нос и округлая корма; умеренный рокер сочетает ранний вход в волну, трим и уверенные повороты.",
+        },
         "ja": {
             "title": "オールラウンド",
             "summary": "バランスの取れたアウトラインに、幅を残したノーズと丸みのあるテール。ほどよいロッカーが早いテイクオフ、トリム、安定したターンを両立します。",
@@ -591,376 +576,306 @@ SPOTS_META = AREAS_META
 # shared feel of a stretch of shore; individual spot pages carry the more
 # precise, local conditions.
 AREAS = {
-    "asahi":
-        {
-            "image": "asahi",
-            "region": {
-                "en": "Chiba · Chiba North",
-                "ru": "Тиба · Тиба Кита",
-                "ja": "千葉・千葉北"
-            },
-            "summary":
-                {
-                    "en": "Iioka’s south-west-facing bend: sandy beach breaks shaped by tetrapods, south swell and more room than crowds.",
-                    "ru": "Юго-западный изгиб побережья у Ииоки: песчаные брейки у тетраподов, южный свелл и больше пространства, чем людей.",
-                    "ja": "飯岡の南西向きの海岸線。テトラポッド際の砂のブレイク、南寄りのうねり、そして混雑よりも余裕がある場所です。",
-                },
+    "asahi": {
+        "image": "asahi",
+        "region": {
+            "en": "Chiba · Chiba North",
+            "ru": "Тиба · Тиба Кита",
+            "ja": "千葉・千葉北"
         },
-    "sosa":
-        {
-            "image": "sosa",
-            "region": {
-                "en": "Chiba · Chiba North",
-                "ru": "Тиба · Тиба Кита",
-                "ja": "千葉・千葉北"
-            },
-            "summary":
-                {
-                    "en": "An open east-Chiba coast that catches east-to-south swell; a broad, sandy alternative when the famous peaks are busy.",
-                    "ru": "Открытое побережье восточной Тибы, принимающее свелл с востока до юга; широкий песчаный выбор, когда известные пики заняты.",
-                    "ja": "東〜南うねりを受ける千葉東部の開けた海岸。有名なピークが混む日に選べる、広い砂のブレイクです。",
-                },
+        "summary": {
+            "en": "Iioka’s south-west-facing bend: sandy beach breaks shaped by tetrapods, south swell and more room than crowds.",
+            "ru": "Юго-западный изгиб побережья у Ииоки: песчаные брейки у тетраподов, южный свелл и больше пространства, чем людей.",
+            "ja": "飯岡の南西向きの海岸線。テトラポッド際の砂のブレイク、南寄りのうねり、そして混雑よりも余裕がある場所です。",
         },
-    "sakuta":
-        {
-            "image": "sakuta",
-            "region": {
-                "en": "Chiba · Chiba North",
-                "ru": "Тиба · Тиба Кита",
-                "ja": "千葉・千葉北"
-            },
-            "summary":
-                {
-                    "en": "A wide, shallow sandy beach with several peaks, soft waves and enough coastline to spread out along the Kujukuri arc.",
-                    "ru": "Широкий пологий песчаный пляж с несколькими пиками, мягкой волной и простором всей дуги Кудзюкури.",
-                    "ja": "九十九里の弧に広がる、遠浅で幅のある砂浜。穏やかな波と複数のピークがあり、のびのびと入れます。",
-                },
+    },
+    "sosa": {
+        "image": "sosa",
+        "region": {
+            "en": "Chiba · Chiba North",
+            "ru": "Тиба · Тиба Кита",
+            "ja": "千葉・千葉北"
         },
-    "ichinomiya":
-        {
-            "image": "ichinomiya",
-            "region": {
-                "en": "Chiba · Chiba North",
-                "ru": "Тиба · Тиба Кита",
-                "ja": "千葉・千葉北"
-            },
-            "summary":
-                {
-                    "en":
-                        "Chiba’s surf centre: mobile sandbanks, east swell, a deep surf culture and consistently busy line-ups from Ichinomiya to Shidashita.",
-                    "ru":
-                        "Сёрф-центр Тибы: подвижные песчаные банки, восточный свелл, глубокая сёрф-культура и неизменно оживлённые лайн-апы от Итиномии до Сидаситы.",
-                    "ja":
-                        "千葉のサーフィンの中心地。変化するサンドバー、東うねり、深いサーフカルチャーがあり、一宮から志田下までラインナップはいつも活気があります。",
-                },
+        "summary": {
+            "en": "An open east-Chiba coast that catches east-to-south swell; a broad, sandy alternative when the famous peaks are busy.",
+            "ru": "Открытое побережье восточной Тибы, принимающее свелл с востока до юга; широкий песчаный выбор, когда известные пики заняты.",
+            "ja": "東〜南うねりを受ける千葉東部の開けた海岸。有名なピークが混む日に選べる、広い砂のブレイクです。",
         },
-    "katsuura":
-        {
-            "image": "katsuura",
-            "region": {
-                "en": "Chiba · Chiba South",
-                "ru": "Тиба · Тиба Минами",
-                "ja": "千葉・千葉南"
-            },
-            "summary":
-                {
-                    "en":
-                        "South-facing Onjuku brings a gentler rhythm: open white sand, south-east to south swell and room beyond the harbour peak.",
-                    "ru":
-                        "Обращённый на юг Ондзюку — более спокойный ритм: белый песок, юго-восточный и южный свелл, свободное место за пределами пика у гавани.",
-                    "ja":
-                        "南に開く御宿は少しゆったりした雰囲気。白い砂浜に南東〜南うねりが入り、港のピークを離れると余裕があります。",
-                },
+    },
+    "sakuta": {
+        "image": "sakuta",
+        "region": {
+            "en": "Chiba · Chiba North",
+            "ru": "Тиба · Тиба Кита",
+            "ja": "千葉・千葉北"
         },
-    "fujisawa":
-        {
-            "image": "fujisawa",
-            "region": {
-                "en": "Kanagawa · Shonan",
-                "ru": "Канагава · Сёнан",
-                "ja": "神奈川・湘南"
-            },
-            "summary":
-                {
-                    "en": "Kugenuma is Shonan’s social beach break: forgiving sandbanks, south swell, surf schools and one of Japan’s liveliest line-ups.",
-                    "ru": "Кугэнума — социальный бич-брейк Сёнана: дружелюбные песчаные банки, южный свелл, школы и один из самых оживлённых лайн-апов Японии.",
-                    "ja": "鵠沼は湘南らしい社交的なビーチブレイク。乗りやすいサンドバー、南うねり、スクールがそろい、日本でも特ににぎやかなラインナップの一つです。",
-                },
+        "summary": {
+            "en": "A wide, shallow sandy beach with several peaks, soft waves and enough coastline to spread out along the Kujukuri arc.",
+            "ru": "Широкий пологий песчаный пляж с несколькими пиками, мягкой волной и простором всей дуги Кудзюкури.",
+            "ja": "九十九里の弧に広がる、遠浅で幅のある砂浜。穏やかな波と複数のピークがあり、のびのびと入れます。",
         },
+    },
+    "ichinomiya": {
+        "image": "ichinomiya",
+        "region": {
+            "en": "Chiba · Chiba North",
+            "ru": "Тиба · Тиба Кита",
+            "ja": "千葉・千葉北"
+        },
+        "summary": {
+            "en": "Chiba’s surf centre: mobile sandbanks, east swell, a deep surf culture and consistently busy line-ups from Ichinomiya to Shidashita.",
+            "ru": "Сёрф-центр Тибы: подвижные песчаные банки, восточный свелл, глубокая сёрф-культура и неизменно оживлённые лайн-апы от Итиномии до Сидаситы.",
+            "ja": "千葉のサーフィンの中心地。変化するサンドバー、東うねり、深いサーフカルチャーがあり、一宮から志田下までラインナップはいつも活気があります。",
+        },
+    },
+    "katsuura": {
+        "image": "katsuura",
+        "region": {
+            "en": "Chiba · Chiba South",
+            "ru": "Тиба · Тиба Минами",
+            "ja": "千葉・千葉南"
+        },
+        "summary": {
+            "en": "South-facing Onjuku brings a gentler rhythm: open white sand, south-east to south swell and room beyond the harbour peak.",
+            "ru": "Обращённый на юг Ондзюку — более спокойный ритм: белый песок, юго-восточный и южный свелл, свободное место за пределами пика у гавани.",
+            "ja": "南に開く御宿は少しゆったりした雰囲気。白い砂浜に南東〜南うねりが入り、港のピークを離れると余裕があります。",
+        },
+    },
+    "fujisawa": {
+        "image": "fujisawa",
+        "region": {
+            "en": "Kanagawa · Shonan",
+            "ru": "Канагава · Сёнан",
+            "ja": "神奈川・湘南"
+        },
+        "summary": {
+            "en": "Kugenuma is Shonan’s social beach break: forgiving sandbanks, south swell, surf schools and one of Japan’s liveliest line-ups.",
+            "ru": "Кугэнума — социальный бич-брейк Сёнана: дружелюбные песчаные банки, южный свелл, школы и один из самых оживлённых лайн-апов Японии.",
+            "ja": "鵠沼は湘南らしい社交的なビーチブレイク。乗りやすいサンドバー、南うねり、スクールがそろい、日本でも特ににぎやかなラインナップの一つです。",
+        },
+    },
 }
 
 # Detailed spot pages live inside their parent area.  These deliberately keep
 # their compact facts separate from csv/spots.csv, which compares the six
 # navigation areas rather than every individual break.
 SPOT_DETAILS = {
-    "shingosita":
-        {
-            "area": "asahi",
-            "title": {
-                "en": "Shingosita",
-                "ru": "Сингосита",
-                "ja": "信号下",
-            },
-            "summary":
-                {
-                    "en": "A hollow beach break with occasional barrels, shaped by the swell direction and the tetrapods.",
-                    "ru": "Холлоу-бич-брейк с возможными трубами; его характер меняется в зависимости от направления свелла и тетраподов.",
-                    "ja": "うねりの向きとテトラポッドで波質が変わる、ときにバレルも現れるホローなビーチブレイク。",
-                },
-            "description":
-                {
-                    "en":
-                        "When the surf has size, faster hollow sections can appear and may suit shortboards; gentler, thicker waves can be better for longboards. Both lefts and rights can run, although the final section often closes out. When the conditions line up, three peaks can form and a tube is possible. Complex currents develop around the tetrapods: choose a paddle-out that stays clear of riders, and take particular care outside the blocks.",
-                    "ru":
-                        "Когда свелл набирает размер, могут появляться быстрые холлоу-секции, подходящие для шортбордов; при более мягкой и толстой волне лучше подойдёт лонгборд. Здесь возможны и правые, и левые волны, хотя финальная секция часто закрывается. При удачном совпадении условий могут сформироваться три пика и труба. У тетраподов возникают сложные течения: выбирайте выход в воду так, чтобы не мешать катающимся, и особенно внимательно следите за течением с внешней стороны блоков.",
-                    "ja":
-                        "信号下では、サイズが上がると掘れた速いセクションが現れ、ショートボード向きになることがあります。緩やかで厚めの波ではロングボードにも向きます。レギュラー、グーフィーともに乗れますが、最後のセクションはクローズアウトしやすい傾向があります。条件がそろうと三つのピークができ、チューブになることもあります。テトラポッド周辺には複雑なカレントがあるため、ライディングしている人の妨げにならないルートで沖へ出て、特にブロックのアウト側では流れをよく確認してください。",
-                },
-            "facts":
-                {
-                    "en":
-                        [
-                            ("Area", "Chiba North · Iioka"),
-                            ("Break", "hollow beach break"),
-                            ("Level", "beginner to advanced, depending on conditions"),
-                            ("Season", "year-round; especially autumn–winter"),
-                            ("Best size", "chest to shoulder high"),
-                            ("Working tide", "mid to mid-low"),
-                            ("Best swell", "S–SE"),
-                            ("Clean wind", "N"),
-                            ("Best board", "shortboard"),
-                        ],
-                    "ru":
-                        [
-                            ("Район", "Северная Тиба · Ииока"),
-                            ("Брейк", "холлоу-бич-брейк"),
-                            ("Уровень", "от начинающего до продвинутого — по условиям"),
-                            ("Сезон", "круглый год; особенно осень — зима"),
-                            ("Лучший размер", "по грудь — по плечи"),
-                            ("Подходящий уровень воды", "средний — средне-низкий"),
-                            ("Лучший свелл", "Ю–ЮВ"),
-                            ("Чистый ветер", "С"),
-                            ("Подходящая доска", "шортборд"),
-                        ],
-                    "ja":
-                        [
-                            ("エリア", "千葉北・飯岡"),
-                            ("ブレイク", "ホローなビーチブレイク"),
-                            ("レベル", "初級〜上級（コンディション次第）"),
-                            ("シーズン", "通年、特に秋〜冬"),
-                            ("ベストサイズ", "ムネ〜カタ"),
-                            ("対応する潮位", "ミドル〜ミドルロー"),
-                            ("ベストうねり", "南〜南東"),
-                            ("オフショア", "北"),
-                            ("向くボード", "ショートボード"),
-                        ],
-                },
+    "shingosita": {
+        "area": "asahi",
+        "title": {
+            "en": "Shingosita",
+            "ru": "Сингосита",
+            "ja": "信号下",
         },
-    "mansionsita":
-        {
-            "area": "asahi",
-            "title": {
-                "en": "Mansionsita",
-                "ru": "Мансёнсита",
-                "ja": "マンション下",
-            },
-            "summary":
-                {
-                    "en": "A smaller, gentler beach break between the tetrapods on Iioka’s north-east side.",
-                    "ru": "Более мягкий и обычно меньший бич-брейк между тетраподами в северо-восточной части Ииоки.",
-                    "ja": "飯岡の北東側、テトラポッドの間で割れる、比較的サイズが小さく穏やかなビーチブレイク。",
-                },
-            "description":
-                {
-                    "en":
-                        "Mansionsita is often softer than the breaks farther south in Asahi, so longer boards tend to be the natural choice. The sandbanks shift regularly, but when they line up, rides of up to 100 metres are possible. In the north-east corner, a pocket known as ‘Silver’ sits behind the first line of tetrapods and produces small, smooth, forgiving waves, so it often draws many beginners.",
-                    "ru":
-                        "В Мансёнсите волны часто мягче, чем на спотах южнее в районе Асахи, поэтому здесь естественно выбирать более длинные доски. Рельеф дна регулярно меняется, но иногда при благоприятных условиях возможны длинные проезды протяжённостью до 100 м. Северо-восточный угол закрытый первой грядой тетраподов, называемый «Сильвер», даёт ровные, небольшие и мягкие волны, поэтому часто собирает много начинающих серферов.",
-                    "ja":
-                        "マンション下は、旭エリアで南にあるポイントよりも波が柔らかいことが多く、長めのボードが自然に合います。海底地形は頻繁に変わりますが、条件が整えば100メートルほどのロングライドができることもあります。北東側の最初のテトラポッド列に守られた一角は「シルバー」と呼ばれ、小さく整った穏やかな波が立つため、初心者が多く集まります。",
-                },
-            "facts":
-                {
-                    "en":
-                        [
-                            ("Area", "Chiba North · Iioka"),
-                            ("Break", "beach break between tetrapods"),
-                            ("Level", "beginner in small surf"),
-                            ("Working tide", "low to high"),
-                            ("Swell", "E–SSW, especially south"),
-                            ("Clean wind", "N–NNE"),
-                            ("Best board", "longboard"),
-                        ],
-                    "ru":
-                        [
-                            ("Район", "Северная Тиба · Ииока"),
-                            ("Брейк", "бич-брейк между тетраподами"),
-                            ("Уровень", "начинающий при небольшой волне"),
-                            ("Подходящий уровень воды", "от низкого до высокого"),
-                            ("Свелл", "В–ЮЮЗ, особенно южный"),
-                            ("Чистый ветер", "С–ССВ"),
-                            ("Подходящая доска", "лонгборд"),
-                        ],
-                    "ja":
-                        [
-                            ("エリア", "千葉北・飯岡"),
-                            ("ブレイク", "テトラポッドの間のビーチブレイク"),
-                            ("レベル", "小波なら初級者向け"),
-                            ("対応する潮位", "ロー〜ハイ"),
-                            ("うねり", "東〜南南西、特に南うねり"),
-                            ("オフショア", "北〜北北東"),
-                            ("向くボード", "ロングボード"),
-                        ],
-                },
+        "summary": {
+            "en": "A hollow beach break with occasional barrels, shaped by the swell direction and the tetrapods.",
+            "ru": "Холлоу-бич-брейк с возможными трубами; его характер меняется в зависимости от направления свелла и тетраподов.",
+            "ja": "うねりの向きとテトラポッドで波質が変わる、ときにバレルも現れるホローなビーチブレイク。",
         },
+        "description": {
+            "en":
+                "When the surf has size, faster hollow sections can appear and may suit shortboards; gentler, thicker waves can be better for longboards. Both lefts and rights can run, although the final section often closes out. When the conditions line up, three peaks can form and a tube is possible. Complex currents develop around the tetrapods: choose a paddle-out that stays clear of riders, and take particular care outside the blocks.",
+            "ru":
+                "Когда свелл набирает размер, могут появляться быстрые холлоу-секции, подходящие для шортбордов; при более мягкой и толстой волне лучше подойдёт лонгборд. Здесь возможны и правые, и левые волны, хотя финальная секция часто закрывается. При удачном совпадении условий могут сформироваться три пика и труба. У тетраподов возникают сложные течения: выбирайте выход в воду так, чтобы не мешать катающимся, и особенно внимательно следите за течением с внешней стороны блоков.",
+            "ja":
+                "信号下では、サイズが上がると掘れた速いセクションが現れ、ショートボード向きになることがあります。緩やかで厚めの波ではロングボードにも向きます。レギュラー、グーフィーともに乗れますが、最後のセクションはクローズアウトしやすい傾向があります。条件がそろうと三つのピークができ、チューブになることもあります。テトラポッド周辺には複雑なカレントがあるため、ライディングしている人の妨げにならないルートで沖へ出て、特にブロックのアウト側では流れをよく確認してください。",
+        },
+        "facts": {
+            "en": [
+                ("Area", "Chiba North · Iioka"),
+                ("Break", "hollow beach break"),
+                ("Bottom", "Sand"),
+                ("Level", "beginner to advanced, depending on conditions"),
+                ("Season", "year-round; especially autumn–winter"),
+                ("Best size", "chest to shoulder high"),
+                ("Working tide", "mid to mid-low"),
+                ("Best swell", "S–SE"),
+                ("Clean wind", "N"),
+                ("Best board", "shortboard"),
+            ],
+            "ru": [
+                ("Район", "Северная Тиба · Ииока"),
+                ("Брейк", "холлоу-бич-брейк"),
+                ("Дно", "Песчаное"),
+                ("Уровень", "от начинающего до продвинутого — по условиям"),
+                ("Сезон", "круглый год; особенно осень — зима"),
+                ("Лучший размер", "по грудь — по плечи"),
+                ("Подходящий уровень воды", "средний — средне-низкий"),
+                ("Лучший свелл", "Ю–ЮВ"),
+                ("Чистый ветер", "С"),
+                ("Подходящая доска", "шортборд"),
+            ],
+            "ja": [
+                ("エリア", "千葉北・飯岡"),
+                ("ブレイク", "ホローなビーチブレイク"),
+                ("海底", "砂地"),
+                ("レベル", "初級〜上級（コンディション次第）"),
+                ("シーズン", "通年、特に秋〜冬"),
+                ("ベストサイズ", "ムネ〜カタ"),
+                ("対応する潮位", "ミドル〜ミドルロー"),
+                ("ベストうねり", "南〜南東"),
+                ("オフショア", "北"),
+                ("向くボード", "ショートボード"),
+            ],
+        },
+    },
+    "mansionsita": {
+        "area": "asahi",
+        "title": {
+            "en": "Mansionsita",
+            "ru": "Мансёнсита",
+            "ja": "マンション下",
+        },
+        "summary": {
+            "en": "A smaller, gentler beach break between the tetrapods on Iioka’s north-east side.",
+            "ru": "Более мягкий и обычно меньший бич-брейк между тетраподами в северо-восточной части Ииоки.",
+            "ja": "飯岡の北東側、テトラポッドの間で割れる、比較的サイズが小さく穏やかなビーチブレイク。",
+        },
+        "description": {
+            "en":
+                "Mansionsita is often softer than the breaks farther south in Asahi, so longer boards tend to be the natural choice. The sandbanks shift regularly, but when they line up, rides of up to 100 metres are possible. In the north-east corner, a pocket known as ‘Silver’ sits behind the first line of tetrapods and produces small, smooth, forgiving waves, so it often draws many beginners.",
+            "ru":
+                "В Мансёнсите волны часто мягче, чем на спотах южнее в районе Асахи, поэтому здесь естественно выбирать более длинные доски. Рельеф дна регулярно меняется, но иногда при благоприятных условиях возможны длинные проезды протяжённостью до 100 м. Северо-восточный угол закрытый первой грядой тетраподов, называемый «Сильвер», даёт ровные, небольшие и мягкие волны, поэтому часто собирает много начинающих серферов.",
+            "ja":
+                "マンション下は、旭エリアで南にあるポイントよりも波が柔らかいことが多く、長めのボードが自然に合います。海底地形は頻繁に変わりますが、条件が整えば100メートルほどのロングライドができることもあります。北東側の最初のテトラポッド列に守られた一角は「シルバー」と呼ばれ、小さく整った穏やかな波が立つため、初心者が多く集まります。",
+        },
+        "facts": {
+            "en": [
+                ("Area", "Chiba North · Iioka"),
+                ("Break", "beach break between tetrapods"),
+                ("Bottom", "Sand"),
+                ("Min. Level", "beginner"),
+                ("Working tide", "low to high"),
+                ("Swell", "E–SSW, especially south"),
+                ("Clean wind", "N–NNE"),
+                ("Best board", "longboard"),
+            ],
+            "ru": [
+                ("Район", "Северная Тиба · Ииока"),
+                ("Брейк", "бич-брейк между тетраподами"),
+                ("Дно", "Песчаное"),
+                ("Мин. Уровень", "начинающий"),
+                ("Подходящий уровень воды", "от низкого до высокого"),
+                ("Свелл", "В–ЮЮЗ, особенно южный"),
+                ("Чистый ветер", "С–ССВ"),
+                ("Подходящая доска", "лонгборд"),
+            ],
+            "ja": [
+                ("エリア", "千葉北・飯岡"),
+                ("ブレイク", "テトラポッドの間のビーチブレイク"),
+                ("海底", "砂地"),
+                ("レベル", "初級者以上"),
+                ("対応する潮位", "ロー〜ハイ"),
+                ("うねり", "東〜南南西、特に南うねり"),
+                ("オフショア", "北〜北北東"),
+                ("向くボード", "ロングボード"),
+            ],
+        },
+    },
 }
 
 AREA_FACTS = {
-    "asahi":
-        {
-            "en":
-                [
-                    ("Coast", "Chiba North · Iioka"), ("Breaks", "Sandy beach breaks and tetrapod peaks"), ("Swell", "E–SSW, best with south in the mix"),
-                    ("Clean wind", "NNE"), ("Crowds", "Usually room to spread out")
-                ],
-            "ru":
-                [
-                    ("Побережье", "Тиба Кита · Ииока"), ("Брейки", "Песчаные пляжи и пики у тетраподов"), ("Свелл", "В–ЮЮЗ, лучше с южной составляющей"),
-                    ("Чистый ветер", "ССВ"), ("Люди", "Обычно есть пространство")
-                ],
-            "ja": [("海岸", "千葉北・飯岡"), ("ブレイク", "砂のビーチブレイクとテトラポッド際のピーク"), ("うねり", "東〜南南西、南寄りが混じると良い"), ("オフショア", "北北東"), ("混雑", "広がれば比較的余裕がある")],
-            "spots": {
-                "en": ["Mansionsita"],
-                "ru": ["Мэнсионсита"],
-                "ja": ["マンション下"]
-            },
+    "asahi": {
+        "en": [("Coast", "Chiba North · Iioka"), ("Breaks", "Sandy beach breaks and tetrapod peaks"), ("Swell", "E–SSW, best with south in the mix"),
+               ("Clean wind", "NNE"), ("Crowds", "Usually room to spread out")],
+        "ru": [("Побережье", "Тиба Кита · Ииока"), ("Брейки", "Песчаные пляжи и пики у тетраподов"), ("Свелл", "В–ЮЮЗ, лучше с южной составляющей"),
+               ("Чистый ветер", "ССВ"), ("Люди", "Обычно есть пространство")],
+        "ja": [("海岸", "千葉北・飯岡"), ("ブレイク", "砂のビーチブレイクとテトラポッド際のピーク"), ("うねり", "東〜南南西、南寄りが混じると良い"), ("オフショア", "北北東"), ("混雑", "広がれば比較的余裕がある")],
+        "spots": {
+            "en": ["Mansionsita"],
+            "ru": ["Мэнсионсита"],
+            "ja": ["マンション下"]
         },
-    "sosa":
-        {
-            "en":
-                [
-                    ("Coast", "Chiba North · Sosa"), ("Breaks", "Open sandy beach breaks"), ("Swell", "E–S"), ("Clean wind", "N–NW"),
-                    ("Crowds", "Visitors, but a less concentrated line-up")
-                ],
-            "ru":
-                [
-                    ("Побережье", "Тиба Кита · Соса"), ("Брейки", "Открытые песчаные бич-брейки"), ("Свелл", "В–Ю"), ("Чистый ветер", "С–СЗ"),
-                    ("Люди", "Приезжих много, но лайн-ап менее концентрирован")
-                ],
-            "ja": [("海岸", "千葉北・匝瑳"), ("ブレイク", "開けた砂のビーチブレイク"), ("うねり", "東〜南"), ("オフショア", "北〜北西"), ("混雑", "人は来るがラインナップは集中しにくい")],
-            "spots": {
-                "en": ["Kanpomae"],
-                "ru": ["Канпомаэ"],
-                "ja": ["かんぽ前"]
-            },
+    },
+    "sosa": {
+        "en": [("Coast", "Chiba North · Sosa"), ("Breaks", "Open sandy beach breaks"), ("Swell", "E–S"), ("Clean wind", "N–NW"),
+               ("Crowds", "Visitors, but a less concentrated line-up")],
+        "ru": [("Побережье", "Тиба Кита · Соса"), ("Брейки", "Открытые песчаные бич-брейки"), ("Свелл", "В–Ю"), ("Чистый ветер", "С–СЗ"),
+               ("Люди", "Приезжих много, но лайн-ап менее концентрирован")],
+        "ja": [("海岸", "千葉北・匝瑳"), ("ブレイク", "開けた砂のビーチブレイク"), ("うねり", "東〜南"), ("オフショア", "北〜北西"), ("混雑", "人は来るがラインナップは集中しにくい")],
+        "spots": {
+            "en": ["Kanpomae"],
+            "ru": ["Канпомаэ"],
+            "ja": ["かんぽ前"]
         },
-    "sakuta":
-        {
-            "en":
-                [
-                    ("Coast", "Chiba North · Kujukuri"), ("Breaks", "Wide, shallow sandy beach"), ("Swell", "NE–SSE"), ("Clean wind", "NW"),
-                    ("Crowds", "Popular, with several peaks to choose from")
-                ],
-            "ru":
-                [
-                    ("Побережье", "Тиба Кита · Кудзюкури"), ("Брейки", "Широкий пологий песчаный пляж"), ("Свелл", "СВ–ЮЮВ"), ("Чистый ветер", "СЗ"),
-                    ("Люди", "Популярно, но можно выбрать пик")
-                ],
-            "ja": [("海岸", "千葉北・九十九里"), ("ブレイク", "幅広く遠浅な砂浜"), ("うねり", "北東〜南南東"), ("オフショア", "北西"), ("混雑", "人気はあるがピークを選べる")],
-            "spots": {
-                "en": ["Sakuta"],
-                "ru": ["Сакута"],
-                "ja": ["作田"]
-            },
+    },
+    "sakuta": {
+        "en": [("Coast", "Chiba North · Kujukuri"), ("Breaks", "Wide, shallow sandy beach"), ("Swell", "NE–SSE"), ("Clean wind", "NW"),
+               ("Crowds", "Popular, with several peaks to choose from")],
+        "ru": [("Побережье", "Тиба Кита · Кудзюкури"), ("Брейки", "Широкий пологий песчаный пляж"), ("Свелл", "СВ–ЮЮВ"), ("Чистый ветер", "СЗ"),
+               ("Люди", "Популярно, но можно выбрать пик")],
+        "ja": [("海岸", "千葉北・九十九里"), ("ブレイク", "幅広く遠浅な砂浜"), ("うねり", "北東〜南南東"), ("オフショア", "北西"), ("混雑", "人気はあるがピークを選べる")],
+        "spots": {
+            "en": ["Sakuta"],
+            "ru": ["Сакута"],
+            "ja": ["作田"]
         },
-    "ichinomiya":
-        {
-            "en":
-                [
-                    ("Coast", "Chiba North · Ichinomiya"), ("Breaks", "Mobile sandbanks beside jetties"), ("Swell", "NE–SE, especially east"),
-                    ("Clean wind", "W"), ("Crowds", "One of Chiba’s busiest surf hubs")
-                ],
-            "ru":
-                [
-                    ("Побережье", "Тиба Кита · Итиномия"), ("Брейки", "Подвижные песчаные банки у молов"), ("Свелл", "СВ–ЮВ, особенно восточный"),
-                    ("Чистый ветер", "З"), ("Люди", "Один из самых оживлённых сёрф-центров Тибы")
-                ],
-            "ja": [("海岸", "千葉北・一宮"), ("ブレイク", "堤防脇にできる変化の速いサンドバー"), ("うねり", "北東〜南東、特に東"), ("オフショア", "西"), ("混雑", "千葉でも有数のサーフハブ")],
-            "spots": {
-                "en": ["Ichinomiya", "Tsurigasaki / Shidashita"],
-                "ru": ["Итиномия", "Цуригасаки / Сидасита"],
-                "ja": ["一宮", "釣ヶ崎 / 志田下"]
-            },
+    },
+    "ichinomiya": {
+        "en": [("Coast", "Chiba North · Ichinomiya"), ("Breaks", "Mobile sandbanks beside jetties"), ("Swell", "NE–SE, especially east"), ("Clean wind", "W"),
+               ("Crowds", "One of Chiba’s busiest surf hubs")],
+        "ru": [("Побережье", "Тиба Кита · Итиномия"), ("Брейки", "Подвижные песчаные банки у молов"), ("Свелл", "СВ–ЮВ, особенно восточный"),
+               ("Чистый ветер", "З"), ("Люди", "Один из самых оживлённых сёрф-центров Тибы")],
+        "ja": [("海岸", "千葉北・一宮"), ("ブレイク", "堤防脇にできる変化の速いサンドバー"), ("うねり", "北東〜南東、特に東"), ("オフショア", "西"), ("混雑", "千葉でも有数のサーフハブ")],
+        "spots": {
+            "en": ["Ichinomiya", "Tsurigasaki / Shidashita"],
+            "ru": ["Итиномия", "Цуригасаки / Сидасита"],
+            "ja": ["一宮", "釣ヶ崎 / 志田下"]
         },
-    "katsuura":
-        {
-            "en":
-                [
-                    ("Coast", "Chiba South · Onjuku"), ("Breaks", "Open sandy beach, harbour and river-mouth peaks"), ("Swell", "ESE–SSW, especially SE–S"),
-                    ("Clean wind", "N"), ("Crowds", "Calmer beyond the harbour peak")
-                ],
-            "ru":
-                [
-                    ("Побережье", "Тиба Минами · Ондзюку"), ("Брейки", "Открытый песчаный пляж, пики у гавани и устья"), ("Свелл", "ВЮВ–ЮЮЗ, особенно ЮВ–Ю"),
-                    ("Чистый ветер", "С"), ("Люди", "За пределами пика у гавани спокойнее")
-                ],
-            "ja": [("海岸", "千葉南・御宿"), ("ブレイク", "開けた砂浜、港と河口のピーク"), ("うねり", "東南東〜南南西、特に南東〜南"), ("オフショア", "北"), ("混雑", "港のピークを離れると落ち着く")],
-            "spots": {
-                "en": ["Onjuku"],
-                "ru": ["Ондзюку"],
-                "ja": ["御宿"]
-            },
+    },
+    "katsuura": {
+        "en": [("Coast", "Chiba South · Onjuku"), ("Breaks", "Open sandy beach, harbour and river-mouth peaks"), ("Swell", "ESE–SSW, especially SE–S"),
+               ("Clean wind", "N"), ("Crowds", "Calmer beyond the harbour peak")],
+        "ru": [("Побережье", "Тиба Минами · Ондзюку"), ("Брейки", "Открытый песчаный пляж, пики у гавани и устья"), ("Свелл", "ВЮВ–ЮЮЗ, особенно ЮВ–Ю"),
+               ("Чистый ветер", "С"), ("Люди", "За пределами пика у гавани спокойнее")],
+        "ja": [("海岸", "千葉南・御宿"), ("ブレイク", "開けた砂浜、港と河口のピーク"), ("うねり", "東南東〜南南西、特に南東〜南"), ("オフショア", "北"), ("混雑", "港のピークを離れると落ち着く")],
+        "spots": {
+            "en": ["Onjuku"],
+            "ru": ["Ондзюку"],
+            "ja": ["御宿"]
         },
-    "fujisawa":
-        {
-            "en":
-                [
-                    ("Coast", "Kanagawa · Shonan"), ("Breaks", "Shallow sandy beach and river-mouth bars"), ("Swell", "E–SW, especially south"),
-                    ("Clean wind", "N–NE"), ("Crowds", "One of Japan’s busiest line-ups")
-                ],
-            "ru":
-                [
-                    ("Побережье", "Канагава · Сёнан"), ("Брейки", "Пологий песчаный пляж и банки у устья"), ("Свелл", "В–ЮЗ, особенно южный"),
-                    ("Чистый ветер", "С–СВ"), ("Люди", "Один из самых оживлённых лайн-апов Японии")
-                ],
-            "ja": [("海岸", "神奈川・湘南"), ("ブレイク", "遠浅の砂浜と河口のサンドバー"), ("うねり", "東〜南西、特に南"), ("オフショア", "北〜北東"), ("混雑", "日本でも特に混むラインナップの一つ")],
-            "spots": {
-                "en": ["Kugenuma"],
-                "ru": ["Кугэнума"],
-                "ja": ["鵠沼"]
-            },
+    },
+    "fujisawa": {
+        "en": [("Coast", "Kanagawa · Shonan"), ("Breaks", "Shallow sandy beach and river-mouth bars"), ("Swell", "E–SW, especially south"),
+               ("Clean wind", "N–NE"), ("Crowds", "One of Japan’s busiest line-ups")],
+        "ru": [("Побережье", "Канагава · Сёнан"), ("Брейки", "Пологий песчаный пляж и банки у устья"), ("Свелл", "В–ЮЗ, особенно южный"),
+               ("Чистый ветер", "С–СВ"), ("Люди", "Один из самых оживлённых лайн-апов Японии")],
+        "ja": [("海岸", "神奈川・湘南"), ("ブレイク", "遠浅の砂浜と河口のサンドバー"), ("うねり", "東〜南西、特に南"), ("オフショア", "北〜北東"), ("混雑", "日本でも特に混むラインナップの一つ")],
+        "spots": {
+            "en": ["Kugenuma"],
+            "ru": ["Кугэнума"],
+            "ja": ["鵠沼"]
         },
+    },
 }
 
 # Real-map geometry is separate from the illustrated overview map.  These
 # coordinates are used only on the corresponding area page, where a visitor
 # can pan and zoom around the actual coastline.
 AREA_MAPS = {
-    "asahi":
-        {
-            "center": (35.6991, 140.7173),
-            "zoom":
-                15,
-            "spots":
-                [
-                    {
-                        "id": "shingosita",
-                        "coordinates": (35.700368, 140.714157),
-                        "url": "shingosita/index.html",
-                        "en": "Shingosita (信号下)",
-                        "ru": "Сингосита (信号下)",
-                        "ja": "信号下",
-                    },
-                    {
-                        "id": "mansionsita",
-                        "coordinates": (35.697362, 140.721728),
-                        "url": "mansionsita/index.html",
-                        "en": "Mansionsita (マンション下)",
-                        "ru": "Мансёнсита (マンション下)",
-                        "ja": "マンション下",
-                    },
-                ],
-        },
+    "asahi": {
+        "center": (35.6991, 140.7173),
+        "zoom":
+            15,
+        "spots": [
+            {
+                "id": "shingosita",
+                "coordinates": (35.700368, 140.714157),
+                "url": "shingosita/index.html",
+                "en": "Shingosita (信号下)",
+                "ru": "Сингосита (信号下)",
+                "ja": "信号下",
+            },
+            {
+                "id": "mansionsita",
+                "coordinates": (35.697362, 140.721728),
+                "url": "mansionsita/index.html",
+                "en": "Mansionsita (マンション下)",
+                "ru": "Мансёнсита (マンション下)",
+                "ja": "マンション下",
+            },
+        ],
+    },
 }
 
 # Tag labels are deliberately identical in every language.
@@ -992,48 +907,47 @@ MAP = {
     # against its coastline rather than derived from geographic coordinates.
     "width": 1774,
     "height": 887,
-    "area_labels":
-        {
-            # x/y sit just off the shore; rotation follows the local coast.
-            # All labels use a right-aligned SVG anchor so their ends retain a
-            # consistent small gap from the waterline in every language.
-            "asahi": {
-                "x": 1440,
-                "y": 340,
-                "rotation": 32,
-                "skew": -11
-            },
-            "sosa": {
-                "x": 1280,
-                "y": 325,
-                "rotation": 32,
-                "skew": -11
-            },
-            "sakuta": {
-                "x": 1120,
-                "y": 380,
-                "rotation": 32,
-                "skew": -11
-            },
-            "ichinomiya": {
-                "x": 980,
-                "y": 500,
-                "rotation": 32,
-                "skew": -11
-            },
-            "katsuura": {
-                "x": 820,
-                "y": 690,
-                "rotation": 32,
-                "skew": -11
-            },
-            "fujisawa": {
-                "x": 300,
-                "y": 255,
-                "rotation": 32,
-                "skew": -11
-            },
+    "area_labels": {
+        # x/y sit just off the shore; rotation follows the local coast.
+        # All labels use a right-aligned SVG anchor so their ends retain a
+        # consistent small gap from the waterline in every language.
+        "asahi": {
+            "x": 1440,
+            "y": 340,
+            "rotation": 32,
+            "skew": -11
         },
+        "sosa": {
+            "x": 1280,
+            "y": 325,
+            "rotation": 32,
+            "skew": -11
+        },
+        "sakuta": {
+            "x": 1120,
+            "y": 380,
+            "rotation": 32,
+            "skew": -11
+        },
+        "ichinomiya": {
+            "x": 980,
+            "y": 500,
+            "rotation": 32,
+            "skew": -11
+        },
+        "katsuura": {
+            "x": 820,
+            "y": 690,
+            "rotation": 32,
+            "skew": -11
+        },
+        "fujisawa": {
+            "x": 300,
+            "y": 255,
+            "rotation": 32,
+            "skew": -11
+        },
+    },
 }
 
 # Compass bearings, used to turn a swell window such as "NE-S" into an arc.
