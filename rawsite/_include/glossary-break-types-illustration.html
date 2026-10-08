@@ -1,0 +1,63 @@
+<script type="text/python">
+import html
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+b = S.base_url(page_file)
+current = params["current"]
+lang = S.lang_of(page_file)
+COPY = {
+    "en": {
+        "alt": "Four coastal scenes showing a beach break over sandbars, a reef break over a rocky shelf, a point break peeling around a headland, and a rivermouth break shaped by a river channel and sandbars.",
+        "aria": "Illustrated break types",
+        "panels": (
+            ("beach-break", "Beach break", "Moving sandbars make several short, shifting peaks and gaps in the breaking line."),
+            ("reef-break", "Reef break", "A hard fixed shelf creates one steep, powerful take-off beside a deeper channel."),
+            ("point-break", "Point break", "A headland turns swell into one long, orderly peeling wall that follows the coast."),
+            ("rivermouth", "Rivermouth break", "One sandbar beside a deep river channel focuses a defined peeling wave along the spit."),
+        ),
+    },
+    "ru": {
+        "alt": "Четыре прибрежные сцены: бич-брейк над песчаными банками, риф-брейк над каменной плитой, пойнт-брейк у мыса и устьевой брейк, который формируют русло и песчаные банки.",
+        "aria": "Типы брейков на иллюстрации",
+        "panels": (
+            ("beach-break", "Бич-брейк", "Подвижные песчаные банки создают несколько коротких, смещающихся пиков и разрывы в линии ломки."),
+            ("reef-break", "Риф-брейк", "Твёрдая неподвижная плита даёт один крутой мощный тейк-офф рядом с более глубоким каналом."),
+            ("point-break", "Пойнт-брейк", "Мыс поворачивает свелл в одну длинную ровную стенку, которая ломается вдоль берега."),
+            ("rivermouth", "Устьевой брейк", "Одна песчаная коса у глубокого речного русла собирает чёткую пилинговую волну вдоль берега."),
+        ),
+    },
+    "ja": {
+        "alt": "サンドバーの上で割れるビーチブレイク、岩棚の上のリーフブレイク、岬に沿ってピーリングするポイントブレイク、川の流路とサンドバーで形づくられる河口のブレイクを描いた四つの海岸の場面。",
+        "aria": "イラストで見るブレイクの種類",
+        "panels": (
+            ("beach-break", "ビーチブレイク", "動くサンドバーが、短く位置の変わる複数のピークとブレイクの切れ目を作ります。"),
+            ("reef-break", "リーフブレイク", "硬く固定された岩棚が、深いチャンネルの横に急でパワフルな一つのテイクオフを作ります。"),
+            ("point-break", "ポイントブレイク", "岬がうねりを曲げ、海岸線に沿って長く規則正しくピーリングする壁を作ります。"),
+            ("rivermouth", "河口のブレイク", "深い川の流路の横にある一つのサンドバーが、砂州に沿うはっきりしたピーリング波を集めます。"),
+        ),
+    },
+}[lang]
+panels = COPY["panels"]
+
+print('<figure class="glossary-swell-figure glossary-break-types-figure">')
+print('  <div class="glossary-swell-art">')
+print(f'    <img src="{b}img/glossary/break-types-v1.png" alt="{html.escape(COPY["alt"], quote=True)}" width="1254" height="1254" loading="lazy">')
+print(f'    <ol class="glossary-swell-labels" aria-label="{html.escape(COPY["aria"], quote=True)}">')
+for key, label, description in panels:
+    active = ' aria-current="page"' if key == current else ''
+    href = b + "glossary/" + S.localize(f"{key}/index.html", lang)
+    print(f'      <li><a href="{html.escape(href, quote=True)}"{active}>{html.escape(label)}</a></li>')
+print('    </ol>')
+print('  </div>')
+print('  <figcaption>')
+print('    <dl class="glossary-swell-key">')
+for key, label, description in panels:
+    print(f'      <div><dt>{html.escape(label)}</dt><dd>{html.escape(description)}</dd></div>')
+print('    </dl>')
+print('  </figcaption>')
+print('</figure>')
+</script>

@@ -64,7 +64,7 @@ TERMS = {
     "ja-collapsing-wave": term("Collapsing wave", "An intermediate breaker between a plunging and a surging wave, with the lower part of the face collapsing as it breaks.", aliases=("巻き寄せ波", "makiyose nami")),
 
     # Breaks and seabed
-    "beach-break": term("Beach break", "A break over sand or sandbars.", url="../spots/index.html"),
+    "beach-break": term("Beach break", "A break over sand or sandbars."),
     "reef-break": term("Reef break", "A break over a reef, rock shelf or other hard bottom."),
     "point-break": term("Point break", "A break shaped by a headland, point or fixed obstacle."),
     "rivermouth": term("Rivermouth", "A break near a river mouth, often shaped by its sandbars and channel."),
@@ -248,6 +248,8 @@ TERMS = {
 # Every term in Wave anatomy and Shape & breaking behaviour has its own page.
 # Japanese-only concepts keep romanised slugs so their URLs remain readable.
 GLOSSARY_PAGE_SLUGS = {
+    "beach-break": "beach-break", "reef-break": "reef-break",
+    "point-break": "point-break", "rivermouth": "rivermouth",
     "peak": "peak", "crest": "crest", "face": "face", "lip": "lip",
     "curl": "curl", "shoulder": "shoulder", "pocket": "pocket",
     "trough": "trough", "section": "section", "flats": "flats",

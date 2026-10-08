@@ -86,6 +86,12 @@ def find_location(term_key):
 
 category, group, category_id, group_keys = find_location(key)
 back = COPY["back"]
+if category_id == "breaks":
+    back = {
+        "en": "← Back to Surf breaks in the glossary",
+        "ru": "← К разделу «Сёрф-брейки» в глоссарии",
+        "ja": "← 用語集の「サーフブレイク」に戻る",
+    }[lang]
 if key in LOCATION:
     category, group, category_id, back = LOCATION[key][lang]
 
@@ -130,6 +136,9 @@ if key in WAVE_ANATOMY_PROFILE | WAVE_ANATOMY_BREAKING:
     print(illustration)
 if key in ("surf", "swell", "groundswell", "wind-swell"):
     illustration, soup = include("glossary-swell-illustration.html", current=key)
+    print(illustration)
+if key in ("beach-break", "reef-break", "point-break", "rivermouth"):
+    illustration, soup = include("glossary-break-types-illustration.html", current=key)
     print(illustration)
 print('    </div>')
 print('    <aside class="facts glossary-article-facts">')
