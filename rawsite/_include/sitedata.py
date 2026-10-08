@@ -693,36 +693,60 @@ AREAS = {
 # indiscriminately by every coastline.  The overview summary above introduces
 # an area; this longer text explains how its shore shapes the surf.
 AREA_COAST_COPY = {
-    "asahi": {
-        "en": "A sandy beach with a gently sloping seabed. Lines of tetrapods run parallel to the shore. Suitable tide levels are low and mid, and more rarely high. The best swell directions run from east through south-southwest. In the north-eastern part (Mansionsita), soft waves suitable for longboards can form. The south-western side of the area is characterised by higher, faster waves, more suitable for mid-length and short boards.",
-        "ru": "Песчаный пляж с плавным понижением дна. Параллельно берегу расположены гряды тетраподов. Подходящие уровни прилива — низкий и средний, реже высокий. Лучшие направления свелла — с восточного по юго-юго-западный. В северо-восточной части («Мансёнсита») могут формироваться мягкие волны, хорошие для длинных досок. Юго-западная сторона района характеризуется более высокими и быстрыми волнами, подходящими скорее для средних и коротких досок.",
-        "ja": "緩やかに深くなる砂浜です。海岸と平行にテトラポッドの列が並んでいます。向く潮位はロー〜ミドルで、ハイタイドはまれです。うねりは東から南南西までがよく、北東側のマンション下ではロングボード向きの緩やかな波が立つことがあります。エリア南西側はよりサイズがあり速い波で、ミッドレングスやショートボードにより向いています。",
-    },
-    "sosa": {
-        "en": "Sosa is part of the long, open Kujukuri shoreline: a broad sandy beach with no headlands to shelter it from east-to-south swell. Sandbars and peaks move along the beach rather than holding to one fixed take-off, so there is usually room to look beyond the busiest cluster. As the surf grows, check the banks and channels before paddling out: the same open coast that spreads the crowd can also set up strong currents.",
-        "ru": "Соса лежит на длинном открытом берегу Кудзюкури: это широкий песчаный пляж без мысов, защищающих его от свелла с востока и юга. Банки и пики здесь смещаются вдоль берега, а не держатся за одной постоянной точкой, поэтому обычно можно найти место в стороне от самого плотного лайн-апа. С ростом волн сначала оцените банки и каналы: открытый берег, который рассеивает людей, способен создавать и сильные течения.",
-        "ja": "匝瑳は、東〜南うねりを遮る岬のない、長く開けた九十九里海岸の一部です。砂のバンクとピークは一つの場所に固定されず海岸線に沿って動くため、混む場所から少し離れて探す余地があります。サイズが上がったら、入る前にバンクとカレントを確認しましょう。人が分散する開けた海岸は、強い流れも作りやすい場所です。",
-    },
-    "sakuta": {
-        "en": "Sakuta is a wide, shallow section of Kujukuri with a sandy bottom and several peaks spread across the beach. Its gradual profile keeps many days approachable, while the bars and tide decide where the cleanest walls appear. North-west wind is the usual cleaner; north-east through south-east swell has an open path into the coast. The wide shore gives surfers a choice of peaks, but it is still worth checking the channels before entering on a larger day.",
-        "ru": "Сакута — широкий пологий участок Кудзюкури с песчаным дном и несколькими пиками, распределёнными по пляжу. Благодаря плавному профилю многие дни здесь дружелюбны, а банки и прилив определяют, где появятся самые чистые стенки. Обычно волну собирает северо-западный ветер; свелл с северо-востока до юго-востока свободно приходит к берегу. Простор даёт выбор пиков, но в более крупный день всё равно стоит сначала проверить каналы.",
-        "ja": "作田は、砂地で遠浅な九十九里の広い区間です。ビーチに複数のピークが広がり、緩やかな地形のおかげで入りやすい日が多い一方、きれいなフェイスが出る場所はバンクと潮位で変わります。北西風が整えやすく、北東〜南東のうねりが入りやすい海岸です。ピークを選べる広さはありますが、サイズのある日は先にカレントを確認しましょう。",
-    },
-    "ichinomiya": {
-        "en": "Ichinomiya is an exposed sandy coast where jetties, river mouths and mobile banks divide a long beach into changing peaks. East swell arrives directly, while west wind is the familiar cleaner. The variety makes the area useful across many conditions, but it also means that the best take-off can move after a tide change or a storm. It is Chiba's busiest surf hub: watch the rotation, choose a peak that suits your level and give regulars space.",
-        "ru": "Итиномия — открытый песчаный берег, где молы, устья рек и подвижные банки разбивают длинный пляж на меняющиеся пики. Восточный свелл приходит сюда напрямую, а западный ветер обычно выравнивает волну. Разнообразие работает в разных условиях, но лучший пик может сместиться после смены прилива или шторма. Это один из самых оживлённых сёрф-центров Тибы: следите за очередью, выбирайте пик по своему уровню и оставляйте место локалам.",
-        "ja": "一宮は、堤防、河口、変化するサンドバーが長い砂浜をいくつもの動くピークに分ける開けた海岸です。東うねりが正面から入り、西風が整えやすい条件です。幅広いコンディションに対応できますが、潮位の変化やストームの後には良いテイクオフも移ります。千葉でも特に混むサーフハブなので、順番を見て、自分のレベルに合うピークを選び、ローカルにスペースを譲りましょう。",
-    },
-    "katsuura": {
-        "en": "This area centres on Onjuku's south-facing crescent of white sand. Harbour works and the river mouth help organise different peaks along an otherwise open beach, and south-east through south swell tends to be the most direct fit. North wind can clean the surface. Compared with the most exposed beaches farther north, the bay often feels more relaxed, yet the harbour and river-mouth channels still deserve a careful look before you paddle out.",
-        "ru": "Этот район сосредоточен вокруг южной дуги белого песка в Ондзюку. Гавань и устье реки помогают формировать разные пики вдоль в остальном открытого пляжа; лучше всего сюда приходит свелл с юго-востока до юга. Северный ветер способен очистить поверхность. По сравнению с наиболее открытыми пляжами севернее, бухта часто ощущается спокойнее, но перед выходом всё равно внимательно оцените каналы у гавани и устья.",
-        "ja": "このエリアの中心は、御宿の南に開く白い砂浜の弧です。港と河口が、基本は開けたビーチにいくつかの異なるピークを作ります。南東〜南うねりが合いやすく、北風は面を整えます。北側の特に開けたビーチより穏やかに感じることが多い一方、港と河口まわりのカレントは、入水前に必ずよく確認してください。",
-    },
-    "fujisawa": {
-        "en": "Kugenuma is a wide, shallow sandy beach shaped by moving bars and the nearby Katase River mouth. South swell is the familiar engine, while north to north-east wind can clean the surface. The gentle profile makes the beach useful for learning and small boards alike, but the same accessible coast draws a dense line-up. Check the river-mouth channels and choose a less crowded peak when the main bank is busy.",
-        "ru": "Кугэнума — широкий пологий песчаный пляж с подвижными банками и близким устьем реки Катасэ. Главный двигатель здесь — южный свелл, а северный и северо-восточный ветер могут очистить поверхность. Мягкий профиль подходит и для обучения, и для небольших досок, но доступный берег собирает плотный лайн-ап. Проверяйте каналы у устья и, когда главный пик занят, выбирайте менее людный участок.",
-        "ja": "鵠沼は、動くサンドバーと近くの片瀬川河口によって形づくられる、広く遠浅な砂浜です。南うねりが主な原動力で、北〜北東風が面を整えます。緩やかな地形は練習にも小波用ボードにも向きますが、アクセスのよい海岸だけにラインナップは密になりやすいです。河口のカレントを確認し、メインバンクが混むときは空いているピークを選びましょう。",
-    },
+    "asahi":
+        {
+            "en":
+                "A sandy beach with a gently sloping seabed. Lines of tetrapods run parallel to the shore. Suitable tide levels are low and mid, and more rarely high. The best swell directions run from east through south-southwest. In the north-eastern part (Mansionsita), soft waves suitable for longboards can form. The south-western side of the area is characterised by higher, faster waves, more suitable for mid-length and short boards.",
+            "ru":
+                "Песчаный пляж с плавным понижением дна. Параллельно берегу расположены гряды тетраподов. Подходящие уровни прилива — низкий и средний, реже высокий. Лучшие направления свелла — с восточного по юго-юго-западный. В северо-восточной части («Мансёнсита») могут формироваться мягкие волны, хорошие для длинных досок. Юго-западная сторона района характеризуется более высокими и быстрыми волнами, подходящими скорее для средних и коротких досок.",
+            "ja":
+                "緩やかに深くなる砂浜です。海岸と平行にテトラポッドの列が並んでいます。向く潮位はロー〜ミドルで、ハイタイドはまれです。うねりは東から南南西までがよく、北東側のマンション下ではロングボード向きの緩やかな波が立つことがあります。エリア南西側はよりサイズがあり速い波で、ミッドレングスやショートボードにより向いています。",
+        },
+    "sosa":
+        {
+            "en":
+                "Sosa is part of the long, open Kujukuri shoreline: a broad sandy beach with no headlands to shelter it from east-to-south swell. Sandbars and peaks move along the beach rather than holding to one fixed take-off, so there is usually room to look beyond the busiest cluster. As the surf grows, check the banks and channels before paddling out: the same open coast that spreads the crowd can also set up strong currents.",
+            "ru":
+                "Соса лежит на длинном открытом берегу Кудзюкури: это широкий песчаный пляж без мысов, защищающих его от свелла с востока и юга. Банки и пики здесь смещаются вдоль берега, а не держатся за одной постоянной точкой, поэтому обычно можно найти место в стороне от самого плотного лайн-апа. С ростом волн сначала оцените банки и каналы: открытый берег, который рассеивает людей, способен создавать и сильные течения.",
+            "ja":
+                "匝瑳は、東〜南うねりを遮る岬のない、長く開けた九十九里海岸の一部です。砂のバンクとピークは一つの場所に固定されず海岸線に沿って動くため、混む場所から少し離れて探す余地があります。サイズが上がったら、入る前にバンクとカレントを確認しましょう。人が分散する開けた海岸は、強い流れも作りやすい場所です。",
+        },
+    "sakuta":
+        {
+            "en":
+                "Sakuta is a wide, shallow section of Kujukuri with a sandy bottom and several peaks spread across the beach. Its gradual profile keeps many days approachable, while the bars and tide decide where the cleanest walls appear. North-west wind is the usual cleaner; north-east through south-east swell has an open path into the coast. The wide shore gives surfers a choice of peaks, but it is still worth checking the channels before entering on a larger day.",
+            "ru":
+                "Сакута — широкий пологий участок Кудзюкури с песчаным дном и несколькими пиками, распределёнными по пляжу. Благодаря плавному профилю многие дни здесь дружелюбны, а банки и прилив определяют, где появятся самые чистые стенки. Обычно волну собирает северо-западный ветер; свелл с северо-востока до юго-востока свободно приходит к берегу. Простор даёт выбор пиков, но в более крупный день всё равно стоит сначала проверить каналы.",
+            "ja":
+                "作田は、砂地で遠浅な九十九里の広い区間です。ビーチに複数のピークが広がり、緩やかな地形のおかげで入りやすい日が多い一方、きれいなフェイスが出る場所はバンクと潮位で変わります。北西風が整えやすく、北東〜南東のうねりが入りやすい海岸です。ピークを選べる広さはありますが、サイズのある日は先にカレントを確認しましょう。",
+        },
+    "ichinomiya":
+        {
+            "en":
+                "Ichinomiya is an exposed sandy coast where jetties, river mouths and mobile banks divide a long beach into changing peaks. East swell arrives directly, while west wind is the familiar cleaner. The variety makes the area useful across many conditions, but it also means that the best take-off can move after a tide change or a storm. It is Chiba's busiest surf hub: watch the rotation, choose a peak that suits your level and give regulars space.",
+            "ru":
+                "Итиномия — открытый песчаный берег, где молы, устья рек и подвижные банки разбивают длинный пляж на меняющиеся пики. Восточный свелл приходит сюда напрямую, а западный ветер обычно выравнивает волну. Разнообразие работает в разных условиях, но лучший пик может сместиться после смены прилива или шторма. Это один из самых оживлённых сёрф-центров Тибы: следите за очередью, выбирайте пик по своему уровню и оставляйте место локалам.",
+            "ja":
+                "一宮は、堤防、河口、変化するサンドバーが長い砂浜をいくつもの動くピークに分ける開けた海岸です。東うねりが正面から入り、西風が整えやすい条件です。幅広いコンディションに対応できますが、潮位の変化やストームの後には良いテイクオフも移ります。千葉でも特に混むサーフハブなので、順番を見て、自分のレベルに合うピークを選び、ローカルにスペースを譲りましょう。",
+        },
+    "katsuura":
+        {
+            "en":
+                "This area centres on Onjuku's south-facing crescent of white sand. Harbour works and the river mouth help organise different peaks along an otherwise open beach, and south-east through south swell tends to be the most direct fit. North wind can clean the surface. Compared with the most exposed beaches farther north, the bay often feels more relaxed, yet the harbour and river-mouth channels still deserve a careful look before you paddle out.",
+            "ru":
+                "Этот район сосредоточен вокруг южной дуги белого песка в Ондзюку. Гавань и устье реки помогают формировать разные пики вдоль в остальном открытого пляжа; лучше всего сюда приходит свелл с юго-востока до юга. Северный ветер способен очистить поверхность. По сравнению с наиболее открытыми пляжами севернее, бухта часто ощущается спокойнее, но перед выходом всё равно внимательно оцените каналы у гавани и устья.",
+            "ja":
+                "このエリアの中心は、御宿の南に開く白い砂浜の弧です。港と河口が、基本は開けたビーチにいくつかの異なるピークを作ります。南東〜南うねりが合いやすく、北風は面を整えます。北側の特に開けたビーチより穏やかに感じることが多い一方、港と河口まわりのカレントは、入水前に必ずよく確認してください。",
+        },
+    "fujisawa":
+        {
+            "en":
+                "Kugenuma is a wide, shallow sandy beach shaped by moving bars and the nearby Katase River mouth. South swell is the familiar engine, while north to north-east wind can clean the surface. The gentle profile makes the beach useful for learning and small boards alike, but the same accessible coast draws a dense line-up. Check the river-mouth channels and choose a less crowded peak when the main bank is busy.",
+            "ru":
+                "Кугэнума — широкий пологий песчаный пляж с подвижными банками и близким устьем реки Катасэ. Главный двигатель здесь — южный свелл, а северный и северо-восточный ветер могут очистить поверхность. Мягкий профиль подходит и для обучения, и для небольших досок, но доступный берег собирает плотный лайн-ап. Проверяйте каналы у устья и, когда главный пик занят, выбирайте менее людный участок.",
+            "ja":
+                "鵠沼は、動くサンドバーと近くの片瀬川河口によって形づくられる、広く遠浅な砂浜です。南うねりが主な原動力で、北〜北東風が面を整えます。緩やかな地形は練習にも小波用ボードにも向きますが、アクセスのよい海岸だけにラインナップは密になりやすいです。河口のカレントを確認し、メインバンクが混むときは空いているピークを選びましょう。",
+        },
 }
 
 # Detailed spot pages live inside their parent area.  These deliberately keep
@@ -1053,7 +1077,7 @@ AREA_MAPS = {
                 [
                     {
                         "id": "shingosita",
-                        "coordinates": (35.700368, 140.714157),
+                        "coordinates": (35.700525, 140.713401),
                         "url": "shingosita/index.html",
                         "en": "Shingosita (信号下)",
                         "ru": "Сингосита (信号下)",
@@ -1069,7 +1093,7 @@ AREA_MAPS = {
                     },
                     {
                         "id": "shoppumae",
-                        "coordinates": (35.700758, 140.710652),
+                        "coordinates": (35.700512, 140.710306),
                         "url": "shoppumae/index.html",
                         "en": "Shoppumae (ショップ前)",
                         "ru": "Сёппумаэ (ショップ前)",
@@ -1081,64 +1105,82 @@ AREA_MAPS = {
         {
             "center": (35.6814, 140.6520),
             "zoom": 14,
-            "spots": [
-                {
-                    "id": "kanpomae",
-                    "coordinates": (35.6814, 140.6520),
-                    "en": "Kanpomae",
-                    "ru": "Канпомаэ",
-                    "ja": "かんぽ前",
-                },
-            ],
+            "spots": [{
+                "id": "kanpomae",
+                "coordinates": (35.684181, 140.646435),
+                "en": "Kanpomae",
+                "ru": "Канпомаэ",
+                "ja": "かんぽ前",
+            }, ],
         },
     "sakuta":
         {
             "center": (35.5435, 140.4684),
-            "zoom": 15,
-            "spots": [
-                {
-                    "id": "sakuta",
-                    "coordinates": (35.5435, 140.4684),
-                    "en": "Sakuta",
-                    "ru": "Сакута",
-                    "ja": "作田",
-                },
-            ],
+            "zoom":
+                14,
+            "spots":
+                [
+                    {
+                        "id": "sakuta",
+                        "coordinates": (35.542910, 140.467347),
+                        "en": "Sakuta (作田)",
+                        "ru": "Сакута (作田)",
+                        "ja": "作田",
+                    },
+                    {
+                        "id": "motosuka",
+                        "coordinates": (35.549469, 140.471828),
+                        "en": "Motosuka (本須賀)",
+                        "ru": "Мотоска (本須賀)",
+                        "ja": "本須賀",
+                    },
+                ],
         },
     "ichinomiya":
         {
             "center": (35.3580, 140.3920),
-            "zoom": 13,
-            "spots": [
-                {
-                    "id": "ichinomiya",
-                    "coordinates": (35.3660, 140.3780),
-                    "en": "Ichinomiya",
-                    "ru": "Итиномия",
-                    "ja": "一宮",
-                },
-                {
-                    "id": "shidashita",
-                    "coordinates": (35.3400, 140.4072),
-                    "en": "Tsurigasaki / Shidashita",
-                    "ru": "Цуригасаки / Сидасита",
-                    "ja": "釣ヶ崎 / 志田下",
-                },
-            ],
+            "zoom":
+                13,
+            "spots":
+                [
+                    {
+                        "id": "ichinomiya",
+                        "coordinates": (35.378079, 140.391159),
+                        "en": "Ichinomiya (一宮)",
+                        "ru": "Итиномия (一宮)",
+                        "ja": "一宮",
+                    },
+                    {
+                        "id": "taito",
+                        "coordinates": (35.330102, 140.398330),
+                        "en": "Taito (太東)",
+                        "ru": "Тайто (太東)",
+                        "ja": "太東",
+                    },
+                ],
         },
     "katsuura":
         {
             "center": (35.1800, 140.3550),
-            "zoom": 14,
-            "spots": [
-                {
-                    "id": "onjuku",
-                    "coordinates": (35.1800, 140.3550),
-                    "en": "Onjuku",
-                    "ru": "Ондзюку",
-                    "ja": "御宿",
-                },
-            ],
+            "zoom":
+                14,
+            "spots":
+                [
+                    {
+                        "id": "onjuku main",
+                        "coordinates": (35.182143, 140.355927),
+                        "en": "Onjuku main (御宿メイン)",
+                        "ru": "Ондзюку мэйн (御宿メイン)",
+                        "ja": "御宿メイン",
+                    },
+                    {
+                        "id": "iwawada",
+                        "coordinates": (35.181301, 140.363602),
+                        "en": "Onjuku Iwawada (御宿 岩和田)",
+                        "ru": "Ондзюку Ивавада (御宿 岩和田)",
+                        "ja": "御宿 岩和田",
+                    },
+                ],
         },
 }
 
