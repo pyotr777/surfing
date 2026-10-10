@@ -110,13 +110,14 @@ def map_amenities(amenity_coordinates, lang):
             markers.append(
                 {
                     "coordinates": coordinates,
+                    "kind": "shower-restroom",
                     "sign": "shower-restroom",
                     "label": f'{AMENITY_META["shower"]["label"][lang]} · {AMENITY_META["restroom"]["label"][lang]}',
                 }
             )
         for kind in remaining:
             meta = AMENITY_META[kind]
-            markers.append({"coordinates": coordinates, "sign": meta["sign"], "label": meta["label"][lang]})
+            markers.append({"coordinates": coordinates, "kind": kind, "sign": meta["sign"], "label": meta["label"][lang]})
     return markers
 
 
@@ -1508,7 +1509,7 @@ SPOT_MAPS = {
         "amenities": {
             "restroom": (35.545743, 140.465409),
             "shower": (35.545743, 140.465409),
-            "parking": (35.545736, 140.466147),
+            "paid_parking": (35.545736, 140.466147),
         }
     },
     "motosuka": {
