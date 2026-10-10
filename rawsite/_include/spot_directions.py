@@ -45,7 +45,7 @@ SPOT_DIRECTIONS = {
     },
     "sakuta": {
         "swell": "NE-S",
-        "wind": "WSW-N"
+        "wind": "WSW-NW"
     },
     "motosuka": {
         "swell": "NE-E",

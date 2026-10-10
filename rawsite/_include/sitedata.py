@@ -288,7 +288,7 @@ UI = {
             "table_aug": "水温・8月",
             "table_feb": "水温・2月",
             "table_sort_hint": "列の見出しをクリックすると並べ替えられます。",
-            "facts_heading": "ポイント概要",
+            "facts_heading": "概要",
             "tags_heading": "すべてのタグ",
             "tagged": "タグ",
             "back_home": "すべてのスポットへ戻る",
@@ -642,6 +642,29 @@ TAILS = {
     },
 }
 
+BOARD_FIN_SETUPS = {
+    "fish": {
+        "en": "twin, quad",
+        "ru": "твин, квад",
+        "ja": "ツイン、クアッド",
+    },
+    "shortboard": {
+        "en": "thruster, quad",
+        "ru": "трастер, квад",
+        "ja": "スラスター、クアッド",
+    },
+    "funboard": {
+        "en": "single, 2+1, thruster",
+        "ru": "сингл, 2+1, трастер",
+        "ja": "シングル、2+1、スラスター",
+    },
+    "gun": {
+        "en": "thruster, quad",
+        "ru": "трастер, квад",
+        "ja": "スラスター、クアッド",
+    },
+}
+
 # Area names and label placement on the illustrated overview map.  These are
 # navigation areas, not administrative prefectures: a dense coast can then be
 # explored on a separate map without overlapping every individual surf spot.
@@ -866,6 +889,111 @@ AREA_COAST_COPY = {
 # Detailed spot pages live inside their parent area.  These deliberately keep
 # their compact facts separate from csv/spots.csv, which compares the six
 # navigation areas rather than every individual break.
+SPOT_FACT_TRANSLATIONS = {
+    "ru":
+        {
+            "labels":
+                {
+                    "Area": "Район",
+                    "Break": "Брейк",
+                    "Bottom": "Дно",
+                    "Min. Level": "Мин. уровень",
+                    "Level": "Уровень",
+                    "Working tide": "Подходящий уровень воды",
+                    "Season": "Сезон",
+                    "Best size": "Лучший размер",
+                    "Crowds": "Люди",
+                    "Best board": "Подходящая доска",
+                },
+            "values":
+                {
+                    "Chiba North · Iioka": "Северная Тиба · Ииока",
+                    "Chiba North · Kujukuri": "Северная Тиба · Кудзюкури",
+                    "Chiba North · Sosa": "Северная Тиба · Соса",
+                    "beach break between tetrapods": "бич-брейк между тетраподами",
+                    "hollow beach break": "холлоу-бич-брейк",
+                    "wide beach break": "широкий бич-брейк",
+                    "open beach break": "открытый бич-брейк",
+                    "shallow beach break": "пологий бич-брейк",
+                    "Sand": "Песчаное",
+                    "beginner": "начинающий",
+                    "intermediate": "средний",
+                    "beginner to advanced, depending on conditions": "от начинающего до продвинутого — по условиям",
+                    "beginner to intermediate": "начинающий — средний",
+                    "low to high": "от низкого до высокого",
+                    "mid to mid-low": "средний — средне-низкий",
+                    "medium to high": "от среднего до высокого",
+                    "year-round; especially autumn–winter": "круглый год; особенно осень — зима",
+                    "autumn–winter": "осень — зима",
+                    "chest to shoulder high": "по грудь — по плечи",
+                    "waist to chest high": "по пояс — по грудь",
+                    "Popular, with room to choose a peak": "Популярно, но можно выбрать пик",
+                    "Usually quieter than nearby named peaks": "Обычно спокойнее, чем на ближайших известных пиках",
+                    "longboard": "лонгборд",
+                    "shortboard": "шортборд",
+                    "shortboard, funboard": "шортборд, фанборд",
+                    "shortboard, funboard, longboard": "шортборд, фанборд, лонгборд",
+                    "longboard, funboard, shortboard": "лонгборд, фанборд, шортборд",
+                },
+        },
+    "ja":
+        {
+            "labels":
+                {
+                    "Area": "エリア",
+                    "Break": "ブレイク",
+                    "Bottom": "海底",
+                    "Min. Level": "レベル",
+                    "Level": "レベル",
+                    "Working tide": "対応する潮位",
+                    "Season": "シーズン",
+                    "Best size": "ベストサイズ",
+                    "Crowds": "混雑",
+                    "Best board": "向くボード",
+                },
+            "values":
+                {
+                    "Chiba North · Iioka": "千葉北・飯岡",
+                    "Chiba North · Kujukuri": "千葉北・九十九里",
+                    "Chiba North · Sosa": "千葉北・匝瑳",
+                    "beach break between tetrapods": "テトラポッドの間のビーチブレイク",
+                    "hollow beach break": "ホローなビーチブレイク",
+                    "wide beach break": "広いビーチブレイク",
+                    "open beach break": "開けたビーチブレイク",
+                    "shallow beach break": "遠浅のビーチブレイク",
+                    "Sand": "砂地",
+                    "beginner": "初級者以上",
+                    "intermediate": "中級者以上",
+                    "beginner to advanced, depending on conditions": "初級〜上級（コンディション次第）",
+                    "beginner to intermediate": "初級〜中級",
+                    "low to high": "ロー〜ハイ",
+                    "mid to mid-low": "ミドル〜ミドルロー",
+                    "medium to high": "中〜高",
+                    "year-round; especially autumn–winter": "通年、特に秋〜冬",
+                    "autumn–winter": "秋〜冬",
+                    "chest to shoulder high": "ムネ〜カタ",
+                    "waist to chest high": "コシ〜ムネ",
+                    "Popular, with room to choose a peak": "人気はあるがピークを選べる",
+                    "Usually quieter than nearby named peaks": "近くの有名なピークより比較的落ち着く",
+                    "longboard": "ロングボード",
+                    "shortboard": "ショートボード",
+                    "shortboard, funboard": "ショートボード、ファンボード",
+                    "shortboard, funboard, longboard": "ショートボード、ファンボード、ロングボード",
+                    "longboard, funboard, shortboard": "ロングボード、ファンボード、ショートボード",
+                },
+        },
+}
+
+
+def localized_spot_facts(rows, lang):
+    """Translate the English-only detailed-spot facts during the site build."""
+    if lang == "en":
+        return rows
+
+    translation = SPOT_FACT_TRANSLATIONS[lang]
+    return [(translation["labels"][label], translation["values"][value]) for label, value in rows]
+
+
 SPOT_DETAILS = {
     "mansionsita":
         {
@@ -891,39 +1019,20 @@ SPOT_DETAILS = {
                         "マンション下は、旭エリアで南にあるポイントよりも波が柔らかいことが多く、長めのボードが自然に合います。海底地形は頻繁に変わりますが、条件が整えば100メートルほどのロングライドができることもあります。北東側の最初のテトラポッド列に守られた一角は「シルバー」と呼ばれ、小さく整った穏やかな波が立つため、初心者が多く集まります。",
                 },
             "facts":
-                {
-                    "en":
-                        [
-                            ("Area", "Chiba North · Iioka"),
-                            ("Break", "beach break between tetrapods"),
-                            ("Bottom", "Sand"),
-                            ("Min. Level", "beginner"),
-                            ("Working tide", "low to high"),
-                            ("Best board", "longboard"),
-                        ],
-                    "ru":
-                        [
-                            ("Район", "Северная Тиба · Ииока"),
-                            ("Брейк", "бич-брейк между тетраподами"),
-                            ("Дно", "Песчаное"),
-                            ("Мин. Уровень", "начинающий"),
-                            ("Подходящий уровень воды", "от низкого до высокого"),
-                            ("Подходящая доска", "лонгборд"),
-                        ],
-                    "ja": [
-                        ("エリア", "千葉北・飯岡"),
-                        ("ブレイク", "テトラポッドの間のビーチブレイク"),
-                        ("海底", "砂地"),
-                        ("レベル", "初級者以上"),
-                        ("対応する潮位", "ロー〜ハイ"),
-                        ("向くボード", "ロングボード"),
-                    ],
-                },
+                [
+                    ("Area", "Chiba North · Iioka"),
+                    ("Break", "beach break between tetrapods"),
+                    ("Bottom", "Sand"),
+                    ("Min. Level", "beginner"),
+                    ("Working tide", "low to high"),
+                    ("Best board", "longboard"),
+                ],
             "amenities": [],
         },
     "shingosita":
         {
-            "area": "asahi",
+            "area":
+                "asahi",
             "title": {
                 "en": "Shingosita",
                 "ru": "Сингосита",
@@ -945,45 +1054,21 @@ SPOT_DETAILS = {
                         "信号下では、サイズが上がると掘れた速いセクションが現れ、ショートボード向きになることがあります。緩やかで厚めの波ではロングボードにも向きます。レギュラー、グーフィーともに乗れますが、最後のセクションはクローズアウトしやすい傾向があります。条件がそろうと三つのピークができ、チューブになることもあります。テトラポッド周辺には複雑なカレントがあるため、ライディングしている人の妨げにならないルートで沖へ出て、特にブロックのアウト側では流れをよく確認してください。",
                 },
             "facts":
-                {
-                    "en":
-                        [
-                            ("Area", "Chiba North · Iioka"),
-                            ("Break", "hollow beach break"),
-                            ("Bottom", "Sand"),
-                            ("Level", "beginner to advanced, depending on conditions"),
-                            ("Season", "year-round; especially autumn–winter"),
-                            ("Best size", "chest to shoulder high"),
-                            ("Working tide", "mid to mid-low"),
-                            ("Best board", "shortboard"),
-                        ],
-                    "ru":
-                        [
-                            ("Район", "Северная Тиба · Ииока"),
-                            ("Брейк", "холлоу-бич-брейк"),
-                            ("Дно", "Песчаное"),
-                            ("Уровень", "от начинающего до продвинутого — по условиям"),
-                            ("Сезон", "круглый год; особенно осень — зима"),
-                            ("Лучший размер", "по грудь — по плечи"),
-                            ("Подходящий уровень воды", "средний — средне-низкий"),
-                            ("Подходящая доска", "шортборд"),
-                        ],
-                    "ja":
-                        [
-                            ("エリア", "千葉北・飯岡"),
-                            ("ブレイク", "ホローなビーチブレイク"),
-                            ("海底", "砂地"),
-                            ("レベル", "初級〜上級（コンディション次第）"),
-                            ("シーズン", "通年、特に秋〜冬"),
-                            ("ベストサイズ", "ムネ〜カタ"),
-                            ("対応する潮位", "ミドル〜ミドルロー"),
-                            ("向くボード", "ショートボード"),
-                        ],
-                },
+                [
+                    ("Area", "Chiba North · Iioka"),
+                    ("Break", "hollow beach break"),
+                    ("Bottom", "Sand"),
+                    ("Level", "beginner to advanced, depending on conditions"),
+                    ("Season", "year-round; especially autumn–winter"),
+                    ("Best size", "chest to shoulder high"),
+                    ("Working tide", "mid to mid-low"),
+                    ("Best board", "longboard, funboard, shortboard"),
+                ],
         },
     "shoppumae":
         {
-            "area": "asahi",
+            "area":
+                "asahi",
             "title": {
                 "en": "Shoppumae",
                 "ru": "Сёппумаэ",
@@ -1006,38 +1091,19 @@ SPOT_DETAILS = {
                 },
             "amenities": ["parking", "shower", "restroom"],
             "facts":
-                {
-                    "en":
-                        [
-                            ("Area", "Chiba North · Iioka"),
-                            ("Break", "beach break between tetrapods"),
-                            ("Bottom", "Sand"),
-                            ("Min. Level", "intermediate"),
-                            ("Working tide", "medium to high"),
-                            ("Best board", "shortboard"),
-                        ],
-                    "ru":
-                        [
-                            ("Район", "Северная Тиба · Ииока"),
-                            ("Брейк", "бич-брейк между тетраподами"),
-                            ("Дно", "Песчаное"),
-                            ("Мин. Уровень", "средний"),
-                            ("Подходящий уровень воды", "от среднего до высокого"),
-                            ("Подходящая доска", "шортборд"),
-                        ],
-                    "ja": [
-                        ("エリア", "千葉北・飯岡"),
-                        ("ブレイク", "テトラポッドの間のビーチブレイク"),
-                        ("海底", "砂地"),
-                        ("レベル", "中級者以上"),
-                        ("対応する潮位", "中〜高"),
-                        ("向くボード", "ショートボード"),
-                    ],
-                },
+                [
+                    ("Area", "Chiba North · Iioka"),
+                    ("Break", "beach break between tetrapods"),
+                    ("Bottom", "Sand"),
+                    ("Min. Level", "intermediate"),
+                    ("Working tide", "medium to high"),
+                    ("Best board", "shortboard, funboard"),
+                ],
         },
     "sakuta":
         {
-            "area": "sakuta",
+            "area":
+                "sakuta",
             "title": {
                 "en": "Sakuta",
                 "ru": "Сакута",
@@ -1052,44 +1118,27 @@ SPOT_DETAILS = {
             "description":
                 {
                     "en":
-                        "Sakuta is a wide, shallow beach where the sandbars decide whether the best peak sits beside the groyne or farther along the open shore. The wave is often soft and full, making it approachable when the surf is small; with more size, the peaks become more defined. East to south-east swell has a clear path into the beach, while west to north-west wind is usually the cleaner. Check the river-mouth channels and choose a peak with enough room for your level.",
+                        "Sakuta is a broad, gently shelving beach where shifting sandbars determine whether the best peak forms beside the groyne or farther down the open stretch. The waves here tend to be soft and full, so the spot is forgiving on smaller days; as the swell builds, the peaks become more defined. Easterly and south-easterly swell reaches the beach cleanly, while westerly to north-westerly winds usually keep the surface tidy. Good weekends can get busy, though the wide beach normally leaves room to spread out. <br><b style='color:darkred'>The right-hand side of the spot, closest to the groyne, is reserved for shortboards and funboards only</b>; the left-hand side is open to everyone.",
                     "ru":
-                        "Сакута — широкий пологий пляж, где песчаные банки определяют, окажется ли лучший пик у мола или дальше на открытом берегу. Волна здесь часто мягкая и полная, поэтому в небольшой день она дружелюбна; с ростом размера пики становятся отчётливее. Свелл с востока и юго-востока свободно приходит к пляжу, а западный и северо-западный ветер обычно очищают поверхность. Перед выходом проверьте каналы у устья и выберите пик с запасом места для своего уровня.",
+                        "Сакута — широкий пологий пляж, где песчаные банки определяют, окажется ли лучший пик у мола или дальше на открытом берегу. Волна здесь часто мягкая и полная, поэтому в небольшой день она дружелюбна; с ростом размера пики становятся отчётливее. Свелл с востока и юго-востока свободно приходит к пляжу, а западный и северо-западный ветер обычно очищают поверхность. В выходные при хороших условиях на море бывает многолюдно, но на широком пляже обычно можно найти место. <br><b style='color:darkred'>Правая сторона спота, которая ближе к молу, предназначена только для шортбордов и фанбордов</b>, а левая сторона открыта для всех.",
                     "ja":
-                        "作田は、砂のバンクによって堤防脇か開けた浜のどこに良いピークが出るかが変わる、広く遠浅なビーチです。小さい日は厚く穏やかな波になりやすく、サイズが上がるとピークがはっきりしてきます。東〜南東うねりが入りやすく、西〜北西風が面を整えやすい条件です。入水前に河口まわりのカレントを確認し、自分のレベルに合う余裕のあるピークを選びましょう。",
+                        "作田は、砂のバンク次第で堤防脇にピークが立つか、開けたビーチの沖に立つかが変わる、広く遠浅なビーチブレイクです。波は厚めでゆったりと割れやすく、小さい日は乗りやすい一方、サイズが上がるとピークがよりはっきりしてきます。東〜南東うねりが入りやすく、西〜北西風で面が整いやすいスポットです。条件のいい週末は混み合いますが、浜が広いのでピークを選ぶ余地はあります。<br><b style='color:darkred'>堤防寄りの右側はショートボードとファンボード専用です</b>。左側はどなたでも利用できます。",
                 },
             "amenities": ["paid_parking", "shower", "restroom"],
             "facts":
-                {
-                    "en":
-                        [
-                            ("Area", "Chiba North · Kujukuri"),
-                            ("Break", "wide beach break"),
-                            ("Bottom", "Sand"),
-                            ("Level", "beginner to advanced, depending on conditions"),
-                            ("Crowds", "Popular, with room to choose a peak"),
-                            ("Best board", "shortboard, midlength, longboard"),
-                        ],
-                    "ru":
-                        [
-                            ("Район", "Северная Тиба · Кудзюкури"),
-                            ("Брейк", "широкий бич-брейк"),
-                            ("Дно", "Песчаное"),
-                            ("Уровень", "от начинающего до продвинутого — по условиям"),
-                            ("Люди", "Популярно, но можно выбрать пик"),
-                        ],
-                    "ja": [
-                        ("エリア", "千葉北・九十九里"),
-                        ("ブレイク", "広いビーチブレイク"),
-                        ("海底", "砂地"),
-                        ("レベル", "初級〜上級（コンディション次第）"),
-                        ("混雑", "人気はあるがピークを選べる"),
-                    ],
-                },
+                [
+                    ("Area", "Chiba North · Kujukuri"),
+                    ("Break", "wide beach break"),
+                    ("Bottom", "Sand"),
+                    ("Level", "beginner to advanced, depending on conditions"),
+                    ("Crowds", "Popular, with room to choose a peak"),
+                    ("Best board", "shortboard, funboard, longboard"),
+                ],
         },
     "motosuka":
         {
-            "area": "sakuta",
+            "area":
+                "sakuta",
             "title": {
                 "en": "Motosuka",
                 "ru": "Мотоска",
@@ -1112,35 +1161,19 @@ SPOT_DETAILS = {
                 },
             "amenities": ["parking", "shower", "restroom"],
             "facts":
-                {
-                    "en":
-                        [
-                            ("Area", "Chiba North · Kujukuri"),
-                            ("Break", "open beach break"),
-                            ("Bottom", "Sand"),
-                            ("Level", "beginner to intermediate"),
-                            ("Crowds", "Usually quieter than nearby named peaks"),
-                        ],
-                    "ru":
-                        [
-                            ("Район", "Северная Тиба · Кудзюкури"),
-                            ("Брейк", "открытый бич-брейк"),
-                            ("Дно", "Песчаное"),
-                            ("Уровень", "начинающий — средний"),
-                            ("Люди", "Обычно спокойнее, чем на ближайших известных пиках"),
-                        ],
-                    "ja": [
-                        ("エリア", "千葉北・九十九里"),
-                        ("ブレイク", "開けたビーチブレイク"),
-                        ("海底", "砂地"),
-                        ("レベル", "初級〜中級"),
-                        ("混雑", "近くの有名なピークより比較的落ち着く"),
-                    ],
-                },
+                [
+                    ("Area", "Chiba North · Kujukuri"),
+                    ("Break", "open beach break"),
+                    ("Bottom", "Sand"),
+                    ("Level", "beginner to intermediate"),
+                    ("Crowds", "Usually quieter than nearby named peaks"),
+                    ("Best board", "shortboard, funboard, longboard"),
+                ],
         },
     "kanpomae":
         {
-            "area": "sosa",
+            "area":
+                "sosa",
             "title": {
                 "en": "Kanpomae",
                 "ru": "Канпомаэ",
@@ -1163,38 +1196,15 @@ SPOT_DETAILS = {
                 },
             "amenities": ["parking", "restroom"],
             "facts":
-                {
-                    "en":
-                        [
-                            ("Area", "Chiba North · Sosa"),
-                            ("Break", "shallow beach break"),
-                            ("Bottom", "Sand"),
-                            ("Level", "beginner to advanced, depending on conditions"),
-                            ("Season", "autumn–winter"),
-                            ("Best size", "waist to chest high"),
-                            ("Best board", "longboard, midlength, shortboard"),
-                        ],
-                    "ru":
-                        [
-                            ("Район", "Северная Тиба · Соса"),
-                            ("Брейк", "пологий бич-брейк"),
-                            ("Дно", "Песчаное"),
-                            ("Уровень", "от начинающего до продвинутого — по условиям"),
-                            ("Сезон", "осень — зима"),
-                            ("Лучший размер", "по пояс — по грудь"),
-                            ("Подходящая доска", "лонгборд, мидленгт, шортборд"),
-                        ],
-                    "ja":
-                        [
-                            ("エリア", "千葉北・匝瑳"),
-                            ("ブレイク", "遠浅のビーチブレイク"),
-                            ("海底", "砂地"),
-                            ("レベル", "初級〜上級（コンディション次第）"),
-                            ("シーズン", "秋〜冬"),
-                            ("ベストサイズ", "コシ〜ムネ"),
-                            ("向くボード", "ロングボード、ミッドレングス、ショートボード"),
-                        ],
-                },
+                [
+                    ("Area", "Chiba North · Sosa"),
+                    ("Break", "shallow beach break"),
+                    ("Bottom", "Sand"),
+                    ("Level", "beginner to advanced, depending on conditions"),
+                    ("Season", "autumn–winter"),
+                    ("Best size", "waist to chest high"),
+                    ("Best board", "longboard, funboard, shortboard"),
+                ],
         },
 }
 
@@ -1495,7 +1505,11 @@ SPOT_MAPS = {
         },
     "sakuta": {
         "zoom": 17,
-        "amenities": {}
+        "amenities": {
+            "restroom": (35.545743, 140.465409),
+            "shower": (35.545743, 140.465409),
+            "parking": (35.545736, 140.466147),
+        }
     },
     "motosuka": {
         "zoom": 17,
@@ -1519,6 +1533,7 @@ TAGS = [
     "small-waves",
     "big-waves",
     "high-volume",
+    "mid-length",
     "low-volume",
     "wave-theory",
     "wind",

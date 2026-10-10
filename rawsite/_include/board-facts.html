@@ -10,16 +10,14 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
 
 row = S.board_by_id(params["board"])
+board_range = S.BOARD_RANGES[row["id"]]
 lang = S.lang_of(page_file)
 ui = S.UI[lang]
 
 rows = [
-    (ui["board_length"], S.feet_inches(row["length_in"])),
-    (ui["board_width"], f'{row["width_in"]:.2f}&Prime;'.replace(".00", "")),
-    (ui["board_thickness"], f'{row["thickness_in"]:.2f}&Prime;'),
-    (ui["board_volume"], f'{row["volume_l"]:.0f}&nbsp;L'),
-    (ui["board_fins"], row["fins"]),
-    (ui["board_tail"], S.TAILS[row["tail"]][lang]),
+    (ui["board_length"], S.feet_inches_range(*board_range["length_in"])),
+    (ui["board_volume"], f'{board_range["volume_l"][0]:.0f}–{board_range["volume_l"][1]:.0f}&nbsp;L'),
+    (ui["board_fins"], S.BOARD_FIN_SETUPS[row["id"]][lang]),
     (ui["board_waves"], f'{row["wave_min_ft"]:.0f}–{row["wave_max_ft"]:.0f}&nbsp;ft'),
     (ui["table_level"], S.LEVELS[row["level"]][lang]),
 ]

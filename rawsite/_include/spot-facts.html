@@ -16,7 +16,7 @@ ui = S.UI[lang]
 
 detail = S.SPOT_DETAILS.get(params["spot"])
 if detail:
-    rows = detail["facts"][lang]
+    rows = S.localized_spot_facts(detail["facts"], lang)
 else:
     row = S.spot_by_id(params["spot"])
     rows = [
