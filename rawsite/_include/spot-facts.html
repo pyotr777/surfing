@@ -73,14 +73,18 @@ for label, value in rows:
     else:
         print(f'    <div><dt>{html.escape(label)}</dt><dd>{html.escape(value)}</dd></div>')
 
-amenities = detail.get("amenities", {}).get(lang, [])
+amenities = detail.get("amenities", [])
 if amenities:
     amenities_label = {"en": "Amenities", "ru": "Удобства", "ja": "設備"}[lang]
     print(f'    <div class="fact-amenities"><dt>{amenities_label}</dt><dd>')
-    for label, icon_name in amenities:
-        icon = S.base_url(page_file) + "img/stickers/" + icon_name
+    for kind in amenities:
+        amenity = S.AMENITY_META[kind]
+        label = amenity["label"][lang]
+        icon = S.base_url(page_file) + "img/stickers/" + amenity["icon"]
         print(f'        <img src="{html.escape(icon, quote=True)}" alt="{html.escape(label, quote=True)}" title="{html.escape(label, quote=True)}">')
     print('      </dd></div>')
 print('  </dl>')
+diagrams, soup = include("spot-direction-diagrams.html", spot=params["spot"])
+print(f'<div class="spot-directions">{diagrams}</div>')
 print('</aside>')
 </script>

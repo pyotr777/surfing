@@ -16,24 +16,32 @@ summary = detail["summary"][lang]
 description = detail["description"][lang]
 
 COPY = {
-    "en": {"home": "Home", "spots": "Spots", "about": "Spot character", "area": "← Back to Asahi"},
-    "ru": {"home": "Главная", "spots": "Споты", "about": "Характер спота", "area": "← К Асахи"},
-    "ja": {"home": "ホーム", "spots": "スポット", "about": "ポイントの特徴", "area": "← 旭に戻る"},
+    "en": {"home": "Home", "spots": "Spots", "about": "Spot character"},
+    "ru": {"home": "Главная", "spots": "Споты", "about": "Характер спота"},
+    "ja": {"home": "ホーム", "spots": "スポット", "about": "ポイントの特徴"},
 }[lang]
 
 suffix = {"en": "Surf Japan", "ru": "Сёрф Япония", "ja": "Surf Japan"}[lang]
 home_url = b + S.localize("index.html", lang)
 spots_url = b + S.localize("spots/index.html", lang)
 area_url = b + f"spots/{area_id}/" + S.localize("index.html", lang)
+area_name = S.AREAS_META[area_id][lang]
+back_to_area = {
+    "en": f"← Back to {area_name}",
+    "ru": f"← К району {area_name}",
+    "ja": f"← {area_name}エリアに戻る",
+}[lang]
 head, soup = include("head.html")
 header, soup = include("header.html")
 facts, soup = include("spot-facts.html", spot=spot_id)
+spot_map, soup = include("spot-map.html", spot=spot_id)
 footer, soup = include("footer.html")
 
 print('<!DOCTYPE html>')
 print(f'<html lang="{lang}">')
 print('<head>')
 print(head)
+print('<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">')
 print(f'  <title>{html.escape(title)} — {suffix}</title>')
 print(f'  <meta name="language" content="{lang}">')
 print(f'  <meta name="description" content="{html.escape(summary, quote=True)}">')
@@ -44,7 +52,7 @@ print('<main id="main">')
 print('<nav class="crumbs" aria-label="breadcrumb"><ol>')
 print(f'  <li><a href="{html.escape(home_url, quote=True)}">{COPY["home"]}</a></li>')
 print(f'  <li><a href="{html.escape(spots_url, quote=True)}">{COPY["spots"]}</a></li>')
-print(f'  <li><a href="{html.escape(area_url, quote=True)}">{html.escape(S.AREAS_META[area_id][lang])}</a></li>')
+print(f'  <li><a href="{html.escape(area_url, quote=True)}">{html.escape(area_name)}</a></li>')
 print(f'  <li aria-current="page">{html.escape(title)}</li>')
 print('</ol></nav>')
 print('<article class="article">')
@@ -54,10 +62,11 @@ print('  <div class="spot-layout">')
 print('    <div class="spot-body">')
 print(f'      <h2>{COPY["about"]}</h2>')
 print(f'      <p>{html.escape(description)}</p>')
-print(f'      <p class="section-link"><a href="{html.escape(area_url, quote=True)}">{COPY["area"]}</a></p>')
+print(f'      <p class="section-link"><a href="{html.escape(area_url, quote=True)}">{html.escape(back_to_area)}</a></p>')
 print('    </div>')
 print(facts)
 print('  </div>')
+print(spot_map)
 print('</article>')
 print('</main>')
 print(footer)

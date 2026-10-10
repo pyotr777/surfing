@@ -29,7 +29,7 @@ spots/<area>/                area profile and map of its spots
 spots/<area>/<spot>/         spot page, when a detailed page is available
 ```
 
-The current overview areas are Asahi, Sosa, Sakuta, Ichinomiya, Katsuura and Fujisawa. They are navigation areas, not a fixed list of all the spots covered by the project.
+The current overview areas are Asahi, Sosa, Sakuta, Ichinomiya, Katsuura and South Boso. They are navigation areas, not a fixed list of all the spots covered by the project.
 
 ## Local build
 

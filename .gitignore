@@ -6,3 +6,5 @@ surfing
 !.github/workflows/
 !.github/workflows/deploy-pages.yml
 **/__pycache__/
+panehe.py
+

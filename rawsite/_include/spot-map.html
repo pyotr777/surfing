@@ -1,7 +1,7 @@
 <script type="text/python">
-# An interactive Leaflet map backed by the standard OpenStreetMap tile layer.
-# Area-specific coordinates live in sitedata.py, so the markup stays reusable
-# as the spot catalogue grows.
+# The spot marker comes from AREA_MAPS; map settings and optional amenity
+# coordinates live in SPOT_MAPS, separate from the amenities list.
+import html
 import json
 import os
 import sys
@@ -9,44 +9,33 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
 
-area_id = params["area"]
+spot_id = params["spot"]
+detail = S.SPOT_DETAILS[spot_id]
 lang = S.lang_of(page_file)
-data = S.AREA_MAPS[area_id]
-map_id = f'area-map-{area_id}'
-
-points = [
-    {"id": spot["id"], "coordinates": spot["coordinates"], "label": spot[lang]}
-    for spot in data["spots"]
-]
-amenity_coordinates = []
-seen_amenities = set()
-for spot in data["spots"]:
-    spot_amenities = S.SPOT_MAPS.get(spot["id"], {}).get("amenities", {})
-    for kind, coordinates in S.iter_map_amenity_coordinates(spot_amenities):
-        key = (kind, tuple(coordinates))
-        if key not in seen_amenities:
-            seen_amenities.add(key)
-            amenity_coordinates.append((kind, coordinates))
-amenities = S.map_amenities(amenity_coordinates, lang)
-config = {"center": data["center"], "zoom": data["zoom"], "points": points, "amenities": amenities}
-layer_names = json.dumps(S.MAP_LAYER_NAMES[lang], ensure_ascii=False)
-map_text = {
-    "en": ("Spots on the map", "Enable JavaScript to view the interactive map."),
-    "ru": ("Споты на карте", "Включите JavaScript, чтобы посмотреть интерактивную карту."),
-    "ja": ("地図上のスポット", "インタラクティブマップを見るにはJavaScriptを有効にしてください。"),
+spot = next(point for point in S.AREA_MAPS[detail["area"]]["spots"] if point["id"] == spot_id)
+settings = S.SPOT_MAPS[spot_id]
+labels = {
+    "en": ("Spot and amenities", "Enable JavaScript to view the map."),
+    "ru": ("Спот и удобства", "Включите JavaScript, чтобы посмотреть карту."),
+    "ja": ("スポットと設備", "地図を見るにはJavaScriptを有効にしてください。"),
 }
-heading, fallback = map_text[lang]
+heading, fallback = labels[lang]
+amenities = S.map_amenities(settings.get("amenities", {}), lang)
+config = {"spot": spot["coordinates"], "center": settings.get("center", spot["coordinates"]),
+          "zoom": settings["zoom"], "label": detail["title"][lang], "amenities": amenities}
+config_json = json.dumps(config, ensure_ascii=False).replace("<", "\\u003c")
+layer_names = json.dumps(S.MAP_LAYER_NAMES[lang], ensure_ascii=False)
+map_id = f"spot-map-{spot_id}"
 
-print('<section class="area-map-section">')
-print(f'  <h2>{heading}</h2>')
-print(f'  <div id="{map_id}" class="area-map" aria-label="{heading}">')
-print(f'    <noscript><p>{fallback}</p></noscript>')
+print('<section class="area-map-section spot-map-section">')
+print(f'  <div id="{map_id}" class="area-map spot-map" aria-label="{html.escape(heading, quote=True)}">')
+print(f'    <noscript><p>{html.escape(fallback)}</p></noscript>')
 print('  </div>')
 print('</section>')
 print('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><' + '/script>')
 print('<script>')
 print('(() => {')
-print(f'  const config = {json.dumps(config, ensure_ascii=False)};')
+print(f'  const config = {config_json};')
 print(f'  const map = L.map("{map_id}", {{scrollWheelZoom: false}}).setView(config.center, config.zoom);')
 print("  const standard = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {")
 print("    maxZoom: 19,")
@@ -60,16 +49,19 @@ print("    maxZoom: 19, attribution: '© <a href=\"https://www.openstreetmap.org
 print('  });')
 print(f'  const layerNames = {layer_names};')
 print('  L.control.layers({[layerNames.standard]: standard, [layerNames.topographic]: terrain, [layerNames.humanitarian]: detailed}, null, {collapsed: false}).addTo(map);')
-print("  const icon = L.divIcon({className: 'area-map-marker', html: '<span></span>', iconSize: [18, 18], iconAnchor: [9, 9]});")
-print("  config.points.forEach((point) => L.marker(point.coordinates, {icon}).addTo(map).bindTooltip(point.label, {permanent: true, direction: 'top', offset: [0, -10]}));")
+print("  const spotIcon = L.divIcon({className: 'area-map-marker', html: '<span></span>', iconSize: [18, 18], iconAnchor: [9, 9]});")
+print('  L.marker(config.spot, {icon: spotIcon}).addTo(map).bindTooltip(config.label, {permanent: true, direction: "top", offset: [0, -10]});')
+print('  if (config.amenities.length) {')
+print('    map.fitBounds([config.spot, ...config.amenities.map((amenity) => amenity.coordinates)], {padding: [36, 36], maxZoom: config.zoom});')
+print('  }')
 print('  config.amenities.forEach((amenity) => {')
 print('    const sign = document.createElement("span");')
 print('    sign.className = "spot-map-sign";')
 print('    const shower = \'<svg viewBox="0 0 24 24" aria-hidden="true"><path class="shower-pipe" d="M19.5 21V9.3c0-3-2.4-5.4-5.4-5.4h-3.8"/><path class="shower-head" d="M8.1 5.1l7.4 7.4"/><circle cx="3.4" cy="10.8" r="1"/><circle cx="5.8" cy="13.2" r=".95"/><circle cx="8.2" cy="15.6" r=".9"/><circle cx="10.6" cy="18" r=".8"/><circle cx="6.4" cy="9.8" r="1"/><circle cx="8.8" cy="12.2" r=".95"/><circle cx="11.2" cy="14.6" r=".9"/><circle cx="13.6" cy="17" r=".8"/></svg>\';')
 print('    const paired = amenity.sign === "shower-restroom";')
 print('    if (paired) { sign.classList.add("spot-map-sign--pair"); sign.innerHTML = shower + \'<span class="restroom-glyph">WC</span>\'; } else if (amenity.sign === "shower") { sign.innerHTML = shower; } else { sign.textContent = amenity.sign; }')
-print('    const amenityIcon = L.divIcon({className: "spot-map-amenity", html: sign.outerHTML, iconSize: paired ? [46, 28] : [28, 28], iconAnchor: paired ? [23, 14] : [14, 14]});')
-print('    L.marker(amenity.coordinates, {icon: amenityIcon}).addTo(map).bindTooltip(amenity.label);')
+print('    const icon = L.divIcon({className: "spot-map-amenity", html: sign.outerHTML, iconSize: paired ? [46, 28] : [28, 28], iconAnchor: paired ? [23, 14] : [14, 14]});')
+print('    L.marker(amenity.coordinates, {icon}).addTo(map).bindTooltip(amenity.label);')
 print('  });')
 print('})();')
 print('<' + '/script>')

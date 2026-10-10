@@ -12,7 +12,7 @@ ui = S.UI[lang]
 b = S.base_url(page_file)
 
 W, H = S.MAP["width"], S.MAP["height"]
-basemap = os.path.join(S.ROOT, "img", "chiba-fantasy-map.png")
+basemap = os.path.join(S.ROOT, "img", "chiba-fantasy-map.jpg")
 has_basemap = os.path.exists(basemap)
 
 print('<figure class="surfmap">')
@@ -21,13 +21,13 @@ print(f'  <svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg"'
       f' role="img" aria-label="{ui["map_heading"]}">')
 
 if has_basemap:
-    print(f'    <image href="{b}img/chiba-fantasy-map.png" x="0" y="0"'
+    print(f'    <image href="{b}img/chiba-fantasy-map.jpg" x="0" y="0"'
           f' width="{W}" height="{H}" preserveAspectRatio="none"/>')
 else:
     # The site still builds without the basemap file, it just looks plainer.
     print(f'    <rect x="0" y="0" width="{W}" height="{H}" fill="#14527f"/>')
     print(f'    <text x="{W/2}" y="{H/2}" text-anchor="middle" fill="#9ec9dc"'
-          f' font-size="16">img/chiba-fantasy-map.png is missing</text>')
+          f' font-size="16">img/chiba-fantasy-map.jpg is missing</text>')
 
 for area_id, position in S.MAP["area_labels"].items():
     meta = S.AREAS_META[area_id]
