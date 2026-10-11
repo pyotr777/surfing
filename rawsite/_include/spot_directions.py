@@ -33,15 +33,15 @@ SPOT_DIRECTIONS = {
     },
     "shingosita": {
         "swell": "ESE-S",
-        "wind": "NNW-ENE"
+        "wind": "NNW-NE"
     },
     "shoppumae": {
-        "swell": "NE-SSW",
+        "swell": "ESE-SSW",
         "wind": "NW-NE"
     },
     "kanpomae": {
         "swell": "E-S",
-        "wind": "NW-N"
+        "wind": "WNW-N"
     },
     "sakuta": {
         "swell": "NE-S",
@@ -49,6 +49,30 @@ SPOT_DIRECTIONS = {
     },
     "motosuka": {
         "swell": "NE-E",
+        "wind": "W-NW"
+    },
+    "ichinomiya": {
+        "swell": "NE-SE",
+        "wind": "W"
+    },
+    "taito": {
+        "swell": "NE-SE",
+        "wind": "W"
+    },
+    "onjuku main": {
+        "swell": "ESE-SSW",
+        "wind": "N"
+    },
+    "iwawada": {
+        "swell": "ESE-SSW",
+        "wind": "N"
+    },
+    "wadaura": {
+        "swell": "SE-S",
+        "wind": "W-NW"
+    },
+    "chikura": {
+        "swell": "SE-S",
         "wind": "W-NW"
     },
 }
@@ -66,7 +90,7 @@ def selected_sectors(description):
     return {COMPASS[index % len(COMPASS)] for index in range(start, start + (end - start) % len(COMPASS) + 1)}
 
 
-def diagram(description, label):
+def diagram(description, label, show_labels=True):
     """Return a self-contained, accessible 16-sector compass SVG."""
     selected = selected_sectors(description)
     center, radius = 100, 90
@@ -86,9 +110,10 @@ def diagram(description, label):
             f'<path class="direction-sector{state}" '
             f'd="M {center},{center} L {x1:.2f},{y1:.2f} '
             f'A {radius},{radius} 0 0 1 {x2:.2f},{y2:.2f} Z"/>'
-            f'<text class="direction-label{state}" x="{tx:.2f}" y="{ty:.2f}" '
-            f'text-anchor="middle" dominant-baseline="central">{code}</text>'
         )
+        if show_labels:
+            paths.append(f'<text class="direction-label{state}" x="{tx:.2f}" y="{ty:.2f}" '
+                         f'text-anchor="middle" dominant-baseline="central">{code}</text>')
     title = f"{label}: {description}"
     return (
         f'<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" '

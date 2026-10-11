@@ -41,17 +41,18 @@ print(html)
       thousand kilometres away it has separated into clean sets with a long gap
       between them. Same wind, different wave, purely because of distance.
     </p>
-    <h2>Open coast and sheltered bay</h2>
+    <h2>Two open coasts, different windows</h2>
     <p>
       All the areas in this guide face the Pacific, but they are exposed to it
       differently. The open beaches around Ichinomiya take northeast-to-southeast
-      swell directly; Fujisawa sits farther inside Sagami Bay, where the coast
-      filters and bends the same energy.
+      swell directly; South Boso faces south to south-east at the foot of the
+      peninsula, where each bay gives the same swell a slightly different shape.
     </p>
     <p>
       Late-summer typhoons can send long-period swell from far to the south and
-      east. The open Chiba coast receives that energy first; protected bays need
-      a more helpful direction, but can turn it into cleaner, smaller surf.
+      east. Ichinomiya can receive that energy directly, while South Boso is most
+      responsive when the direction has enough south in it. Its bays and points
+      then decide which peaks become cleanest.
     </p>
     <h2>The compass rose</h2>
     <p>
@@ -63,16 +64,16 @@ print(html)
     </p>
     <div class="rose-pair">
 <script type="text/python">
-for spot in ("ichinomiya", "fujisawa"):
+for spot in ("ichinomiya", "south-boso"):
     html, soup = include("../../_include/swell-rose.html", spot=spot, size=200)
     print(html)
 </script>
     </div>
     <p>
       Ichinomiya, on the left, opens from northeast through southeast and is
-      pointed at Pacific swell. Fujisawa, on the right, has a broader south-facing
-      window inside Sagami Bay, where the shoreline changes how the swell arrives.
-      Neither is better; they reward different conditions.
+      pointed at Pacific swell. South Boso, on the right, has a south-to-south-east
+      window. Its bays and headlands then determine how directly the swell reaches
+      each peak. Neither is better; they reward different conditions.
     </p>
     <p>
       Both wedges are drawn during the build. They are not images: the page reads

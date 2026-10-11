@@ -1,0 +1,22 @@
+<script type="text/python">
+# A small, label-free version of the compass used on individual spot pages.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+from spot_directions import diagram
+
+kind = params["kind"]
+swell_window = params["swell_window"]
+best_wind = params["best_wind"]
+if kind == "swell":
+    label = S.UI[S.lang_of(page_file)]["table_swell"]
+    description = swell_window
+else:
+    label = S.UI[S.lang_of(page_file)]["table_wind"]
+    description = best_wind
+
+svg = diagram(description, label, show_labels=False)
+print(svg.replace('<svg ', f'<svg class="compact-direction compact-direction--{kind}" ', 1))
+</script>

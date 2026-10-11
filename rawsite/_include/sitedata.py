@@ -177,6 +177,7 @@ UI = {
                 "six feet, for reference.",
             "map_heading": "Where the waves are",
             "map_caption": "Illustrated map of surf areas along Chiba’s Pacific coast.",
+            "table_area": "Area",
             "table_spot": "Spot",
             "table_region": "Region",
             "table_break": "Break",
@@ -184,7 +185,7 @@ UI = {
             "table_season": "Peak season",
             "table_swell": "Swell window",
             "table_wind": "Best wind",
-            "table_size": "Typical size",
+            "table_size": "Wave height",
             "table_aug": "Water, Aug",
             "table_feb": "Water, Feb",
             "table_sort_hint": "Click a column heading to sort.",
@@ -229,6 +230,7 @@ UI = {
                 "шесть футов для сравнения.",
             "map_heading": "Где ловить волну",
             "map_caption": "Иллюстрированная карта районов для сёрфинга на тихоокеанском побережье Тибы.",
+            "table_area": "Район",
             "table_spot": "Спот",
             "table_region": "Регион",
             "table_break": "Тип волны",
@@ -236,7 +238,7 @@ UI = {
             "table_season": "Сезон",
             "table_swell": "Свелл-окно",
             "table_wind": "Лучший ветер",
-            "table_size": "Обычный размер",
+            "table_size": "Высота волны",
             "table_aug": "Вода, авг.",
             "table_feb": "Вода, фев.",
             "table_sort_hint": "Нажмите на заголовок столбца, чтобы отсортировать.",
@@ -278,6 +280,7 @@ UI = {
             "board_scale_caption": "アウトラインは、csv/boards.csv の長さ、幅、形状比からビルド時に描かれます。下のバーは6フィートです。",
             "map_heading": "波を探す場所",
             "map_caption": "千葉の太平洋沿いのサーフエリアを示す図解地図",
+            "table_area": "エリア",
             "table_spot": "スポット",
             "table_region": "エリア",
             "table_break": "ブレイク",
@@ -285,7 +288,7 @@ UI = {
             "table_season": "ベストシーズン",
             "table_swell": "対応するうねり",
             "table_wind": "最適風向",
-            "table_size": "一般的なサイズ",
+            "table_size": "波の高さ",
             "table_aug": "水温・8月",
             "table_feb": "水温・2月",
             "table_sort_hint": "列の見出しをクリックすると並べ替えられます。",
@@ -307,6 +310,8 @@ UI = {
 # --------------------------------------------------------------------------
 
 REGIONS = {
+    "chiba-north": {"en": "North Chiba", "ru": "Северная Тиба", "ja": "千葉北"},
+    "chiba-south": {"en": "South Chiba", "ru": "Южная Тиба", "ja": "千葉南"},
     "chiba": {
         "en": "Chiba",
         "ru": "Тиба",
@@ -1207,6 +1212,96 @@ SPOT_DETAILS = {
                     ("Best board", "longboard, funboard, shortboard"),
                 ],
         },
+    "ichinomiya":
+        {
+            "area": "ichinomiya",
+            "title": {"en": "Ichinomiya", "ru": "Итиномия", "ja": "一宮"},
+            "summary": {
+                "en": "A sandy beach break near Ichinomiya, where the banks and conditions set the usable peaks.",
+                "ru": "Песчаный бич-брейк в Итиномии, где рабочие пики зависят от банок и условий.",
+                "ja": "一宮の砂浜にあるビーチブレイク。バンクとコンディションで使えるピークが変わります。",
+            },
+            "description": {
+                "en": "The banks at Ichinomiya change with the season and recent swell. Check the peak, current and crowd before entering, then choose a line that leaves room for other surfers.",
+                "ru": "Банки в Итиномии меняются вместе с сезоном и недавним свеллом. Перед выходом проверьте пик, течение и загруженность лайн-апа, затем выберите линию, оставляя место другим серферам.",
+                "ja": "一宮のバンクは季節や直近のうねりで変化します。入水前にピーク、カレント、混雑を確認し、ほかのサーファーのスペースを残せるラインを選びましょう。",
+            },
+        },
+    "taito":
+        {
+            "area": "ichinomiya",
+            "title": {"en": "Taito", "ru": "Тайто", "ja": "太東"},
+            "summary": {
+                "en": "An open beach break south of Ichinomiya, with sandbars that respond quickly to changing swell.",
+                "ru": "Открытый бич-брейк к югу от Итиномии с песчаными банками, быстро меняющимися под свеллом.",
+                "ja": "一宮の南にある開けたビーチブレイク。砂のバンクはうねりの変化に敏感です。",
+            },
+            "description": {
+                "en": "Taito is an exposed sandy stretch where the best peak can move after a swell. Watch the lineup first and locate a channel before paddling out, especially when the surf has size.",
+                "ru": "Тайто — открытый песчаный участок, где лучший пик может сместиться после свелла. Перед выходом понаблюдайте за лайн-апом и найдите канал, особенно в большой день.",
+                "ja": "太東は開けた砂浜で、うねりの後には良いピークの位置が変わることがあります。特にサイズがある日は、まずラインナップを見てチャンネルを確認してから沖へ出ましょう。",
+            },
+        },
+    "onjuku main":
+        {
+            "area": "katsuura",
+            "title": {"en": "Onjuku Main", "ru": "Ондзюку мэйн", "ja": "御宿メイン"},
+            "summary": {
+                "en": "The central beach break at Onjuku, where a broad sandy shoreline offers several changing peaks.",
+                "ru": "Центральный бич-брейк Ондзюку: широкий песчаный берег с несколькими меняющимися пиками.",
+                "ja": "御宿の中央にあるビーチブレイク。広い砂浜に変化するピークがいくつか現れます。",
+            },
+            "description": {
+                "en": "Onjuku Main is a wide sandy beach whose banks and currents change with the swell. Check where the defined peaks are breaking and keep clear of other surfers when choosing a paddle-out route.",
+                "ru": "Ондзюку мэйн — широкий песчаный пляж, где банки и течения меняются вместе со свеллом. Проверьте, где работают выраженные пики, и не пересекайте линии других серферов на выходе в воду.",
+                "ja": "御宿メインは、うねりに合わせてバンクとカレントが変わる広い砂浜です。どこで形のよいピークが割れているかを確認し、沖へ出るときはほかのサーファーのラインを横切らないようにしましょう。",
+            },
+        },
+    "iwawada":
+        {
+            "area": "katsuura",
+            "title": {"en": "Onjuku Iwawada", "ru": "Ондзюку Ивавада", "ja": "御宿 岩和田"},
+            "summary": {
+                "en": "A beach-break section at Iwawada on the eastern side of Onjuku Bay.",
+                "ru": "Участок бич-брейка в Иваваде на восточной стороне бухты Ондзюку.",
+                "ja": "御宿湾の東側、岩和田にあるビーチブレイクの区間です。",
+            },
+            "description": {
+                "en": "The sandbanks at Iwawada can form distinct peaks, but their position and the current depend on recent swell and tide. Assess the conditions from the beach before entering.",
+                "ru": "Песчаные банки Ивавады могут формировать выраженные пики, но их положение и течение зависят от недавнего свелла и прилива. Перед выходом оцените условия с берега.",
+                "ja": "岩和田の砂のバンクははっきりしたピークを作ることがありますが、その位置やカレントは直近のうねりと潮位で変わります。入水前に浜からコンディションを確認しましょう。",
+            },
+        },
+    "wadaura":
+        {
+            "area": "south-boso",
+            "title": {"en": "Wadaura", "ru": "Вадаура", "ja": "和田浦"},
+            "summary": {
+                "en": "A South Boso beach break exposed to the Pacific, with conditions that change across the open shoreline.",
+                "ru": "Бич-брейк Южного Босо, открытый Тихому океану; условия меняются вдоль открытого берега.",
+                "ja": "太平洋に開いた南房総のビーチブレイク。開けた海岸線の中でコンディションが変化します。",
+            },
+            "description": {
+                "en": "Wadaura receives south-easterly to southerly swell along an open stretch of coast. The sand and current shift with the conditions, so look for a defined peak and a safe entry before paddling out.",
+                "ru": "Вадаура принимает юго-восточный и южный свелл на открытом участке побережья. Песок и течение меняются по условиям, поэтому перед выходом найдите выраженный пик и безопасный заход в воду.",
+                "ja": "和田浦には、開けた海岸に南東〜南うねりが入ります。砂の付き方とカレントはコンディションで変わるため、沖へ出る前に形のよいピークと安全な入水場所を探しましょう。",
+            },
+        },
+    "chikura":
+        {
+            "area": "south-boso",
+            "title": {"en": "Chikura", "ru": "Тикура", "ja": "千倉"},
+            "summary": {
+                "en": "A South Boso beach break where bays, headlands and sandbanks make each swell feel different.",
+                "ru": "Бич-брейк Южного Босо, где бухты, мысы и песчаные банки по-разному принимают каждый свелл.",
+                "ja": "入り江、岬、砂のバンクによって、うねりごとに表情が変わる南房総のビーチブレイクです。",
+            },
+            "description": {
+                "en": "Chikura faces the Pacific and can change quickly with swell direction and tide. Observe the break before entering, especially around exposed sections of coastline and any changing current.",
+                "ru": "Тикура выходит к Тихому океану и может быстро меняться с направлением свелла и приливом. Перед выходом понаблюдайте за волной, особенно на открытых участках побережья и при меняющемся течении.",
+                "ja": "千倉は太平洋に面し、うねりの向きと潮位でコンディションがすぐ変わることがあります。入水前に波を観察し、特に開けた海岸の区間と変化するカレントに注意してください。",
+            },
+        },
 }
 
 AREA_FACTS = {
@@ -1434,6 +1529,7 @@ AREA_MAPS = {
                     {
                         "id": "ichinomiya",
                         "coordinates": (35.378079, 140.391159),
+                        "url": "ichinomiya/index.html",
                         "en": "Ichinomiya (一宮)",
                         "ru": "Итиномия (一宮)",
                         "ja": "一宮",
@@ -1441,6 +1537,7 @@ AREA_MAPS = {
                     {
                         "id": "taito",
                         "coordinates": (35.330102, 140.398330),
+                        "url": "taito/index.html",
                         "en": "Taito (太東)",
                         "ru": "Тайто (太東)",
                         "ja": "太東",
@@ -1457,6 +1554,7 @@ AREA_MAPS = {
                     {
                         "id": "onjuku main",
                         "coordinates": (35.182143, 140.355927),
+                        "url": "onjuku-main/index.html",
                         "en": "Onjuku main (御宿メイン)",
                         "ru": "Ондзюку мэйн (御宿メイン)",
                         "ja": "御宿メイン",
@@ -1464,9 +1562,34 @@ AREA_MAPS = {
                     {
                         "id": "iwawada",
                         "coordinates": (35.181301, 140.363602),
+                        "url": "iwawada/index.html",
                         "en": "Onjuku Iwawada (御宿 岩和田)",
                         "ru": "Ондзюку Ивавада (御宿 岩和田)",
                         "ja": "御宿 岩和田",
+                    },
+                ],
+        },
+    "south-boso":
+        {
+            "center": (35.0100, 139.9800),
+            "zoom": 12,
+            "spots":
+                [
+                    {
+                        "id": "wadaura",
+                        "coordinates": (35.043500, 140.012500),
+                        "url": "wadaura/index.html",
+                        "en": "Wadaura (和田浦)",
+                        "ru": "Вадаура (和田浦)",
+                        "ja": "和田浦",
+                    },
+                    {
+                        "id": "chikura",
+                        "coordinates": (34.978000, 139.955000),
+                        "url": "chikura/index.html",
+                        "en": "Chikura (千倉)",
+                        "ru": "Тикура (千倉)",
+                        "ja": "千倉",
                     },
                 ],
         },
@@ -1520,6 +1643,12 @@ SPOT_MAPS = {
         "zoom": 17,
         "amenities": {}
     },
+    "ichinomiya": {"zoom": 16, "amenities": {}},
+    "taito": {"zoom": 16, "amenities": {}},
+    "onjuku main": {"zoom": 16, "amenities": {}},
+    "iwawada": {"zoom": 16, "amenities": {}},
+    "wadaura": {"zoom": 15, "amenities": {}},
+    "chikura": {"zoom": 15, "amenities": {}},
 }
 
 # Tag labels are deliberately identical in every language.
@@ -1645,6 +1774,13 @@ def load_spots():
         r["water_feb_c"] = int(r["water_feb_c"])
     rows.sort(key=lambda r: -r["lat"])
     return rows
+
+
+def load_spot_comparison():
+    """Read the individual spots shown in the comparison table."""
+    path = os.path.join(ROOT, "csv", "spot-comparison.csv")
+    with open(path, encoding="utf-8", newline="") as f:
+        return list(csv.DictReader(f))
 
 
 def spot_by_id(spot_id):

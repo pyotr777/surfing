@@ -7,7 +7,7 @@ print(html)
 </script>
   <title>Compare the spots — Surf Japan</title>
   <meta name="language" content="en">
-  <meta name="description" content="All six current surf areas side by side: break type, difficulty, season, swell window, wind and water temperature.">
+  <meta name="description" content="Compare the named surf spots in six Chiba areas: break type, swell window, wind, typical size and water temperature.">
 </head>
 <body>
 <script type="text/python">
@@ -20,10 +20,13 @@ print(html)
   <article class="article article--wide">
     <h1>Compare the spots</h1>
     <p>
-      Everything below comes from one file, csv/spots.csv. It covers the six area
-      guides currently on the site, and each name links to its matching guide.
-      Sorting happens in the browser; the table itself is plain HTML written during
-      the build.
+      The table lists the named spots in six Chiba areas. Conditions come from
+      csv/spot-comparison.csv. Swell and wind use spot details where available;
+      otherwise they describe the area. Wave height is an approximate range for
+      breaking waves at the spot, not the offshore swell height or a daily forecast.
+      Water values are area estimates.
+      Spot names link to a
+      detailed page where available, or to the area guide. Click a heading to sort.
     </p>
 
 <script type="text/python">

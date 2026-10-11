@@ -41,16 +41,16 @@ print(html)
       thousand kilometres away it has separated into clean sets with a long gap
       between them. Same wind, different wave, purely because of distance.
     </p>
-    <h2>開いた海岸と守られた湾</h2>
+    <h2>二つの開いた海岸、異なるウィンドウ</h2>
     <p>
       このガイドのエリアはすべて太平洋に面していますが、海への開き方は異なります。
-      一宮周辺の開いたビーチには北東から南東のうねりが直接届きます。一方、
-      藤沢は相模湾の奥にあり、同じエネルギーでも海岸線が弱め、曲げます。
+      一宮周辺の開いたビーチには北東から南東のうねりが直接届きます。房総半島の
+      先端にある南房総は南〜南東に開き、同じうねりでも湾ごとに少し違う形になります。
     </p>
     <p>
       晩夏の台風は、はるか南や東から長周期のうねりを送ることがあります。開いた
-      千葉の海岸がまずそのエネルギーを受け、守られた湾はより合う方向を必要とします。
-      その代わり、より小さく整った波になることがあります。
+      一宮はそのエネルギーを直接受けやすく、南房総は南寄りの角度が十分あるときに
+      反応しやすい海岸です。その後、湾と岬がどのピークを整えるかを決めます。
     </p>
     <h2>方位図</h2>
     <p>
@@ -62,15 +62,15 @@ print(html)
     </p>
     <div class="rose-pair">
 <script type="text/python">
-for spot in ("ichinomiya", "fujisawa"):
+for spot in ("ichinomiya", "south-boso"):
     html, soup = include("../../_include/swell-rose.html", spot=spot, size=200)
     print(html)
 </script>
     </div>
     <p>
-      左の一宮は北東から東、南東まで開き、太平洋のうねりを受けます。右の藤沢は
-      相模湾の内側に広い南向きの窓を持ち、海岸線がうねりの届き方を変えます。
-      どちらが優れているということではなく、向く条件が違います。
+      左の一宮は北東から東、南東まで開き、太平洋のうねりを受けます。右の南房総は
+      南〜南東に開き、湾と岬がそれぞれのピークへの届き方を決めます。どちらが
+      優れているということではなく、向く条件が違います。
     </p>
     <p>
       Both wedges are drawn during the build. They are not images: the page reads

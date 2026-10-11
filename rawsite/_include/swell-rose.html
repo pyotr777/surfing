@@ -35,13 +35,17 @@ x1, y1 = point(start, r)
 x2, y2 = point(end, r)
 large = 1 if sweep > 180 else 0
 
-# "W" or "W-NW": average the two bearings, minding the wrap at north.
-parts = [S.bearing(p) for p in row["best_wind"].split("-")]
-if len(parts) == 2 and abs(parts[0] - parts[1]) > 180:
-    parts[1] += 360
-wind = (sum(parts) / len(parts)) % 360
-wx, wy = point(wind, r * 1.02)
-tx, ty = point(wind, r * 0.34)
+# Wind uses the same sector treatment as swell. A single direction becomes a
+# narrow sector, while a range such as "W-NW" fills the span between bounds.
+wind_directions = [S.bearing(part) for part in row["best_wind"].split("-")]
+if len(wind_directions) == 1:
+    wind_start, wind_end = wind_directions[0] - 8, wind_directions[0] + 8
+else:
+    wind_start, wind_end = wind_directions
+wind_sweep = (wind_end - wind_start) % 360 or 360
+wind_x1, wind_y1 = point(wind_start, r)
+wind_x2, wind_y2 = point(wind_end, r)
+wind_large = 1 if wind_sweep > 180 else 0
 
 print(f'<figure class="rose">')
 print(f'  <svg viewBox="0 0 {size} {size}" xmlns="http://www.w3.org/2000/svg" role="img"'
@@ -55,11 +59,8 @@ for label, deg in (("N", 0), ("E", 90), ("S", 180), ("W", 270)):
     print(f'    <text class="rose-tick" x="{lx:.1f}" y="{ly + 4:.1f}"'
           f' text-anchor="middle">{label}</text>')
 
-print(f'    <line class="rose-wind" x1="{wx:.1f}" y1="{wy:.1f}"'
-      f' x2="{tx:.1f}" y2="{ty:.1f}" marker-end="url(#rose-arrow)"/>')
-print('    <defs><marker id="rose-arrow" viewBox="0 0 10 10" refX="8" refY="5"'
-      ' markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
-      '<path d="M 0 0 L 10 5 L 0 10 z" class="rose-head"/></marker></defs>')
+print(f'    <path class="rose-wind-window" d="M {c:.1f},{c:.1f} L {wind_x1:.1f},{wind_y1:.1f}'
+      f' A {r:.1f},{r:.1f} 0 {wind_large} 1 {wind_x2:.1f},{wind_y2:.1f} Z"/>')
 print('  </svg>')
 print('  <figcaption>')
 print(f'    <span class="rose-key rose-key--window">{ui["table_swell"]}: {row["swell_window"]}</span>')

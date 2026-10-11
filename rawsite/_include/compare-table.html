@@ -1,25 +1,24 @@
 <script type="text/python">
-# The full comparison table for the six current area pages, rendered from one
-# sortable CSV file.
+# Compare individual spots, with area values used where no spot profile exists.
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+from spot_directions import SPOT_DIRECTIONS
 
 lang = S.lang_of(page_file)
 ui = S.UI[lang]
 b = S.base_url(page_file)
 
 columns = [
-    ("spot", ui["table_spot"], "text"),
     ("region", ui["table_region"], "text"),
+    ("area", ui["table_area"], "text"),
+    ("spot", ui["table_spot"], "text"),
     ("break", ui["table_break"], "text"),
-    ("level", ui["table_level"], "text"),
-    ("season", ui["table_season"], "text"),
     ("swell", ui["table_swell"], "text"),
-    ("wind", ui["table_wind"], "text"),
-    ("size", ui["table_size"], "text"),
+    ("wind", ui["table_wind"], "direction"),
+    ("size", f'{ui["table_size"]}, ft', "text"),
     ("aug", ui["table_aug"], "number"),
     ("feb", ui["table_feb"], "number"),
 ]
@@ -33,18 +32,29 @@ for key, label, kind in columns:
 print('  </tr></thead>')
 print('  <tbody>')
 
-for row in S.load_spots():
-    meta = S.SPOTS_META[row["id"]]
-    level = S.LEVELS[row["level"]]
-    href = b + f'spots/{row["id"]}/' + S.localize("index.html", lang)
+for row in S.load_spot_comparison():
+    area_id = row["area"]
+    spot_id = row["spot"]
+    directions = SPOT_DIRECTIONS[spot_id]
+    area_href = b + f'spots/{area_id}/' + S.localize("index.html", lang)
+    map_spot = next((spot for spot in S.AREA_MAPS.get(area_id, {}).get("spots", []) if spot["id"] == spot_id), None)
+    if map_spot is None:
+        # South Boso currently names its spots in the area profile without map pins.
+        spot_names = dict(zip(("wadaura", "chikura"), S.AREA_FACTS[area_id]["spots"][lang]))
+        spot_name = spot_names[spot_id]
+        spot_href = area_href
+    else:
+        spot_name = S.SPOT_DETAILS.get(spot_id, {}).get("title", {}).get(lang, map_spot[lang])
+        spot_href = b + f'spots/{area_id}/' + S.localize(map_spot["url"], lang) if map_spot.get("url") else area_href
     print('    <tr>')
-    print(f'      <th scope="row"><a href="{href}">{meta[lang]}</a></th>')
     print(f'      <td>{S.REGIONS[row["region"]][lang]}</td>')
+    print(f'      <th scope="row"><a href="{area_href}">{S.AREAS_META[area_id][lang]}</a></th>')
+    print(f'      <td><a href="{spot_href}">{spot_name}</a></td>')
     print(f'      <td>{S.BREAKS[row["break_type"]][lang]}</td>')
-    print(f'      <td><span class="badge" style="--badge:{level["color"]}">{level[lang]}</span></td>')
-    print(f'      <td>{S.SEASONS[row["peak_season"]][lang]}</td>')
-    print(f'      <td class="mono">{row["swell_window"]}</td>')
-    print(f'      <td class="mono">{row["best_wind"]}</td>')
+    swell_html, soup = include("../_include/compact-direction.html", kind="swell", swell_window=directions["swell"], best_wind=directions["wind"])
+    wind_html, soup = include("../_include/compact-direction.html", kind="wind", swell_window=directions["swell"], best_wind=directions["wind"])
+    print(f'      <td class="direction-cell"><span class="sr-only">{directions["swell"]}</span>{swell_html}</td>')
+    print(f'      <td class="direction-cell"><span class="sr-only">{directions["wind"]}</span>{wind_html}</td>')
     print(f'      <td class="mono">{row["size_ft_typical"]} ft</td>')
     print(f'      <td class="num">{row["water_aug_c"]}</td>')
     print(f'      <td class="num">{row["water_feb_c"]}</td>')
