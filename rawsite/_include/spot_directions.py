@@ -52,12 +52,12 @@ SPOT_DIRECTIONS = {
         "wind": "W-NW"
     },
     "ichinomiya": {
-        "swell": "NE-SE",
-        "wind": "W"
+        "swell": "NNE-SSE",
+        "wind": "SW-NW"
     },
     "taito": {
-        "swell": "NE-SE",
-        "wind": "W"
+        "swell": "N-E",
+        "wind": "SE-W"
     },
     "onjuku main": {
         "swell": "ESE-SSW",
