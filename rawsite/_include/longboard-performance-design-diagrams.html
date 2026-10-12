@@ -1,0 +1,37 @@
+<script type="text/python">
+# Localized captions for the raster diagrams on the high-performance longboard
+# page. The pictures themselves remain free of text so one set works across the
+# site's languages.
+import html
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+b = S.base_url(page_file)
+copy = {
+    "en": (
+        ("rocker-bottom-shape.png", "Rocker and bottom contours", "Side profile of a high-performance longboard with a dashed baseline and three linked transverse sections: shallow single concave at the nose, double concave at the middle and vee at the tail.", "Compared with a classic or noserider longboard, this shape carries more nose and tail rocker, with a fast, flatter-running centre. Thin, foiled rails engage and release more easily. The bottom moves from a shallow single concave under the nose to a double concave through the middle and fin area, then fades into vee behind the fins for quicker rail-to-rail transitions."),
+        ("fin-options.png", "Fin options", "Two diagrams of a longboard tail: one with a 2 plus 1 fin configuration and one with a five-box 4 plus 1 configuration.", "A 2+1 setup balances drive and pivot. A five-box layout can be tuned as a single, 2+1, thruster or quad."),
+    ),
+    "ru": (
+        ("rocker-bottom-shape.png", "Рокер и контуры днища", "Боковой профиль high-performance лонгборда с пунктирной базовой линией и тремя связанными поперечными сечениями: неглубокий одинарный конкейв в носу, двойной конкейв в середине и vee в тейле.", "По сравнению с классическим лонгбордом или noserider, у этой формы больше рокера в носу и тейле, а центральная часть остаётся более плоской и быстрой. Тонкие фойленные рейлы легче входят в поворот и освобождаются из воды. Днище переходит от неглубокого одинарного конкейва под носом к двойному конкейву в середине и зоне плавников, затем — к vee за плавниками для более быстрой перекладки с рейла на рейл."),
+        ("fin-options.png", "Варианты плавников", "Две схемы кормы лонгборда: 2+1 и пять боксов 4+1.", "Схема 2+1 сочетает драйв и поворот. Пять боксов позволяют настроить доску как сингл, 2+1, трастер или квад."),
+    ),
+    "ja": (
+        ("rocker-bottom-shape.png", "ロッカーとボトムコンツアー", "点線の基準線と三つの断面を備えたハイパフォーマンス・ロングボードの側面図。ノーズの浅いシングルコンケーブ、中央部のダブルコンケーブ、テールのVeeを示す。", "クラシックやノーズライダーのロングボードと比べると、ノーズとテールのロッカーは強めで、中央部は速さを保つため比較的フラットです。薄くフォイルしたレールは水を捉えやすく、抜けも軽くします。ボトムはノーズ下の浅いシングルコンケーブから、中央部とフィン周りのダブルコンケーブへ移り、フィン後方ではVeeへ抜けるため、レール・トゥ・レールの切り替えが速くなります。"),
+        ("fin-options.png", "フィンの選択肢", "ロングボードのテールを上から見た二つの図。2+1と5ボックスの4+1を示している。", "2+1はドライブとピボットのバランスを取ります。5ボックスならシングル、2+1、スラスター、クアッドに調整できます。"),
+    ),
+}[lang]
+
+print('<style>.performance-design-diagram img{display:block;width:100%;height:auto}</style>')
+print('<div class="performance-design-diagrams">')
+for filename, title, alt, caption in copy:
+    print('  <figure class="performance-design-diagram">')
+    print(f'    <img src="{b}img/longboard-performance/{filename}" alt="{html.escape(alt, quote=True)}" width="1536" height="1024" loading="lazy">')
+    print(f'    <figcaption><strong>{html.escape(title)}</strong><span>{html.escape(caption)}</span></figcaption>')
+    print('  </figure>')
+print('</div>')
+</script>

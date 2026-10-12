@@ -1,0 +1,32 @@
+<script type="text/python">
+# Move between the five longboard outline pages or return to the family guide.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+b = S.base_url(page_file)
+shapes = S.LONGBOARD_SHAPES
+shape_id = params["shape"]
+ids = [item["id"] for item in shapes]
+i = ids.index(shape_id)
+prev = shapes[i - 1] if i > 0 else None
+nxt = shapes[i + 1] if i < len(shapes) - 1 else None
+labels = {
+    "en": ("← Previous shape", "Longboard overview", "Next shape →"),
+    "ru": ("← Предыдущая форма", "Обзор лонгбордов", "Следующая форма →"),
+    "ja": ("← 前のタイプ", "ロングボード一覧", "次のタイプ →"),
+}[lang]
+
+def link(item, note):
+    href = f'{b}gear/longboard/{item["id"]}/{S.localize("index.html", lang)}'
+    return f'<a href="{href}"><span class="dir">{note}</span><span class="name">{item[lang]["title"]}</span></a>'
+
+print('<nav class="spot-nav longboard-shape-nav">')
+print(f'  <div class="prev">{link(prev, labels[0]) if prev else ""}</div>')
+print(f'  <div class="up"><a href="{b}gear/longboard/{S.localize("index.html", lang)}">{labels[1]}</a></div>')
+print(f'  <div class="next">{link(nxt, labels[2]) if nxt else ""}</div>')
+print('</nav>')
+</script>

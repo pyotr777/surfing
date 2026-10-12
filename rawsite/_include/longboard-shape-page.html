@@ -1,0 +1,47 @@
+<script type="text/python">
+# Localized detail view for one longboard outline family.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+
+lang = S.lang_of(page_file)
+b = S.base_url(page_file)
+shape_id = params["shape"]
+shape = next(item for item in S.LONGBOARD_SHAPES if item["id"] == shape_id)
+meta = shape[lang]
+detail = S.LONGBOARD_SHAPE_DETAILS[shape_id][lang]
+labels = {
+    "en": ("Reference models", "Core design features", "Best suited to", "Things to consider"),
+    "ru": ("Модели-ориентиры", "Основные черты дизайна", "Где доска особенно хороша", "Что учитывать"),
+    "ja": ("代表的なモデル", "デザインの主な特徴", "向いている波とスタイル", "知っておきたいこと"),
+}[lang]
+
+print(f'<p class="standfirst">{detail["lead"]}</p>')
+if "overview" in detail:
+    print('<section class="longboard-shape-intro">')
+    for paragraph in detail["overview"]:
+        print(f'  <p>{paragraph}</p>')
+    if "models" in detail:
+        print(f'  <h2>{labels[0]}</h2>')
+        print('  <ul>')
+        for model in detail["models"]:
+            print(f'    <li>{model}</li>')
+        print('  </ul>')
+    print('</section>')
+print('<div class="longboard-shape-detail">')
+print('  <figure class="longboard-shape-detail-media">')
+print(f'    <img src="{b}img/longboard-shapes/{shape_id}.png" alt="{meta["title"]}" width="1024" height="1536">')
+print('  </figure>')
+print('  <div class="longboard-shape-detail-copy">')
+offset = 1 if "overview" in detail else 0
+print(f'    <section><h2>{labels[offset]}</h2><p>{detail["design"]}</p></section>')
+if shape_id == "performance":
+    html, soup = include("longboard-performance-design-diagrams.html")
+    print(html)
+print(f'    <section><h2>{labels[offset + 1]}</h2><p>{detail["ideal"]}</p></section>')
+print(f'    <section><h2>{labels[offset + 2]}</h2><p>{detail["tradeoff"]}</p></section>')
+print('  </div>')
+print('</div>')
+</script>

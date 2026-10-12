@@ -628,6 +628,147 @@ LONGBOARD_SHAPES = [
     },
 ]
 
+# Longer explanations shown on each outline's own page. Keep the same fields
+# for every shape and language so the localized pages cover the same ground.
+LONGBOARD_SHAPE_DETAILS = {
+    "classic": {
+        "en": {
+            "lead": "A traditional longboard for relaxed trim, flowing lines and classic footwork.",
+            "design": "The full outline carries width through the nose and tail, while a moderate rocker keeps the board predictable. It is commonly paired with a single fin, though the fin setup is a separate choice from the outline.",
+            "ideal": "Choose it for small to medium, clean waves and a steady style built around holding a line, walking the board and drawing smooth turns.",
+            "tradeoff": "The broad outline and longer rail need room to turn. In steep, fast surf or crowded water, the board can feel slow to redirect and takes care to manage.",
+        },
+        "ru": {
+            "lead": "Традиционный лонгборд для спокойного трима, плавных линий и классической работы ног.",
+            "design": "Полный outline сохраняет ширину в носу и корме, а умеренный рокер делает поведение доски предсказуемым. Часто такую доску ставят на сингл-фин, хотя выбор плавников не определяет форму.",
+            "ideal": "Подходит для небольших и средних чистых волн и спокойного стиля: держать линию, перемещаться по доске и выполнять плавные повороты.",
+            "tradeoff": "Широкий outline и длинный кант требуют места для поворота. На крутых быстрых волнах и в толпе доска медленнее меняет направление и требует внимательного контроля.",
+        },
+        "ja": {
+            "lead": "落ち着いたトリム、流れるライン、伝統的なフットワークを楽しむロングボードです。",
+            "design": "幅をノーズからテールまで保ったアウトラインと、穏やかなロッカーで予測しやすい乗り味になります。シングルフィンがよく使われますが、フィンの選択はアウトラインとは別の要素です。",
+            "ideal": "小さめから中程度のきれいな波で、ラインを保ち、ボード上を歩き、滑らかにターンするスタイルに向いています。",
+            "tradeoff": "幅のあるアウトラインと長いレールラインには、ターンするためのスペースが必要です。急で速い波や混雑した場所では方向転換が遅く、慎重な扱いが求められます。",
+        },
+    },
+    "all-around": {
+        "en": {
+            "lead": "A versatile longboard that balances early entry, easy trim and controlled turns.",
+            "design": "A full nose and rounded tail provide useful glide without making the ends overly specialised. Moderate rocker helps the board paddle into waves early and still redirect through a turn.",
+            "ideal": "Choose it as a first longboard or as one board for changing small-wave conditions, especially when you want to mix trimming with regular turns.",
+            "tradeoff": "Its balanced design does not maximise one specialty. A dedicated noserider is steadier on the nose, while a performance model turns more sharply.",
+        },
+        "ru": {
+            "lead": "Универсальный лонгборд, который сочетает ранний вход в волну, лёгкий трим и контролируемые повороты.",
+            "design": "Полный нос и округлая корма дают хорошее скольжение, не делая концы доски слишком специализированными. Умеренный рокер помогает рано заходить на волну и при этом менять направление в повороте.",
+            "ideal": "Подходит как первый лонгборд или одна доска для переменчивых небольших волн, особенно если хочется чередовать трим и обычные повороты.",
+            "tradeoff": "Сбалансированная форма не доводит до максимума одну конкретную функцию. Специализированный нозрайдер устойчивее на носу, а перформанс-модель резче поворачивает.",
+        },
+        "ja": {
+            "lead": "早いテイクオフ、扱いやすいトリム、コントロールしやすいターンをバランスよく備えたロングボードです。",
+            "design": "幅を残したノーズと丸みのあるテールが、極端に用途を絞らずグライドを生みます。ほどよいロッカーにより早く波に乗れ、ターンでも方向を変えやすくなります。",
+            "ideal": "初めてのロングボードや、変化する小波に一本で対応したいときに向いています。トリムと通常のターンを組み合わせたい人にも適しています。",
+            "tradeoff": "バランス重視のため、特定の動きを最大限に伸ばす形ではありません。ノーズライダーはノーズでより安定し、パフォーマンス型はより鋭くターンできます。",
+        },
+    },
+    "noserider": {
+        "en": {
+            "lead": "A longboard shaped to stay settled while you move forward and ride near the nose.",
+            "design": "The wide nose gives the front foot a broad platform. A full tail and added tail kick help hold the board in the wave's pocket when weight shifts forward; the exact feel depends on rocker, rails and fin choice too.",
+            "ideal": "Choose it for slower, peeling waves and a traditional approach focused on cross-stepping, nose time and maintaining position in the pocket.",
+            "tradeoff": "The design rewards a clean line and good positioning, but it can feel sticky when pushed through tight turns. It is less suited to steep, fast sections that call for quick redirection.",
+        },
+        "ru": {
+            "lead": "Лонгборд, рассчитанный на устойчивость, когда вы перемещаетесь вперёд и катаетесь у самого носа.",
+            "design": "Широкий нос даёт передней ноге просторную опору. Широкая корма и её подъём помогают удерживать доску в кармане волны, когда вес смещается вперёд; на ощущения также влияют рокер, рейлы и плавники.",
+            "ideal": "Подходит для медленных раскатывающихся волн и традиционного стиля с кросс-степом, временем на носу и удержанием позиции в кармане.",
+            "tradeoff": "Такая форма поощряет чистую линию и точный выбор позиции, но может казаться неповоротливой в резких манёврах. Для крутых быстрых участков, где нужно быстро менять направление, она подходит хуже.",
+        },
+        "ja": {
+            "lead": "前方へ歩き、ノーズ付近で波に乗るときの安定性を重視したロングボードです。",
+            "design": "幅広いノーズが前足を支える広い足場になります。幅のあるテールとテールキックは、重心を前に移したときにボードを波のポケットに保つ助けになります。ロッカー、レール、フィンの選択も乗り味に影響します。",
+            "ideal": "ゆっくり崩れる波で、クロスステップやノーズライディング、ポケットでの位置取りを楽しむ伝統的なスタイルに向いています。",
+            "tradeoff": "きれいなラインと適切なポジションが活きる一方、タイトなターンでは重く感じることがあります。素早い切り返しが必要な急で速いセクションにはあまり向きません。",
+        },
+    },
+    "performance": {
+        "en": {
+            "lead": "A high-performance longboard brings shortboard-style rail work and turning range to a board that still paddles, trims and can be ridden from the nose.",
+            "overview": (
+                "High-performance longboards are not simply smaller or narrower logs. They are purpose-built longboards for drawing committed lines: driving a bottom turn, linking a cutback to the pocket, redirecting off the lip and then moving forward to trim or noseride. The category spans dedicated competition shapes and more forgiving everyday designs, but its common aim is speed, hold and quick response from a full-length board.",
+                "The current range makes that spectrum clear. The Firewire Taylor Jensen Pro is a competition-focused rounded-pin design; the TJ Pro V keeps similar DNA with a lower rocker and wider nose for average surf. NSP’s Pro-9, CJ Nelson Designs’ GX1000 and Ibis, and Kai Sallas’ Lava Flow each use their own balance of rocker, rails, bottom contours and fins to turn a longboard more actively. They are useful reference points, not a single specification every performance longboard must copy.",
+            ),
+            "models": (
+                "Firewire Taylor Jensen Pro — rounded pin tail, performance rails, nose concave into double concave and slight vee; made for speed, power and driving turns.",
+                "Firewire Taylor Jensen Pro V — an everyday counterpart with lower rocker, more nose area, a squash tail, spiral vee and 2+1 or quad options.",
+                "NSP Pro-9 — low-volume performance longboard with a soft-roll-to-vee-to-double-concave bottom and a 4+1 fin cluster.",
+                "CJ Nelson Designs GX1000 — a speed-oriented high-performance longboard with performance rails, a concave nose and refined HP rocker.",
+                "CJ Nelson Designs Ibis — combines a concave nose, flatter middle, tail kick, defined rails and a 2+1 setup for logging and hard tail turns.",
+                "Kai Sallas Lava Flow — pulled-in nose and pin tail, continuous rocker, hard vee bottom and a tail edge for faster, more powerful surf.",
+            ),
+            "design": "Across these models, the outline is usually more refined at the tail and the rails are thinner, lower and more defined than on a traditional log, so the board holds when loaded on rail. Rocker is tuned for the intended wave: a continuous curve or added nose and tail lift keeps a dedicated HP shape clear on steep drops, while an everyday version may flatten the middle for earlier entry and speed. Bottom contours commonly combine a light nose concave with double concave, vee or spiral vee under the rear foot; they create lift and channel water while helping the board roll rail to rail. Rounded pins, pin tails and squash tails trade hold and release differently, and 2+1, quad or 4+1 fin boxes let the rider tune drive, pivot and looseness.",
+            "ideal": "Best for intermediate and advanced surfers who already control a longboard from the tail and can place their feet deliberately. A dedicated HP model comes alive on clean, shoulder-high and larger waves with a defined face, speed and a section to turn against; a flatter, wider everyday version can also work in smaller beach-break surf. Choose it when active carving, top turns, cutbacks and fast down-the-line surfing matter as much as trim and nose time.",
+            "tradeoff": "The responsiveness comes from a more exacting balance of volume, rail shape, rocker and fin setup. Compared with a fuller classic or all-around longboard, a focused HP shape usually catches weak waves later, carries less speed through slow water and is less forgiving of a late step or poorly timed turn. It also has more speed and a sharper rail in powerful surf, so it needs clear water, confident control and deliberate equipment choices. Test the size and fin configuration in the waves you actually surf rather than choosing only by a model’s competition pedigree.",
+        },
+        "ru": {
+            "lead": "High-performance лонгборд сочетает работу на канте и диапазон поворотов шортборда с греблей, тримом и возможностью ехать с носа длинной доски.",
+            "overview": (
+                "High-performance лонгборд — не просто укороченный или зауженный лог. Это длинная доска для активной линии: мощного боттом-тёрна, катбэка в карман, смены направления на липе, а затем трима или нозрайдинга. В этой категории есть как соревновательные шейпы, так и более дружелюбные повседневные модели; их объединяет стремление получить скорость, держак и быстрый отклик от полноразмерного лонгборда.",
+                "Современные модели хорошо показывают этот диапазон. Firewire Taylor Jensen Pro — соревновательная доска с round pin; TJ Pro V развивает ту же идею, но получает более плоский рокер и широкий нос для средних условий. NSP Pro-9, CJ Nelson Designs GX1000 и Ibis, а также Kai Sallas Lava Flow по-разному сочетают рокер, рейлы, контуры днища и плавники, чтобы лонгборд активнее поворачивал. Это ориентиры, а не единый рецепт для всех performance-моделей.",
+            ),
+            "models": (
+                "Firewire Taylor Jensen Pro — round pin, performance-рейлы, носовой конкейв, переходящий в двойной конкейв и небольшой vee; сделан для скорости, мощи и поворотов с закладкой на кант.",
+                "Firewire Taylor Jensen Pro V — повседневная версия с более плоским рокером, большей площадью носа, сквош-тейлом, spiral vee и вариантами 2+1 или квад.",
+                "NSP Pro-9 — малолитражный performance-лонгборд с днищем от мягкого roll к vee и двойному конкейву и кластером плавников 4+1.",
+                "CJ Nelson Designs GX1000 — скоростной high-performance лонгборд с performance-рейлами, конкейвом в носу и настроенным HP-рокером.",
+                "CJ Nelson Designs Ibis — сочетает носовой конкейв, более плоскую середину, кик тейла, выраженные рейлы и схему 2+1 для логгинга и резких поворотов от тейла.",
+                "Kai Sallas Lava Flow — зауженный нос и пин-тейл, непрерывный рокер, жёсткое V-днище и кант в корме для быстрых и мощных волн.",
+            ),
+            "design": "У этих моделей обычно более собранная корма, а рейлы тоньше, ниже и чётче, чем у традиционного лога: доска лучше держится, когда вы загружаете кант. Рокер настраивают под волну: непрерывная дуга или дополнительный подъём носа и тейла помогают специализированному HP-шейпу не цепляться на крутом дропе, а в повседневной версии середину могут сделать площе для раннего входа и скорости. В днище часто сочетаются лёгкий носовой конкейв и двойной конкейв, vee или spiral vee под задней ногой: они создают подъёмную силу, направляют поток и помогают перекладывать доску с рейла на рейл. Round pin, пин-тейл и сквош-тейл по-разному распределяют держак и отпускание, а боксы 2+1, квад или 4+1 позволяют настроить драйв, поворот и свободу доски.",
+            "ideal": "Подходит сёрферам среднего и продвинутого уровня, которые уже уверенно управляют лонгбордом с тейла и осознанно переставляют ноги. Специализированный HP-шейп раскрывается на чистых волнах от плеча и выше, с выраженной стенкой, скоростью и участком для поворота; более плоская и широкая повседневная версия может работать и в небольшом пляжном брейке. Выбирайте его, когда активные дуги, повороты на липе, катбэки и быстрый проезд по стенке так же важны, как трим и время на носу.",
+            "tradeoff": "Отзывчивость требует точного баланса объёма, рейлов, рокера и плавников. В сравнении с полным классическим или универсальным лонгбордом сфокусированный HP-шейп обычно позже ловит слабую волну, хуже сохраняет скорость на плоских участках и меньше прощает запоздалый шаг или неточный поворот. На мощной волне у него выше скорость и острее кант, поэтому нужны свободная вода, уверенный контроль и осознанный выбор оборудования. Подбирайте размер и плавники под волны, на которых катаетесь, а не только по соревновательному происхождению модели.",
+        },
+        "ja": {
+            "lead": "ハイパフォーマンス・ロングボードは、パドル、トリム、ノーズライドを保ちながら、ショートボードのようなレールワークとターンの幅を長いボードにもたらします。",
+            "overview": (
+                "ハイパフォーマンス・ロングボードは、単に短くしたり細くしたログではありません。強いボトムターン、ポケットへのカットバック、リップでの方向転換をつなぎ、その後に前へ歩いてトリムやノーズライドへ移るためのロングボードです。コンペティション向けのシェイプから扱いやすいデイリーモデルまでありますが、共通する目的は、フルレングスのロングボードでスピード、ホールド、素早い反応を得ることです。",
+                "現行モデルを見ると、その幅がよく分かります。Firewire Taylor Jensen Proはラウンドピンの競技志向モデルで、TJ Pro Vはロッカーを抑え、ノーズ幅を広げて平均的な波に合わせています。NSP Pro-9、CJ Nelson DesignsのGX1000とIbis、Kai Sallas Lava Flowは、ロッカー、レール、ボトムコンツアー、フィンをそれぞれ異なる比率で組み合わせ、ロングボードをよりアクティブにターンさせます。これらは参考になるモデルであり、すべてのパフォーマンス型が同じ仕様である必要はありません。",
+            ),
+            "models": (
+                "Firewire Taylor Jensen Pro — ラウンドピンテール、パフォーマンスレール、ノーズの浅いコンケーブからダブルコンケーブ、わずかなVeeへ。スピード、パワー、レールを使ったターンのための形です。",
+                "Firewire Taylor Jensen Pro V — 控えめなロッカー、広めのノーズ、スカッシュテール、スパイラルVee、2+1またはクアッドの選択肢を持つデイリー向けの派生モデルです。",
+                "NSP Pro-9 — ソフトロールからVee、ダブルコンケーブへ続くボトムと4+1フィンクラスターを備えた、低ボリュームのパフォーマンス・ロングボードです。",
+                "CJ Nelson Designs GX1000 — パフォーマンスレール、ノーズコンケーブ、洗練されたHPロッカーを備えたスピード重視のハイパフォーマンス・ロングボードです。",
+                "CJ Nelson Designs Ibis — ノーズコンケーブ、フラット寄りの中央部、テールキック、はっきりしたレール、2+1セットアップを組み合わせ、ログらしい乗り方と強いテールターンを両立します。",
+                "Kai Sallas Lava Flow — 絞ったノーズとピンテール、連続するロッカー、硬めのVボトム、テールのエッジで、速くパワフルな波に対応します。",
+            ),
+            "design": "これらのモデルは、一般にテール側が洗練され、伝統的なログよりも薄く低く、輪郭のはっきりしたレールを持ちます。レールに荷重したときのホールドを得るためです。ロッカーは波に合わせて調整されます。連続したカーブやノーズとテールのキックを増やした専用HPシェイプは急なドロップで引っかかりにくく、デイリー向けでは中央部をフラットにして早いテイクオフとスピードを狙うこともあります。ボトムは、浅いノーズコンケーブにダブルコンケーブ、Vee、スパイラルVeeを後ろ足の下で組み合わせることが多く、揚力と水流の整理を行い、レール・トゥ・レールの切り替えを助けます。ラウンドピン、ピンテール、スカッシュテールではホールドとリリースの性格が異なり、2+1、クアッド、4+1のボックスはドライブ、ピボット、ルースさの調整を可能にします。",
+            "ideal": "テール側からロングボードをコントロールでき、意図して足を置き換えられる中級者から上級者に向いています。専用のHPモデルは、肩からそれ以上のサイズで、はっきりしたフェイス、スピード、ターンを当てるセクションがあるクリーンな波で活きます。ロッカーを抑えた幅広めのデイリーモデルは、小さなビーチブレイクでも使えます。トリムやノーズで過ごす時間と同じくらい、積極的なカービング、リップターン、カットバック、速いダウン・ザ・ラインを重視するときに選ぶ形です。",
+            "tradeoff": "反応性は、ボリューム、レール形状、ロッカー、フィンの繊細なバランスから生まれます。幅を残したクラシック型やオールラウンド型と比べると、特化したHPシェイプは力の弱い波ではテイクオフが遅く、フラットな水面で速度を保ちにくく、遅れたステップやタイミングのずれを許容しにくい傾向があります。パワーのある波ではスピードが出てレールも鋭くなるため、空いたライン、確かなコントロール、意図した用具選びが必要です。コンペティションでの実績だけで選ばず、普段乗る波でサイズとフィン設定を試してください。",
+        },
+    },
+    "glider": {
+        "en": {
+            "lead": "A long, narrow shape designed to build speed and travel a long line across a small wave.",
+            "design": "The extended waterline and low rocker reduce drag once the board is moving. A narrow plan shape keeps the outline efficient and encourages a flowing line rather than repeated direction changes.",
+            "ideal": "Choose it for soft, clean waves where carrying speed across flat sections matters more than tight turns or walking to the nose.",
+            "tradeoff": "The long, narrow outline needs space and a suitable line to work well. It is less nimble in crowded peaks and can be harder to handle in steep shorebreak.",
+        },
+        "ru": {
+            "lead": "Длинная узкая форма, созданная для набора скорости и длинной линии на небольшой волне.",
+            "design": "Удлинённая ватерлиния и небольшой рокер снижают сопротивление, когда доска уже разогналась. Узкий outline делает форму эффективной и располагает к плавной линии вместо частых смен направления.",
+            "ideal": "Подходит для мягких чистых волн, где важно сохранить скорость на пологих участках, а резкие повороты и выходы на нос не в приоритете.",
+            "tradeoff": "Длинному узкому outline нужны пространство и подходящая линия. На загруженном пике он менее манёвренный, а в крутом прибое его сложнее контролировать.",
+        },
+        "ja": {
+            "lead": "小波でスピードを生み、長いラインを走るために設計された、長く細い形です。",
+            "design": "長い水線長と低いロッカーが、ボードが動き出した後の抵抗を抑えます。細いアウトラインは効率よく滑り、頻繁に方向を変えるより流れるラインを描きやすくします。",
+            "ideal": "フラットなセクションで速度を保つことが大切な、力の弱いきれいな波に向いています。タイトなターンやノーズライディングを優先しないスタイルに適しています。",
+            "tradeoff": "長く細いアウトラインを活かすには、スペースと適切なラインが必要です。混雑したピークでは小回りが利きにくく、急なショアブレイクでは扱いが難しくなります。",
+        },
+    },
+}
+
 TAILS = {
     "squash": {
         "en": "squash",
