@@ -23,27 +23,45 @@ print('<a class="skip" href="#main">' + ui["skip"] + '</a>')
 print('<header class="site-header">')
 print('  <div class="brand">')
 print(f'    <a class="site-name" href="{b}{S.localize("index.html", lang)}">{site["name"]}</a>')
-print(f'    <p class="tagline">{site["tagline"]}</p>')
 print('  </div>')
 
-print('  <nav class="nav" aria-label="' + ui["nav_label"] + '">')
+print('  <details class="nav-disclosure" open>')
+print('    <summary>' + ui["nav_menu"] + '</summary>')
+print('    <nav class="nav" aria-label="' + ui["nav_label"] + '">')
 for href, label in S.nav_items(page_file):
     path, _, fragment = href.partition("#")
     target = os.path.normpath(os.path.join(pagedir, path))
     # A link to an anchor on the front page is never "the current page".
     current = ' aria-current="page"' if (target == here and not fragment) else ""
-    print(f'    <a href="{href}"{current}>{label}</a>')
-print('  </nav>')
+    print(f'      <a href="{href}"{current}>{label}</a>')
+print('    </nav>')
 
 # All language twins sit in the same directory, so a bare file name is enough.
-print('  <nav class="languages" aria-label="' + ui["languages"] + '">')
+print('    <nav class="languages" aria-label="' + ui["languages"] + '">')
 for target_lang in S.LANGS:
     target_file = os.path.join(pagedir, S.local_name(page_file, target_lang))
     if not os.path.exists(target_file):
         continue
     current = ' aria-current="true"' if target_lang == lang else ''
-    print(f'    <a href="{S.local_name(page_file, target_lang)}" hreflang="{target_lang}"{current}>'
+    print(f'      <a href="{S.local_name(page_file, target_lang)}" hreflang="{target_lang}"{current}>'
           f'{S.LANGUAGE_NAMES[target_lang]}</a>')
-print('  </nav>')
+print('    </nav>')
+print('  </details>')
 print('</header>')
+print('<script>')
+print('(function () {')
+print('  var header = document.querySelector(".site-header");')
+print('  var disclosure = document.querySelector(".nav-disclosure");')
+print('  var mobile = window.matchMedia("(max-width: 232.833mm)");')
+print('  function syncNavigation() { disclosure.open = !mobile.matches; }')
+print('  function compactHeader() {')
+print('    header.classList.toggle("is-condensed", mobile.matches && window.scrollY > 16);')
+print('  }')
+print('  syncNavigation();')
+print('  compactHeader();')
+print('  mobile.addEventListener("change", syncNavigation);')
+print('  mobile.addEventListener("change", compactHeader);')
+print('  window.addEventListener("scroll", compactHeader, { passive: true });')
+print('}());')
+print('</scr' + 'ipt>')
 </script>
