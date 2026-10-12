@@ -43,6 +43,14 @@ SPOT_DIRECTIONS = {
         "swell": "E-S",
         "wind": "WNW-N"
     },
+    "nodehama": {
+        "swell": "NE-SSW",
+        "wind": "N-NW"
+    },
+    "horikawa": {
+        "swell": "NE-SSW",
+        "wind": "N-NW"
+    },
     "sakuta": {
         "swell": "NE-S",
         "wind": "WSW-NW"

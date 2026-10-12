@@ -1064,6 +1064,7 @@ SPOT_FACT_TRANSLATIONS = {
                 {
                     "Chiba North · Iioka": "Северная Тиба · Ииока",
                     "Chiba North · Kujukuri": "Северная Тиба · Кудзюкури",
+                    "Chiba North · Asahi": "Северная Тиба · Асахи",
                     "Chiba North · Sosa": "Северная Тиба · Соса",
                     "beach break between tetrapods": "бич-брейк между тетраподами",
                     "hollow beach break": "холлоу-бич-брейк",
@@ -1110,6 +1111,7 @@ SPOT_FACT_TRANSLATIONS = {
                 {
                     "Chiba North · Iioka": "千葉北・飯岡",
                     "Chiba North · Kujukuri": "千葉北・九十九里",
+                    "Chiba North · Asahi": "千葉北・旭",
                     "Chiba North · Sosa": "千葉北・匝瑳",
                     "beach break between tetrapods": "テトラポッドの間のビーチブレイク",
                     "hollow beach break": "ホローなビーチブレイク",
@@ -1328,7 +1330,7 @@ SPOT_DETAILS = {
     "kanpomae":
         {
             "area":
-                "sosa",
+                "asahi",
             "title": {
                 "en": "Kanpomae",
                 "ru": "Канпомаэ",
@@ -1336,9 +1338,9 @@ SPOT_DETAILS = {
             },
             "summary":
                 {
-                    "en": "A mellow, shallow beach break in Sosa that stays surfable on smaller days and suits a range of boards.",
-                    "ru": "Мягкий пологий бич-брейк в Сосе: здесь можно кататься и в небольшой день, а выбор досок широк.",
-                    "ja": "小波の日でもサーフしやすく、幅広いボードで楽しめる匝瑳の遠浅なビーチブレイク。",
+                    "en": "A mellow, shallow beach break that stays surfable on smaller days and suits a range of boards.",
+                    "ru": "Мягкий пологий бич-брейк: здесь можно кататься и в небольшой день, а выбор досок широк.",
+                    "ja": "小波の日でもサーフしやすく、幅広いボードで楽しめる遠浅なビーチブレイク。",
                 },
             "description":
                 {
@@ -1352,7 +1354,7 @@ SPOT_DETAILS = {
             "amenities": ["parking", "restroom"],
             "facts":
                 [
-                    ("Area", "Chiba North · Sosa"),
+                    ("Area", "Chiba North · Asahi"),
                     ("Break", "shallow beach break"),
                     ("Bottom", "Sand"),
                     ("Level", "beginner to advanced, depending on conditions"),
@@ -1360,6 +1362,62 @@ SPOT_DETAILS = {
                     ("Best size", "waist to chest high"),
                     ("Best board", "longboard, funboard, shortboard"),
                 ],
+        },
+    "nodehama":
+        {
+            "area": "sosa",
+            "title": {
+                "en": "Nodehama",
+                "ru": "Нодэхама",
+                "ja": "野手浜",
+            },
+            "summary": {
+                "en": "A mellow, shallow beach break in Sosa that stays surfable on smaller south-east swell.",
+                "ru": "Мягкий пологий бич-брейк в Сосе, где можно кататься и при небольшом юго-восточном свелле.",
+                "ja": "南東うねりの小波の日でもサーフしやすい、匝瑳の遠浅なビーチブレイク。",
+            },
+            "description": {
+                "en": "Nodehama is an open sandy beach facing south-east. It responds to swell from north-east through south-south-west and often has manageable waves even on smaller days. The gently sloping seabed makes the wave soft, with shoulders that do not always stand up strongly, so it is a relaxed option for beginners and longboards. Waist- to chest-high surf is the usual sweet spot; when the waves rise above head high, the peaks can become wide and close out. Check the banks and current before paddling out, and give other surfers room in the line-up.",
+                "ru": "Нодэхама — открытый песчаный пляж, обращённый на юго-восток. Он принимает свелл от северо-востока до юго-юго-запада и часто даёт управляемые волны даже в небольшой день. Пологий рельеф дна делает волну мягкой, а плечо не всегда встаёт круто, поэтому место подходит начинающим и лонгбордам. Лучшее окно обычно от пояса до груди; при размере выше головы пики становятся широкими и чаще закрываются. Перед выходом проверьте банки и течение и оставляйте другим место в лайн-апе.",
+                "ja": "野手浜は南東に開いた砂浜です。北東〜南南西のうねりに反応し、小波の日でも楽しみやすいポイントです。遠浅の地形で波は厚め、ショルダーも張りにくいため、初級者やロングボードにも向きます。コシ〜ムネ程度が狙い目で、頭を超えるとピークはワイドになりクローズアウトが増えます。入水前にバンクとカレントを確認し、ラインナップでは周囲にスペースを譲りましょう。",
+            },
+            "amenities": [],
+            "facts": [
+                ("Area", "Chiba North · Sosa"),
+                ("Break", "shallow beach break"),
+                ("Bottom", "Sand"),
+                ("Level", "beginner to advanced, depending on conditions"),
+                ("Best size", "waist to chest high"),
+                ("Best board", "longboard, funboard, shortboard"),
+            ],
+        },
+    "horikawa":
+        {
+            "area": "sosa",
+            "title": {
+                "en": "Horikawa",
+                "ru": "Хорикава",
+                "ja": "堀川",
+            },
+            "summary": {
+                "en": "A mellow, shallow beach break in southern Sosa that works well on smaller south-east swell.",
+                "ru": "Мягкий пологий бич-брейк на юге Сосы, хорошо работающий при небольшом юго-восточном свелле.",
+                "ja": "南東うねりの小波の日でも楽しみやすい、匝瑳南部の遠浅なビーチブレイク。",
+            },
+            "description": {
+                "en": "Horikawa (also called Horikawahama) is an open sandy beach facing south-east. It responds to swell from north-east through south-south-west and can offer a gentle, manageable wave when other nearby breaks are small. The seabed shelves gradually, so the wave is usually soft rather than steep and is friendly to beginners and longer boards. Waist- to chest-high surf is generally the most enjoyable; above head high, peaks tend to become wider and close out more often. Conditions can change along this open coast, so check the banks and current before entering.",
+                "ru": "Хорикава, также известная как Хорикавахама, — открытый песчаный пляж, обращённый на юго-восток. Он принимает свелл от северо-востока до юго-юго-запада и может давать мягкую, управляемую волну, когда соседние брейки малы. Дно понижается плавно, поэтому волна обычно не крутая и подходит начинающим и более длинным доскам. Лучше всего обычно от пояса до груди; при размере выше головы пики расширяются и чаще закрываются. На этом открытом берегу условия быстро меняются, поэтому перед входом проверьте банки и течение.",
+                "ja": "堀川（堀川浜とも呼ばれます）は南東に開いた砂浜です。北東〜南南西のうねりに反応し、周辺が小さい日にも厚く扱いやすい波が期待できます。海底は遠浅で、波は急というより穏やかになりやすく、初級者や長めのボードにも向きます。コシ〜ムネ程度が楽しみやすく、頭を超えるとピークはワイドになりクローズアウトが増えます。開けた海岸なので、入水前にバンクとカレントを確認しましょう。",
+            },
+            "amenities": [],
+            "facts": [
+                ("Area", "Chiba North · Sosa"),
+                ("Break", "shallow beach break"),
+                ("Bottom", "Sand"),
+                ("Level", "beginner to advanced, depending on conditions"),
+                ("Best size", "waist to chest high"),
+                ("Best board", "longboard, funboard, shortboard"),
+            ],
         },
     "ichinomiya":
         {
@@ -1534,9 +1592,9 @@ AREA_FACTS = {
                 ],
             "ja": [("海岸", "千葉北・飯岡"), ("ブレイク", "砂のビーチブレイクとテトラポッド際のピーク"), ("うねり", "東〜南南西、南寄りが混じると良い"), ("オフショア", "北北東"), ("混雑", "広がれば比較的余裕がある")],
             "spots": {
-                "en": ["Mansionsita"],
-                "ru": ["Мэнсионсита"],
-                "ja": ["マンション下"]
+                "en": ["Mansionsita", "Shingosita", "Shoppumae", "Kanpomae"],
+                "ru": ["Мэнсионсита", "Сингосита", "Сёппумаэ", "Канпомаэ"],
+                "ja": ["マンション下", "信号下", "ショップ前", "かんぽ前"]
             },
         },
     "sosa":
@@ -1553,9 +1611,9 @@ AREA_FACTS = {
                 ],
             "ja": [("海岸", "千葉北・匝瑳"), ("ブレイク", "開けた砂のビーチブレイク"), ("うねり", "東〜南"), ("オフショア", "北〜北西"), ("混雑", "人は来るがラインナップは集中しにくい")],
             "spots": {
-                "en": ["Kanpomae"],
-                "ru": ["Канпомаэ"],
-                "ja": ["かんぽ前"]
+                "en": ["Nodehama", "Horikawa"],
+                "ru": ["Нодэхама", "Хорикава"],
+                "ja": ["野手浜", "堀川"]
             },
         },
     "sakuta":
@@ -1661,9 +1719,8 @@ AREA_FACTS = {
 AREA_MAPS = {
     "asahi":
         {
-            "center": (35.6991, 140.7173),
-            "zoom":
-                15,
+            "center": (35.6920, 140.6840),
+            "zoom": 13,
             "spots":
                 [
                     {
@@ -1690,15 +1747,6 @@ AREA_MAPS = {
                         "ru": "Сёппумаэ (ショップ前)",
                         "ja": "ショップ前",
                     },
-                ],
-        },
-    "sosa":
-        {
-            "center": (35.6814, 140.6520),
-            "zoom":
-                14,
-            "spots":
-                [
                     {
                         "id": "kanpomae",
                         "coordinates": (35.684181, 140.646435),
@@ -1706,6 +1754,30 @@ AREA_MAPS = {
                         "en": "Kanpomae (かんぽ前)",
                         "ru": "Канпомаэ (かんぽ前)",
                         "ja": "かんぽ前",
+                    },
+                ],
+        },
+    "sosa":
+        {
+            "center": (35.6426, 140.5821),
+            "zoom": 13,
+            "spots":
+                [
+                    {
+                        "id": "nodehama",
+                        "coordinates": (35.651530, 140.595370),
+                        "url": "nodehama/index.html",
+                        "en": "Nodehama (野手浜)",
+                        "ru": "Нодэхама (野手浜)",
+                        "ja": "野手浜",
+                    },
+                    {
+                        "id": "horikawa",
+                        "coordinates": (35.633730, 140.568840),
+                        "url": "horikawa/index.html",
+                        "en": "Horikawa (堀川)",
+                        "ru": "Хорикава (堀川)",
+                        "ja": "堀川",
                     },
                 ],
         },
@@ -1848,6 +1920,14 @@ SPOT_MAPS = {
         "amenities": {
             "restroom": (35.686327, 140.650206),
         }
+    },
+    "nodehama": {
+        "zoom": 16,
+        "amenities": {},
+    },
+    "horikawa": {
+        "zoom": 16,
+        "amenities": {},
     },
     "sakuta": {
         "zoom": 17,
