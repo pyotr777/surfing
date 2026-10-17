@@ -2408,7 +2408,7 @@ def nav_items(page_file):
     lang = lang_of(page_file)
     b = base_url(page_file)
     u = UI[lang]
-    items = [(b + localize("index.html", lang), u["nav_home"])]
+    items = []
     for name in SECTIONS:
         items.append((b + localize(f"{name}/index.html", lang), SECTION_META[name][lang]["title"]))
     glossary_source = os.path.join(ROOT, localize("glossary/index.html", lang))

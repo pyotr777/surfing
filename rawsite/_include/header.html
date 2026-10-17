@@ -32,8 +32,13 @@ print('    <nav class="nav" aria-label="' + ui["nav_label"] + '">')
 for href, label in S.nav_items(page_file):
     path, _, fragment = href.partition("#")
     target = os.path.normpath(os.path.join(pagedir, path))
-    # A link to an anchor on the front page is never "the current page".
-    current = ' aria-current="page"' if (target == here and not fragment) else ""
+    # Section links stay current on their child pages; a front-page anchor is
+    # never a current page.
+    is_current = target == here and not fragment
+    section_dir = os.path.dirname(target)
+    if section_dir != S.ROOT and not fragment:
+        is_current = is_current or os.path.commonpath((here, section_dir)) == section_dir
+    current = ' aria-current="page"' if is_current else ""
     print(f'      <a href="{href}"{current}>{label}</a>')
 print('    </nav>')
 
@@ -49,6 +54,7 @@ for target_lang in S.LANGS:
 print('    </nav>')
 print('    </div>')
 print('  </details>')
+print('  <div class="rule-teeth" aria-hidden="true"></div>')
 print('</header>')
 print('<script>')
 print('(function () {')
