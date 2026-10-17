@@ -95,3 +95,21 @@ main{flex:1 0 auto;max-width:312.208mm;margin:0 auto;padding:42px var(--pad) 16.
 
 /* Noto Serif JP needs its heaviest available face for display typography. */
 :lang(ja) h1,:lang(ja) h2,:lang(ja) h3,:lang(ja) .toc-title,:lang(ja) .glossary-category>summary,:lang(ja) .glossary-basics h2,:lang(ja) .glossary-card h2{font-weight:900}
+
+/* A grid track must never be wider than its available content box. The
+   previous fixed minimums made cards overflow beside page padding on phones. */
+.cards{grid-template-columns:repeat(auto-fill,minmax(min(100%,74.083mm),1fr))}
+.toc ol{grid-template-columns:repeat(auto-fit,minmax(min(100%,74.083mm),1fr))}
+.tagindex{grid-template-columns:repeat(auto-fill,minmax(min(100%,66.146mm),1fr))}
+.glossary-terms{grid-template-columns:repeat(auto-fit,minmax(min(100%,64.823mm),1fr))}
+.glossary-basics-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,58mm),1fr))}
+
+/* Let fact labels and values wrap instead of widening the facts panel. */
+.facts dl>div,.facts dt,.facts dd{min-width:0}
+.facts dd{overflow-wrap:anywhere}
+
+/* `main` is a flex item. Without an explicit shrinkable width, the intrinsic
+   width of a board strip could widen the whole document instead of scrolling
+   inside that strip. */
+main{width:100%;min-width:0}
+.spot-layout,.facts,.boardscale,.longboard-shape-scale{min-width:0;max-width:100%}
