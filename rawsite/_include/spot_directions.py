@@ -28,19 +28,19 @@ COMPASS = (
 
 SPOT_DIRECTIONS = {
     "mansionsita": {
-        "swell": "SE-SW",
+        "swell": "ESE-SW",
         "wind": "N-ENE"
     },
     "shingosita": {
-        "swell": "ESE-S",
+        "swell": "E-S",
         "wind": "NNW-NE"
     },
     "shoppumae": {
-        "swell": "ESE-SSW",
+        "swell": "E-SSW",
         "wind": "NW-NE"
     },
     "kanpomae": {
-        "swell": "E-S",
+        "swell": "ENE-S",
         "wind": "WNW-N"
     },
     "nodehama": {
