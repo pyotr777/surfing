@@ -28,7 +28,7 @@ COMPASS = (
 
 SPOT_DIRECTIONS = {
     "mansionsita": {
-        "swell": "ESE-SW",
+        "swell": "E-SW",
         "wind": "N-ENE"
     },
     "shingosita": {

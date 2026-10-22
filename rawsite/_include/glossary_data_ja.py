@@ -12,11 +12,11 @@ def term(title, definition, aliases=()):
 
 
 JA_TERMS = {
-    # 波
-    "surf": term("砕けた波", "うねりが浅瀬でせり上がり、崩れて乗れる波になった状態。", ("サーフ", )),
+    # 波  うねりが盛り上がり、傾斜が急になり、浅瀬で砕け始める状態
+    "surf": term("サーフ", "うねりが浅瀬で盛り上がり、浅瀬で砕け始める状態。", ("サーフ",)),
     "swell": term("うねり", "発生域を離れ、まとまりを保って進む波のエネルギー。"),
     "groundswell": term("グラウンドスウェル", "遠方の低気圧が生む、周期の長い整ったうねり。"),
-    "wind-swell": term("ウインドスウェル", "近場の風で生まれる、周期が短く不規則な波。"),
+    "wind-swell": term("風波", "近場の風で生まれる、周期が短く不規則な波。"),
     "fetch": term("フェッチ", "風が波を育てながら吹き渡る、開けた海面の距離。"),
     "wave-period": term("波周期", "波周期は、ある地点を続けて通過する波の波頂から波頂までの秒数です。"),
     "swell-direction": term("うねりの向き", "うねりがどの方角から入るかを示す方位。"),
@@ -32,24 +32,24 @@ JA_TERMS = {
     "trough": term("波の谷", "波の波頂と波頂の間で最も低い部分。"),
     "section": term("セクション", "乗れる、または越える必要がある波の一区画。"),
     "flats": term("フラット", "ブレイクするセクションの前にある、フェイスの平らな部分。"),
-    "whitewater": term("ホワイトウォーター", "波が砕けたあとに残る、乱れた白い泡。"),
+    "whitewater": term("スープ", "波が砕けたあとに残る、乱れた白い泡。"),
     "foam-ball": term("フォームボール", "バレルの最も深い部分を動く、密度の高い白波。"),
-    "left": term("グーフィーブレイク", "サーファーから見て左方向へブレイクし、左へ走れる波。", ("レフトブレイク", )),
-    "right": term("レギュラーブレイク", "サーファーから見て右方向へブレイクし、右へ走れる波。", ("ライトブレイク", )),
-    "a-frame": term("三角波", "はっきりした一つのピークから、左右両方向へきれいにブレイクする波。", ("Aフレーム", )),
+    "left": term("グーフィーブレイク", "サーファーから見て左方向へブレイクし、左へ走れる波。", ("レフトブレイク",)),
+    "right": term("レギュラーブレイク", "サーファーから見て右方向へブレイクし、右へ走れる波。", ("ライトブレイク",)),
+    "a-frame": term("三角波", "はっきりした一つのピークから、左右両方向へきれいにブレイクする波。", ("Aフレーム",)),
     "closeout": term("ダンパー", "波の広い範囲がほぼ同時に崩れ、横へ走れるフェイスをほとんど残さない波。", ("クローズアウト", "ダンパーブレイク")),
     "reform": term("リフォーム", "一度砕けてからまた整い、岸寄りで再びブレイクする波。"),
     "double-up": term("ダブルアップ", "二つの波のエネルギーが重なり、急に立ち上がる波。"),
     "wedge": term("ウェッジ", "波が斜めに交わって生まれる、急でしばしばパワフルなピーク。"),
     "mushy": term("トロい波", "ブレイクが遅く、押しが弱いためスピードを出しにくい波。", ("トロめ", "タルい波", "マッシー")),
     "hollow": term("ホレた波", "フェイスが急に立ち上がって巻き、チューブを作りやすい波。", ("掘れた波", "ホロー")),
-    "peeling": term("切れた波", "はっきりしたピークからショルダーへ、順序よくブレイクする波。", ("ピーリング", )),
-    "spilling": term("崩れ波", "波頭が白く泡立ち、その泡がフェイスを徐々に広がりながら崩れる波。", ("スピリング波", )),
-    "plunging": term("巻き波", "リップが前へ張り出し、空気を巻き込みながら力強く落ちる波。", ("プランジング波", )),
-    "surging": term("砕け寄せ波", "はっきりしたリップを投げ出さず、フェイスが急に立って岸へ押し寄せる波。", ("サージング波", )),
+    "peeling": term("切れた波", "はっきりしたピークからショルダーへ、順序よくブレイクする波。", ("ピーリング",)),
+    "spilling": term("崩れ波", "波頭が白く泡立ち、その泡がフェイスを徐々に広がりながら崩れる波。", ("スピリング波",)),
+    "plunging": term("巻き波", "リップが前へ張り出し、空気を巻き込みながら力強く落ちる波。", ("プランジング波",)),
+    "surging": term("砕け寄せ波", "はっきりしたリップを投げ出さず、フェイスが急に立って岸へ押し寄せる波。", ("サージング波",)),
     "slab": term("スラブ", "浅い岩棚の上で急に割れる、厚くパワフルな波。"),
-    "shore-dump": term("岸際のダンパー", "岸際で一気に崩れ、海底へ強く打ちつけるようにブレイクする波。", ("ショアダンプ", )),
-    "big-wave": term("大波", "大きく速く、危険性も高い波。経験に見合う判断と装備が必要になる。", ("ビッグウェーブ", )),
+    "shore-dump": term("岸際のダンパー", "岸際で一気に崩れ、海底へ強く打ちつけるようにブレイクする波。", ("ショアダンプ",)),
+    "big-wave": term("大波", "大きく速く、危険性も高い波。経験に見合う判断と装備が必要になる。", ("ビッグウェーブ",)),
 
     # ブレイクと海底
     "beach-break": term("ビーチブレイク", "砂地またはサンドバーの上で割れるブレイク。"),
@@ -84,12 +84,12 @@ JA_TERMS = {
     "low-tide": term("干潮", "潮汐の中で海面が最も低い段階。"),
     "incoming-tide": term("上げ潮", "海面が上がる潮汐の段階。"),
     "outgoing-tide": term("下げ潮", "海面が下がる潮汐の段階。"),
-    "rip-current": term("離岸流", "岸から沖へ向かう、強く狭い水の流れ。", ("リップ", )),
+    "rip-current": term("離岸流", "岸から沖へ向かう、強く狭い水の流れ。", ("リップ",)),
     "sweep": term("横流れ", "海岸に沿って、またはラインナップを横切って動く流れ。"),
     "backwash": term("バックウォッシュ", "岸や岩、護岸から跳ね返り、沖から来る波へ向かう水の流れ。"),
 
     # スポットのゾーン
-    "lineup": term("ラインナップ", "サーファーが来る波を待ち、位置を取る場所。", ("ラインアップ", )),
+    "lineup": term("ラインナップ", "サーファーが来る波を待ち、位置を取る場所。", ("ラインアップ",)),
     "outside": term("アウトサイド", "主なブレイクゾーンより沖側。"),
     "inside": term("インサイド", "主なラインナップより岸側。波がもう一度割れることが多い。"),
     "impact-zone": term("インパクトゾーン", "波が繰り返し、最も強くブレイクする場所。"),
@@ -135,14 +135,14 @@ JA_TERMS = {
     "concave": term("コンケーブ", "揚力とスピードを生むことがある、くぼんだボトム形状。"),
     "vee": term("Vee", "ストリンガーから両レールへ向かって下がるボトム形状。"),
     "foil": term("フォイル", "中央からノーズ、テール、レールへ向けて、ボードの厚みがどう細くなるか。"),
-    "fin": term("フィン", "ボードの下に付く、進行方向の安定性を与える板。", ("スケグ", )),
+    "fin": term("フィン", "ボードの下に付く、進行方向の安定性を与える板。", ("スケグ",)),
     "fin-box": term("フィンボックス", "取り外し可能なフィンを固定する、ボード側の受け部。"),
     "single-fin": term("シングルフィン", "中央に一枚のフィンを持つボード。"),
     "twin-fin": term("ツインフィン", "両側に二枚のフィンを持つボード。"),
     "two-plus-one": term("2＋1", "センターフィン一枚と小さなサイドフィン二枚の構成。"),
     "thruster": term("スラスター", "センター一枚とサイド二枚からなる三枚フィンの構成。"),
     "quad": term("クアッド", "センターフィンなしの四枚フィン構成。"),
-    "leash": term("リーシュ", "ボードとサーファーをつなぐコード。", ("レッグロープ", )),
+    "leash": term("リーシュ", "ボードとサーファーをつなぐコード。", ("レッグロープ",)),
     "wax": term("ワックス", "グリップのためにデッキへ塗るコーティング。"),
     "traction-pad": term("トラクションパッド", "たいてい後ろ足の下に付ける、凹凸のあるフォームパッド。"),
     "ding": term("ディング", "サーフボードの表面または構造の損傷。"),
@@ -157,9 +157,9 @@ JA_TERMS = {
 
     # テクニックとマニューバー
     "paddling": term("パドリング", "左右交互の腕のストロークでサーフボードを進めること。"),
-    "takeoff": term("テイクオフ", "波をつかまえ、ライディング姿勢へ立ち上がること。", ("ポップアップ", )),
+    "takeoff": term("テイクオフ", "波をつかまえ、ライディング姿勢へ立ち上がること。", ("ポップアップ",)),
     "angled-takeoff": term("アングルド・テイクオフ", "すでにフェイスに沿って進むよう、斜めから波へ入ること。"),
-    "duck-dive": term("ドルフィンスルー", "沖へ出るとき、来る波の下へボードと体を沈めて通すこと。", ("ダックダイブ", )),
+    "duck-dive": term("ドルフィンスルー", "沖へ出るとき、来る波の下へボードと体を沈めて通すこと。", ("ダックダイブ",)),
     "turtle-roll": term("タートルロール", "ロングボードの下で逆さになり、来る波の下を通すこと。"),
     "trim": term("トリム", "ボードがよく走る、バランスのよいラインを保つこと。"),
     "pump": term("パンピング", "フェイスを上下して、スピードを作るまたは保つこと。"),
@@ -173,10 +173,10 @@ JA_TERMS = {
     "floater": term("フローター", "砕けるセクションの上を走り、フェイスへ戻るマニューバー。"),
     "re-entry": term("リエントリー", "リップに当て、すぐにフェイスへ戻るマニューバー。"),
     "off-the-lip": term("オフザリップ", "砕けるリップからボードをフェイス下へ戻すマニューバー。"),
-    "aerial": term("エア", "フェイスを離れ、再びフェイスへ着地すること。", ("エアリアル", )),
+    "aerial": term("エア", "フェイスを離れ、再びフェイスへ着地すること。", ("エアリアル",)),
     "air-reverse": term("エアリバース", "空中で回転し、進行方向と逆向きに着地するエア。"),
     "grab": term("グラブ", "空中でボードのレールをつかむこと。"),
-    "barrel": term("バレル", "ブレイクする波の内側にできる空洞。", ("チューブ", )),
+    "barrel": term("バレル", "ブレイクする波の内側にできる空洞。", ("チューブ",)),
     "barrel-riding": term("バレルライディング", "ブレイクする波の空洞の中を走ること。"),
     "backdoor": term("バックドア", "ブレイクするセクションの後ろからテイクオフし、チューブの開いた部分へ入ること。"),
     "doggy-door": term("ドギードア", "バレルから抜ける小さな出口。"),
@@ -205,8 +205,8 @@ JA_TERMS = {
     "green-wave": term("グリーンウェーブ", "ホワイトウォーターになる前の、乗ることができる割れていないフェイス。"),
 
     # 安全とエチケット
-    "priority": term("優先権", "その波に乗る権利。一般に、ピークに最も近い位置にいるサーファーが優先される。", ("ライト・オブ・ウェイ", )),
-    "drop-in": term("ドロップイン", "すでに別のサーファーが取った、または乗っている波へ入ること。", ("バーン", )),
+    "priority": term("優先権", "その波に乗る権利。一般に、ピークに最も近い位置にいるサーファーが優先される。", ("ライト・オブ・ウェイ",)),
+    "drop-in": term("ドロップイン", "すでに別のサーファーが取った、または乗っている波へ入ること。", ("バーン",)),
     "snaking": term("スネーキング", "ほかのサーファーのさらにピーク寄りへ回り込み、優先権を奪うこと。"),
     "party-wave": term("パーティーウェーブ", "ふつうは合意の上で、複数のサーファーが共有する波。"),
     "loose-board": term("流れたボード", "手放され、水中でほかの人を危険にさらすボード。"),
@@ -226,24 +226,42 @@ JA_TERMS = {
     "gnarly": term("ナーリー", "激しい、難しい、または圧倒的にすごいこと。"),
     "shacked": term("シャックト", "バレルの深いところにいること。"),
     "hang-loose": term("ハングルース", "リラックスした友好的な気持ちを表すハワイ由来の言葉やしぐさ。"),
-    "foot": term("フィート", "ボードや波の寸法によく使う長さの単位。", ("ft", )),
-    "inch": term("インチ", "ボード寸法に使う小さな長さの単位。", ("in", )),
-    "litre": term("リットル", "サーフボードのボリュームに使う標準的な単位。", ("L", )),
-    "knot": term("ノット", "海上予報で使う風速の単位。", ("kt", )),
+    "foot": term("フィート", "ボードや波の寸法によく使う長さの単位。", ("ft",)),
+    "inch": term("インチ", "ボード寸法に使う小さな長さの単位。", ("in",)),
+    "litre": term("リットル", "サーフボードのボリュームに使う標準的な単位。", ("L",)),
+    "knot": term("ノット", "海上予報で使う風速の単位。", ("kt",)),
     "wave-height": term("波高", "波の谷から波頂までの鉛直方向の距離。"),
 }
 
 # 日本のサーファーや波情報で使われる、英語版に独立した項目がない表現。
 JA_ONLY_TERMS = {
-    "ja-thick-wave": {**term("厚い波", "フェイスの傾斜が緩く、リップが立ちにくいため、なかなかブレイクせずスピードも出しにくい波。", ("ファットウェーブ", "Fat wave")), "url": None},
-    "ja-slow-thick-wave": {**term("トロ厚い波", "うねりの力が弱く、フェイスも緩いまま、ゆっくりと力なく崩れる波。", ("トロ厚め", )), "url": None},
-    "ja-weak-fast-wave": {**term("トロ速い波", "押しは弱いのに、ブレイクし始めると横方向へ速く崩れていく波。", ("トロ速め", )), "url": None},
-    "ja-lingering-wave": {**term("ダラダラの波", "はっきりしたポケットを作らず、力なく長く崩れ続ける波。", ("ダラついた波", )), "url": None},
-    "ja-fast-wave": {**term("速い波", "ピークからショルダーへ進むブレイクの速度が速く、すぐ横へ走らないと捕まりやすい波。", ("速めのブレイク", "Fast-breaking wave", "ファストブレイキングウェーブ")), "url": None},
-    "ja-connected-wave": {**term("繋がった波", "複数のピークやセクションがほぼ同時に崩れてつながり、開いたショルダーがすぐになくなる波。", ("つながった波", "Walled-up wave", "ウォールドアップウェーブ")), "url": None},
-    "ja-wide-wave": {**term("ワイドな波", "横に広い範囲が一度に崩れやすく、ピークが不明瞭で抜けにくい波。ダンパーより弱く、一部に走れる場所が残ることもある。", ("ワイドブレイク", "Wide break", "ワイドブレーク")), "url": None},
-    "ja-weak-closeout": {**term("トロダンパー", "うねりの押しは弱いが、崩れるときには広い範囲が一気に閉じる波。", ("Weak closeout", "ウィーククローズアウト")), "url": None},
-    "ja-collapsing-wave": {**term("巻き寄せ波", "巻き波と砕け寄せ波の中間にあたり、波の前面下部が崩れるように砕ける波。", ("コラプシング波", "Collapsing wave")), "url": None},
+    "ja-thick-wave": {
+        **term("厚い波", "フェイスの傾斜が緩く、リップが立ちにくいため、なかなかブレイクせずスピードも出しにくい波。", ("ファットウェーブ", "Fat wave")), "url": None
+    },
+    "ja-slow-thick-wave": {
+        **term("トロ厚い波", "うねりの力が弱く、フェイスも緩いまま、ゆっくりと力なく崩れる波。", ("トロ厚め",)), "url": None
+    },
+    "ja-weak-fast-wave": {
+        **term("トロ速い波", "押しは弱いのに、ブレイクし始めると横方向へ速く崩れていく波。", ("トロ速め",)), "url": None
+    },
+    "ja-lingering-wave": {
+        **term("ダラダラの波", "はっきりしたポケットを作らず、力なく長く崩れ続ける波。", ("ダラついた波",)), "url": None
+    },
+    "ja-fast-wave": {
+        **term("速い波", "ピークからショルダーへ進むブレイクの速度が速く、すぐ横へ走らないと捕まりやすい波。", ("速めのブレイク", "Fast-breaking wave", "ファストブレイキングウェーブ")), "url": None
+    },
+    "ja-connected-wave": {
+        **term("繋がった波", "複数のピークやセクションがほぼ同時に崩れてつながり、開いたショルダーがすぐになくなる波。", ("つながった波", "Walled-up wave", "ウォールドアップウェーブ")), "url": None
+    },
+    "ja-wide-wave": {
+        **term("ワイドな波", "横に広い範囲が一度に崩れやすく、ピークが不明瞭で抜けにくい波。ダンパーより弱く、一部に走れる場所が残ることもある。", ("ワイドブレイク", "Wide break", "ワイドブレーク")), "url": None
+    },
+    "ja-weak-closeout": {
+        **term("トロダンパー", "うねりの押しは弱いが、崩れるときには広い範囲が一気に閉じる波。", ("Weak closeout", "ウィーククローズアウト")), "url": None
+    },
+    "ja-collapsing-wave": {
+        **term("巻き寄せ波", "巻き波と砕け寄せ波の中間にあたり、波の前面下部が崩れるように砕ける波。", ("コラプシング波", "Collapsing wave")), "url": None
+    },
 }
 
 TREE = [
@@ -254,18 +272,22 @@ TREE = [
             "波",
         "note":
             "うねりが生まれ、岸で砕け、乗れる波になるまでの言葉。",
-        "groups":
-            [
-                ("うねりと波の形成", ["surf", "swell", "groundswell", "wind-swell", "fetch", "swell-direction", "set", "lull"]),
-                ("波の構造", ["peak", "crest", "face", "lip", "curl", "shoulder", "pocket", "trough", "wave-height", "wave-period", "section", "flats", "whitewater", "foam-ball"]),
-                (
-                    "形とブレイクの仕方", [
-                        "ja-thick-wave", "wedge", "big-wave", "shore-dump", "peeling", "surging", "spilling", "left", "a-frame", "slab", "double-up",
-                        "ja-lingering-wave", "closeout", "ja-connected-wave", "ja-slow-thick-wave", "mushy", "ja-weak-closeout", "ja-weak-fast-wave",
-                        "ja-fast-wave", "hollow", "plunging", "ja-collapsing-wave", "reform", "right", "ja-wide-wave"
-                    ]
-                ),
-            ]
+        "groups": [
+            ("うねりと波の形成", ["surf", "swell", "groundswell", "wind-swell", "fetch", "swell-direction", "set", "lull"]),
+            (
+                "波の構造", [
+                    "peak", "crest", "face", "lip", "curl", "shoulder", "pocket", "trough", "wave-height", "wave-period", "section", "flats", "whitewater",
+                    "foam-ball"
+                ]
+            ),
+            (
+                "形とブレイクの仕方", [
+                    "ja-thick-wave", "wedge", "big-wave", "shore-dump", "peeling", "surging", "spilling", "left", "a-frame", "slab", "double-up",
+                    "ja-lingering-wave", "closeout", "ja-connected-wave", "ja-slow-thick-wave", "mushy", "ja-weak-closeout", "ja-weak-fast-wave",
+                    "ja-fast-wave", "hollow", "plunging", "ja-collapsing-wave", "reform", "right", "ja-wide-wave"
+                ]
+            ),
+        ]
     },
     {
         "id":
@@ -274,11 +296,10 @@ TREE = [
             "サーフブレイク",
         "note":
             "波が割れる場所と、その形をつくる海底地形。",
-        "groups":
-            [
-                ("ブレイクの種類", ["beach-break", "reef-break", "point-break", "rivermouth", "shorebreak", "tidal-bore", "wave-pool"]),
-                ("海底と海岸線", ["sandbar", "bank", "reef", "rock-shelf", "cobblestones", "bathymetry", "headland"]),
-            ]
+        "groups": [
+            ("ブレイクの種類", ["beach-break", "reef-break", "point-break", "rivermouth", "shorebreak", "tidal-bore", "wave-pool"]),
+            ("海底と海岸線", ["sandbar", "bank", "reef", "rock-shelf", "cobblestones", "bathymetry", "headland"]),
+        ]
     },
     {
         "id":
@@ -287,12 +308,11 @@ TREE = [
             "サーフコンディション",
         "note":
             "その日の波の状態を左右する、予報と海況の要素。",
-        "groups":
-            [
-                ("うねりと予報", ["swell-height", "surf-height", "significant-wave-height", "swell-direction", "wave-energy"]),
-                ("風と水面", ["offshore-wind", "onshore-wind", "cross-shore-wind", "glassy", "chop", "blown-out", "clean"]),
-                ("潮と流れ", ["tide", "high-tide", "low-tide", "incoming-tide", "outgoing-tide", "rip-current", "sweep", "backwash"]),
-            ]
+        "groups": [
+            ("うねりと予報", ["swell-height", "surf-height", "significant-wave-height", "swell-direction", "wave-energy"]),
+            ("風と水面", ["offshore-wind", "onshore-wind", "cross-shore-wind", "glassy", "chop", "blown-out", "clean"]),
+            ("潮と流れ", ["tide", "high-tide", "low-tide", "incoming-tide", "outgoing-tide", "rip-current", "sweep", "backwash"]),
+        ]
     },
     {
         "id":
@@ -301,11 +321,10 @@ TREE = [
             "スポットと水面のゾーン",
         "note":
             "スポットの中で、サーファーが位置や流れを共有するための言葉。",
-        "groups":
-            [
-                ("水面のゾーン", ["lineup", "outside", "inside", "impact-zone", "channel", "takeoff-zone"]),
-                ("沖へのルート", ["paddle-out", "caught-inside", "reading-the-lineup"]),
-            ]
+        "groups": [
+            ("水面のゾーン", ["lineup", "outside", "inside", "impact-zone", "channel", "takeoff-zone"]),
+            ("沖へのルート", ["paddle-out", "caught-inside", "reading-the-lineup"]),
+        ]
     },
     {
         "id":
@@ -314,24 +333,22 @@ TREE = [
             "サーフボード",
         "note":
             "ボードの系統、構造、デザイン、フィン、そして使い続けるための装備。",
-        "groups":
-            [
-                (
-                    "ボードの種類と形", [
-                        "shortboard", "longboard", "fish", "groveler", "egg", "mid-length", "mini-mal", "funboard", "log", "noserider", "gun", "glider",
-                        "soft-top", "alaia", "asym", "bonzer"
-                    ]
-                ),
-                ("構造と素材", ["pu-polyester", "eps-epoxy", "blank", "stringer", "glassing"]),
-                (
-                    "ボードの構成とデザイン", [
-                        "outline", "nose", "deck", "tail", "rails", "rocker", "volume", "length", "width", "thickness", "bottom-contour", "concave", "vee",
-                        "foil"
-                    ]
-                ),
-                ("フィンとフィンセッティング", ["fin", "fin-box", "single-fin", "twin-fin", "two-plus-one", "thruster", "quad"]),
-                ("アクセサリーと手入れ", ["leash", "wax", "traction-pad", "ding", "ding-repair"]),
-            ]
+        "groups": [
+            (
+                "ボードの種類と形", [
+                    "shortboard", "longboard", "fish", "groveler", "egg", "mid-length", "mini-mal", "funboard", "log", "noserider", "gun", "glider", "soft-top",
+                    "alaia", "asym", "bonzer"
+                ]
+            ),
+            ("構造と素材", ["pu-polyester", "eps-epoxy", "blank", "stringer", "glassing"]),
+            (
+                "ボードの構成とデザイン", [
+                    "outline", "nose", "deck", "tail", "rails", "rocker", "volume", "length", "width", "thickness", "bottom-contour", "concave", "vee", "foil"
+                ]
+            ),
+            ("フィンとフィンセッティング", ["fin", "fin-box", "single-fin", "twin-fin", "two-plus-one", "thruster", "quad"]),
+            ("アクセサリーと手入れ", ["leash", "wax", "traction-pad", "ding", "ding-repair"]),
+        ]
     },
     {
         "id":
@@ -340,11 +357,10 @@ TREE = [
             "乗り方",
         "note":
             "ボードごとの乗り方と、代表的なロングボードのスタイル。",
-        "groups":
-            [
-                ("ボードを起点にした乗り方", ["shortboarding", "longboarding"]),
-                ("ロングボードのスタイル", ["traditional-longboarding", "high-performance-longboarding", "power-classic"]),
-            ]
+        "groups": [
+            ("ボードを起点にした乗り方", ["shortboarding", "longboarding"]),
+            ("ロングボードのスタイル", ["traditional-longboarding", "high-performance-longboarding", "power-classic"]),
+        ]
     },
     {
         "id":
@@ -353,15 +369,14 @@ TREE = [
             "テクニックとマニューバー",
         "note":
             "波をつかまえ、スピードとラインをつくり、ライディングを終えるまでの動き。",
-        "groups":
-            [
-                ("波へ入る・沖へ出る", ["paddling", "takeoff", "angled-takeoff", "duck-dive", "turtle-roll"]),
-                ("スピードとライン", ["trim", "pump", "stall", "fade", "bottom-turn"]),
-                ("ターンとリップ", ["carve", "cutback", "top-turn", "snap", "floater", "re-entry", "off-the-lip"]),
-                ("エアとチューブ", ["aerial", "air-reverse", "grab", "barrel", "barrel-riding", "backdoor", "doggy-door", "kick-out"]),
-                ("ロングボードの足運び", ["cross-step", "noseriding", "hang-five", "hang-ten"]),
-                ("転倒と退出", ["bail", "wipeout", "pearling", "over-the-falls"]),
-            ]
+        "groups": [
+            ("波へ入る・沖へ出る", ["paddling", "takeoff", "angled-takeoff", "duck-dive", "turtle-roll"]),
+            ("スピードとライン", ["trim", "pump", "stall", "fade", "bottom-turn"]),
+            ("ターンとリップ", ["carve", "cutback", "top-turn", "snap", "floater", "re-entry", "off-the-lip"]),
+            ("エアとチューブ", ["aerial", "air-reverse", "grab", "barrel", "barrel-riding", "backdoor", "doggy-door", "kick-out"]),
+            ("ロングボードの足運び", ["cross-step", "noseriding", "hang-five", "hang-ten"]),
+            ("転倒と退出", ["bail", "wipeout", "pearling", "over-the-falls"]),
+        ]
     },
     {
         "id": "orientation",
@@ -397,12 +412,11 @@ TREE = [
             "文化、セッションの言葉、単位",
         "note":
             "セッションで使う表現やスラング、予報やボードの寸法で使う単位。",
-        "groups":
-            [
-                ("セッションの言葉", ["dawn-patrol", "quiver", "firing", "flat", "corduroy", "mysto-spot"]),
-                ("サーフスラング", ["stoked", "froth", "gnarly", "shacked", "hang-loose"]),
-                ("単位", ["foot", "inch", "litre", "knot"]),
-            ]
+        "groups": [
+            ("セッションの言葉", ["dawn-patrol", "quiver", "firing", "flat", "corduroy", "mysto-spot"]),
+            ("サーフスラング", ["stoked", "froth", "gnarly", "shacked", "hang-loose"]),
+            ("単位", ["foot", "inch", "litre", "knot"]),
+        ]
     },
 ]
 
