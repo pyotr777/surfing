@@ -39,6 +39,8 @@ for area_id, position in S.MAP["area_labels"].items():
     print(f'    <a class="spot-marker" href="{url}" aria-label="{meta[lang]}">')
     print(f'      <g transform="translate({x:.1f} {y:.1f}) '
           f'rotate({rotation:.1f}) skewX({skew:.1f})">')
+    print(f'        <text class="pin-label-outline" x="0" y="0" text-anchor="end">'
+          f'{meta[lang]}</text>')
     print(f'        <text class="pin-label" x="0" y="0" text-anchor="end">'
           f'{meta[lang]}</text>')
     print('      </g>')

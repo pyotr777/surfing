@@ -704,18 +704,17 @@ LONGBOARD_SHAPE_DETAILS = {
     "performance": {
         "en": {
             "lead":
-                "A high-performance longboard brings shortboard-style rail work and turning range to a board that still paddles, trims and can be ridden from the nose.",
+                "A high-performance longboard is designed for sharper turns and a more dynamic ride, giving you more control on steeper waves.",
             "overview": (
-                "High-performance longboards are not simply smaller or narrower logs. They are purpose-built longboards for drawing committed lines: driving a bottom turn, linking a cutback to the pocket, redirecting off the lip and then moving forward to trim or noseride. The category spans dedicated competition shapes and more forgiving everyday designs, but its common aim is speed, hold and quick response from a full-length board.",
-                "The current range makes that spectrum clear. The Firewire Taylor Jensen Pro is a competition-focused rounded-pin design; the TJ Pro V keeps similar DNA with a lower rocker and wider nose for average surf. NSP’s Pro-9, CJ Nelson Designs’ GX1000 and Ibis, and Kai Sallas’ Lava Flow each use their own balance of rocker, rails, bottom contours and fins to turn a longboard more actively. They are useful reference points, not a single specification every performance longboard must copy.",
+                "A high-performance longboard is a full-length board built for active, responsive surfing with a shortboard feel. It lets you make sharper turns, change direction quickly and work the steeper part of the wave, while still leaving room for footwork and noseriding. These boards are aimed mainly at advanced surfers who are confident on a longboard and want a more dynamic ride.",
+                "High-performance longboards range from boards for everyday fun to dedicated competition models. Well-known designs cover both ends of that range.",
             ),
             "models": (
-                "Firewire Taylor Jensen Pro — rounded pin tail, performance rails, nose concave into double concave and slight vee; made for speed, power and driving turns.",
-                "Firewire Taylor Jensen Pro V — an everyday counterpart with lower rocker, more nose area, a squash tail, spiral vee and 2+1 or quad options.",
-                "NSP Pro-9 — low-volume performance longboard with a soft-roll-to-vee-to-double-concave bottom and a 4+1 fin cluster.",
-                "CJ Nelson Designs GX1000 — a speed-oriented high-performance longboard with performance rails, a concave nose and refined HP rocker.",
-                "CJ Nelson Designs Ibis — combines a concave nose, flatter middle, tail kick, defined rails and a 2+1 setup for logging and hard tail turns.",
-                "Kai Sallas Lava Flow — pulled-in nose and pin tail, continuous rocker, hard vee bottom and a tail edge for faster, more powerful surf.",
+                "Firewire Taylor Jensen Pro — a competition-focused model for speed, powerful turns and dynamic surfing in good waves.",
+                "Firewire Taylor Jensen Pro V — built for everyday fun, including smaller, weaker waves, with easy direction changes and good speed through flatter sections.",
+                "NSP Pro-9 — for active surfing across a range of conditions, from relaxed trim and noseriding to fast, powerful turns.",
+                "CJ Nelson Designs GX1000 / Ibis — for surfers who enjoy speed and maneuverability, combining sharp turns with classic longboard glide and noseriding.",
+                "Kai Sallas Lava Flow — for fast, powerful waves, deep carving turns and barrel riding; especially suited to head-high to double-overhead surf.",
             ),
             "design":
                 "Across these models, the outline is usually more refined at the tail and the rails are thinner, lower and more defined than on a traditional log, so the board holds when loaded on rail. Rocker is tuned for the intended wave: a continuous curve or added nose and tail lift keeps a dedicated HP shape clear on steep drops, while an everyday version may flatten the middle for earlier entry and speed. Bottom contours commonly combine a light nose concave with double concave, vee or spiral vee under the rear foot; they create lift and channel water while helping the board roll rail to rail. Rounded pins, pin tails and squash tails trade hold and release differently, and 2+1, quad or 4+1 fin boxes let the rider tune drive, pivot and looseness.",
@@ -726,18 +725,17 @@ LONGBOARD_SHAPE_DETAILS = {
         },
         "ru": {
             "lead":
-                "High-performance лонгборд сочетает работу на канте и диапазон поворотов шортборда с греблей, тримом и возможностью ехать с носа длинной доски.",
+                "High-performance лонгборд — это более манёвренный лонгборд для активного катания: на нём легче делать резкие повороты и кататься на крутых волнах.",
             "overview": (
-                "High-performance лонгборд — не просто укороченный или зауженный лог. Это длинная доска для активной линии: мощного боттом-тёрна, катбэка в карман, смены направления на липе, а затем трима или нозрайдинга. В этой категории есть как соревновательные шейпы, так и более дружелюбные повседневные модели; их объединяет стремление получить скорость, держак и быстрый отклик от полноразмерного лонгборда.",
-                "Современные модели хорошо показывают этот диапазон. Firewire Taylor Jensen Pro — соревновательная доска с round pin; TJ Pro V развивает ту же идею, но получает более плоский рокер и широкий нос для средних условий. NSP Pro-9, CJ Nelson Designs GX1000 и Ibis, а также Kai Sallas Lava Flow по-разному сочетают рокер, рейлы, контуры днища и плавники, чтобы лонгборд активнее поворачивал. Это ориентиры, а не единый рецепт для всех performance-моделей.",
+                "High-performance лонгборд — это длинная доска для активного, манёвренного катания, по стилю напоминающего сёрфинг на шортборде. Он позволяет делать резкие повороты, быстро менять направление и использовать крутую часть волны, сохраняя возможность проходов по доске и катания с носа. Такие доски рассчитаны прежде всего на продвинутых сёрферов, которые уверенно управляют лонгбордом и хотят кататься динамичнее.",
+                "High-performance лонгборды бывают и для повседневного катания в удовольствие, и для соревнований. Среди известных моделей есть варианты для обоих стилей.",
             ),
             "models": (
-                "Firewire Taylor Jensen Pro — round pin, performance-рейлы, носовой конкейв, переходящий в двойной конкейв и небольшой vee; сделан для скорости, мощи и поворотов с закладкой на кант.",
-                "Firewire Taylor Jensen Pro V — повседневная версия с более плоским рокером, большей площадью носа, сквош-тейлом, spiral vee и вариантами 2+1 или квад.",
-                "NSP Pro-9 — малолитражный performance-лонгборд с днищем от мягкого roll к vee и двойному конкейву и кластером плавников 4+1.",
-                "CJ Nelson Designs GX1000 — скоростной high-performance лонгборд с performance-рейлами, конкейвом в носу и настроенным HP-рокером.",
-                "CJ Nelson Designs Ibis — сочетает носовой конкейв, более плоскую середину, кик тейла, выраженные рейлы и схему 2+1 для логгинга и резких поворотов от тейла.",
-                "Kai Sallas Lava Flow — зауженный нос и пин-тейл, непрерывный рокер, жёсткое V-днище и кант в корме для быстрых и мощных волн.",
+                "Firewire Taylor Jensen Pro — модель с соревновательным уклоном для скорости, мощных поворотов и активного катания на хороших волнах.",
+                "Firewire Taylor Jensen Pro V — для повседневного катания, в том числе на небольших и слабых волнах; легко меняет направление и проходит пологие участки.",
+                "NSP Pro-9 — для активного катания в разных условиях: от спокойного скольжения и нозрайдинга до быстрых, мощных поворотов.",
+                "CJ Nelson Designs GX1000 / Ibis — для любителей скорости и манёвров, которые хотят сочетать резкие повороты с классическим скольжением и катанием с носа.",
+                "Kai Sallas Lava Flow — для быстрых и мощных волн, глубоких поворотов и катания в трубах; особенно подходит для волн от высоты головы до двойного роста.",
             ),
             "design":
                 "У этих моделей обычно более собранная корма, а рейлы тоньше, ниже и чётче, чем у традиционного лога: доска лучше держится, когда вы загружаете кант. Рокер настраивают под волну: непрерывная дуга или дополнительный подъём носа и тейла помогают специализированному HP-шейпу не цепляться на крутом дропе, а в повседневной версии середину могут сделать площе для раннего входа и скорости. В днище часто сочетаются лёгкий носовой конкейв и двойной конкейв, vee или spiral vee под задней ногой: они создают подъёмную силу, направляют поток и помогают перекладывать доску с рейла на рейл. Round pin, пин-тейл и сквош-тейл по-разному распределяют держак и отпускание, а боксы 2+1, квад или 4+1 позволяют настроить драйв, поворот и свободу доски.",
@@ -748,18 +746,17 @@ LONGBOARD_SHAPE_DETAILS = {
         },
         "ja": {
             "lead":
-                "ハイパフォーマンス・ロングボードは、パドル、トリム、ノーズライドを保ちながら、ショートボードのようなレールワークとターンの幅を長いボードにもたらします。",
+                "ハイパフォーマンス・ロングボードは、シャープなターンやアクティブなライディングを楽しむためのロングボード。波の斜面が急な場面でも、ボードをコントロールしやすいのが特徴です。",
             "overview": (
-                "ハイパフォーマンス・ロングボードは、単に短くしたり細くしたログではありません。強いボトムターン、ポケットへのカットバック、リップでの方向転換をつなぎ、その後に前へ歩いてトリムやノーズライドへ移るためのロングボードです。コンペティション向けのシェイプから扱いやすいデイリーモデルまでありますが、共通する目的は、フルレングスのロングボードでスピード、ホールド、素早い反応を得ることです。",
-                "現行モデルを見ると、その幅がよく分かります。Firewire Taylor Jensen Proはラウンドピンの競技志向モデルで、TJ Pro Vはロッカーを抑え、ノーズ幅を広げて平均的な波に合わせています。NSP Pro-9、CJ Nelson DesignsのGX1000とIbis、Kai Sallas Lava Flowは、ロッカー、レール、ボトムコンツアー、フィンをそれぞれ異なる比率で組み合わせ、ロングボードをよりアクティブにターンさせます。これらは参考になるモデルであり、すべてのパフォーマンス型が同じ仕様である必要はありません。",
+                "ハイパフォーマンス・ロングボードは、ロングボードの長さを活かしながら、ショートボードのようなアクティブな動きを楽しめるボードです。シャープなターンや素早い切り返しで波の切り立った部分を攻めつつ、ボードの上を歩いたり、ノーズライドを楽しんだりすることもできます。ロングボードを自在に操り、さらにダイナミックなライディングを目指す上級者に向いています。",
+                "ハイパフォーマンス・ロングボードには、普段のサーフィンを楽しむためのモデルから、大会での使用を想定したモデルまであります。よく知られたモデルにも、それぞれの楽しみ方に合ったものがそろっています。",
             ),
             "models": (
-                "Firewire Taylor Jensen Pro — ラウンドピンテール、パフォーマンスレール、ノーズの浅いコンケーブからダブルコンケーブ、わずかなVeeへ。スピード、パワー、レールを使ったターンのための形です。",
-                "Firewire Taylor Jensen Pro V — 控えめなロッカー、広めのノーズ、スカッシュテール、スパイラルVee、2+1またはクアッドの選択肢を持つデイリー向けの派生モデルです。",
-                "NSP Pro-9 — ソフトロールからVee、ダブルコンケーブへ続くボトムと4+1フィンクラスターを備えた、低ボリュームのパフォーマンス・ロングボードです。",
-                "CJ Nelson Designs GX1000 — パフォーマンスレール、ノーズコンケーブ、洗練されたHPロッカーを備えたスピード重視のハイパフォーマンス・ロングボードです。",
-                "CJ Nelson Designs Ibis — ノーズコンケーブ、フラット寄りの中央部、テールキック、はっきりしたレール、2+1セットアップを組み合わせ、ログらしい乗り方と強いテールターンを両立します。",
-                "Kai Sallas Lava Flow — 絞ったノーズとピンテール、連続するロッカー、硬めのVボトム、テールのエッジで、速くパワフルな波に対応します。",
+                "Firewire Taylor Jensen Pro — 大会での使用を重視したモデル。良い波でスピードに乗り、力強いターンやダイナミックなライディングを楽しめます。",
+                "Firewire Taylor Jensen Pro V — 小さな波や力の弱い波でも、普段のサーフィンを楽しむためのモデル。軽快に方向を変えられ、波の緩いセクションでもスピードを保ちやすいのが特徴です。",
+                "NSP Pro-9 — 幅広いコンディションでアクティブに乗りたい人に。ゆったりしたトリムやノーズライドから、スピードを活かした力強いターンまで楽しめます。",
+                "CJ Nelson Designs GX1000 / Ibis — スピードと軽快な動きを楽しみたい人に。シャープなターンと、ロングボードらしいグライドやノーズライドを組み合わせて乗れます。",
+                "Kai Sallas Lava Flow — 速くパワフルな波で、深いカービングターンやバレルライドを楽しむためのモデル。特に頭からダブルオーバーヘッドの波に向いています。",
             ),
             "design":
                 "これらのモデルは、一般にテール側が洗練され、伝統的なログよりも薄く低く、輪郭のはっきりしたレールを持ちます。レールに荷重したときのホールドを得るためです。ロッカーは波に合わせて調整されます。連続したカーブやノーズとテールのキックを増やした専用HPシェイプは急なドロップで引っかかりにくく、デイリー向けでは中央部をフラットにして早いテイクオフとスピードを狙うこともあります。ボトムは、浅いノーズコンケーブにダブルコンケーブ、Vee、スパイラルVeeを後ろ足の下で組み合わせることが多く、揚力と水流の整理を行い、レール・トゥ・レールの切り替えを助けます。ラウンドピン、ピンテール、スカッシュテールではホールドとリリースの性格が異なり、2+1、クアッド、4+1のボックスはドライブ、ピボット、ルースさの調整を可能にします。",
