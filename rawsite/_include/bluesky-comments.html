@@ -1,0 +1,20 @@
+<script type="text/python">
+  import os
+  import hashlib
+  from html import escape
+  from urllib.parse import urlparse
+  post = params.get("post", "")
+  url = urlparse(post)
+  if url.scheme != "https" or url.netloc != "bsky.app" or not url.path.startswith("/profile/") or "/post/" not in url.path:
+    raise ValueError("post must be an https://bsky.app/profile/.../post/... URL")
+  hours = float(params.get("hours", 72))
+  if not hours >= 0 or hours == float("inf"):
+    raise ValueError("hours must be finite and non-negative")
+  root = os.path.relpath(os.path.dirname(os.path.dirname(__file__)), os.path.dirname(page_file)) + "/"
+  asset = os.path.join(os.path.dirname(os.path.dirname(__file__)), "js", "bluesky-comments.js")
+  with open(asset, "rb") as f:
+    version = hashlib.sha256(f.read()).hexdigest()[:12]
+  excluded = escape(" ".join(params.get("exclude_dids", [])), quote=True)
+  print(f'<script type="module" src="{root}js/bluesky-comments.js?v={version}" data-bluesky-post="{escape(post, quote=True)}" data-bluesky-hours="{hours:g}" data-bluesky-exclude="{excluded}"></scr' + 'ipt>')
+  print(f'<noscript><a href="{escape(post, quote=True)}">Bluesky</a></noscript>')
+</script>

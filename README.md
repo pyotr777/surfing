@@ -71,3 +71,101 @@ tools/                                       one-off artwork helpers
 ## Sources and scope
 
 Spot profiles are compiled from published surf guides and local mapping. They are intended as an orientation tool, not a forecast or a guarantee of conditions. The illustrated overview map is based on Natural Earth data (public domain); interactive area maps use OpenStreetMap tiles under their applicable terms.
+
+## Bluesky comments
+
+Mansionsita's English, Russian and Japanese pages share one discussion. To enable
+comments for another spot, add a `bluesky` entry to its `SPOT_DETAILS` record in
+`rawsite/_include/sitedata.py`:
+
+```python
+"bluesky": {"post": "https://bsky.app/profile/YOUR_HANDLE/post/POST_ID"},
+```
+
+The shared spot template handles the rest. `hours` is optional (default: 72);
+48 means the last two days, and 0 means all time. `exclude_dids` is an optional
+list of accounts whose branches should be omitted. All language versions use
+the same post; interface language comes from the page, comments are not translated.
+
+For an ordinary static HTML page, one script tag at the desired position is enough:
+
+```html
+<script type="module" src="../../../js/bluesky-comments.js"
+  data-bluesky-post="https://bsky.app/profile/YOUR_HANDLE/post/POST_ID"
+  data-bluesky-hours="72"></script>
+```
+
+Use the appropriate relative path to `js/`. Omit `data-bluesky-hours` for 72 hours.
+Optional `data-bluesky-exclude` accepts space-separated DIDs. No CSS link or
+separate form markup is needed: the single bundle contains styles, the component,
+and the official OAuth client. It is loaded only on pages with comments (and the
+shared OAuth callback page). No CDN JavaScript or backend is needed.
+
+Visitors can draft a reply, sign in through Bluesky, and explicitly submit it
+from the page. OAuth requests only permission to create `app.bsky.feed.post`
+records. Tokens and cryptographic keys are managed by the official SDK; the site
+does not collect account passwords. Draft text is stored in tab session storage,
+kept through sign-in and failures, and removed after confirmed publication.
+Replies may take a little time to appear in the public API; a successful submission
+provides a link to the new reply. Reloading the page reloads the discussion. The form always replies to the original configured post; individual comments have no reply buttons. The component
+never publishes automatically on sign-in or return from authorization.
+
+### Shared OAuth setup
+
+Two static files are required once per website:
+
+- `rawsite/bluesky-client-metadata.json` declares the production site URL,
+  callback URL, and permission scope. It must be publicly accessible as JSON.
+- `rawsite/bluesky-callback.html` completes sign-in and returns to the originating
+  language page. It loads the same JavaScript bundle.
+
+These are configured for `https://pyotr777.github.io/surfing/`. If the site moves,
+update the metadata URLs and rebuild the bundle. Callback return paths are limited
+to the same origin under the site path derived from the script URL. Production OAuth sign-in requires publishing the metadata and callback first.
+Local sign-in uses the AT Protocol loopback exception: no public metadata or
+tunnel is required. Open the website over HTTP at `127.0.0.1` (not `file://` or
+`localhost`). Run a local server from the project directory:
+
+```bash
+python3 -m http.server 8765 --bind 127.0.0.1
+```
+
+Then open `http://127.0.0.1:8765/surfing/spots/asahi/mansionsita/index.html`.
+The local port and path prefix are detected from the script URL; serving the
+contents of `surfing/` directly at the server root also works. The local OAuth
+callback returns to the same local page. Local authorization is labelled as a
+development client by Bluesky. Automated tests mock authentication and posting
+and do not publish real replies.
+
+### Maintaining the JavaScript
+
+Editable sources are in `src/bluesky-*.js` and `src/bluesky-comments.css`.
+`rawsite/js/bluesky-comments.js` is a committed, self-contained generated bundle.
+Normal Panehe builds just copy it and need no Node.js or network access.
+To change it, use Node.js 22 or newer:
+
+```bash
+npm ci
+npm run build:comments
+npm run test:comments
+```
+
+The OAuth dependency currently has a transitive Zod advisory
+[GHSA-mrhx-c7xc-m3w5](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5).
+The SDK fetch boundary therefore rejects responses over 256 KiB and JSON
+collections over 256 entries / documents over 5,000 nodes before SDK validation.
+Keep the official client and lockfile updated as upstream fixes become available.
+
+### Display limits
+
+Comments load at page opening or after a successful submission; the rolling time window is evaluated
+at that moment. Replies are shown newest first, including recent replies under
+older parents. Hidden and excluded branches are omitted. Personal account block
+lists are not fetched. Filtering affects display on this website, not Bluesky
+posting permissions. Threadgate/block restrictions are enforced when Bluesky
+accepts or rejects a submitted reply.
+
+Only text is rendered here; the original thread links to attachments. The API
+returns a bounded tree (requested depth: 100), so large discussions can be
+incomplete. Date filtering does not reduce the API response. Build-time requests
+to Bluesky are never required.

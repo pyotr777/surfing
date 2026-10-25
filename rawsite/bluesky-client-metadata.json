@@ -1,0 +1,12 @@
+{
+  "client_id": "https://pyotr777.github.io/surfing/bluesky-client-metadata.json",
+  "client_name": "Surf Japan comments",
+  "client_uri": "https://pyotr777.github.io/surfing/",
+  "redirect_uris": ["https://pyotr777.github.io/surfing/bluesky-callback.html"],
+  "scope": "atproto repo:app.bsky.feed.post?action=create",
+  "grant_types": ["authorization_code", "refresh_token"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "none",
+  "application_type": "web",
+  "dpop_bound_access_tokens": true
+}

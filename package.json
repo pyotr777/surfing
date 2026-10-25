@@ -1,0 +1,17 @@
+{
+  "name": "surf-japan-comments",
+  "private": true,
+  "scripts": {
+    "build:comments": "node tools/build-comments.mjs",
+    "test:comments": "node --test tests/bluesky-*.test.cjs"
+  },
+  "dependencies": {
+    "@atproto/oauth-client-browser": "0.5.10"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
