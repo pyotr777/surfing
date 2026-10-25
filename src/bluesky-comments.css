@@ -3,6 +3,8 @@ surfing-bluesky-comments {
   margin-top: 3rem;
   border-top: 1px solid var(--rule);
   overflow-wrap: anywhere;
+  /* Keep interface copy 3 pt smaller than the discussion text. */
+  font-size: calc(1em - 3pt);
 }
 surfing-bluesky-comments .bluesky-comment {
   padding: 1rem 0;
@@ -15,11 +17,8 @@ surfing-bluesky-comments .bluesky-comment-list {
   padding-bottom: 1rem;
   margin-bottom: 1.5rem;
 }
-surfing-bluesky-comments .bluesky-comment-meta,
-surfing-bluesky-comments .bluesky-comment-note {
-  font-size: 0.9em;
-}
 surfing-bluesky-comments .bluesky-comment-text {
+  font-size: calc(1em + 3pt);
   white-space: pre-wrap;
 }
 
@@ -38,7 +37,11 @@ surfing-bluesky-comments textarea {
   margin: .4rem 0; padding: .65rem; border: 1px solid var(--rule, #ccc);
   background: var(--surface, #fff); color: var(--ink, #222); font: inherit;
 }
-surfing-bluesky-comments textarea { resize: vertical; }
+surfing-bluesky-comments textarea {
+  font-size: calc(1em + 3pt);
+  resize: vertical;
+}
+surfing-bluesky-comments button { font-size: inherit; }
 surfing-bluesky-comments button:disabled { opacity: .6; cursor: default; }
 surfing-bluesky-comments .bluesky-account {
   display: flex; flex-wrap: wrap; align-items: center; gap: .75rem;

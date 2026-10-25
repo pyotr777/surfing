@@ -44,7 +44,7 @@ print('    </nav>')
 
 # All language twins sit in the same directory, so a bare file name is enough.
 print('    <nav class="languages" aria-label="' + ui["languages"] + '">')
-for target_lang in S.LANGS:
+for target_lang in ("ja", "ru", "en"):
     target_file = os.path.join(pagedir, S.local_name(page_file, target_lang))
     if not os.path.exists(target_file):
         continue
