@@ -2,6 +2,8 @@
 _*.*
 surfing
 !**/_include
+!rawsite/.bluesky/
+!rawsite/.bluesky/**
 !.github/
 !.github/workflows/
 !.github/workflows/deploy-pages.yml

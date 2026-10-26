@@ -83,9 +83,10 @@ comments for another spot, add a `bluesky` entry to its `SPOT_DETAILS` record in
 ```
 
 The shared spot template handles the rest. `hours` is optional (default: 72);
-48 means the last two days, and 0 means all time. `exclude_dids` is an optional
-list of accounts whose branches should be omitted. All language versions use
+48 means the last two days, and 0 means all time. All language versions use
 the same post; interface language comes from the page, comments are not translated.
+Accounts whose branches should be hidden across every spot are listed once in
+`BLUESKY_BLOCKED_DIDS` in `rawsite/_include/sitedata.py`.
 
 For an ordinary static HTML page, one script tag at the desired position is enough:
 
@@ -96,8 +97,9 @@ For an ordinary static HTML page, one script tag at the desired position is enou
 ```
 
 Use the appropriate relative path to `js/`. Omit `data-bluesky-hours` for 72 hours.
-Optional `data-bluesky-exclude` accepts space-separated DIDs. No CSS link or
-separate form markup is needed: the single bundle contains styles, the component,
+`data-bluesky-exclude` accepts space-separated DIDs when the component is embedded
+without the shared spot template. No CSS link or separate form markup is needed:
+the single bundle contains styles, the component,
 and the official OAuth client. It is loaded only on pages with comments (and the
 shared OAuth callback page). No CDN JavaScript or backend is needed.
 
@@ -139,15 +141,18 @@ and do not publish real replies.
 
 ### Maintaining the JavaScript
 
-Editable sources are in `src/bluesky-*.js` and `src/bluesky-comments.css`.
+All Bluesky development files are kept together under the hidden
+`rawsite/.bluesky/` directory. Panehe skips hidden directories, so sources,
+tests and installed Node.js dependencies are never copied to the published site.
+Editable sources are in `rawsite/.bluesky/src/`.
 `rawsite/js/bluesky-comments.js` is a committed, self-contained generated bundle.
 Normal Panehe builds just copy it and need no Node.js or network access.
 To change it, use Node.js 22 or newer:
 
 ```bash
-npm ci
-npm run build:comments
-npm run test:comments
+npm --prefix rawsite/.bluesky ci
+npm --prefix rawsite/.bluesky run build:comments
+npm --prefix rawsite/.bluesky run test:comments
 ```
 
 The OAuth dependency currently has a transitive Zod advisory

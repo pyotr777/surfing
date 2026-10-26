@@ -1,6 +1,6 @@
 import { safeReturn, validateReply } from './bluesky-core.js';
 import { BrowserOAuthClient, buildAtprotoLoopbackClientMetadata } from '@atproto/oauth-client-browser';
-import metadata from '../rawsite/bluesky-client-metadata.json';
+import metadata from '../../bluesky-client-metadata.json';
 
 // Keep untrusted discovery documents small before the SDK validates them.
 export function checkDocument(value, budget = { nodes: 5000 }) {

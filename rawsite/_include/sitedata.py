@@ -1156,7 +1156,8 @@ SPOT_FACT_TRANSLATIONS = {
                     "chest to shoulder high": "по грудь — по плечи",
                     "waist to chest high": "по пояс — по грудь",
                     "Popular, with room to choose a peak": "Популярно, но можно выбрать пик",
-                    "Usually quieter than nearby named peaks": "Обычно спокойнее, чем на ближайших известных пиках",
+                    "Usually quieter than nearby spots": "Обычно спокойнее, чем на ближайших спотах",
+                    "Crowded when conditions are good, especially on holidays": "Многолюдно, когда условия хорошие, особенно в праздники",
                     "longboard": "лонгборд",
                     "longboard, funboard": "лонгборд, фанборд",
                     "shortboard": "шортборд",
@@ -1206,7 +1207,8 @@ SPOT_FACT_TRANSLATIONS = {
                     "chest to shoulder high": "ムネ〜カタ",
                     "waist to chest high": "コシ〜ムネ",
                     "Popular, with room to choose a peak": "人気はあるがピークを選べる",
-                    "Usually quieter than nearby named peaks": "近くの有名なピークより比較的落ち着く",
+                    "Usually quieter than nearby spots": "普段は近くのスポットより比較的落ち着いている",
+                    "Crowded when conditions are good, especially on holidays": "コンディションが良いと混雑しやすく、休日は特に混む",
                     "longboard": "ロングボード",
                     "longboard, funboard": "ロングボード、ファンボード",
                     "shortboard": "ショートボード",
@@ -1227,6 +1229,9 @@ def localized_spot_facts(rows, lang):
     return [(translation["labels"][label], translation["values"][value]) for label, value in rows]
 
 
+# Accounts whose entire reply branches are hidden from every Bluesky discussion.
+BLUESKY_BLOCKED_DIDS = []
+
 SPOT_DETAILS = {
     "mansionsita":
         {
@@ -1234,7 +1239,6 @@ SPOT_DETAILS = {
             "bluesky": {
                 "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mypagtfack22",
                 "hours": 72,
-                "exclude_dids": [],
             },
             "area": "asahi",
             "title": {
@@ -1305,13 +1309,11 @@ SPOT_DETAILS = {
             "bluesky": {
                 "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mypdpqpjrc25",
                 "hours": 72,
-                "exclude_dids": [],
             }
         },
     "shoppumae":
         {
-            "area":
-                "asahi",
+            "area": "asahi",
             "title": {
                 "en": "Shoppumae",
                 "ru": "Сёппумаэ",
@@ -1341,6 +1343,160 @@ SPOT_DETAILS = {
                     ("Min. Level", "intermediate"),
                     ("Working tide", "medium to high"),
                     ("Best board", "shortboard, funboard"),
+                ],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3myrp3co3x22b",
+                "hours": 72,
+            }
+        },
+    "kanpomae":
+        {
+            "area": "asahi",
+            "title": {
+                "en": "Kanpomae",
+                "ru": "Канпомаэ",
+                "ja": "かんぽ前",
+            },
+            "summary":
+                {
+                    "en": "A mellow, shallow beach break that stays surfable on smaller days and suits a range of boards.",
+                    "ru": "Мягкий пологий бич-брейк: здесь можно кататься и в небольшой день, а выбор досок широк.",
+                    "ja": "小波の日でもサーフしやすく、幅広いボードで楽しめる遠浅なビーチブレイク。",
+                },
+            "description":
+                {
+                    "en":
+                        "Kanpomae, also known as Nakayarihama, is an open sandy beach facing south-south-east. East through south swell reaches the shallow banks, where smaller days tend to be mellow and forgiving enough for longer boards. Once the surf rises above head high, the peaks can become wide and close out more often. The line-up can be busy and has a local character, so watch the break first, follow the established order, and give people space. Check the rightward current when the swell has size.",
+                    "ru":
+                        "Канпомаэ, также известный как Накаярихама, — открытый песчаный пляж, обращённый на юго-юго-восток. Свелл с востока до юга приходит к пологим банкам; в небольшой день волна здесь обычно мягкая и подходит для длинных досок. При размере выше головы пики становятся шире и чаще закрываются. В лайн-апе бывает многолюдно, а у места выраженный локальный характер: сначала понаблюдайте за волной, соблюдайте порядок и оставляйте другим пространство. При большом свелле следите за течением вправо.",
+                    "ja":
+                        "かんぽ前は中谷里浜とも呼ばれる、南南東に開いた砂浜です。東〜南うねりが遠浅のバンクに入り、小さい日は厚く穏やかな波になりやすいため、長めのボードにも合います。頭を超えるサイズではピークがワイドになり、クローズアウトも増えます。ラインナップは混みやすくローカル色もあるため、入水前に波を観察し、順番を守って周囲に十分なスペースを譲りましょう。サイズがある日は右へのカレントにも注意が必要です。",
+                },
+            "amenities": ["parking", "restroom"],
+            "facts":
+                [
+                    ("Area", "Chiba North · Asahi"),
+                    ("Break", "shallow beach break"),
+                    ("Bottom", "Sand"),
+                    ("Level", "beginner to advanced, depending on conditions"),
+                    ("Season", "autumn–winter"),
+                    ("Best size", "waist to chest high"),
+                    ("Best board", "longboard, funboard, shortboard"),
+                ],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3myrpj5thns2i",
+                "hours": 72,
+            }
+        },
+    "nodehama":
+        {
+            "area": "sosa",
+            "title": {
+                "en": "Nodehama",
+                "ru": "Нодэхама",
+                "ja": "野手浜",
+            },
+            "summary":
+                {
+                    "en": "A mellow, shallow beach break in Sosa that stays surfable on smaller south-east swell.",
+                    "ru": "Мягкий пологий бич-брейк в Сосе, где можно кататься и при небольшом юго-восточном свелле.",
+                    "ja": "南東うねりの小波の日でもサーフしやすい、匝瑳の遠浅なビーチブレイク。",
+                },
+            "description":
+                {
+                    "en":
+                        "Nodehama is an open sandy beach facing south-east. It responds to swell from north-east through south-south-west and often has manageable waves even on smaller days. The gently sloping seabed makes the wave soft, with shoulders that do not always stand up strongly, so it is a relaxed option for beginners and longboards. Waist- to chest-high surf is the usual sweet spot; when the waves rise above head high, the peaks can become wide and close out. Check the banks and current before paddling out, and give other surfers room in the line-up.",
+                    "ru":
+                        "Нодэхама — открытый песчаный пляж, обращённый на юго-восток. Он принимает свелл от северо-востока до юго-юго-запада и часто даёт управляемые волны даже в небольшой день. Пологий рельеф дна делает волну мягкой, а плечо не всегда встаёт круто, поэтому место подходит начинающим и лонгбордам. Лучшее окно обычно от пояса до груди; при размере выше головы пики становятся широкими и чаще закрываются. Перед выходом проверьте банки и течение и оставляйте другим место в лайн-апе.",
+                    "ja":
+                        "野手浜は南東に開いた砂浜です。北東〜南南西のうねりに反応し、小波の日でも楽しみやすいポイントです。遠浅の地形で波は厚め、ショルダーも張りにくいため、初級者やロングボードにも向きます。コシ〜ムネ程度が狙い目で、頭を超えるとピークはワイドになりクローズアウトが増えます。入水前にバンクとカレントを確認し、ラインナップでは周囲にスペースを譲りましょう。",
+                },
+            "amenities": [],
+            "facts":
+                [
+                    ("Area", "Chiba North · Sosa"),
+                    ("Break", "shallow beach break"),
+                    ("Bottom", "Sand"),
+                    ("Level", "beginner to advanced, depending on conditions"),
+                    ("Best size", "waist to chest high"),
+                    ("Best board", "longboard, funboard, shortboard"),
+                ],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3myrqsyhvbs2i",
+                "hours": 72,
+            }
+        },
+    "horikawa":
+        {
+            "area": "sosa",
+            "title": {
+                "en": "Horikawa",
+                "ru": "Хорикава",
+                "ja": "堀川",
+            },
+            "summary":
+                {
+                    "en": "A mellow, shallow beach break in southern Sosa that works well on smaller south-east swell.",
+                    "ru": "Мягкий пологий бич-брейк на юге Сосы, хорошо работающий при небольшом юго-восточном свелле.",
+                    "ja": "南東うねりの小波の日でも楽しみやすい、匝瑳南部の遠浅なビーチブレイク。",
+                },
+            "description":
+                {
+                    "en":
+                        "Horikawa (also called Horikawahama) is an open sandy beach facing south-east. It responds to swell from north-east through south-south-west and can offer a gentle, manageable wave when other nearby breaks are small. The seabed shelves gradually, so the wave is usually soft rather than steep and is friendly to beginners and longer boards. Waist- to chest-high surf is generally the most enjoyable; above head high, peaks tend to become wider and close out more often. Conditions can change along this open coast, so check the banks and current before entering.",
+                    "ru":
+                        "Хорикава, также известная как Хорикавахама, — открытый песчаный пляж, обращённый на юго-восток. Он принимает свелл от северо-востока до юго-юго-запада и может давать мягкую, управляемую волну, когда соседние брейки малы. Дно понижается плавно, поэтому волна обычно не крутая и подходит начинающим и более длинным доскам. Лучше всего обычно от пояса до груди; при размере выше головы пики расширяются и чаще закрываются. На этом открытом берегу условия быстро меняются, поэтому перед входом проверьте банки и течение.",
+                    "ja":
+                        "堀川（堀川浜とも呼ばれます）は南東に開いた砂浜です。北東〜南南西のうねりに反応し、周辺が小さい日にも厚く扱いやすい波が期待できます。海底は遠浅で、波は急というより穏やかになりやすく、初級者や長めのボードにも向きます。コシ〜ムネ程度が楽しみやすく、頭を超えるとピークはワイドになりクローズアウトが増えます。開けた海岸なので、入水前にバンクとカレントを確認しましょう。",
+                },
+            "amenities": ["parking", "shower", "restroom"],
+            "facts":
+                [
+                    ("Area", "Chiba North · Sosa"),
+                    ("Break", "shallow beach break"),
+                    ("Bottom", "Sand"),
+                    ("Level", "beginner to advanced, depending on conditions"),
+                    ("Best size", "waist to chest high"),
+                    ("Best board", "longboard, funboard, shortboard"),
+                ],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3myrqvjxsfs2i",
+                "hours": 72,
+            }
+        },
+    "motosuka":
+        {
+            "area":
+                "sakuta",
+            "title": {
+                "en": "Motosuka",
+                "ru": "Мотоска",
+                "ja": "本須賀",
+            },
+            "summary":
+                {
+                    "en": "A quiet, open section of Kujukuri with evenly spaced sandy peaks and room to practise away from the busier breaks.",
+                    "ru": "Спокойный открытый участок Кудзюкури с ровно распределёнными песчаными пиками и местом для практики вдали от самых людных брейков.",
+                    "ja": "砂のピークが均等に並ぶ、九十九里の静かで開けた区間。混むポイントから離れて練習する余地があります。",
+                },
+            "description":
+                {
+                    "en":
+                        "Motosuka is an open sandy section of the Kujukuri coast with few fixed landmarks, so the best take-off moves with the banks and tide. North-east to east swell reaches the beach directly and usually produces smaller, manageable waves outside larger systems. There are no wind protection in the form of breakwaters, so crosshore winds can ruin the surface.",
+                    "ru":
+                        "Мотоска — открытый песчаный участок Кудзюкури почти без постоянных ориентиров, поэтому лучший тейк-офф перемещается вместе с банками и приливом. Свелл с северо-востока и востока приходит сюда напрямую и вне крупных свеллов обычно даёт небольшие волны.  Нет защиты от ветра в виде молов, поэтому боковой ветер может испортить поверхность.",
+                    "ja":
+                        "本須賀は、固定された目印が少ない九十九里の開けた砂浜です。良いテイクオフはバンクと潮位に合わせて動きます。北東〜東うねりが直接入り、大きなうねりがない日は扱いやすい小さめの波になりやすい場所です。防波堤のような風よけがないため、風の影響を受けやすいです。",
+                },
+            "amenities": ["parking", "shower", "restroom"],
+            "facts":
+                [
+                    ("Area", "Chiba North · Sakuta"),
+                    ("Break", "open beach break"),
+                    ("Bottom", "Sand"),
+                    ("Level", "beginner to intermediate"),
+                    ("Crowds", "Usually quieter than nearby spots"),
+                    ("Best board", "shortboard, funboard, longboard"),
                 ],
         },
     "sakuta":
@@ -1378,145 +1534,52 @@ SPOT_DETAILS = {
                     ("Best board", "shortboard, funboard, longboard"),
                 ],
         },
-    "motosuka":
+    "katagai-gyokou":
         {
             "area":
                 "sakuta",
             "title": {
-                "en": "Motosuka",
-                "ru": "Мотоска",
-                "ja": "本須賀",
+                "en": "Katagai Gyokou",
+                "ru": "Катагай-гёко",
+                "ja": "片貝漁港",
             },
             "summary":
                 {
-                    "en": "A quiet, open section of Kujukuri with evenly spaced sandy peaks and room to practise away from the busier breaks.",
-                    "ru": "Спокойный открытый участок Кудзюкури с ровно распределёнными песчаными пиками и местом для практики вдали от самых людных брейков.",
-                    "ja": "砂のピークが均等に並ぶ、九十九里の静かで開けた区間。混むポイントから離れて練習する余地があります。",
+                    "en": "A sheltered, gently shelving longboard break between two long breakwaters.",
+                    "ru": "Защищённый пологий бич-брейк между двумя длинными молами, ориентированный прежде всего на лонгборд.",
+                    "ja": "二本の長い堤防に挟まれた、遠浅でロングボード向きのビーチブレイク。",
                 },
             "description":
                 {
                     "en":
-                        "Motosuka is an open sandy section of the Kujukuri coast with few fixed landmarks, so the best take-off moves with the banks and tide. North-east to east swell reaches the beach directly and usually produces smaller, manageable waves outside larger systems. The open coast gives more space than the named peaks nearby, but it also means currents can change after a swell. Look for a defined peak and a safe channel before paddling out.",
+                        """
+                        <p>This stretch of sandy beach sits between two long moles, helping to keep its gently shelving bottom more even than at exposed spots. When the swell arrives at an angle from the north or south, it can produce long, mellow waves. A straight easterly swell often produces wide, fast-closing waves and closeouts.</p>
+                        <p>The moles also provide shelter from cross-shore winds, so the surface often stays cleaner than at nearby exposed breaks. Katagai Gyokou is primarily a longboard spot, though it can also suit beginners when the waves are small.</p>
+                        <p>The main drawback is the distance from the designated parking area. Driving into or parking inside the fishing port is prohibited; use the car park on the Katagai Shintei side.</p>
+                        """,
                     "ru":
-                        "Мотоска — открытый песчаный участок Кудзюкури почти без постоянных ориентиров, поэтому лучший тейк-офф перемещается вместе с банками и приливом. Свелл с северо-востока и востока приходит сюда напрямую и вне крупных свеллов обычно даёт небольшие, контролируемые волны. Открытый берег даёт больше пространства, чем ближайшие известные пики, но после свелла течения могут меняться. Перед выходом найдите выраженный пик и безопасный канал.",
+                        """
+                        <p>Этот участок песчаного пляжа расположен между двумя длинными молами, благодаря чему пологое дно здесь обычно остаётся более равномерным, чем на открытых спотах. При свелле, приходящем под углом с севера или юга, могут образовываться мягкие длинные волны. Прямой восточный свелл часто формирует широкие, быстро закрывающиеся волны и клоуз-ауты.</p>
+                        <p>Молы защищают спот от бокового ветра, поэтому поверхность здесь нередко остаётся чище, чем на соседних открытых участках. Катагай-гёко подходит прежде всего для лонгборда, а при небольших волнах — и для начинающих.</p>
+                        <p>Главный минус спота — удалённость от разрешённой парковки. Въезд и парковка на территории рыболовного порта запрещены: машину следует оставлять на парковке со стороны Катагай-Синтэй.</p>
+                        """,
                     "ja":
-                        "本須賀は、固定された目印が少ない九十九里の開けた砂浜です。良いテイクオフはバンクと潮位に合わせて動きます。北東〜東うねりが直接入り、大きなうねりがない日は扱いやすい小さめの波になりやすい場所です。近くの名前のあるピークより余裕がありますが、ストームの後はカレントも変わります。入水前に形のよいピークと安全なチャンネルを探しましょう。",
+                        """
+                        <p>北側と南側の長い堤防に挟まれた砂浜で、開けたポイントに比べ、遠浅の海底地形が比較的均一です。北または南に振れたうねりが入ると、メローでロングライドしやすい波になることがあります。東うねりが正面から入ると、ワイドで速くつながる波やダンパーになりがちです。</p>
+
+                        <p>堤防がサイドショアを遮るため、周辺の開けたポイントより面が整いやすいのも特徴です。片貝漁港は主にロングボード向きで、スモールコンディションならビギナーにも適しています。</p>
+                        <p>難点は、利用可能な駐車場からポイントまで距離があることです。漁港内への一般車両の進入・駐車は禁止されているため、片貝新堤側の駐車場を利用してください。</p>
+                        """,
                 },
-            "amenities": ["parking", "shower", "restroom"],
+            "amenities": ["paid_parking", "shower", "restroom"],
             "facts":
                 [
-                    ("Area", "Chiba North · Sakuta"),
-                    ("Break", "open beach break"),
+                    ("Area", "Chiba North · Kujukuri"),
+                    ("Break", "shallow beach break"),
                     ("Bottom", "Sand"),
                     ("Level", "beginner to intermediate"),
-                    ("Crowds", "Usually quieter than nearby named peaks"),
-                    ("Best board", "shortboard, funboard, longboard"),
-                ],
-        },
-    "kanpomae":
-        {
-            "area":
-                "asahi",
-            "title": {
-                "en": "Kanpomae",
-                "ru": "Канпомаэ",
-                "ja": "かんぽ前",
-            },
-            "summary":
-                {
-                    "en": "A mellow, shallow beach break that stays surfable on smaller days and suits a range of boards.",
-                    "ru": "Мягкий пологий бич-брейк: здесь можно кататься и в небольшой день, а выбор досок широк.",
-                    "ja": "小波の日でもサーフしやすく、幅広いボードで楽しめる遠浅なビーチブレイク。",
-                },
-            "description":
-                {
-                    "en":
-                        "Kanpomae, also known as Nakayarihama, is an open sandy beach facing south-south-east. East through south swell reaches the shallow banks, where smaller days tend to be mellow and forgiving enough for longer boards. Once the surf rises above head high, the peaks can become wide and close out more often. The line-up can be busy and has a local character, so watch the break first, follow the established order, and give people space. Check the rightward current when the swell has size.",
-                    "ru":
-                        "Канпомаэ, также известный как Накаярихама, — открытый песчаный пляж, обращённый на юго-юго-восток. Свелл с востока до юга приходит к пологим банкам; в небольшой день волна здесь обычно мягкая и подходит для длинных досок. При размере выше головы пики становятся шире и чаще закрываются. В лайн-апе бывает многолюдно, а у места выраженный локальный характер: сначала понаблюдайте за волной, соблюдайте порядок и оставляйте другим пространство. При большом свелле следите за течением вправо.",
-                    "ja":
-                        "かんぽ前は中谷里浜とも呼ばれる、南南東に開いた砂浜です。東〜南うねりが遠浅のバンクに入り、小さい日は厚く穏やかな波になりやすいため、長めのボードにも合います。頭を超えるサイズではピークがワイドになり、クローズアウトも増えます。ラインナップは混みやすくローカル色もあるため、入水前に波を観察し、順番を守って周囲に十分なスペースを譲りましょう。サイズがある日は右へのカレントにも注意が必要です。",
-                },
-            "amenities": ["parking", "restroom"],
-            "facts":
-                [
-                    ("Area", "Chiba North · Asahi"),
-                    ("Break", "shallow beach break"),
-                    ("Bottom", "Sand"),
-                    ("Level", "beginner to advanced, depending on conditions"),
-                    ("Season", "autumn–winter"),
-                    ("Best size", "waist to chest high"),
-                    ("Best board", "longboard, funboard, shortboard"),
-                ],
-        },
-    "nodehama":
-        {
-            "area":
-                "sosa",
-            "title": {
-                "en": "Nodehama",
-                "ru": "Нодэхама",
-                "ja": "野手浜",
-            },
-            "summary":
-                {
-                    "en": "A mellow, shallow beach break in Sosa that stays surfable on smaller south-east swell.",
-                    "ru": "Мягкий пологий бич-брейк в Сосе, где можно кататься и при небольшом юго-восточном свелле.",
-                    "ja": "南東うねりの小波の日でもサーフしやすい、匝瑳の遠浅なビーチブレイク。",
-                },
-            "description":
-                {
-                    "en":
-                        "Nodehama is an open sandy beach facing south-east. It responds to swell from north-east through south-south-west and often has manageable waves even on smaller days. The gently sloping seabed makes the wave soft, with shoulders that do not always stand up strongly, so it is a relaxed option for beginners and longboards. Waist- to chest-high surf is the usual sweet spot; when the waves rise above head high, the peaks can become wide and close out. Check the banks and current before paddling out, and give other surfers room in the line-up.",
-                    "ru":
-                        "Нодэхама — открытый песчаный пляж, обращённый на юго-восток. Он принимает свелл от северо-востока до юго-юго-запада и часто даёт управляемые волны даже в небольшой день. Пологий рельеф дна делает волну мягкой, а плечо не всегда встаёт круто, поэтому место подходит начинающим и лонгбордам. Лучшее окно обычно от пояса до груди; при размере выше головы пики становятся широкими и чаще закрываются. Перед выходом проверьте банки и течение и оставляйте другим место в лайн-апе.",
-                    "ja":
-                        "野手浜は南東に開いた砂浜です。北東〜南南西のうねりに反応し、小波の日でも楽しみやすいポイントです。遠浅の地形で波は厚め、ショルダーも張りにくいため、初級者やロングボードにも向きます。コシ〜ムネ程度が狙い目で、頭を超えるとピークはワイドになりクローズアウトが増えます。入水前にバンクとカレントを確認し、ラインナップでは周囲にスペースを譲りましょう。",
-                },
-            "amenities": [],
-            "facts":
-                [
-                    ("Area", "Chiba North · Sosa"),
-                    ("Break", "shallow beach break"),
-                    ("Bottom", "Sand"),
-                    ("Level", "beginner to advanced, depending on conditions"),
-                    ("Best size", "waist to chest high"),
-                    ("Best board", "longboard, funboard, shortboard"),
-                ],
-        },
-    "horikawa":
-        {
-            "area":
-                "sosa",
-            "title": {
-                "en": "Horikawa",
-                "ru": "Хорикава",
-                "ja": "堀川",
-            },
-            "summary":
-                {
-                    "en": "A mellow, shallow beach break in southern Sosa that works well on smaller south-east swell.",
-                    "ru": "Мягкий пологий бич-брейк на юге Сосы, хорошо работающий при небольшом юго-восточном свелле.",
-                    "ja": "南東うねりの小波の日でも楽しみやすい、匝瑳南部の遠浅なビーチブレイク。",
-                },
-            "description":
-                {
-                    "en":
-                        "Horikawa (also called Horikawahama) is an open sandy beach facing south-east. It responds to swell from north-east through south-south-west and can offer a gentle, manageable wave when other nearby breaks are small. The seabed shelves gradually, so the wave is usually soft rather than steep and is friendly to beginners and longer boards. Waist- to chest-high surf is generally the most enjoyable; above head high, peaks tend to become wider and close out more often. Conditions can change along this open coast, so check the banks and current before entering.",
-                    "ru":
-                        "Хорикава, также известная как Хорикавахама, — открытый песчаный пляж, обращённый на юго-восток. Он принимает свелл от северо-востока до юго-юго-запада и может давать мягкую, управляемую волну, когда соседние брейки малы. Дно понижается плавно, поэтому волна обычно не крутая и подходит начинающим и более длинным доскам. Лучше всего обычно от пояса до груди; при размере выше головы пики расширяются и чаще закрываются. На этом открытом берегу условия быстро меняются, поэтому перед входом проверьте банки и течение.",
-                    "ja":
-                        "堀川（堀川浜とも呼ばれます）は南東に開いた砂浜です。北東〜南南西のうねりに反応し、周辺が小さい日にも厚く扱いやすい波が期待できます。海底は遠浅で、波は急というより穏やかになりやすく、初級者や長めのボードにも向きます。コシ〜ムネ程度が楽しみやすく、頭を超えるとピークはワイドになりクローズアウトが増えます。開けた海岸なので、入水前にバンクとカレントを確認しましょう。",
-                },
-            "amenities": [],
-            "facts":
-                [
-                    ("Area", "Chiba North · Sosa"),
-                    ("Break", "shallow beach break"),
-                    ("Bottom", "Sand"),
-                    ("Level", "beginner to advanced, depending on conditions"),
-                    ("Best size", "waist to chest high"),
-                    ("Best board", "longboard, funboard, shortboard"),
+                    ("Crowds", "Crowded when conditions are good, especially on holidays"),
+                    ("Best board", "longboard"),
                 ],
         },
     "ichinomiya":
@@ -1919,6 +1982,14 @@ AREA_MAPS = {
                         "ru": "Мотоска (本須賀)",
                         "ja": "本須賀",
                     },
+                    {
+                        "id": "katagai-gyokou",
+                        "coordinates": (35.534475, 140.461475),
+                        "url": "katagai-gyokou/index.html",
+                        "en": "Katagai-gyokou (片貝漁港)",
+                        "ru": "Катагай-гёко (片貝漁港)",
+                        "ja": "片貝漁港",
+                    },
                 ],
         },
     "ichinomiya":
@@ -2001,7 +2072,7 @@ AREA_MAPS = {
 # Individual spot map settings. The spot marker comes from AREA_MAPS above.
 # Set "center" to override the initial map center; "amenities" maps an
 # English amenity key to either one (latitude, longitude) coordinate or a list
-# of coordinates. Map points are independent of the spot's amenities list;
+# of coordinates. Map points are independent of the spot card's amenities list;
 # distant facilities can appear only on the map.
 SPOT_MAPS = {
     "shingosita": {
@@ -2038,12 +2109,17 @@ SPOT_MAPS = {
     },
     "nodehama": {
         "zoom": 16,
-        "amenities": {},
     },
-    "horikawa": {
-        "zoom": 16,
-        "amenities": {},
-    },
+    "horikawa":
+        {
+            "zoom": 16,
+            "amenities":
+                {
+                    "restroom": (35.63544448765501, 140.56805614571354),
+                    "shower": (35.63544448765501, 140.56805614571354),
+                    "parking": (35.63558078986152, 140.56813542541934),
+                },
+        },
     "sakuta": {
         "zoom": 17,
         "amenities": {
@@ -2063,6 +2139,16 @@ SPOT_MAPS = {
                         (35.551446, 140.470238),
                         (35.550054, 140.469037),
                     ]
+                }
+        },
+    "katagai-gyokou":
+        {
+            "zoom": 17,
+            "amenities":
+                {
+                    "restroom": (35.532770905049816, 140.45410860259494),
+                    "shower": (35.532770905049816, 140.45410860259494),
+                    "paid_parking": (35.53179848999983, 140.45300578018222),
                 }
         },
     "ichinomiya":

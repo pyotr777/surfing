@@ -56,8 +56,12 @@ SPOT_DIRECTIONS = {
         "wind": "WSW-NW"
     },
     "motosuka": {
-        "swell": "NE-E",
-        "wind": "W-NW"
+        "swell": "NE-S",
+        "wind": "WSW-NW"
+    },
+    "katagai-gyokou": {
+        "swell": "NE-S",
+        "wind": "SSW-NNE"
     },
     "ichinomiya": {
         "swell": "NNE-SSE",
