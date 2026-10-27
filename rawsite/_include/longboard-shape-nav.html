@@ -5,10 +5,11 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+import longboard_content as L
 
 lang = S.lang_of(page_file)
 b = S.base_url(page_file)
-shapes = S.LONGBOARD_SHAPES
+shapes = list(L.LONGBOARDS.values())
 shape_id = params["shape"]
 ids = [item["id"] for item in shapes]
 i = ids.index(shape_id)

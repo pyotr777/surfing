@@ -1,0 +1,23 @@
+<script type="text/python">
+import html
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+lang = S.lang_of(page_file)
+title, alt, caption = {
+'en': ('Outline, rocker and nose concave', 'Schematic noserider seen from above, side profile with raised tail, and an exaggerated cross-section showing nose concave.', 'One example: a broad nose and full tail provide area for walking; a relatively flat middle and raised tail illustrate one rocker approach. The lower cross-section exaggerates a nose concave. These are schematic, not a specification for every noserider.'),
+'ru': ('Форма, рокер и носовой конкейв', 'Схема нозрайдера сверху, профиль с приподнятым хвостом и увеличенное поперечное сечение носового конкейва.', 'Один из вариантов: широкий нос и полный тейл дают площадь для перемещения; относительно плоская середина и приподнятый хвост показывают один подход к рокеру. Внизу для наглядности увеличено сечение носового конкейва. Это схема, а не обязательные параметры всех нозрайдеров.'),
+'ja': ('アウトライン、ロッカー、ノーズコンケーブ', '上から見たノーズライダー、テールの上がった側面、ノーズコンケーブを強調した断面の模式図。', '一例として、幅広いノーズとテールは歩くための面積を確保し、平坦に近い中央と上がったテールはロッカーの一つの考え方を示します。下の断面はノーズコンケーブを強調しています。すべてのモデルに共通する寸法ではありません。'),
+}[lang]
+print('<div class="performance-design-diagrams"><figure class="performance-design-diagram">')
+print(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 540" role="img" aria-label="{html.escape(alt, quote=True)}" style="display:block;width:100%;height:auto;background:#f5eddb">')
+print('<g fill="#e0cfad" stroke="#51402f" stroke-width="4" stroke-linejoin="round">')
+# Nose is left, tail right. Both outlines and contours are illustrative.
+print('<path d="M105 90 C105 50 175 35 290 35 L710 35 C786 35 858 42 900 51 Q910 90 900 129 C858 138 786 145 710 145 L290 145 C175 145 105 130 105 90 Z"/>')
+print('<path d="M95 270 C245 293 382 303 520 304 C690 306 815 300 925 263 Q933 261 931 269 C816 315 690 326 520 325 C369 324 220 317 94 279 Q89 274 95 270 Z"/>')
+print('<path d="M355 459 Q512 420 669 459 Q680 464 669 471 Q610 464 565 474 Q512 489 459 474 Q414 464 355 471 Q344 464 355 459 Z"/>')
+print('</g><path d="M108 90 H905" stroke="#9c7e57" stroke-width="2"/><path d="M85 325 H940 M335 480 H690" stroke="#9b8a72" stroke-width="2" stroke-dasharray="7 6"/>')
+print('</svg>')
+print(f'<figcaption><strong>{html.escape(title)}</strong><span>{html.escape(caption)}</span></figcaption></figure></div>')
+</script>

@@ -5,16 +5,17 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+import longboard_content as L
 
 lang = S.lang_of(page_file)
 b = S.base_url(page_file)
 
 print('<div class="cards cards--longboard-shapes">')
-for shape in S.LONGBOARD_SHAPES:
+for shape in L.LONGBOARDS.values():
     meta = shape[lang]
     print(f'  <article class="card" id="{shape["id"]}">')
     print('    <div class="card-media">')
-    print(f'      <img class="card-longboard-shape" src="{b}img/longboard-shapes/{shape["id"]}.png" '
+    print(f'      <img class="card-longboard-shape" src="{b}img/longboard-shapes/{shape["image"]}.png" '
           f'alt="{meta["title"]}" width="1024" height="1536" loading="lazy">')
     print('    </div>')
     print('    <div class="card-body">')

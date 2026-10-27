@@ -2,21 +2,64 @@
 # Localized detail view for one longboard outline family.
 import os
 import sys
+import re
+from html import escape, unescape
+from urllib.parse import urlsplit, urlunsplit
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+import longboard_content as L
 
 lang = S.lang_of(page_file)
 b = S.base_url(page_file)
 shape_id = params["shape"]
-shape = next(item for item in S.LONGBOARD_SHAPES if item["id"] == shape_id)
+shape = L.LONGBOARDS[shape_id]
 meta = shape[lang]
-detail = S.LONGBOARD_SHAPE_DETAILS[shape_id][lang]
+image_id = shape["image"]
+detail = meta
 labels = {
     "en": ("Reference models", "Core design features", "Best suited to", "Things to consider"),
     "ru": ("Модели-ориентиры", "Основные черты дизайна", "Где доска особенно хороша", "Что учитывать"),
     "ja": ("代表的なモデル", "デザインの主な特徴", "向いている波とスタイル", "知っておきたいこと"),
 }[lang]
+
+def unique_model_links(content):
+    # Each model is a separate reference: keep the first link to an external
+    # page, but omit repeated source labels linking to that same page.
+    seen = set()
+    def keep_first(match):
+        url = unescape(match.group(1))
+        parts = urlsplit(url)
+        key = urlunsplit((parts.scheme.lower(), parts.netloc.lower(), parts.path.rstrip('/'), parts.query, parts.fragment))
+        if key in seen:
+            return ''
+        seen.add(key)
+        return match.group(0)
+    return re.sub(r'<a\s+href="([^"]+)"[^>]*>.*?</a>', keep_first, content, flags=re.DOTALL)
+
+def source_link(url, label):
+    return f'<a href="{escape(url, quote=True)}" target="_blank" rel="noopener noreferrer">{label}</a>'
+
+def model_html(model):
+    name = source_link(model["url"], model["name"])
+    content = f'{name} — {model["description"]}'
+    if "history" in model:
+        source_label = {"en": "source", "ru": "источник", "ja": "出典"}[lang]
+        history = f'{escape(model["history"])} {source_link(model["history_source"], source_label)}'
+        content += f' <span class="longboard-reference-history">{history}</span>'
+    size_label = {
+        "en": "Example dimensions (length × width × thickness)",
+        "ru": "Пример размера (длина × ширина × толщина)",
+        "ja": "サイズ例（長さ × 幅 × 厚さ）",
+    }[lang]
+    if lang == "ja":
+        dimensions = f'{size_label}：{model["dimensions"]}' + (f'、{model["volume"]}' if "volume" in model else '') + '。'
+    else:
+        dimensions = f'{size_label}: {model["dimensions"]}' + (f'; {model["volume"]}' if "volume" in model else '') + '.'
+    spec_label = {"en": "Specifications source", "ru": "Источник характеристик", "ja": "仕様の出典"}[lang]
+    spec = f'{escape(dimensions + " " + model["spec_notes"])} {source_link(model["spec_source"], spec_label)}'
+    content += f'<br><span class="longboard-reference-specs">{spec}</span>'
+    return unique_model_links(content)
 
 print(f'<p class="standfirst">{detail["lead"]}</p>')
 if "overview" in detail:
@@ -27,15 +70,15 @@ if "overview" in detail:
         print(f'  <h2>{labels[0]}</h2>')
         print('  <ul>')
         for model in detail["models"]:
-            print(f'    <li>{model}</li>')
+            print(f'    <li>{model_html(model)}</li>')
         print('  </ul>')
     print('</section>')
 print('<div class="longboard-shape-detail">')
 print('  <figure class="longboard-shape-detail-media">')
-print(f'    <img src="{b}img/longboard-shapes/{shape_id}.png" alt="{meta["title"]}" width="1024" height="1536">')
+print(f'    <img src="{b}img/longboard-shapes/{image_id}.png" alt="{meta["title"]}" width="1024" height="1536">')
 print('  </figure>')
 print('  <div class="longboard-shape-detail-copy">')
-offset = 1 if "overview" in detail else 0
+offset = 1
 print(f'    <section><h2>{labels[offset]}</h2><p>{detail["design"]}</p></section>')
 if shape_id == "performance":
     html, soup = include("longboard-performance-design-diagrams.html")

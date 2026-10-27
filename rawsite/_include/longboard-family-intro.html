@@ -1,0 +1,17 @@
+<script type="text/python">
+# Family overview, in the same order as the content file.
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+import longboard_content as L
+
+content = L.FAMILY[S.lang_of(page_file)]
+print(f'<h1>{content["title"]}</h1>')
+print(f'<p class="standfirst">{content["lead"]}</p>')
+print('<div class="spot-layout">')
+print('  <div class="spot-body">')
+for paragraph in content['overview']:
+    print(f'    <p>{paragraph}</p>')
+print('  </div>')
+</script>

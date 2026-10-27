@@ -1,0 +1,34 @@
+<script type="text/python">
+import html
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+lang = S.lang_of(page_file)
+shape = params["shape"]
+copy = {
+ 'classic': {
+  'en': ('Outline and rocker', 'Two classic outlines, one with a broad square tail and one with a tapered pin tail, above a low rocker profile.', 'A full nose and long parallel middle create a walking platform. A square tail retains area; a pin tail draws in. Below is one low central rocker with lifted ends. Shapes vary by model.'),
+  'ru': ('Форма и рокер', 'Два варианта классической доски: широкий square-tail и зауженный pintail; ниже профиль с невысоким рокером.', 'Широкий нос и длинная параллельная середина дают место для шагов. Square-tail сохраняет площадь, pintail сужается. Внизу — пример невысокого рокера с подъёмом концов. Формы различаются у разных моделей.'),
+  'ja': ('アウトラインとロッカー', '幅広いスクエアテールと絞ったピンテール、低いロッカーの例。', '幅広いノーズと平行に近い中央部は歩くための足場です。スクエアは幅を保ち、ピンは絞られます。下は中央が低く両端が上がるロッカーの一例です。形状はモデルにより異なります。')},
+ 'all-around': {
+  'en': ('Outline and rocker', 'An all-around outline with rounded nose, broad centre and tapered rounded-square tail, above a low to moderate rocker profile.', 'A rounded nose and broad middle support paddling and standing; the tapered tail leaves room for turns. Below is one low-to-moderate rocker with some tail lift. Other outlines and curves are possible.'),
+  'ru': ('Форма и рокер', 'Пример универсальной доски с округлым носом, широкой серединой и суженным rounded-square тейлом; ниже профиль с низким или умеренным рокером.', 'Округлый нос и широкая середина помогают грести и стоять, а сужение тейла облегчает поворот. Внизу — один из вариантов низкого или умеренного рокера с подъёмом хвоста. Возможны и другие формы и изгибы.'),
+  'ja': ('アウトラインとロッカー', '丸いノーズ、幅広い中央と絞ったテール、低めから中程度のロッカーの例。', '丸いノーズと広い中央はパドリングと立ち上がりを助け、絞ったテールはターンの余地を残します。下はテールが少し上がるロッカーの一例です。他の形状もあります。')},
+}[shape][lang]
+title, alt, caption = copy
+if shape == 'classic':
+    paths = '<path d="M85 86 C85 47 155 38 245 38 L390 38 C426 38 452 42 467 49 L467 123 C452 130 426 134 390 134 L245 134 C155 134 85 125 85 86 Z"/><path d="M525 86 C525 47 595 38 685 38 L775 38 C845 38 895 53 936 86 C895 119 845 134 775 134 L685 134 C595 134 525 125 525 86 Z"/>'
+    stringer = '<path d="M88 86 H464 M528 86 H933"/>'
+else:
+    paths = '<path d="M170 86 C170 48 235 39 350 39 C500 39 650 42 740 50 C793 55 831 65 848 72 Q855 86 848 100 C831 107 793 117 740 122 C650 130 500 133 350 133 C235 133 170 124 170 86 Z"/>'
+    stringer = '<path d="M173 86 H848"/>'
+print('<div class="performance-design-diagrams"><figure class="performance-design-diagram">')
+print(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 420" role="img" aria-label="{html.escape(alt, quote=True)}" style="display:block;width:100%;height:auto;background:#f5eddb">')
+print('<g fill="#e0cfad" stroke="#51402f" stroke-width="4" stroke-linejoin="round">' + paths + '</g>')
+print('<g stroke="#9c7e57" stroke-width="2">' + stringer + '</g>')
+print('<path d="M90 335 H934" stroke="#9b8a72" stroke-width="2" stroke-dasharray="7 6"/>')
+print('<path d="M100 284 C235 309 350 321 510 322 C665 323 790 310 924 282 Q933 281 930 289 C800 325 674 340 510 341 C352 341 223 327 96 293 Q91 289 100 284 Z" fill="#e0cfad" stroke="#51402f" stroke-width="4"/>')
+print('</svg>')
+print(f'<figcaption><strong>{html.escape(title)}</strong><span>{html.escape(caption)}</span></figcaption></figure></div>')
+</script>

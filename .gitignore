@@ -9,6 +9,5 @@ surfing
 !.github/workflows/deploy-pages.yml
 **/__pycache__/
 panehe.py
-
-
+rawsite/img/favicon-variants/
 node_modules/

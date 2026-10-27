@@ -16,6 +16,7 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+import longboard_content as L
 
 section = params["section"]
 lang = S.lang_of(page_file)
@@ -36,16 +37,21 @@ for path in sorted(glob.glob(pattern)):
     if meta("section") != section or meta("language") != lang:
         continue
 
-    h1 = soup.find("h1")
-    summary = meta("description")
-    if not summary:
-        first = soup.find("main").find("p") if soup.find("main") else soup.find("p")
-        summary = first.get_text().strip() if first else ""
-
     slug = os.path.basename(os.path.dirname(path))
+    if section == "gear" and slug == "longboard":
+        # The longboard family copy lives with its five board types.
+        title = L.FAMILY[lang]["title"]
+        summary = L.FAMILY[lang]["meta_description"]
+    else:
+        h1 = soup.find("h1")
+        title = h1.decode_contents().strip() if h1 else slug
+        summary = meta("description")
+        if not summary:
+            first = soup.find("main").find("p") if soup.find("main") else soup.find("p")
+            summary = first.get_text().strip() if first else ""
     entries.append({
         "url": b + f"{section}/{slug}/" + os.path.basename(path),
-        "title": h1.decode_contents().strip() if h1 else slug,
+        "title": title,
         "summary": summary,
         "tags": [t.strip() for t in meta("keywords").split(",") if t.strip()],
         "slug": slug,

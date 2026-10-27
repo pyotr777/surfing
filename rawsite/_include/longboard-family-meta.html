@@ -1,0 +1,12 @@
+<script type="text/python">
+import html
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sitedata as S
+import longboard_content as L
+
+content = L.FAMILY[S.lang_of(page_file)]
+print(f'<title>{html.escape(content["meta_title"])}</title>')
+print(f'<meta name="description" content="{html.escape(content["meta_description"], quote=True)}">')
+</script>

@@ -5,10 +5,12 @@
 html, soup = include("../../../_include/head.html")
 print(html)
 </script>
-  <title>クラシック / トラディショナル — ロングボードの形</title>
+<script type="text/python">
+html, soup = include("../../../_include/longboard-shape-meta.html", shape="classic")
+print(html)
+</script>
   <meta name="section" content="gear">
   <meta name="language" content="ja">
-  <meta name="description" content="落ち着いたトリム、流れるライン、伝統的なフットワークを楽しむロングボードです。">
   <meta name="keywords" content="board, high-volume, small-waves">
   <meta name="date" content="2026-10-12">
 </head>
@@ -20,11 +22,9 @@ print(html)
 
 <main id="main">
 <script type="text/python">
-html, soup = include("../../../_include/breadcrumbs.html", title="クラシック / トラディショナル")
+html, soup = include("../../../_include/longboard-shape-heading.html", shape="classic")
 print(html)
 </script>
-
-  <h1>クラシック / トラディショナル</h1>
 <script type="text/python">
 html, soup = include("../../../_include/longboard-shape-page.html", shape="classic")
 print(html)

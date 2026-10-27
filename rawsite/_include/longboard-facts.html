@@ -6,22 +6,19 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+import longboard_content as L
 
 lang = S.lang_of(page_file)
 ui = S.UI[lang]
-fins = {
-    "en": "Single · 2+1 · Thruster",
-    "ru": "Сингл · 2+1 · трёхплавниковая",
-    "ja": "シングル・2+1・スラスター",
-}[lang]
+facts = L.FAMILY[lang]["facts"]
 
 rows = [
-    (ui["board_length"], "8&prime;0&Prime;–12&prime;0&Prime;"),
-    (ui["board_width"], "21&Prime;–24&frac12;&Prime;"),
-    (ui["board_thickness"], "2&frac12;&Prime;–3&frac14;&Prime;"),
-    (ui["board_volume"], "55–120&nbsp;L"),
-    (ui["board_fins"], fins),
-    (ui["board_waves"], "1–6&nbsp;ft"),
+    (ui["board_length"], facts["length"]),
+    (ui["board_width"], facts["width"]),
+    (ui["board_thickness"], facts["thickness"]),
+    (ui["board_volume"], facts["volume"]),
+    (ui["board_fins"], facts["fins"]),
+    (ui["board_waves"], facts["waves"]),
 ]
 
 print('<aside class="facts">')
