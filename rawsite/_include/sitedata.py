@@ -1174,8 +1174,7 @@ SPOT_DETAILS = {
         },
     "motosuka":
         {
-            "area":
-                "sakuta",
+            "area": "sakuta",
             "title": {
                 "en": "Motosuka",
                 "ru": "Мотоска",
@@ -1206,11 +1205,14 @@ SPOT_DETAILS = {
                     ("Crowds", "Usually quieter than nearby spots"),
                     ("Best board", "shortboard, funboard, longboard"),
                 ],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mywskdtams2r",
+                "hours": 72,
+            }
         },
     "sakuta":
         {
-            "area":
-                "sakuta",
+            "area": "sakuta",
             "title": {
                 "en": "Sakuta",
                 "ru": "Сакута",
@@ -1241,11 +1243,14 @@ SPOT_DETAILS = {
                     ("Crowds", "Popular, with room to choose a peak"),
                     ("Best board", "shortboard, funboard, longboard"),
                 ],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mywsoky35s2r",
+                "hours": 72,
+            }
         },
     "katagai-gyokou":
         {
-            "area":
-                "sakuta",
+            "area": "sakuta",
             "title": {
                 "en": "Katagai Gyokou",
                 "ru": "Катагай-гёко",
@@ -1289,11 +1294,14 @@ SPOT_DETAILS = {
                     ("Crowds", "Crowded when conditions are good, especially on holidays"),
                     ("Best board", "longboard"),
                 ],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mywspp6y4k2r",
+                "hours": 72,
+            }
         },
     "ichinomiya":
         {
-            "area":
-                "ichinomiya",
+            "area": "ichinomiya",
             "title": {
                 "en": "Ichinomiya",
                 "ru": "Итиномия",
@@ -1325,11 +1333,14 @@ SPOT_DETAILS = {
                     ("Best size", "waist to chest high"),
                     ("Best board", "longboard, funboard, shortboard"),
                 ],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mywsrdesos2r",
+                "hours": 72,
+            }
         },
     "taito":
         {
-            "area":
-                "ichinomiya",
+            "area": "ichinomiya",
             "title": {
                 "en": "Taito",
                 "ru": "Тайто",
@@ -1361,6 +1372,10 @@ SPOT_DETAILS = {
                     ("Best size", "waist to chest high"),
                     ("Best board", "longboard, funboard"),
                 ],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mywst4mosk2r",
+                "hours": 72,
+            }
         },
     "onjuku main":
         {
@@ -1675,20 +1690,20 @@ AREA_MAPS = {
             "spots":
                 [
                     {
-                        "id": "sakuta",
-                        "coordinates": (35.542910, 140.467347),
-                        "url": "sakuta/index.html",
-                        "en": "Sakuta (作田)",
-                        "ru": "Сакута (作田)",
-                        "ja": "作田",
-                    },
-                    {
                         "id": "motosuka",
                         "coordinates": (35.549469, 140.471828),
                         "url": "motosuka/index.html",
                         "en": "Motosuka (本須賀)",
                         "ru": "Мотоска (本須賀)",
                         "ja": "本須賀",
+                    },
+                    {
+                        "id": "sakuta",
+                        "coordinates": (35.542910, 140.467347),
+                        "url": "sakuta/index.html",
+                        "en": "Sakuta (作田)",
+                        "ru": "Сакута (作田)",
+                        "ja": "作田",
                     },
                     {
                         "id": "katagai-gyokou",
@@ -1828,14 +1843,6 @@ SPOT_MAPS = {
                     "parking": (35.63558078986152, 140.56813542541934),
                 },
         },
-    "sakuta": {
-        "zoom": 17,
-        "amenities": {
-            "restroom": (35.545743, 140.465409),
-            "shower": (35.545743, 140.465409),
-            "paid_parking": (35.545736, 140.466147),
-        }
-    },
     "motosuka":
         {
             "zoom": 17,
@@ -1849,6 +1856,14 @@ SPOT_MAPS = {
                     ]
                 }
         },
+    "sakuta": {
+        "zoom": 17,
+        "amenities": {
+            "restroom": (35.545743, 140.465409),
+            "shower": (35.545743, 140.465409),
+            "paid_parking": (35.545736, 140.466147),
+        }
+    },
     "katagai-gyokou":
         {
             "zoom": 17,

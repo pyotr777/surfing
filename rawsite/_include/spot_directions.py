@@ -32,15 +32,15 @@ SPOT_DIRECTIONS = {
         "wind": "N-ENE"
     },
     "shingosita": {
-        "swell": "E-S",
+        "swell": "ESE-SSW",
         "wind": "NNW-NE"
     },
     "shoppumae": {
-        "swell": "E-SSW",
-        "wind": "NW-NE"
+        "swell": "ESE-SSW",
+        "wind": "NNW-NE"
     },
     "kanpomae": {
-        "swell": "ENE-S",
+        "swell": "ENE-SSW",
         "wind": "WNW-N"
     },
     "nodehama": {
@@ -60,8 +60,8 @@ SPOT_DIRECTIONS = {
         "wind": "WSW-NW"
     },
     "katagai-gyokou": {
-        "swell": "NE-S",
-        "wind": "SSW-NNE"
+        "swell": "ENE-SSE",
+        "wind": "SW-N"
     },
     "ichinomiya": {
         "swell": "NNE-SSE",
