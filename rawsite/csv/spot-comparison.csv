@@ -1,16 +1,16 @@
-area,spot,region,break_type,swell_window,best_wind,size_ft_typical,water_aug_c,water_feb_c
-asahi,mansionsita,chiba-north,beach,SE-SW,N-ENE,1-3,26,14
-asahi,shingosita,chiba-north,beach,ESE-S,NNW-NE,3-5,26,14
-asahi,shoppumae,chiba-north,beach,NE-SSW,NW-NE,3-5,26,14
-asahi,kanpomae,chiba-north,beach,E-S,WNW-N,2-4,26,14
-sosa,nodehama,chiba-north,beach,NE-SSW,N-NW,1-4,26,14
-sosa,horikawa,chiba-north,beach,NE-SSW,N-NW,1-4,26,14
-sakuta,motosuka,chiba-north,beach,NE-E,W-NW,1-3,26,14
-sakuta,sakuta,chiba-north,beach,NE-S,WSW-NW,2-4,26,14
-sakuta,katagai-gyokou,chiba-north,beach,NE-S,SSW-NNE,2-4,26,14
-ichinomiya,ichinomiya,chiba-north,beach,NE-SE,W,3-5,26,14
-ichinomiya,taito,chiba-north,beach,NE-SE,W,1-5,26,14
-katsuura,onjuku main,chiba-south,beach,ESE-SSW,N,2-4,26,15
-katsuura,iwawada,chiba-south,beach,ESE-SSW,N,2-4,26,15
-south-boso,wadaura,chiba-south,beach,SE-S,W-NW,2-5,26,15
-south-boso,chikura,chiba-south,beach,SE-S,W-NW,2-5,26,15
+area,spot,region,break_type,size_ft_typical,water_aug_c,water_feb_c
+asahi,mansionsita,chiba-north,beach,1-3,26,14
+asahi,shingosita,chiba-north,beach,3-5,26,14
+asahi,shoppumae,chiba-north,beach,3-5,26,14
+asahi,kanpomae,chiba-north,beach,2-4,26,14
+sosa,nodehama,chiba-north,beach,1-4,26,14
+sosa,horikawa,chiba-north,beach,1-4,26,14
+sakuta,motosuka,chiba-north,beach,1-3,26,14
+sakuta,sakuta,chiba-north,beach,2-4,26,14
+sakuta,katagai-gyokou,chiba-north,beach,2-4,26,14
+ichinomiya,ichinomiya,chiba-north,beach,3-5,26,14
+ichinomiya,taito,chiba-north,beach,1-5,26,14
+katsuura,onjuku main,chiba-south,beach,2-4,26,15
+katsuura,iwawada,chiba-south,beach,2-4,26,15
+south-boso,wadaura,chiba-south,beach,2-5,26,15
+south-boso,chikura,chiba-south,beach,2-5,26,15

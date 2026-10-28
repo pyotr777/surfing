@@ -1291,6 +1291,7 @@ SPOT_DETAILS = {
                     ("Break", "shallow beach break"),
                     ("Bottom", "Sand"),
                     ("Level", "beginner to intermediate"),
+                    ("Working tide", "medium to high"),
                     ("Crowds", "Crowded when conditions are good, especially on holidays"),
                     ("Best board", "longboard"),
                 ],

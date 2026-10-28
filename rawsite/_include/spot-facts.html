@@ -17,15 +17,15 @@ ui = S.UI[lang]
 
 detail = S.SPOT_DETAILS.get(params["spot"])
 comparison = next((row for row in S.load_spot_comparison() if row["spot"] == params["spot"]), None)
-directions = SPOT_DIRECTIONS.get(params["spot"], {})
+directions = SPOT_DIRECTIONS[params["spot"]]
 if detail and detail.get("facts"):
     rows = S.localized_spot_facts(detail["facts"], lang)
 elif comparison:
     rows = [
         (ui["table_region"], S.REGIONS[comparison["region"]][lang]),
         (ui["table_break"], S.BREAKS[comparison["break_type"]][lang]),
-        (ui["table_swell"], directions.get("swell", comparison["swell_window"])),
-        (ui["table_wind"], directions.get("wind", comparison["best_wind"])),
+        (ui["table_swell"], directions["swell"]),
+        (ui["table_wind"], directions["wind"]),
         (ui["table_size"], comparison["size_ft_typical"] + " ft"),
         (ui["table_aug"], f'{comparison["water_aug_c"]} °C'),
         (ui["table_feb"], f'{comparison["water_feb_c"]} °C'),
