@@ -2,9 +2,9 @@
 # Table of contents for the front page.
 #
 # The sections and their order come from sitedata.SECTIONS; the page counts
-# come from counting files on disk. Nothing here is written by hand, so a new
-# page in any section shows up in the count without anyone remembering to
-# update it.
+# come from counting every published page in each section, including the
+# section landing page. Nothing here is written by hand, so a new page shows
+# up in the count without anyone remembering to update it.
 import glob
 import os
 import sys
@@ -20,16 +20,17 @@ print('<nav class="toc" aria-label="' + ui["toc_heading"] + '">')
 print('  <ol>')
 for i, section in enumerate(S.SECTIONS, start=1):
     meta = S.SECTION_META[section][lang]
-    paths = glob.glob(os.path.join(S.ROOT, section, "*", suffix))
+    section_root = os.path.join(S.ROOT, section)
+    paths = glob.glob(os.path.join(section_root, "**", suffix), recursive=True)
     # Gun source files are intentionally retained but no longer belong to the
     # public Chiba board guide, so they do not inflate the visible page count.
     if section == "gear":
         visible_board_ids = {row["id"] for row in S.display_boards()}
-        paths = [path for path in paths
-                 if os.path.basename(os.path.dirname(path)) not in S.BOARDS_META
-                 or os.path.basename(os.path.dirname(path)) in visible_board_ids]
-    # Safety currently starts with its landing page rather than child guides.
-    count = len(paths) or (1 if section == "safety" else 0)
+        def is_visible(path):
+            top_level = os.path.relpath(path, section_root).split(os.sep)[0]
+            return top_level not in S.BOARDS_META or top_level in visible_board_ids
+        paths = [path for path in paths if is_visible(path)]
+    count = len(paths)
     print(f'    <li class="toc-item">')
     print(f'      <a href="{S.section_url(section, page_file)}">')
     print(f'        <span class="toc-num">{i:02d}</span>')

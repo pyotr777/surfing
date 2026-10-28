@@ -257,7 +257,7 @@ TERMS = {
     "egg":
         term("Egg", "A rounded, versatile mid-length shape between shortboard and longboard."),
     "mid-length":
-        term("Mid-length", "A board between typical shortboard and longboard lengths."),
+        term("Mid-length", "A board between typical shortboard and longboard lengths.", url="../gear/funboard/index.html"),
     "mini-mal":
         term("Mini-mal", "A shorter, more manageable longboard-style board.", aliases=("mini Malibu",)),
     "funboard":

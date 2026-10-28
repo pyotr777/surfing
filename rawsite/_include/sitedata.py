@@ -382,7 +382,7 @@ SEASONS = {
 # the navigation and the order of the feeds on the front page.
 # --------------------------------------------------------------------------
 
-SECTIONS = ["spots", "gear", "waves", "safety"]
+SECTIONS = ["spots", "gear", "safety"]
 
 SECTION_META = {
     "spots":
