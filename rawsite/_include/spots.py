@@ -878,9 +878,9 @@ SPOTS = {
             "water_feb_c": 15,
             "swell": "ESE-SSW",
             "wind": "NW-NE",
-            "amenities": ["parking", "shower"],
+            "amenities": ["paid_parking", "shower"],
             "bluesky": {
-                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mywst4mosk2r",
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mz3qwsgifs2s",
                 "hours": 72
             },
             "map": {
@@ -921,10 +921,18 @@ SPOTS = {
             "water_aug_c": 26,
             "water_feb_c": 15,
             "swell": "ESE-SSW",
-            "wind": "N",
+            "wind": "NW-NNE",
+            "amenities": ["paid_parking", "shower"],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mz3rfqtd7s26",
+                "hours": 72
+            },
             "map": {
                 "zoom": 17,
-                "amenities": {}
+                "amenities": {
+                    "shower": [35.183162747911425, 140.354976260209],
+                    "paid_parking": [35.18331605134341, 140.35466883104573],
+                }
             },
         },
     "onjuku gyokou":
@@ -947,6 +955,28 @@ SPOTS = {
                     "en": "The sandbanks at Onjuku gyokou can form distinct peaks, but their position and the current depend on swell and tide. ",
                     "ru": "Песчаные банки Ондзюку гёко могут формировать выраженные пики, но их положение и течение зависят от свелла и прилива.",
                     "ja": "御宿漁港の砂のバンクははっきりしたピークを作ることがありますが、その位置やカレントはうねりと潮位で変わります。",
+                },
+            "region": "chiba-south",
+            "break_type": "beach",
+            "size_ft_typical": "2-4",
+            "water_aug_c": 26,
+            "water_feb_c": 15,
+            "swell": "E-SSW",
+            "wind": "W-N",
+            "amenities": ["paid_parking", "shower", "restroom"],
+            "bluesky": {
+                "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mz3riqsgmc26",
+                "hours": 72
+            },
+            "map":
+                {
+                    "zoom": 17,
+                    "amenities":
+                        {
+                            "shower": [35.18153609012051, 140.3494266917303],
+                            "restroom": [35.18153609012051, 140.3494266917303],
+                            "paid_parking": [35.181220048703615, 140.34929194786667],
+                        }
                 },
         },
     "wadaura":
