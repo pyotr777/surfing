@@ -5,7 +5,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from spot_directions import SPOT_DIRECTIONS, diagram
+from spot_directions import diagram
+from spots import SPOTS
 
 lang = {"index.html": "en", "index_ru.html": "ru", "index_ja.html": "ja"}.get(os.path.basename(page_file), "en")
 labels = {
@@ -16,7 +17,9 @@ labels = {
 
 for kind in ("swell", "wind"):
     title = labels[kind]
-    description = SPOT_DIRECTIONS[params["spot"]][kind]
+    description = SPOTS[params["spot"]].get(kind)
+    if not description:
+        continue
     print(f'<figure class="spot-direction spot-direction--{kind}">')
     print(f'<figcaption>{html.escape(title)}</figcaption>')
     print(diagram(description, title))

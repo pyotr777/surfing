@@ -1,48 +1,36 @@
 <script type="text/python">
-# The facts panel on a spot page, built from one row of csv/spots.csv.
-# The page supplies only the spot id; every label is translated here.
-#
-# Parameters:
-#   spot  id matching the id column of csv/spots.csv
+# Facts and optional conditions from the single spot record.
 import os
 import sys
 import html
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
-from spot_directions import SPOT_DIRECTIONS
+from spots import SPOTS
 
 lang = S.lang_of(page_file)
 ui = S.UI[lang]
 
-detail = S.SPOT_DETAILS.get(params["spot"])
-comparison = next((row for row in S.load_spot_comparison() if row["spot"] == params["spot"]), None)
-directions = SPOT_DIRECTIONS[params["spot"]]
-if detail and detail.get("facts"):
-    rows = S.localized_spot_facts(detail["facts"], lang)
-elif comparison:
-    rows = [
-        (ui["table_region"], S.REGIONS[comparison["region"]][lang]),
-        (ui["table_break"], S.BREAKS[comparison["break_type"]][lang]),
-        (ui["table_swell"], directions["swell"]),
-        (ui["table_wind"], directions["wind"]),
-        (ui["table_size"], comparison["size_ft_typical"] + " ft"),
-        (ui["table_aug"], f'{comparison["water_aug_c"]} °C'),
-        (ui["table_feb"], f'{comparison["water_feb_c"]} °C'),
-    ]
+detail = SPOTS[params["spot"]]
+if detail.get("facts"):
+    rows = detail["facts"][lang]
 else:
-    row = S.spot_by_id(params["spot"])
-    rows = [
-        (ui["table_region"], S.REGIONS[row["region"]][lang]),
-        (ui["table_break"], S.BREAKS[row["break_type"]][lang]),
-        (ui["table_level"], S.LEVELS[row["level"]][lang]),
-        (ui["table_season"], S.SEASONS[row["peak_season"]][lang]),
-        (ui["table_swell"], row["swell_window"]),
-        (ui["table_wind"], row["best_wind"]),
-        (ui["table_size"], row["size_ft_typical"] + " ft"),
-        (ui["table_aug"], f'{row["water_aug_c"]} °C'),
-        (ui["table_feb"], f'{row["water_feb_c"]} °C'),
-    ]
+    rows = []
+    for key, label, vocabulary in (
+        ("region", ui["table_region"], S.REGIONS),
+        ("break_type", ui["table_break"], S.BREAKS),
+    ):
+        if detail.get(key):
+            rows.append((label, vocabulary[detail[key]][lang]))
+    for key, label, unit in (
+        ("swell", ui["table_swell"], ""),
+        ("wind", ui["table_wind"], ""),
+        ("size_ft_typical", ui["table_size"], " ft"),
+        ("water_aug_c", ui["table_aug"], " °C"),
+        ("water_feb_c", ui["table_feb"], " °C"),
+    ):
+        if detail.get(key) is not None:
+            rows.append((label, str(detail[key]) + unit))
 
 print('<aside class="facts">')
 print(f'  <h2>{ui["facts_heading"]}</h2>')

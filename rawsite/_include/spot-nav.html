@@ -15,7 +15,7 @@ lang = S.lang_of(page_file)
 ui = S.UI[lang]
 b = S.base_url(page_file)
 
-spots = S.load_spots()          # already sorted north to south
+spots = S.load_areas()          # already sorted north to south
 ids = [r["id"] for r in spots]
 i = ids.index(params["spot"])
 
@@ -31,7 +31,7 @@ arrow_up, arrow_dn = {
 def link(row, note):
     href = b + f'spots/{row["id"]}/' + S.localize("index.html", lang)
     return (f'<a href="{href}"><span class="dir">{note}</span>'
-            f'<span class="name">{S.SPOTS_META[row["id"]][lang]}</span></a>')
+            f'<span class="name">{S.AREAS_META[row["id"]][lang]}</span></a>')
 
 
 print('<nav class="spot-nav">')

@@ -4,6 +4,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+from spots import spots_in_area, spot_url
 
 area_id = params["area"]
 lang = S.lang_of(page_file)
@@ -23,16 +24,13 @@ copy = (labels[0], S.AREA_COAST_COPY[area_id][lang], labels[1], labels[2])
 print('<h2>' + copy[0] + '</h2>')
 print('<p>' + copy[1] + '</p>')
 print('<h2>' + copy[2] + '</h2>')
-spots = facts["spots"][lang]
-map_spots = S.AREA_MAPS.get(area_id, {}).get("spots", [])
-if map_spots:
-    spots = []
-    for spot in map_spots:
-        label = S.SPOT_DETAILS.get(spot["id"], {}).get("title", {}).get(lang, spot[lang])
-        if spot.get("url"):
-            url = S.localize(spot["url"], lang)
-            label = f'<a href="{url}">{label}</a>'
-        spots.append(label)
+spots = []
+for spot_id, spot in spots_in_area(area_id):
+    label = spot["title"][lang]
+    url = spot_url(spot_id)
+    if url:
+        label = f'<a href="{S.localize(url, lang)}">{label}</a>'
+    spots.append(label)
 print('<p>' + ' · '.join(spots) + '</p>')
 print('  </div>')
 print('  <aside class="facts">')

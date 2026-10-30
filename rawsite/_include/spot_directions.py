@@ -1,4 +1,4 @@
-"""Build-time direction data and SVG for detailed spot pages.
+"""Build-time compass SVG rendering; spot direction values live in spots.py.
 
 English compass codes describe an inclusive clockwise range of 16 sectors.
 For example, E-SSW includes every sector from E through SSW; N selects one.
@@ -26,68 +26,6 @@ COMPASS = (
     "NNW",
 )
 
-SPOT_DIRECTIONS = {
-    "mansionsita": {
-        "swell": "E-SW",
-        "wind": "N-ENE"
-    },
-    "shingosita": {
-        "swell": "ESE-SSW",
-        "wind": "NNW-NE"
-    },
-    "shoppumae": {
-        "swell": "ESE-SSW",
-        "wind": "NNW-NE"
-    },
-    "kanpomae": {
-        "swell": "ENE-SSW",
-        "wind": "WNW-N"
-    },
-    "nodehama": {
-        "swell": "NE-SSW",
-        "wind": "WNW-N"
-    },
-    "horikawa": {
-        "swell": "NE-SSW",
-        "wind": "WNW-N"
-    },
-    "sakuta": {
-        "swell": "NE-S",
-        "wind": "WSW-NW"
-    },
-    "motosuka": {
-        "swell": "NE-S",
-        "wind": "WSW-NW"
-    },
-    "katagai-gyokou": {
-        "swell": "ENE-SSE",
-        "wind": "SW-N"
-    },
-    "ichinomiya": {
-        "swell": "NNE-SSE",
-        "wind": "SW-NW"
-    },
-    "taito": {
-        "swell": "N-E",
-        "wind": "SE-W"
-    },
-    "onjuku main": {
-        "swell": "ESE-SSW",
-        "wind": "N"
-    },
-    "iwawada": {
-        "swell": "ESE-SSW",
-        "wind": "N"
-    },
-    "wadaura": {
-        "swell": "SE-S",
-        "wind": "W-NW"
-    },
-    "chikura": {
-        "swell": "SE-S",
-        "wind": "W-NW"
-    },
-}
 
 
 def selected_sectors(description):

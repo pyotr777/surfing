@@ -1,13 +1,13 @@
 <script type="text/python">
 # An interactive Leaflet map backed by the standard OpenStreetMap tile layer.
-# Area-specific coordinates live in sitedata.py, so the markup stays reusable
-# as the spot catalogue grows.
+# Area view settings live in sitedata.py; spot coordinates live in spots.py.
 import json
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+from spots import spots_in_area, map_label
 
 area_id = params["area"]
 lang = S.lang_of(page_file)
@@ -15,13 +15,13 @@ data = S.AREA_MAPS[area_id]
 map_id = f'area-map-{area_id}'
 
 points = [
-    {"id": spot["id"], "coordinates": spot["coordinates"], "label": spot[lang]}
-    for spot in data["spots"]
+    {"id": spot_id, "coordinates": spot["coordinates"], "label": map_label(spot, lang)}
+    for spot_id, spot in spots_in_area(area_id) if "coordinates" in spot
 ]
 amenity_coordinates = []
 seen_amenities = set()
-for spot in data["spots"]:
-    spot_amenities = S.SPOT_MAPS.get(spot["id"], {}).get("amenities", {})
+for spot_id, spot in spots_in_area(area_id):
+    spot_amenities = spot.get("map", {}).get("amenities", {})
     for kind, coordinates in S.iter_map_amenity_coordinates(spot_amenities):
         key = (kind, tuple(coordinates))
         if key not in seen_amenities:

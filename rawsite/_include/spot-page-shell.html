@@ -5,9 +5,10 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+from spots import SPOTS
 
 spot_id = params["spot"]
-detail = S.SPOT_DETAILS[spot_id]
+detail = SPOTS[spot_id]
 area_id = detail["area"]
 lang = S.lang_of(page_file)
 b = S.base_url(page_file)

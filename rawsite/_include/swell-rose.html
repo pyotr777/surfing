@@ -5,7 +5,7 @@
 # with the data.
 #
 # Parameters:
-#   spot   id from csv/spots.csv
+#   spot   id from csv/areas.csv
 #   size   diameter in px (default 220)
 import math
 import os
@@ -14,7 +14,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
 
-row = S.spot_by_id(params["spot"])
+row = S.area_by_id(params["spot"])
 size = params.get("size", 220)
 lang = S.lang_of(page_file)
 ui = S.UI[lang]

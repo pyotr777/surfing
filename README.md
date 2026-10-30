@@ -45,6 +45,41 @@ For this working copy, run the command from `surfjapan/`:
 ../.venv-surfjapan/bin/python ../panehe.py rawsite -o surfing
 ```
 
+## Adding or editing a spot
+
+All individual spot data lives in `rawsite/_include/spots.py`, in the `SPOTS`
+dictionary. Each key identifies one spot; its record contains its parent `area`,
+translated `title`, `summary` and `description`, `coordinates`, and optional
+conditions (`swell`, `wind`, `size_ft_typical`, `water_aug_c`, `water_feb_c`,
+`region`, `break_type`). `facts` contains translated label/value pairs.
+`amenities` lists the icons on the facts card; `map` holds optional zoom, center
+and amenity coordinates. Map facilities may differ from the card's amenities.
+`bluesky` configures the shared discussion.
+
+To add a detailed page:
+
+1. Add one record to `SPOTS`, using the same `area` key as the area's folder.
+2. Supply `title`, `summary` and `description` in `en`, `ru` and `ja`, plus the
+   spot's `coordinates` as `[latitude, longitude]`.
+3. Create `index.html`, `index_ru.html` and `index_ja.html` in
+   `rawsite/spots/<area>/<spot-id>/`. Each contains the same wrapper:
+
+   ```html
+   <script type="text/python">html, soup = include("../../../_include/spot-page-shell.html", spot="your-spot-id"); print(html)</script>
+   ```
+
+The folder name is the spot key with spaces replaced by hyphens. Existing keys
+such as `onjuku gyokou` remain supported. The area list, map and comparison table
+read the catalogue automatically; no additional lists or CSV rows are needed.
+Unknown conditions can be omitted: the comparison shows a dash and direction
+diagrams are shown only for supplied directions. Without `map`, the spot map
+uses its coordinates and zoom 16. A spot known only by name can have just `area`
+and `title`; it appears in the area list without a link, comparison row or map pin.
+
+Area descriptions and map views remain in `sitedata.py`. The separate
+`rawsite/csv/areas.csv` contains area-level conditions for the swell article,
+not individual spot records. `spot_directions.py` only renders compass diagrams.
+
 ## Publishing on GitHub Pages
 
 Every push to `main` starts the GitHub Actions workflow in `.github/workflows/deploy-pages.yml`. The workflow obtains the pinned Panehe revision, verifies its checksum, installs Beautiful Soup 4, builds `rawsite/`, and deploys the result to GitHub Pages. The repository therefore stores only the source site; generated files do not need to be committed.
@@ -75,8 +110,8 @@ Spot profiles are compiled from published surf guides and local mapping. They ar
 ## Bluesky comments
 
 Mansionsita's English, Russian and Japanese pages share one discussion. To enable
-comments for another spot, add a `bluesky` entry to its `SPOT_DETAILS` record in
-`rawsite/_include/sitedata.py`:
+comments for another spot, add a `bluesky` entry to its `SPOTS` record in
+`rawsite/_include/spots.py`:
 
 ```python
 "bluesky": {"post": "https://bsky.app/profile/YOUR_HANDLE/post/POST_ID"},

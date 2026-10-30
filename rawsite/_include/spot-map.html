@@ -1,6 +1,5 @@
 <script type="text/python">
-# The spot marker comes from AREA_MAPS; map settings and optional amenity
-# coordinates live in SPOT_MAPS, separate from the spot card's amenities list.
+# Coordinates, map settings and amenities come from the same spot record.
 import html
 import json
 import os
@@ -8,12 +7,13 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+from spots import SPOTS
 
 spot_id = params["spot"]
-detail = S.SPOT_DETAILS[spot_id]
+detail = SPOTS[spot_id]
 lang = S.lang_of(page_file)
-spot = next(point for point in S.AREA_MAPS[detail["area"]]["spots"] if point["id"] == spot_id)
-settings = S.SPOT_MAPS[spot_id]
+spot = detail
+settings = detail.get("map", {})
 labels = {
     "en": ("Spot and amenities", "Enable JavaScript to view the map."),
     "ru": ("Спот и удобства", "Включите JavaScript, чтобы посмотреть карту."),
@@ -22,7 +22,7 @@ labels = {
 heading, fallback = labels[lang]
 amenities = S.map_amenities(settings.get("amenities", {}), lang)
 config = {"spot": spot["coordinates"], "center": settings.get("center", spot["coordinates"]),
-          "zoom": settings["zoom"], "label": detail["title"][lang], "amenities": amenities}
+          "zoom": settings.get("zoom", 16), "label": detail["title"][lang], "amenities": amenities}
 config_json = json.dumps(config, ensure_ascii=False).replace("<", "\\u003c")
 layer_names = json.dumps(S.MAP_LAYER_NAMES[lang], ensure_ascii=False)
 map_id = f"spot-map-{spot_id}"
