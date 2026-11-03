@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sitedata as S
+import longboard_content as L
 
 lang = S.lang_of(page_file)
 ui = S.UI[lang]
@@ -39,7 +40,7 @@ for section in S.SECTIONS:
             continue
         pages.append({
             "url": b + f"{section}/{slug}/" + os.path.basename(path),
-            "title": h1.decode_contents().strip() if h1 else slug,
+            "title": L.FAMILY[lang]["title"] if section == "gear" and slug == "longboard" else (h1.decode_contents().strip() if h1 else slug),
             "tags": [t.strip() for t in meta("keywords").split(",") if t.strip()],
         })
 

@@ -382,7 +382,7 @@ SEASONS = {
 # the navigation and the order of the feeds on the front page.
 # --------------------------------------------------------------------------
 
-SECTIONS = ["spots", "gear", "safety"]
+SECTIONS = ["spots", "gear", "safety", "etiquette"]
 
 SECTION_META = {
     "spots":
@@ -449,6 +449,21 @@ SECTION_META = {
             "ja": {
                 "title": "海の安全",
                 "blurb": "海で安全に過ごすための、基本的な確認と判断。"
+            },
+        },
+    "etiquette":
+        {
+            "en": {
+                "title": "Rules & etiquette",
+                "blurb": "The shared language of the line-up: position, priority and room for everyone."
+            },
+            "ru": {
+                "title": "Правила и этикет",
+                "blurb": "Общий язык лайнапа: позиция, приоритет и пространство для всех."
+            },
+            "ja": {
+                "title": "ルールとエチケット",
+                "blurb": "ラインナップを共有するための、位置取り、優先権、互いへの配慮。"
             },
         },
 }

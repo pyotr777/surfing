@@ -30,6 +30,9 @@ print('    <summary>' + ui["nav_menu"] + '</summary>')
 print('    <div class="nav-content">')
 print('    <nav class="nav" aria-label="' + ui["nav_label"] + '">')
 for href, label in S.nav_items(page_file):
+    # The etiquette section remains available elsewhere while its menu link is hidden.
+    if href == b + S.localize("etiquette/index.html", lang):
+        continue
     path, _, fragment = href.partition("#")
     target = os.path.normpath(os.path.join(pagedir, path))
     # Section links stay current on their child pages; a front-page anchor is
