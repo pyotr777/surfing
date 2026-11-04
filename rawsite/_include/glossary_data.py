@@ -5,12 +5,13 @@ article can reuse the same stable key for its URL, translations and aliases.
 """
 
 
-def term(title, definition, aliases=(), url=None):
+def term(title, definition, aliases=(), url=None, anchor=None):
     return {
         "title": title,
         "definition": definition,
         "aliases": aliases,
         "url": url,
+        "anchor": anchor,
     }
 
 
@@ -223,11 +224,13 @@ TERMS = {
 
     # Spot zones
     "lineup":
-        term("Line-up", "The area where surfers wait and position themselves for incoming waves.", aliases=("lineup",)),
+        term("Line-up", "The area where surfers wait and position themselves for incoming waves.", aliases=("lineup",), url="zones/index.html", anchor="lineup"),
     "outside":
-        term("Outside", "The seaward side of the main breaking zone."),
+        term("Outside", "The seaward side of the main breaking zone.", url="zones/index.html", anchor="outside"),
+    "break":
+        term("Break", "The zone where incoming waves steepen and begin to break over shallow water.", url="zones/index.html", anchor="break"),
     "inside":
-        term("Inside", "The shoreward side of the main line-up, often where waves break again."),
+        term("Inside", "The shoreward side of the main line-up, often where waves break again.", url="zones/index.html", anchor="inside"),
     "impact-zone":
         term("Impact zone", "The area where waves break repeatedly and with most force."),
     "channel":
@@ -707,7 +710,7 @@ TREE = [
         "note":
             "The shared map surfers use to navigate a break and the people in it.",
         "groups": [
-            ("Zones in the water", ["lineup", "outside", "inside", "impact-zone", "channel", "takeoff-zone"]),
+            ("Zones in the water", ["outside", "lineup", "break", "inside", "impact-zone", "channel", "takeoff-zone"]),
             ("Finding a route", ["paddle-out", "caught-inside", "reading-the-lineup"]),
         ],
     },

@@ -58,13 +58,24 @@ COPY = {
     },
 }[lang]
 
+ZONE_LINKS = {
+    "en": {"Break": "break", "Inside": "inside", "Lineup": "lineup", "Outside": "outside"},
+    "ru": {"Аутсайд": "outside", "Брейк": "break", "Инсайд": "inside", "Лайнап": "lineup"},
+    "ja": {"アウトサイド": "outside", "ブレイク": "break", "インサイド": "inside", "ラインアップ": "lineup"},
+}[lang]
+zones_url = S.localize("zones/index.html", lang)
+
 print('<section class="glossary-basics" aria-labelledby="glossary-basics-title">')
 print(f'  <h2 id="glossary-basics-title">{html.escape(COPY["heading"])}</h2>')
 print(f'  <p class="glossary-basics-intro">{html.escape(COPY["intro"])}</p>')
 print('  <dl class="glossary-basics-list">')
 for title, definition in COPY["terms"]:
     print('    <div>')
-    print(f'      <dt>{html.escape(title)}</dt>')
+    label = html.escape(title)
+    if title in ZONE_LINKS:
+        href = f'{zones_url}#{ZONE_LINKS[title]}'
+        label = f'<a href="{html.escape(href, quote=True)}">{label}</a>'
+    print(f'      <dt>{label}</dt>')
     print(f'      <dd>{html.escape(definition)}</dd>')
     print('    </div>')
 print('  </dl>')

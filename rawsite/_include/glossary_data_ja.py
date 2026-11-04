@@ -91,6 +91,7 @@ JA_TERMS = {
     # スポットのゾーン
     "lineup": term("ラインナップ", "サーファーが来る波を待ち、位置を取る場所。", ("ラインアップ",)),
     "outside": term("アウトサイド", "主なブレイクゾーンより沖側。"),
+    "break": term("ブレイク", "浅い場所に入った波が急になり、崩れ始めるゾーン。"),
     "inside": term("インサイド", "主なラインナップより岸側。波がもう一度割れることが多い。"),
     "impact-zone": term("インパクトゾーン", "波が繰り返し、最も強くブレイクする場所。"),
     "channel": term("チャンネル", "ブレイクを抜ける、より深く穏やかな通り道。沖へパドルするためによく使う。"),
@@ -322,7 +323,7 @@ TREE = [
         "note":
             "スポットの中で、サーファーが位置や流れを共有するための言葉。",
         "groups": [
-            ("水面のゾーン", ["lineup", "outside", "inside", "impact-zone", "channel", "takeoff-zone"]),
+            ("水面のゾーン", ["outside", "lineup", "break", "inside", "impact-zone", "channel", "takeoff-zone"]),
             ("沖へのルート", ["paddle-out", "caught-inside", "reading-the-lineup"]),
         ]
     },

@@ -51,7 +51,8 @@ def print_term(key, instance_id):
         url = S.localize(entry["url"], lang)
         source = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(page_file)), url))
         if os.path.exists(source):
-            title = f'<a href="{html.escape(url, quote=True)}">{title}</a>'
+            fragment = f'#{entry["anchor"]}' if entry.get("anchor") else ""
+            title = f'<a href="{html.escape(url + fragment, quote=True)}">{title}</a>'
     print(f'          <li class="glossary-term" id="term-{html.escape(instance_id, quote=True)}">')
     print(f'            <div class="glossary-term-name">{title}</div>')
     print(f'            <p class="glossary-definition">{html.escape(entry["definition"])}</p>')
