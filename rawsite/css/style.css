@@ -5,9 +5,9 @@
 .compact-direction .direction-sector{fill:var(--kapa-warm);stroke:var(--kapa-line)}.compact-direction--swell .direction-sector.is-selected{fill:var(--reef)}.compact-direction--wind .direction-sector.is-selected{fill:var(--alaea)}
 
 /* Beach-break illustration and its numbered reading guide. */
-.lineup-figure{margin:32px 0;border:0}
+.lineup-figure{margin:8.467mm 0;border:2px solid var(--bark);background:var(--kapa-warm)}
 .lineup-figure img{display:block;width:100%;height:auto}
-.lineup-figure figcaption{padding:12px 0;color:var(--ink-soft);font-size:16px;line-height:1.55}
+.lineup-figure figcaption{padding:2.752mm 3.387mm;color:var(--ink-soft);font-size:16px;line-height:1.55}
 .lineup-key{max-width:70ch;margin:20px 0 32px;color:var(--ink-soft)}
 .lineup-key>div{padding:18px 0;border-bottom:1px solid var(--kapa-line)}
 .lineup-key dt{color:var(--char);font-weight:600;font-size:22px;line-height:1.3}

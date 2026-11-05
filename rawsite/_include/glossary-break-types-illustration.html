@@ -11,8 +11,13 @@ current = params["current"]
 lang = S.lang_of(page_file)
 COPY = {
     "en": {
-        "alt": "Four coastal scenes showing a beach break over sandbars, a reef break over a rocky shelf, a point break peeling around a headland, and a rivermouth break shaped by a river channel and sandbars.",
         "aria": "Illustrated break types",
+        "image_alts": (
+            "Several short, shifting beach-break peaks breaking over sandbars on a sandy Japanese coast.",
+            "A steep reef-break wave peeling over a fixed rocky shelf beside a deep channel.",
+            "A long point-break wave peeling around a rocky Japanese headland.",
+            "A rivermouth break peeling along a sandbar beside a river channel.",
+        ),
         "panels": (
             ("beach-break", "Beach break", "Moving sandbars make several short, shifting peaks and gaps in the breaking line."),
             ("reef-break", "Reef break", "A hard fixed shelf creates one steep, powerful take-off beside a deeper channel."),
@@ -21,8 +26,13 @@ COPY = {
         ),
     },
     "ru": {
-        "alt": "Четыре прибрежные сцены: бич-брейк над песчаными банками, риф-брейк над каменной плитой, пойнт-брейк у мыса и устьевой брейк, который формируют русло и песчаные банки.",
         "aria": "Типы брейков на иллюстрации",
+        "image_alts": (
+            "Несколько коротких смещающихся пиков бич-брейка над песчаными банками у японского берега.",
+            "Крутая волна риф-брейка над неподвижной каменной плитой рядом с глубоким каналом.",
+            "Длинная волна пойнт-брейка, которая раскрывается вокруг скалистого японского мыса.",
+            "Устьевой брейк, который раскрывается вдоль песчаной банки рядом с речным руслом.",
+        ),
         "panels": (
             ("beach-break", "Бич-брейк", "Подвижные песчаные банки создают несколько коротких, смещающихся пиков и разрывы в линии ломки."),
             ("reef-break", "Риф-брейк", "Твёрдая неподвижная плита даёт один крутой мощный тейк-офф рядом с более глубоким каналом."),
@@ -31,8 +41,13 @@ COPY = {
         ),
     },
     "ja": {
-        "alt": "サンドバーの上で割れるビーチブレイク、岩棚の上のリーフブレイク、岬に沿ってピーリングするポイントブレイク、川の流路とサンドバーで形づくられる河口のブレイクを描いた四つの海岸の場面。",
         "aria": "イラストで見るブレイクの種類",
+        "image_alts": (
+            "日本の砂浜で、サンドバーの上に短く位置を変えながら割れる複数のビーチブレイクのピーク。",
+            "深いチャンネルの横にある固定された岩棚の上で割れる、急なリーフブレイクの波。",
+            "岩の多い日本の岬を回り込んで長くピーリングするポイントブレイクの波。",
+            "川の流路の横にあるサンドバーに沿ってピーリングする河口のブレイク。",
+        ),
         "panels": (
             ("beach-break", "ビーチブレイク", "動くサンドバーが、短く位置の変わる複数のピークとブレイクの切れ目を作ります。"),
             ("reef-break", "リーフブレイク", "硬く固定された岩棚が、深いチャンネルの横に急でパワフルな一つのテイクオフを作ります。"),
@@ -42,22 +57,29 @@ COPY = {
     },
 }[lang]
 panels = COPY["panels"]
+image_alts = COPY["image_alts"]
+IMAGE_FILES = {
+    "beach-break": "beach-break-v2.png",
+    "reef-break": "reef-break-v2.png",
+    "point-break": "point-break-v7.png",
+    "rivermouth": "rivermouth-v2.png",
+}
 
 print('<figure class="glossary-swell-figure glossary-break-types-figure">')
-print('  <div class="glossary-swell-art">')
-print(f'    <img src="{b}img/glossary/break-types-v1.png" alt="{html.escape(COPY["alt"], quote=True)}" width="1254" height="1254" loading="lazy">')
-print(f'    <ol class="glossary-swell-labels" aria-label="{html.escape(COPY["aria"], quote=True)}">')
-for key, label, description in panels:
+print(f'  <div class="glossary-swell-grid" aria-label="{html.escape(COPY["aria"], quote=True)}">')
+for (key, label, description), image_alt in zip(panels, image_alts):
     active = ' aria-current="page"' if key == current else ''
     href = b + "glossary/" + S.localize(f"{key}/index.html", lang)
-    print(f'      <li><a href="{html.escape(href, quote=True)}"{active}>{html.escape(label)}</a></li>')
-print('    </ol>')
+    image_src = b + "img/glossary/" + IMAGE_FILES[key]
+    print('    <div class="glossary-swell-panel">')
+    print(f'      <a class="glossary-swell-art" href="{html.escape(href, quote=True)}"{active}>')
+    print(f'        <img src="{html.escape(image_src, quote=True)}" alt="{html.escape(image_alt, quote=True)}" width="1536" height="1024" loading="lazy">')
+    print(f'        <span class="glossary-swell-label">{html.escape(label)}</span>')
+    print('      </a>')
+    print('      <dl class="glossary-swell-key">')
+    print(f'        <dt>{html.escape(label)}</dt><dd>{html.escape(description)}</dd>')
+    print('      </dl>')
+    print('    </div>')
 print('  </div>')
-print('  <figcaption>')
-print('    <dl class="glossary-swell-key">')
-for key, label, description in panels:
-    print(f'      <div><dt>{html.escape(label)}</dt><dd>{html.escape(description)}</dd></div>')
-print('    </dl>')
-print('  </figcaption>')
 print('</figure>')
 </script>
