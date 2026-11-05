@@ -59,10 +59,10 @@ COPY = {
 panels = COPY["panels"]
 image_alts = COPY["image_alts"]
 IMAGE_FILES = {
-    "beach-break": "beach-break-v2.png",
-    "reef-break": "reef-break-v2.png",
-    "point-break": "point-break-v7.png",
-    "rivermouth": "rivermouth-v2.png",
+    "beach-break": "beach-break-v2.jpg",
+    "reef-break": "reef-break-v2.jpg",
+    "point-break": "point-break-v7.jpg",
+    "rivermouth": "rivermouth-v2.jpg",
 }
 
 print('<figure class="glossary-swell-figure glossary-break-types-figure">')
@@ -73,7 +73,7 @@ for (key, label, description), image_alt in zip(panels, image_alts):
     image_src = b + "img/glossary/" + IMAGE_FILES[key]
     print('    <div class="glossary-swell-panel">')
     print(f'      <a class="glossary-swell-art" href="{html.escape(href, quote=True)}"{active}>')
-    print(f'        <img src="{html.escape(image_src, quote=True)}" alt="{html.escape(image_alt, quote=True)}" width="1536" height="1024" loading="lazy">')
+    print(f'        <img src="{html.escape(image_src, quote=True)}" alt="{html.escape(image_alt, quote=True)}" width="1100" height="733" loading="lazy">')
     print(f'        <span class="glossary-swell-label">{html.escape(label)}</span>')
     print('      </a>')
     print('      <dl class="glossary-swell-key">')
