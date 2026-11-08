@@ -18,8 +18,8 @@ for area_id, area in S.AREAS.items():
     url = b + f'spots/{area_id}/' + S.localize("index.html", lang)
     print('  <article class="card">')
     print(f'    <a class="card-media" href="{url}" tabindex="-1" aria-hidden="true">')
-    print(f'      <img src="{b}img/spots-2b/{area["image"]}.png" alt="" '
-          'width="1672" height="941" loading="lazy">')
+    print(f'      <img src="{b}img/spots-3b/{area["image"]}.jpg" alt="" '
+          'width="836" height="418" loading="lazy">')
     print('    </a>')
     print('    <div class="card-body">')
     print(f'      <p class="card-meta"><span class="region">{area["region"][lang]}</span></p>')

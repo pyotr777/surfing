@@ -756,9 +756,7 @@ AREAS = {
         },
     "south-boso":
         {
-            # Keep the existing Fujisawa photograph while the overview moves
-            # to the new South Boso area.
-            "image": "fujisawa",
+            "image": "south-boso",
             "region": {
                 "en": "Chiba · South Boso",
                 "ru": "Тиба · Южный Босо",
