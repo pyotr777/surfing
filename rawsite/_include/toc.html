@@ -1,7 +1,8 @@
 <script type="text/python">
 # Table of contents for the front page.
 #
-# The sections and their order come from sitedata.SECTIONS; the page counts
+# The front page replaces the unpublished etiquette section with the glossary;
+# the page counts
 # come from counting every published page in each section, including the
 # section landing page. Nothing here is written by hand, so a new page shows
 # up in the count without anyone remembering to update it.
@@ -18,7 +19,8 @@ suffix = S.localize("index.html", lang)
 
 print('<nav class="toc" aria-label="' + ui["toc_heading"] + '">')
 print('  <ol>')
-for i, section in enumerate(S.SECTIONS, start=1):
+home_sections = ["glossary" if section == "etiquette" else section for section in S.SECTIONS]
+for i, section in enumerate(home_sections, start=1):
     meta = S.SECTION_META[section][lang]
     section_root = os.path.join(S.ROOT, section)
     paths = glob.glob(os.path.join(section_root, "**", suffix), recursive=True)

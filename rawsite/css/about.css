@@ -2,7 +2,7 @@
 .about-panehe-logo{display:block;justify-self:center;line-height:0}
 .about-panehe-logo img{display:block;height:38.100mm;width:auto;max-width:100%}
 .about-panehe h2{margin:.423mm 0 2.540mm}
-.about-panehe p{margin:0;max-width:145mm}
+.about-panehe p{margin:0;max-width:var(--measure)}
 
 @media(max-width:148.167mm){
   .about-panehe{grid-template-columns:1fr;gap:4.233mm}

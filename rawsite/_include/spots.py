@@ -73,7 +73,7 @@ SPOTS = {
             "amenities": [],
             "bluesky": {
                 "post": "https://bsky.app/profile/pyotr777.bsky.social/post/3mypagtfack22",
-                "hours": 72
+                "hours": 336
             },
             "map": {
                 "zoom": 17,

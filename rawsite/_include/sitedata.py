@@ -451,6 +451,21 @@ SECTION_META = {
                 "blurb": "海で安全に過ごすための、基本的な確認と判断。"
             },
         },
+    "glossary":
+        {
+            "en": {
+                "title": "Glossary",
+                "blurb": "Surfing terms, from waves and conditions to boards and techniques."
+            },
+            "ru": {
+                "title": "Глоссарий",
+                "blurb": "Термины сёрфинга: волны и условия, доски и техника катания."
+            },
+            "ja": {
+                "title": "用語集",
+                "blurb": "波やコンディション、ボードやライディングに関するサーフィン用語。"
+            },
+        },
     "etiquette":
         {
             "en": {

@@ -7,19 +7,67 @@ surfing-bluesky-comments {
   font-size: calc(1em - 3pt);
 }
 surfing-bluesky-comments .bluesky-comment {
-  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(8rem, 11rem);
+  gap: 0 1rem;
+  padding: .55rem .75rem;
+  background: var(--kapa-warm, #e8d3a6);
+  color: var(--char, #4a3623);
+  border-radius: .4rem;
+}
+surfing-bluesky-comments .bluesky-comment-reply { margin-left: 1.5rem; }
+surfing-bluesky-comments .bluesky-comment-status {
+  color: var(--ink-soft, #6d5030);
+  margin-bottom: .5rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rule, #ccc);
 }
 surfing-bluesky-comments .bluesky-comment + .bluesky-comment {
-  border-top: 1px solid var(--rule);
+  margin-top: .4rem;
 }
 surfing-bluesky-comments .bluesky-comment-list {
   border-bottom: 1px solid var(--rule);
   padding-bottom: 1rem;
   margin-bottom: 1.5rem;
+  container-type: inline-size;
 }
 surfing-bluesky-comments .bluesky-comment-text {
   font-size: calc(1em + 3pt);
   white-space: pre-wrap;
+  margin: 0;
+}
+surfing-bluesky-comments .bluesky-comment-meta {
+  margin: 0;
+  font-size: .8em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+surfing-bluesky-comments .bluesky-comment-meta a { color: var(--bark, #6b4a2c); }
+surfing-bluesky-comments .bluesky-comment-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: .4rem;
+}
+surfing-bluesky-comments .bluesky-comment-images a { max-width: min(100%, 18rem); }
+surfing-bluesky-comments .bluesky-comment-images img {
+  display: block;
+  max-width: 100%;
+  max-height: 18rem;
+  object-fit: contain;
+}
+@container (max-width: 32rem) {
+  surfing-bluesky-comments .bluesky-comment { grid-template-columns: minmax(0, 1fr); }
+  surfing-bluesky-comments .bluesky-comment-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: .5rem;
+    text-align: left;
+    margin-top: .25rem;
+  }
 }
 
 

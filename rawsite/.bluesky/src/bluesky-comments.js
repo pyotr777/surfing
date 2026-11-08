@@ -6,28 +6,25 @@ const API = 'https://public.api.bsky.app/xrpc/';
 
 const copy = {
   ja: {
-    title: 'Blueskyでのコメント', reply: 'Blueskyで返信', all: 'すべてのコメント',
+    title: 'スポットの最新情報', reply: 'Blueskyで返信', all: 'すべてのコメント',
     loading: 'コメントを読み込み中…', empty: '指定した期間のコメントはありません。',
     error: 'コメントを読み込めませんでした。Blueskyでご覧いただけます。',
-    parent: '返信先のコメント',
-    period: hours => hours ? `過去${hours}時間の返信を表示しています。` : 'すべての期間の返信を表示しています。',
-    note: '返信にはBlueskyアカウントが必要です。コメントは各言語版で共通です。ここでは本文のみを表示します。画像などの添付はBlueskyでご覧ください。',
+    period: hours => hours ? `サイト利用者による最新のコメントです。過去${hours}時間の返信を表示しています。` : 'サイト利用者による最新のコメントです。すべての期間の返信を表示しています。',
+    note: '返信にはBlueskyアカウント（無料）が必要です。コメントは各言語版で共通です。',
   },
   ru: {
-    title: 'Обсуждение в Bluesky', reply: 'Ответить в Bluesky', all: 'Всё обсуждение',
+    title: 'Новости спота', reply: 'Ответить в Bluesky', all: 'Всё обсуждение',
     loading: 'Загрузка комментариев…', empty: 'За выбранный период комментариев нет.',
     error: 'Не удалось загрузить комментарии. Обсуждение можно открыть в Bluesky.',
-    parent: 'Ответ на комментарий',
-    period: hours => hours ? `Показаны ответы за последние ${hours} ч.` : 'Показаны ответы за всё время.',
-    note: 'Для ответа нужен аккаунт Bluesky. Обсуждение общее для всех языковых версий. Здесь показаны текстовые версии ответов; изображения и другие вложения доступны в Bluesky.',
+    period: hours => hours ? `Оперативные комментарии пользователей сайта. Показаны ответы за последние ${hours} ч.` : 'Оперативные комментарии пользователей сайта. Показаны ответы за всё время.',
+    note: 'Для ответа нужен аккаунт Bluesky (бесплатный). Обсуждение общее для всех языковых версий.',
   },
   en: {
-    title: 'Discussion on Bluesky', reply: 'Reply on Bluesky', all: 'Full discussion',
+    title: 'Latest from the Spot', reply: 'Reply on Bluesky', all: 'Full discussion',
     loading: 'Loading comments…', empty: 'No comments in this time window.',
     error: 'Comments could not be loaded. You can open the discussion on Bluesky.',
-    parent: 'Reply to a comment',
-    period: hours => hours ? `Showing replies from the last ${hours} hours.` : 'Showing replies from all time.',
-    note: 'A Bluesky account is required to reply. All language versions share this discussion. Text versions are shown here; images and other attachments are available on Bluesky.',
+    period: hours => hours ? `Timely updates from site users. Showing replies from the last ${hours} hours.` : 'Timely updates from site users. Showing replies from all time.',
+    note: 'A Bluesky account (free) is required to reply. All language versions share this discussion.',
   },
 };
 
@@ -89,7 +86,7 @@ class SurfingBlueskyComments extends HTMLElement {
     this.id ||= 'bluesky-comments';
     this.auth = auth;
     this.words = copy[(this.getAttribute('lang') || document.documentElement.lang).split('-')[0]] || copy.en;
-    this.status = element('p');
+    this.status = element('p', '', 'bluesky-comment-status');
     this.status.setAttribute('role', 'status');
     this.list = element('div', '', 'bluesky-comment-list');
     this.append(element('h2', this.words.title), this.status, this.list);
@@ -247,18 +244,38 @@ class SurfingBlueskyComments extends HTMLElement {
       });
       for (const post of comments) {
         const article = element('article', '', 'bluesky-comment');
+        const parent = post.record.reply?.parent?.uri;
+        if (parent && parent !== uri) article.classList.add('bluesky-comment-reply');
+        const content = element('div', '', 'bluesky-comment-content');
+        // Treat remote content as text, never as HTML.
+        content.append(element('p', post.record.text, 'bluesky-comment-text'));
+        const embed = post.embed?.$type === 'app.bsky.embed.recordWithMedia#view' ? post.embed.media : post.embed;
+        if (embed?.$type === 'app.bsky.embed.images#view' && Array.isArray(embed.images)) {
+          const images = element('div', '', 'bluesky-comment-images');
+          for (const image of embed.images) {
+            try {
+              const thumb = new URL(image.thumb);
+              const fullsize = new URL(image.fullsize);
+              if (thumb.protocol !== 'https:' || fullsize.protocol !== 'https:') continue;
+              const imageLink = link('', fullsize.href);
+              const img = element('img');
+              img.src = thumb.href;
+              img.alt = image.alt || '';
+              img.loading = 'lazy';
+              imageLink.append(img);
+              images.append(imageLink);
+            } catch { /* Ignore malformed image URLs. */ }
+          }
+          if (images.children.length) content.append(images);
+        }
         const header = element('p', '', 'bluesky-comment-meta');
         const date = element('time', new Date(post.record.createdAt).toLocaleString(this.getAttribute('lang') || document.documentElement.lang || 'en'));
         date.dateTime = post.record.createdAt;
         const permalink = link('', postLink(post.uri));
         permalink.append(date);
-        header.append(link(post.author.displayName || post.author.handle,
-          `https://bsky.app/profile/${encodeURIComponent(post.author.did)}`), document.createTextNode(' · '), permalink);
-        article.append(header);
-        const parent = post.record.reply?.parent?.uri;
-        if (parent && parent !== uri) article.append(link(this.words.parent, postLink(parent)));
-        // Treat remote content as text, never as HTML.
-        article.append(element('p', post.record.text, 'bluesky-comment-text'));
+        header.append(permalink, link(post.author.displayName || post.author.handle,
+          `https://bsky.app/profile/${encodeURIComponent(post.author.did)}`));
+        article.append(content, header);
         this.list.append(article);
       }
       this.status.textContent = comments.length ? this.words.period(hours) : this.words.empty;
